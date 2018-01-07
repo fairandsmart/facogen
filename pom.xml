@@ -21,6 +21,7 @@
         <version.dependency.plugin>3.0.2</version.dependency.plugin>
         <version.resource.plugin>3.0.2</version.resource.plugin>
         <version.junit>4.12</version.junit>
+        <version.pdfbox>2.0.4</version.pdfbox>
     </properties>
 
     <dependencies>
@@ -28,6 +29,36 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${version.junit}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.pdfbox</groupId>
+            <artifactId>pdfbox</artifactId>
+            <version>${version.pdfbox}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.pdfbox</groupId>
+            <artifactId>fontbox</artifactId>
+            <version>${version.pdfbox}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.pdfbox</groupId>
+            <artifactId>jempbox</artifactId>
+            <version>1.8.13</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.pdfbox</groupId>
+            <artifactId>xmpbox</artifactId>
+            <version>${version.pdfbox}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.pdfbox</groupId>
+            <artifactId>preflight</artifactId>
+            <version>${version.pdfbox}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.pdfbox</groupId>
+            <artifactId>pdfbox-tools</artifactId>
+            <version>${version.pdfbox}</version>
         </dependency>
     </dependencies>
 
