@@ -12,10 +12,12 @@ import java.nio.file.Paths;
 public class InvoiceGeneratorTest {
 
     @Test
-    public void testBasicTemplateGeneration() throws IOException {
+    public void testBasicTemplateGeneration() throws Exception {
         String ts = "" + System.currentTimeMillis();
-        Path output = Paths.get("target/basic"+ ts + ".pdf");
-        InvoiceGenerator.getInstance().generateInvoice(InvoiceGenerator.Model.BASIC, output);
+        Path pdf = Paths.get("target/basic"+ ts + ".pdf");
+        Path xml = Paths.get("target/basic"+ ts + ".xml");
+        Path img = Paths.get("target/basic"+ ts + ".jpg");
+        InvoiceGenerator.getInstance().generateInvoice(InvoiceGenerator.Model.BASIC, pdf, xml, img);
     }
 
 }

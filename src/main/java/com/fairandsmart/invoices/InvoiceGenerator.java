@@ -1,25 +1,32 @@
 package com.fairandsmart.invoices;
 
-import be.quodlibet.boxable.BaseTable;
-import be.quodlibet.boxable.datatable.DataTable;
-import org.apache.pdfbox.cos.COSName;
+import com.fairandsmart.invoices.layout.InvoiceLayout;
+import com.fairandsmart.invoices.layout.amazon.AmazonLayout;
+import org.apache.pdfbox.io.RandomAccessOutputStream;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.common.PDRectangle;
-import org.apache.pdfbox.pdmodel.font.PDFont;
-import org.apache.pdfbox.pdmodel.font.PDType1Font;
-import org.apache.pdfbox.pdmodel.graphics.color.PDColor;
-import org.apache.pdfbox.pdmodel.graphics.color.PDColorSpace;
 import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
+import org.apache.pdfbox.rendering.ImageType;
+import org.apache.pdfbox.rendering.PDFRenderer;
+import org.apache.pdfbox.tools.imageio.ImageIOUtil;
 
-import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.print.attribute.standard.Compression;
+import javax.xml.stream.XMLOutputFactory;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamWriter;
+import java.awt.image.BufferedImage;
+import java.io.*;
+import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class InvoiceGenerator {
+
+    private static final String DATE_FORMAT = "mm/dd/yyyy hh:mm";
 
     private static class InvoiceGeneratorHolder {
         private final static InvoiceGenerator instance = new InvoiceGenerator();
@@ -32,66 +39,46 @@ public class InvoiceGenerator {
     private InvoiceGenerator() {
     }
 
-    public void generateInvoice(Model model, Path output) throws IOException {
+    public void generateInvoice(Model model, Path pdf, Path xml, Path img) throws Exception {
+
+        OutputStream xmlos = Files.newOutputStream(xml);
+        XMLStreamWriter xmlout = XMLOutputFactory.newInstance().createXMLStreamWriter(new OutputStreamWriter(xmlos, "utf-8"));
+        xmlout.writeStartDocument();
+        xmlout.writeStartElement("", "GEID", "http://lamp.cfar.umd.edu/media/projects/GEDI/");
+        xmlout.writeAttribute("GEDI_version", "2.4");
+        xmlout.writeAttribute("GEDI_date", "07/29/2013");
+        xmlout.writeStartElement("USER");
+        xmlout.writeAttribute("name", "FairAndSmartGenerator");
+        xmlout.writeAttribute("date", new SimpleDateFormat(DATE_FORMAT).format(new Date()));
+        xmlout.writeAttribute("dateFormat", DATE_FORMAT);
+        xmlout.writeEndElement();
+        xmlout.writeStartElement("DL_DOCUMENT");
+        xmlout.writeAttribute("src", img.getFileName().toString());
+        xmlout.writeAttribute("NrOfPages", "1");
+        xmlout.writeAttribute("docTag", "xml");
+
         PDDocument document = new PDDocument();
-        PDPage page = new PDPage();
-        //page.setMediaBox(new PDRectangle(PDRectangle.A4.getHeight(), PDRectangle.A4.getWidth()));
-        document.addPage(page);
+        InvoiceLayout builder = new AmazonLayout();
+        builder.builtInvoice(document, xmlout);
+        document.save(pdf.toFile());
 
-        //Global values
-        float margin = 10;
-        float bottomMargin = 0;
+        //Export as TIFF
+        PDFRenderer pdfRenderer = new PDFRenderer(document);
+        BufferedImage bim = pdfRenderer.renderImageWithDPI(0, 300, ImageType.RGB);
+        ImageIOUtil.writeImage(bim, img.toString(), 300);
 
-        PDFont font = PDType1Font.HELVETICA_BOLD;
-        PDPageContentStream contentStream = new PDPageContentStream(document, page);
-
-
-        //Logo
-        String logo = this.getClass().getClassLoader().getResource("logo/logo.png").getFile();
-        PDImageXObject pdImage = PDImageXObject.createFromFile(logo, document);
-        contentStream.drawImage(pdImage, margin, 715, pdImage.getWidth() / 4, pdImage.getHeight() / 4);
-
-        //Company address
-        contentStream.beginText();
-        contentStream.setFont(font, 12);
-        contentStream.newLineAtOffset(margin, 700);
-        contentStream.showText("Fair and Smart SAS");
-        contentStream.newLineAtOffset(0, -16);
-        contentStream.showText("11 Rempart St Thiébault");
-        contentStream.newLineAtOffset(0, -16);
-        contentStream.showText("57000 Metz - France");
-        contentStream.endText();
-
-        //Invoice Number
-        contentStream.beginText();
-        contentStream.setFont(font, 20);
-        contentStream.newLineAtOffset(400, 750);
-        contentStream.showText("INVOICE N°1276551");
-        contentStream.endText();
-
-        //Invoice content
-        //Initialize table
-        float tableWidth = page.getMediaBox().getWidth() - (2 * margin);
-        float yStartNewPage = page.getMediaBox().getHeight() - (2 * margin);
-        float yStart = 450;
-        List<List> data = new ArrayList();
-        data.add(new ArrayList<>( Arrays.asList("Column One", "Column Two", "Column Three", "Column Four", "Column Five")));
-        for (int i = 1; i <= 10; i++) {
-            data.add(new ArrayList<>( Arrays.asList("Row " + i + " Col One", "Row " + i + " Col Two", "Row " + i + " Col Three", "Row " + i + " Col Four", "Row " + i + " Col Five")));
-        }
-        BaseTable dataTable = new BaseTable(yStart, yStartNewPage, bottomMargin, tableWidth, margin, document, page, true, true);
-        DataTable t = new DataTable(dataTable, page);
-        t.addListToTable(data, DataTable.HASHEADER);
-        dataTable.draw();
-
-        contentStream.close();
-
-        document.save(output.toFile());
         document.close();
+
+        xmlout.writeEndElement();
+        xmlout.writeEndElement();
+        xmlout.writeEndDocument();
+        xmlout.close();
     }
 
+
     public enum Model {
-        BASIC
+        BASIC,
+        AMAZON_MP
     }
 
 
