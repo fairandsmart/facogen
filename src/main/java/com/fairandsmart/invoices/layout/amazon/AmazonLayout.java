@@ -33,7 +33,7 @@ public class AmazonLayout implements InvoiceLayout {
         //Barcode top
         String barcode = this.getClass().getClassLoader().getResource("parts/amazon/barcode1.jpg").getFile();
         PDImageXObject pdBarcode = PDImageXObject.createFromFile(barcode, document);
-        new ImageBuilder(pdBarcode, page.getMediaBox().getWidth() / 2, 710, "DMmZXznqN /-1 of 1 -// std-in-remote").build(contentStream, writer);
+        new ImageBuilder(pdBarcode, page.getMediaBox().getWidth() / 2, 710, pdBarcode.getWidth() / 2, pdBarcode.getHeight() / 2, "DMmZXznqN /-1 of 1 -// std-in-remote").build(contentStream, writer);
 
         //Text top
 
