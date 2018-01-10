@@ -28,8 +28,6 @@ public abstract class ElementBuilder {
         return conv;
     }
 
-    //TODO create a helper for position determination including the inversion of Y axis.
-
     public abstract void build(PDPageContentStream stream, XMLStreamWriter writer) throws Exception;
 
 }

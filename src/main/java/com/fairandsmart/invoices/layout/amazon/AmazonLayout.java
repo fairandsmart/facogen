@@ -2,6 +2,7 @@ package com.fairandsmart.invoices.layout.amazon;
 
 import com.fairandsmart.invoices.element.background.BorderBuilder;
 import com.fairandsmart.invoices.element.image.ImageBuilder;
+import com.fairandsmart.invoices.element.textbox.TextBoxBuilder;
 import com.fairandsmart.invoices.layout.InvoiceLayout;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
@@ -36,28 +37,14 @@ public class AmazonLayout implements InvoiceLayout {
         new ImageBuilder(pdBarcode, page.getMediaBox().getWidth() / 2, 710, pdBarcode.getWidth() / 2, pdBarcode.getHeight() / 2, "DMmZXznqN /-1 of 1 -// std-in-remote").build(contentStream, writer);
 
         //Text top
-
-        //Discover text size :
-        //float size = fontSize * pdfFont.getStringWidth(subString) / 1000;
-        contentStream.beginText();
-        contentStream.setNonStrokingColor(Color.BLACK);
-        PDFont font = PDType1Font.HELVETICA;
-        contentStream.setFont(font, 9);
-        contentStream.newLineAtOffset(25, 800);
-        contentStream.showText("Page 1 of 1, 1-1/1");
-        contentStream.newLineAtOffset(0, -10);
-        contentStream.showText("Invoice for DMmZXznqN Oct 5, 2014");
-        font = PDType1Font.HELVETICA_BOLD;
-        contentStream.setFont(font, 10);
-        contentStream.newLineAtOffset(0, -10);
-        contentStream.showText("Retail / TaxInvoice / Cash Memorandum");
-        contentStream.setFont(font, 9);
-        contentStream.newLineAtOffset(0, -20);
-        contentStream.showText("Sold By");
-        font = PDType1Font.HELVETICA;
-        contentStream.setFont(font, 9);
-
-        contentStream.endText();
+        TextBoxBuilder tbPage = new TextBoxBuilder(PDType1Font.HELVETICA, 9, 25, 800, "Page 1 of 1, 1-1/1");
+        TextBoxBuilder tbInvoice = new TextBoxBuilder(PDType1Font.HELVETICA, 9, 25, 790, "Invoice for DMmZXznqN Oct 5, 2014");
+        TextBoxBuilder tbDescription = new TextBoxBuilder(PDType1Font.HELVETICA_BOLD, 10, 25, 780, "Retail / TaxInvoice / Cash Memorandum");
+        TextBoxBuilder tbSold = new TextBoxBuilder(PDType1Font.HELVETICA_BOLD, 10, 25, 760, "Sold By");
+        tbPage.build(contentStream, writer);
+        tbInvoice.build(contentStream, writer);
+        tbDescription.build(contentStream, writer);
+        tbSold.build(contentStream, writer);
 
         //footer
         String footer = this.getClass().getClassLoader().getResource("parts/amazon/footer.png").getFile();
