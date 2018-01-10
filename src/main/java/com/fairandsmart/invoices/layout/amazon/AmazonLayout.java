@@ -19,6 +19,7 @@ public class AmazonLayout implements InvoiceLayout {
     @Override
     public void builtInvoice(PDDocument document, XMLStreamWriter writer) throws Exception {
         PDPage page = new PDPage(PDRectangle.A4);
+
         document.addPage(page);
         writer.writeStartElement("DL_PAGE");
         writer.writeAttribute("gedi_type", "DL_PAGE");
@@ -30,11 +31,14 @@ public class AmazonLayout implements InvoiceLayout {
         new BorderBuilder(Color.ORANGE, 4, page).build(contentStream, writer);
 
         //Barcode top
-        String barcode = this.getClass().getClassLoader().getResource("parts/amazon/barcode1.png").getFile();
+        String barcode = this.getClass().getClassLoader().getResource("parts/amazon/barcode1.jpg").getFile();
         PDImageXObject pdBarcode = PDImageXObject.createFromFile(barcode, document);
-        new ImageBuilder(pdBarcode, page.getMediaBox().getWidth() / 2, 710, 0.5f, "DMmZXznqN /-1 of 1 -// std-in-remote").build(contentStream, writer);
+        new ImageBuilder(pdBarcode, page.getMediaBox().getWidth() / 2, 710, "DMmZXznqN /-1 of 1 -// std-in-remote").build(contentStream, writer);
 
         //Text top
+
+        //Discover text size :
+        //float size = fontSize * pdfFont.getStringWidth(subString) / 1000;
         contentStream.beginText();
         contentStream.setNonStrokingColor(Color.BLACK);
         PDFont font = PDType1Font.HELVETICA;

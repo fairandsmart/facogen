@@ -14,7 +14,7 @@ public class ImageBuilder extends ElementBuilder {
     private float posY = 0;
     private float scale;
 
-    public ImageBuilder(PDImageXObject image, float posX, float posY, float scale, String text) {
+    public ImageBuilder(PDImageXObject image, float posX, float posY, String text) {
         this.image = image;
         this.text = text;
         this.posX = posX;
@@ -22,25 +22,25 @@ public class ImageBuilder extends ElementBuilder {
         this.scale = scale;
     }
 
-    public ImageBuilder(PDImageXObject image, float posX, float posY, float scale) {
+    public ImageBuilder(PDImageXObject image, float posX, float posY) {
         this.image = image;
         this.posX = posX;
         this.posY = posY;
-        this.scale = scale;
     }
 
     @Override
     public void build(PDPageContentStream stream, XMLStreamWriter writer) throws Exception {
-        stream.drawImage(image, posX, posY, image.getWidth() * scale, image.getHeight() * scale);
+        stream.drawImage(image, posX, posY);
 
         //<DL_ZONE gedi_type="ocr_carea" id="block_1_29" col="84" row="928" width="2188" height="2425" contents="Relation : Telephone : 0044/2079632525 Fax : 0044/2079329404 KBC Aartselaar Terms of payment and general sales conditions see reverse side. Payment in EURO : IBAN NR : BEOS 4118 0689 2175 - Swift Code : KREDBEBB Payment conditions : 30 Dagen factuurdatum Reference : 14015 Teak Coffee table 2 levels 130/80/42h 1,00 258,27 10% 232,44 V.A.T. Subtotal 232,44 Client number VAT number Document date Due Date Invoice # 2233 GB-259976879 28/06/2006 28/07/2006 06143212 Article Description Quantity U.P. Price V.A.T, Vrij van BTW ig. Art. 39 bis van het BTW Wetboek GROSS WEIGHT : 43,100 INTR. : 94036010 NET WEIGHT : 43,100 INTR. : 94036010 Intrastat B.O. Ref. : 32477,501,1529,Mrs I DEIGHAN Delivery 00031148 - 28/06/2006 Total GBP 232,44 V.A.T. 0,00"> </DL_ZONE>
+        float[] convPos = convertZone(posX, posY, image.getWidth(), image.getHeight());
         writer.writeStartElement("DL_ZONE");
         writer.writeAttribute("gedi_type", "ocr_carea");
         writer.writeAttribute("id", "block_1_" + nextElementNumber());
-        writer.writeAttribute("col", "" + (int) posX);
-        writer.writeAttribute("row", "" + (int) posY);
-        writer.writeAttribute("width", "" + (int) (image.getWidth() * scale));
-        writer.writeAttribute("height", "" + (int) (image.getHeight() * scale));
+        writer.writeAttribute("col", "" + (int) convPos[0]);
+        writer.writeAttribute("row", "" + (int) convPos[1]);
+        writer.writeAttribute("width", "" + (int) convPos[2]);
+        writer.writeAttribute("height", "" + (int) convPos[3]);
         writer.writeAttribute("contents", text);
         writer.writeEndElement();
     }

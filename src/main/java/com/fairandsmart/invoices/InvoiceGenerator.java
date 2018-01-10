@@ -2,23 +2,16 @@ package com.fairandsmart.invoices;
 
 import com.fairandsmart.invoices.layout.InvoiceLayout;
 import com.fairandsmart.invoices.layout.amazon.AmazonLayout;
-import org.apache.pdfbox.io.RandomAccessOutputStream;
 import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.pdmodel.PDPage;
-import org.apache.pdfbox.pdmodel.PDPageContentStream;
-import org.apache.pdfbox.pdmodel.common.PDRectangle;
-import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 import org.apache.pdfbox.rendering.ImageType;
 import org.apache.pdfbox.rendering.PDFRenderer;
 import org.apache.pdfbox.tools.imageio.ImageIOUtil;
 
-import javax.imageio.ImageIO;
-import javax.print.attribute.standard.Compression;
 import javax.xml.stream.XMLOutputFactory;
-import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
 import java.awt.image.BufferedImage;
-import java.io.*;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.text.SimpleDateFormat;

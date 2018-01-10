@@ -16,7 +16,7 @@ public class InvoiceGeneratorTest {
         String ts = "" + System.currentTimeMillis();
         Path pdf = Paths.get("target/basic"+ ts + ".pdf");
         Path xml = Paths.get("target/basic"+ ts + ".xml");
-        Path img = Paths.get("target/basic"+ ts + ".jpg");
+        Path img = Paths.get("target/basic"+ ts + ".tiff");
         InvoiceGenerator.getInstance().generateInvoice(InvoiceGenerator.Model.BASIC, pdf, xml, img);
     }
 
