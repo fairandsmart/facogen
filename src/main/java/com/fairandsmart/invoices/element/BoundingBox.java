@@ -1,13 +1,13 @@
 package com.fairandsmart.invoices.element;
 
-public class BoxBoundary {
+public class BoundingBox {
 
     private float posX;
     private float posY;
     private float width;
     private float height;
 
-    public BoxBoundary(float posX, float posY, float width, float height) {
+    public BoundingBox(float posX, float posY, float width, float height) {
         this.posX = posX;
         this.posY = posY;
         this.width = width;

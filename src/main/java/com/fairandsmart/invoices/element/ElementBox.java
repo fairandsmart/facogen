@@ -20,9 +20,9 @@ public abstract class ElementBox {
         return cpt;
     }
 
-    private BoxBoundary convertBox(BoxBoundary box) {
+    private BoundingBox convertBox(BoundingBox box) {
         float scale = destDpi / srcDpi;
-        BoxBoundary newbox = new BoxBoundary(
+        BoundingBox newbox = new BoundingBox(
                 box.getPosX() * scale,
                 (maxY - box.getPosY() - box.getHeight()) * scale,
                 box.getWidth() * scale,
@@ -30,8 +30,8 @@ public abstract class ElementBox {
         return newbox;
     }
 
-    public String writeXMLZone(XMLStreamWriter writer, String type, String word, BoxBoundary box) throws XMLStreamException {
-        BoxBoundary tbox = convertBox(box);
+    public String writeXMLZone(XMLStreamWriter writer, String type, String word, BoundingBox box) throws XMLStreamException {
+        BoundingBox tbox = convertBox(box);
         String id = type + "_" + nextElementId();
         writer.writeStartElement("DL_ZONE");
         writer.writeAttribute("gedi_type", "ocr_" + type);
@@ -45,13 +45,14 @@ public abstract class ElementBox {
         return id;
     }
 
-    public abstract void build(PDPageContentStream stream, XMLStreamWriter writer) throws Exception;
+    public abstract BoundingBox getBoundingBox();
 
-    public abstract BoxBoundary getBoxBoundary();
+    public abstract void setWidth(float width) throws Exception;
 
-    public abstract void setMaxWidth(float width) throws IOException;
+    public abstract void setHeight(float height) throws Exception;
 
     public abstract void translate(float offsetX, float offsetY);
 
+    public abstract void build(PDPageContentStream stream, XMLStreamWriter writer) throws Exception;
 
 }

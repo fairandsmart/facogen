@@ -1,6 +1,6 @@
 package com.fairandsmart.invoices.element.table;
 
-import com.fairandsmart.invoices.element.BoxBoundary;
+import com.fairandsmart.invoices.element.BoundingBox;
 import com.fairandsmart.invoices.element.ElementBox;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 
@@ -12,27 +12,32 @@ public class TableRowBox extends ElementBox {
 
     private float[] columnSize;
     private List<ElementBox> elements;
-    private BoxBoundary box;
+    private BoundingBox box;
 
     public TableRowBox(float[] columnSize, List<ElementBox> elements, float posX, float posY) {
         this.columnSize = columnSize;
         this.elements = elements;
-        box = new BoxBoundary(posX, posY, -1, -1);
+        box = new BoundingBox(posX, posY, -1, -1);
     }
 
     @Override
-    public BoxBoundary getBoxBoundary() {
+    public BoundingBox getBoundingBox() {
         return null;
     }
 
     @Override
-    public void setMaxWidth(float width) throws IOException {
+    public void setWidth(float width) throws IOException {
+
+    }
+
+    @Override
+    public void setHeight(float height) throws Exception {
 
     }
 
     @Override
     public void translate(float offsetX, float offsetY) {
-        this.getBoxBoundary().translate(offsetX, offsetY);
+        this.getBoundingBox().translate(offsetX, offsetY);
     }
 
     public void build(PDPageContentStream stream, XMLStreamWriter writer) throws Exception {
