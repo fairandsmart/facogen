@@ -13,11 +13,14 @@ import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.common.PDRectangle;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
+import com.fairandsmart.invoices.model.Product;
 
 import javax.xml.stream.XMLStreamWriter;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class AmazonLayout implements InvoiceLayout {
 
@@ -82,7 +85,42 @@ public class AmazonLayout implements InvoiceLayout {
 
         TableRowBox firstLine = new TableRowBox(configRow, elements, 25, 400);
 
-        // VerticalElementContainer items = new VerticalElementContainer(25, 400, 500 );
+        VerticalElementContainer verticalInvoiceItems = new VerticalElementContainer(25, 400, 500 );
+        verticalInvoiceItems.addElement(firstLine);
+
+
+        verticalInvoiceItems.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, "Invoice for DMmZXznqN Oct 5, 2014"));
+        verticalInvoiceItems.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, "Invoice for DMmZXznqN Oct 5, 2014"));
+
+        Product product = new Product(
+                1F,
+                "Microsoft Xbox 360 Controller for windows",
+                2390F,
+                2390F,
+                "CST",
+                12.5F
+        );
+
+        List products = new ArrayList<ElementBox>();
+        products.add(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, Float.toString(product.getQty())));
+        products.add(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, product.getDescription()));
+        products.add(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, Float.toString(product.getPriceByUnitWithoutVAT())));
+        products.add(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, "DISCOUNT"));
+        products.add(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, "NET AMOUNT (tax inclusive)"));
+        products.add(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, product.getTaxType()));
+        products.add(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, "TAX RATE"));
+        products.add(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, Float.toString(product.getTaxAmount())));
+
+
+        TableRowBox firstProduct = new TableRowBox(configRow, products, 25, 900);
+
+        verticalInvoiceItems.addElement(firstProduct);
+        verticalInvoiceItems.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, "Test"));
+
+
+
+        verticalInvoiceItems.build(contentStream, writer);
+
 
         /*
         List<TableCellBuilder> cellFirstLine = new ArrayList<TableCellBuilder>();
@@ -92,7 +130,7 @@ public class AmazonLayout implements InvoiceLayout {
         firstLine.setCells(cellFirstLine);
         */
 
-        firstLine.build(contentStream, writer);
+        // firstLine.build(contentStream, writer);
 
         /*
 

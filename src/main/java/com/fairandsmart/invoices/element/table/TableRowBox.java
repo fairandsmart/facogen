@@ -22,7 +22,7 @@ public class TableRowBox extends ElementBox {
 
     @Override
     public BoundingBox getBoundingBox() {
-        return null;
+        return box;
     }
 
     @Override
@@ -42,16 +42,14 @@ public class TableRowBox extends ElementBox {
 
     public void build(PDPageContentStream stream, XMLStreamWriter writer) throws Exception {
 
-
-        float width = 0;
+        float width = 0F;
 
         int pos = 0;
 
         for(ElementBox oneElement : this.elements) {
 
-            float computeWidth = Float.sum(this.getBoundingBox().getPosX(), width);
 
-            oneElement.translate(computeWidth, 0);
+            oneElement.translate(this.getBoundingBox().getPosX() + width, this.getBoundingBox().getPosY());
             oneElement.setWidth(columnSize[pos]);
             oneElement.build(stream, writer);
 
