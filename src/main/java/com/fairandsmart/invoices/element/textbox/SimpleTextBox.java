@@ -30,9 +30,9 @@ public class SimpleTextBox extends ElementBox {
         this.text = text;
         this.lines = new ArrayList<>();
         this.lines.add(text);
-        this.box = new BoundingBox(posX, posY, fontSize * font.getStringWidth(text) / 1000, fontSize);
         this.underline = font.getFontDescriptor().getFontBoundingBox().getLowerLeftY() / 1000 * fontSize;
         this.overline = font.getFontDescriptor().getFontBoundingBox().getUpperRightY() / 1000 * fontSize;
+        this.box = new BoundingBox(posX, posY, fontSize * font.getStringWidth(text) / 1000, (overline - underline));
     }
 
     @Override
@@ -99,7 +99,6 @@ public class SimpleTextBox extends ElementBox {
             BoundingBox lineBox = new BoundingBox(box.getPosX(), box.getPosY() - offsetY, lineWidth, overline - underline);
             writeXMLZone(writer, "line", text, lineBox);
         }
-
         //BoxBoundary zoneBox = new BoxBoundary(box.getPosX(), box.getPosY() + underline, box.getWidth(), overline - underline);
         //writeXMLZone(writer, "zone", text, zoneBox);
     }
