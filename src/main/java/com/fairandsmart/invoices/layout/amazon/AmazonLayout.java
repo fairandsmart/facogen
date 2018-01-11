@@ -98,17 +98,18 @@ public class AmazonLayout implements InvoiceLayout {
                 2390F,
                 2390F,
                 "CST",
-                12.5F
+                12.5F,
+                0F
         );
 
         List products = new ArrayList<ElementBox>();
         products.add(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, Float.toString(product.getQty())));
-        products.add(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, product.getDescription()));
+        products.add(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 9, 0, 0, product.getDescription()));
         products.add(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, Float.toString(product.getPriceByUnitWithoutVAT())));
-        products.add(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, "DISCOUNT"));
-        products.add(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, "NET AMOUNT (tax inclusive)"));
+        products.add(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, Float.toString(product.getDiscount())));
+        products.add(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, Float.toString((product.getNetAmount()))));
         products.add(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, product.getTaxType()));
-        products.add(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, "TAX RATE"));
+        products.add(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, Float.toString(product.getTaxRate())));
         products.add(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, Float.toString(product.getTaxAmount())));
 
 
@@ -117,6 +118,11 @@ public class AmazonLayout implements InvoiceLayout {
         verticalInvoiceItems.addElement(firstProduct);
         verticalInvoiceItems.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, "Test"));
 
+        verticalInvoiceItems.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, "Test"));
+
+        contentStream.moveTo(20, 350);
+        contentStream.lineTo( page.getMediaBox().getWidth()-(20*2), 350);
+        contentStream.stroke();
 
 
         verticalInvoiceItems.build(contentStream, writer);

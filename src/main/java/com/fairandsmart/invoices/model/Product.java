@@ -21,21 +21,32 @@ public class Product {
     private float priceByUnitWithTax;
     private String taxType;
     private float taxRate;
+    private float discount;
 
 
-    public Product(float qty, String description, float priceByUnitWithoutVAT, float priceByUnitWithTax, String taxType, float taxRate) {
+    public float getDiscount() {
+        return discount;
+    }
+
+    public Product(float qty, String description, float priceByUnitWithoutVAT, float priceByUnitWithTax, String taxType, float taxRate, float discount) {
         this.qty = qty;
         this.description = description;
         this.priceByUnitWithoutVAT = priceByUnitWithoutVAT;
         this.priceByUnitWithTax = priceByUnitWithTax;
         this.taxType = taxType;
         this.taxRate = taxRate;
+        this.discount = discount;
     }
 
     public float getTaxAmount() {
 
         return this.taxRate * this.priceByUnitWithoutVAT;
 
+    }
+
+    public float getNetAmount() {
+
+        return this.qty * this.priceByUnitWithoutVAT;
     }
 
     public float getQty() {
