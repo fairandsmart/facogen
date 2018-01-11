@@ -27,7 +27,6 @@ public class ImageBuilder extends ElementBuilder {
     public void build(PDPageContentStream stream, XMLStreamWriter writer) throws Exception {
         stream.drawImage(image, box.getPosX(), box.getPosY(), box.getWidth(), box.getHeight());
         this.writeXMLZone(writer, "carea", text, box);
-        writer.writeEndElement();
     }
 
 }
