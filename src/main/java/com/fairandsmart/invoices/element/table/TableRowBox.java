@@ -45,6 +45,10 @@ public class TableRowBox extends ElementBox {
         int posWidth = 10;
         int posHeight = 400;
 
+        for(ElementBox oneElement : this.elements) {
+            oneElement.build(stream, writer);
+        }
+
         /*
         for(TableCellBuilder oneCell : this.cells) {
             oneCell.build(stream, writer, posWidth, posHeight);
