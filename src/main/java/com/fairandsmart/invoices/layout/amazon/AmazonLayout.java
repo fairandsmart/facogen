@@ -2,6 +2,7 @@ package com.fairandsmart.invoices.layout.amazon;
 
 import com.fairandsmart.invoices.element.background.BorderBuilder;
 import com.fairandsmart.invoices.element.image.ImageBuilder;
+import com.fairandsmart.invoices.element.tablecell.TableCellBuilder;
 import com.fairandsmart.invoices.element.textbox.TextBoxBuilder;
 import com.fairandsmart.invoices.element.tablerow.TableRowBuilder;
 import com.fairandsmart.invoices.layout.InvoiceLayout;
@@ -81,13 +82,19 @@ public class AmazonLayout implements InvoiceLayout {
 
 
 
-        /*
+
 
         TableRowBuilder firstLine = new TableRowBuilder(contentStream);
-        firstLine.setCell()
 
-        */
+        List<TableCellBuilder> cellFirstLine = new ArrayList<TableCellBuilder>();
+        cellFirstLine.add(new TableCellBuilder(contentStream,15, "Test"));
+        cellFirstLine.add(new TableCellBuilder(contentStream,20, "Test2"));
 
+        firstLine.setCells(cellFirstLine);
+
+        firstLine.build(contentStream, writer);
+
+        /*
 
         List<TableRowBuilder> data = new ArrayList<TableRowBuilder>();
         data.add(new TableRowBuilder(contentStream,15, "Test"));
@@ -96,6 +103,7 @@ public class AmazonLayout implements InvoiceLayout {
 
         this.createTable(data);
 
+        */
 
         //footer
         String footer = this.getClass().getClassLoader().getResource("parts/amazon/footer.png").getFile();
