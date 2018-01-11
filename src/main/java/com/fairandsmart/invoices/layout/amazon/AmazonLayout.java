@@ -1,8 +1,10 @@
 package com.fairandsmart.invoices.layout.amazon;
 
+import com.fairandsmart.invoices.element.ElementBox;
 import com.fairandsmart.invoices.element.background.BackgroundBox;
 import com.fairandsmart.invoices.element.image.ImageBox;
 import com.fairandsmart.invoices.element.textbox.SimpleTextBox;
+import com.fairandsmart.invoices.element.table.TableRowBox;
 import com.fairandsmart.invoices.layout.InvoiceLayout;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
@@ -12,7 +14,9 @@ import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 
 import javax.xml.stream.XMLStreamWriter;
-import java.awt.*;
+import java.awt.Color;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AmazonLayout implements InvoiceLayout {
 
@@ -63,15 +67,21 @@ public class AmazonLayout implements InvoiceLayout {
         box1.build(contentStream, writer);
 
 
+        float[] configRow = {20f, 35f, 48f};
+        List elements = new ArrayList<ElementBox>();
+        elements.add(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 9, 25, 300, "Billing Addressdaz"));
+
+
+
+        TableRowBox firstLine = new TableRowBox(configRow, elements, 20, 50);
 
         /*
-        TableRowBox firstLine = new TableRowBox(contentStream);
-
         List<TableCellBuilder> cellFirstLine = new ArrayList<TableCellBuilder>();
         cellFirstLine.add(new TableCellBuilder(contentStream,15, "Test"));
         cellFirstLine.add(new TableCellBuilder(contentStream,20, "Test2"));
 
         firstLine.setCells(cellFirstLine);
+        */
 
         firstLine.build(contentStream, writer);
 
