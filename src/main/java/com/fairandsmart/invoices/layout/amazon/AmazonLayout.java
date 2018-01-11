@@ -2,13 +2,12 @@ package com.fairandsmart.invoices.layout.amazon;
 
 import com.fairandsmart.invoices.element.background.BorderBuilder;
 import com.fairandsmart.invoices.element.image.ImageBuilder;
-import com.fairandsmart.invoices.element.textbox.TextBoxBuilder;
+import com.fairandsmart.invoices.element.textbox.SingleLineTextBoxBuilder;
 import com.fairandsmart.invoices.layout.InvoiceLayout;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.common.PDRectangle;
-import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 
@@ -37,10 +36,10 @@ public class AmazonLayout implements InvoiceLayout {
         new ImageBuilder(pdBarcode, page.getMediaBox().getWidth() / 2, 710, pdBarcode.getWidth() / 2, pdBarcode.getHeight() / 2, "DMmZXznqN /-1 of 1 -// std-in-remote").build(contentStream, writer);
 
         //Text top
-        TextBoxBuilder tbPage = new TextBoxBuilder(PDType1Font.HELVETICA, 9, 25, 800, "Page 1 of 1, 1-1/1");
-        TextBoxBuilder tbInvoice = new TextBoxBuilder(PDType1Font.HELVETICA, 9, 25, 790, "Invoice for DMmZXznqN Oct 5, 2014");
-        TextBoxBuilder tbDescription = new TextBoxBuilder(PDType1Font.HELVETICA_BOLD, 10, 25, 780, "Retail / TaxInvoice / Cash Memorandum");
-        TextBoxBuilder tbSold = new TextBoxBuilder(PDType1Font.HELVETICA_BOLD, 10, 25, 760, "Sold By");
+        SingleLineTextBoxBuilder tbPage = new SingleLineTextBoxBuilder(PDType1Font.HELVETICA, 9, 25, 800, "Page 1 of 1, 1-1/1");
+        SingleLineTextBoxBuilder tbInvoice = new SingleLineTextBoxBuilder(PDType1Font.HELVETICA, 9, 25, 789, "Invoice for DMmZXznqN Oct 5, 2014");
+        SingleLineTextBoxBuilder tbDescription = new SingleLineTextBoxBuilder(PDType1Font.HELVETICA_BOLD, 10, 25, 775, "Retail / TaxInvoice / Cash Memorandum");
+        SingleLineTextBoxBuilder tbSold = new SingleLineTextBoxBuilder(PDType1Font.HELVETICA_BOLD, 10, 25, 761, "Sold By");
         tbPage.build(contentStream, writer);
         tbInvoice.build(contentStream, writer);
         tbDescription.build(contentStream, writer);
