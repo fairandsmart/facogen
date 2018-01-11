@@ -104,7 +104,4 @@ public class SimpleTextBox extends ElementBox {
         //writeXMLZone(writer, "zone", text, zoneBox);
     }
 
-    public void setBox(BoxBoundary box) {
-        this.box = box;
-    }
 }

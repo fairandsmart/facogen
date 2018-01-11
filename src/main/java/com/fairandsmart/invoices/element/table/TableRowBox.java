@@ -42,8 +42,6 @@ public class TableRowBox extends ElementBox {
 
     public void build(PDPageContentStream stream, XMLStreamWriter writer) throws Exception {
 
-        int posWidth = 10;
-        int posHeight = 400;
 
         float width = 0;
 
@@ -51,8 +49,10 @@ public class TableRowBox extends ElementBox {
 
         for(ElementBox oneElement : this.elements) {
 
-            oneElement.translate(width, 0);
-            oneElement.setMaxWidth(columnSize[pos]);
+            float computeWidth = Float.sum(this.getBoundingBox().getPosX(), width);
+
+            oneElement.translate(computeWidth, 0);
+            oneElement.setWidth(columnSize[pos]);
             oneElement.build(stream, writer);
 
 

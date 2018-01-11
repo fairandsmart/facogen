@@ -71,16 +71,18 @@ public class AmazonLayout implements InvoiceLayout {
 
         float[] configRow = {20f, 120f, 60f, 60f, 60f, 60f, 60f, 60f};
         List elements = new ArrayList<ElementBox>();
-        elements.add(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 25, 300, "QTY"));
-        elements.add(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 25, 300, "DESCRIPTION"));
-        elements.add(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 25, 300, "GROSS AMOUNT"));
-        elements.add(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 25, 300, "DISCOUNT"));
-        elements.add(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 25, 300, "NET AMOUNT (tax inclusive)"));
-        elements.add(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 25, 300, "TAX TYPE"));
-        elements.add(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 25, 300, "TAX RATE"));
-        elements.add(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 25, 300, "TAX AMOUNT(included in net)"));
+        elements.add(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "QTY"));
+        elements.add(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "DESCRIPTION"));
+        elements.add(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "GROSS AMOUNT"));
+        elements.add(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "DISCOUNT"));
+        elements.add(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "NET AMOUNT (tax inclusive)"));
+        elements.add(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "TAX TYPE"));
+        elements.add(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "TAX RATE"));
+        elements.add(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "TAX AMOUNT(included in net)"));
 
         TableRowBox firstLine = new TableRowBox(configRow, elements, 25, 400);
+
+        // VerticalElementContainer items = new VerticalElementContainer(25, 400, 500 );
 
         /*
         List<TableCellBuilder> cellFirstLine = new ArrayList<TableCellBuilder>();
