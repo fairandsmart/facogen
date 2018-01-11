@@ -7,6 +7,7 @@ import org.apache.pdfbox.pdmodel.PDPageContentStream;
 
 import javax.xml.stream.XMLStreamWriter;
 import java.awt.*;
+import java.io.IOException;
 
 public class BackgroundBox extends ElementBox {
 
@@ -29,6 +30,10 @@ public class BackgroundBox extends ElementBox {
         this.box = new BoxBoundary(0, 0, page.getMediaBox().getWidth(), page.getMediaBox().getHeight());
     }
 
+    public void setBoxBoundary(BoxBoundary box) {
+        this.box = box;
+    }
+
     public void setMaxWidth(float maxWidth) {
         //
     }
@@ -46,5 +51,10 @@ public class BackgroundBox extends ElementBox {
     @Override
     public BoxBoundary getBoxBoundary() {
         return box;
+    }
+
+    @Override
+    public void translate(float offsetX, float offsetY) {
+        this.getBoxBoundary().translate(offsetX, offsetY);
     }
 }

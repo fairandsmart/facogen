@@ -51,5 +51,7 @@ public abstract class ElementBox {
 
     public abstract void setMaxWidth(float width) throws IOException;
 
+    public abstract void translate(float offsetX, float offsetY);
+
 
 }
