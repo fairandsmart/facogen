@@ -83,9 +83,9 @@ public class AmazonLayout implements InvoiceLayout {
         elements.add(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "TAX RATE"));
         elements.add(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "TAX AMOUNT(included in net)"));
 
-        TableRowBox firstLine = new TableRowBox(configRow, elements, 25, 400);
+        TableRowBox firstLine = new TableRowBox(configRow, elements, 0, 0);
 
-        VerticalElementContainer verticalInvoiceItems = new VerticalElementContainer(25, 400, 500 );
+        VerticalElementContainer verticalInvoiceItems = new VerticalElementContainer(25, 380, 500 );
         verticalInvoiceItems.addElement(firstLine);
 
 
@@ -120,13 +120,28 @@ public class AmazonLayout implements InvoiceLayout {
 
         verticalInvoiceItems.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, "Test"));
 
-        contentStream.moveTo(20, 350);
-        contentStream.lineTo( page.getMediaBox().getWidth()-(20*2), 350);
+        contentStream.moveTo(20, 320);
+        contentStream.lineTo( page.getMediaBox().getWidth()-(20*2), 320);
         contentStream.stroke();
 
 
         verticalInvoiceItems.build(contentStream, writer);
 
+
+        VerticalElementContainer footerBody = new VerticalElementContainer(25, 300, 500 );
+
+        SimpleTextBox condition = new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, "I/ We hereby certify that " +
+                "my/ our registration certificate " +
+                "under the Delhi value added Added Tax Act, 2004 is in force on the date on which the sale of the " +
+                "goods specified in this tax invoice is made by me / us and that the transaction of sale covered by this " +
+                "tax invoice has been effected by me / us and it shall be accounted for in the turnover of sales while " +
+                "filing of return and the due tax, if any, payable on the sale has been paid or shall be paid");
+
+        condition.setWidth(350);
+
+        footerBody.addElement(condition);
+
+        footerBody.build(contentStream, writer);
 
         /*
         List<TableCellBuilder> cellFirstLine = new ArrayList<TableCellBuilder>();

@@ -2,13 +2,19 @@ package com.fairandsmart.invoices.element.table;
 
 import com.fairandsmart.invoices.element.BoundingBox;
 import com.fairandsmart.invoices.element.ElementBox;
+import com.fairandsmart.invoices.element.container.VerticalElementContainer;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 
 import javax.xml.stream.XMLStreamWriter;
 import java.io.IOException;
 import java.util.List;
+import java.util.logging.Logger;
+import java.util.logging.Level;
 
 public class TableRowBox extends ElementBox {
+
+    private static final Logger LOGGER = Logger.getLogger(VerticalElementContainer.class.getName());
+
 
     private float[] columnSize;
     private List<ElementBox> elements;
@@ -17,7 +23,21 @@ public class TableRowBox extends ElementBox {
     public TableRowBox(float[] columnSize, List<ElementBox> elements, float posX, float posY) {
         this.columnSize = columnSize;
         this.elements = elements;
-        box = new BoundingBox(posX, posY, -1, -1);
+
+        float height = 0F;
+
+        for(ElementBox oneElement : this.elements) {
+
+            if (height <= oneElement.getBoundingBox().getHeight()) {
+
+                height = oneElement.getBoundingBox().getHeight();
+            }
+
+        }
+
+        // this.LOGGER.log(Level.INFO, Float.toString(height));
+
+        box = new BoundingBox(posX, posY, -1, height);
     }
 
     @Override
@@ -46,11 +66,13 @@ public class TableRowBox extends ElementBox {
 
         int pos = 0;
 
+
         for(ElementBox oneElement : this.elements) {
 
 
             oneElement.translate(this.getBoundingBox().getPosX() + width, this.getBoundingBox().getPosY());
             oneElement.setWidth(columnSize[pos]);
+
             oneElement.build(stream, writer);
 
 
