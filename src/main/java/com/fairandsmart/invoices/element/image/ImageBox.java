@@ -43,4 +43,9 @@ public class ImageBox extends ElementBox {
         return box;
     }
 
+    @Override
+    public void translate(float offsetX, float offsetY) {
+        this.getBoxBoundary().translate(offsetX, offsetY);
+    }
+
 }

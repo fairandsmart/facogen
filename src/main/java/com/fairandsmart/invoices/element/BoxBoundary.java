@@ -46,4 +46,9 @@ public class BoxBoundary {
         this.height = height;
     }
 
+    public void translate(float offsetX, float offsetY) {
+        this.setPosX(posX + offsetX);
+        this.setPosY(posY + offsetY);
+    }
+
 }

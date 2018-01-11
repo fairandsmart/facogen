@@ -30,6 +30,11 @@ public class TableRowBox extends ElementBox {
 
     }
 
+    @Override
+    public void translate(float offsetX, float offsetY) {
+        this.getBoxBoundary().translate(offsetX, offsetY);
+    }
+
     public void build(PDPageContentStream stream, XMLStreamWriter writer) throws Exception {
 
         int posWidth = 10;
