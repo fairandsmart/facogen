@@ -1,6 +1,7 @@
 package com.fairandsmart.invoices.layout.amazon;
 
-import com.fairandsmart.invoices.element.background.BackgroundBox;
+import com.fairandsmart.invoices.element.border.BorderBox;
+import com.fairandsmart.invoices.element.container.VerticalElementContainer;
 import com.fairandsmart.invoices.element.image.ImageBox;
 import com.fairandsmart.invoices.element.textbox.SimpleTextBox;
 import com.fairandsmart.invoices.layout.InvoiceLayout;
@@ -28,7 +29,7 @@ public class AmazonLayout implements InvoiceLayout {
         writer.writeAttribute("height", "3508");
 
         PDPageContentStream contentStream = new PDPageContentStream(document, page);
-        new BackgroundBox(Color.ORANGE, Color.WHITE, 4, page).build(contentStream, writer);
+        new BorderBox(Color.ORANGE, Color.WHITE, 4, 0, 0, page.getMediaBox().getWidth(), page.getMediaBox().getHeight()).build(contentStream, writer);
 
         //Barcode top
         String barcode = this.getClass().getClassLoader().getResource("parts/amazon/barcode1.jpg").getFile();
@@ -36,12 +37,13 @@ public class AmazonLayout implements InvoiceLayout {
         new ImageBox(pdBarcode, page.getMediaBox().getWidth() / 2, 710, pdBarcode.getWidth() / 2, pdBarcode.getHeight() / 2, "DMmZXznqN /-1 of 1 -// std-in-remote").build(contentStream, writer);
 
         //Text top
-        new SimpleTextBox(PDType1Font.HELVETICA, 9, 25, 800, "Page 1 of 1, 1-1/1").build(contentStream, writer);
-        new SimpleTextBox(PDType1Font.HELVETICA, 9, 25, 789, "Invoice for DMmZXznqN Oct 5, 2014").build(contentStream, writer);
-        new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 10, 25, 775, "Retail / TaxInvoice / Cash Memorandum").build(contentStream, writer);
+        VerticalElementContainer infos = new VerticalElementContainer(25, 810, 500 );
+        infos.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, "Page 1 of 1, 1-1/1"));
+        infos.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, "Invoice for DMmZXznqN Oct 5, 2014"));
+        infos.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 10, 25, 775, "Retail / TaxInvoice / Cash Memorandum"));
+        infos.build(contentStream, writer);
+
         new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 10, 25, 761, "Sold By").build(contentStream, writer);
-
-
         new SimpleTextBox(PDType1Font.HELVETICA, 9, 25, 750, "ZIP TECHNOLOGIES").build(contentStream, writer);
         new SimpleTextBox(PDType1Font.HELVETICA, 9, 25, 740, "A-43, Ground Floor, Mohan Cooperative Industrial Estate,").build(contentStream, writer);
         new SimpleTextBox(PDType1Font.HELVETICA, 9, 25, 730, "Main Matura Road,").build(contentStream, writer);
@@ -59,7 +61,7 @@ public class AmazonLayout implements InvoiceLayout {
         new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 9, 25, 630, "Billing Address").build(contentStream, writer);
         new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 9, page.getMediaBox().getWidth()/2, 630, "Billing Address").build(contentStream, writer);;
         SimpleTextBox box1 = new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 9, 25, 600, "Nature of Transaction: sale");
-        box1.setMaxWidth(30);
+        box1.setWidth(30);
         box1.build(contentStream, writer);
 
 
