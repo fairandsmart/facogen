@@ -40,8 +40,20 @@ public class TableRowBox extends ElementBox {
         int posWidth = 10;
         int posHeight = 400;
 
+        float width = 0;
+
+        int pos = 0;
+
         for(ElementBox oneElement : this.elements) {
+
+            oneElement.translate(width, 0);
+            oneElement.setMaxWidth(columnSize[pos]);
             oneElement.build(stream, writer);
+
+
+
+            width += columnSize[pos];
+            pos++;
         }
 
         /*
