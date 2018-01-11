@@ -1,57 +1,33 @@
-package com.fairandsmart.invoices.element.tablerow;
+package com.fairandsmart.invoices.element.table;
 
-import com.fairandsmart.invoices.element.tablecell.TableCellBuilder;
+import com.fairandsmart.invoices.element.BoxBoundary;
+import com.fairandsmart.invoices.element.ElementBox;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
-import org.apache.pdfbox.pdmodel.font.PDFont;
-import org.apache.pdfbox.pdmodel.font.PDType1Font;
 
 import javax.xml.stream.XMLStreamWriter;
-import java.awt.*;
-import java.util.ArrayList;
+import java.io.IOException;
 import java.util.List;
 
-public class TableRowBuilder {
+public class TableRowBox extends ElementBox {
 
-    Float width;
-    String text;
-    PDPageContentStream contentStream;
-    List<TableCellBuilder> cells;
+    private float[] columnSize;
+    private List<ElementBox> elements;
+    private BoxBoundary box;
 
-    public TableRowBuilder(PDPageContentStream contentStream) {
-
-        this.contentStream = contentStream;
+    public TableRowBox(float[] columnSize, List<ElementBox> elements, float posX, float posY) {
+        this.columnSize = columnSize;
+        this.elements = elements;
+        box = new BoxBoundary(posX, posY, -1, -1);
     }
 
-    public void setCells(List<TableCellBuilder> cells) {
-
-        this.cells = cells;
+    @Override
+    public BoxBoundary getBoxBoundary() {
+        return null;
     }
 
-    public List<TableCellBuilder> getCells() {
+    @Override
+    public void setMaxWidth(float width) throws IOException {
 
-        return this.cells;
-
-    }
-
-    public void render() throws Exception {
-
-        for(TableCellBuilder oneCell : this.cells) {
-            oneCell.render();
-        }
-
-
-
-        PDFont font = PDType1Font.HELVETICA;
-
-        this.contentStream.beginText();
-
-        this.contentStream.setNonStrokingColor(Color.BLACK);
-        font = PDType1Font.HELVETICA;
-        this.contentStream.setFont(font, 9);
-        this.contentStream.newLineAtOffset(20, 300);
-        this.contentStream.showText("Nature of Transaction: sale");
-
-        this.contentStream.endText();
     }
 
     public void build(PDPageContentStream stream, XMLStreamWriter writer) throws Exception {
@@ -59,10 +35,12 @@ public class TableRowBuilder {
         int posWidth = 10;
         int posHeight = 400;
 
+        /*
         for(TableCellBuilder oneCell : this.cells) {
             oneCell.build(stream, writer, posWidth, posHeight);
             posWidth += 10;
         }
+        */
 
         /*
         stream.beginText();
