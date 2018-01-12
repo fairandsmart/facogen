@@ -7,20 +7,18 @@ import com.fairandsmart.invoices.element.image.ImageBox;
 import com.fairandsmart.invoices.element.table.TableRowBox;
 import com.fairandsmart.invoices.element.textbox.SimpleTextBox;
 import com.fairandsmart.invoices.layout.InvoiceLayout;
+import com.fairandsmart.invoices.model.Product;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.common.PDRectangle;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
-import com.fairandsmart.invoices.model.Product;
 
 import javax.xml.stream.XMLStreamWriter;
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class AmazonLayout implements InvoiceLayout {
 
@@ -73,22 +71,19 @@ public class AmazonLayout implements InvoiceLayout {
 
 
         float[] configRow = {20f, 120f, 60f, 60f, 60f, 60f, 60f, 60f};
-        List elements = new ArrayList<ElementBox>();
-        elements.add(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "QTY"));
-        elements.add(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "DESCRIPTION"));
-        elements.add(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "GROSS AMOUNT"));
-        elements.add(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "DISCOUNT"));
-        elements.add(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "NET AMOUNT (tax inclusive)"));
-        elements.add(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "TAX TYPE"));
-        elements.add(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "TAX RATE"));
-        elements.add(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "TAX AMOUNT(included in net)"));
+        TableRowBox firstLine = new TableRowBox(configRow, 0, 0);
+        firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "QTY"));
+        firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "DESCRIPTION"));
+        firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "GROSS AMOUNT"));
+        firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "DISCOUNT"));
+        firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "NET AMOUNT (tax inclusive)"));
+        firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "TAX TYPE"));
+        firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "TAX RATE"));
+        firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "TAX AMOUNT(included in net)"));
 
-        TableRowBox firstLine = new TableRowBox(configRow, elements, 0, 0);
 
         VerticalElementContainer verticalInvoiceItems = new VerticalElementContainer(25, 380, 500 );
         verticalInvoiceItems.addElement(firstLine);
-
-
         verticalInvoiceItems.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, "Invoice for DMmZXznqN Oct 5, 2014"));
         verticalInvoiceItems.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, "Invoice for DMmZXznqN Oct 5, 2014"));
 
@@ -102,18 +97,17 @@ public class AmazonLayout implements InvoiceLayout {
                 0F
         );
 
-        List products = new ArrayList<ElementBox>();
-        products.add(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, Float.toString(product.getQty())));
-        products.add(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 9, 0, 0, product.getDescription()));
-        products.add(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, Float.toString(product.getPriceByUnitWithoutVAT())));
-        products.add(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, Float.toString(product.getDiscount())));
-        products.add(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, Float.toString((product.getNetAmount()))));
-        products.add(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, product.getTaxType()));
-        products.add(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, Float.toString(product.getTaxRate())));
-        products.add(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, Float.toString(product.getTaxAmount())));
+        TableRowBox firstProduct = new TableRowBox(configRow, 25, 900);
+        firstProduct.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, Float.toString(product.getQty())));
+        firstProduct.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 9, 0, 0, product.getDescription()));
+        firstProduct.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, Float.toString(product.getPriceByUnitWithoutVAT())));
+        firstProduct.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, Float.toString(product.getDiscount())));
+        firstProduct.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, Float.toString((product.getNetAmount()))));
+        firstProduct.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, product.getTaxType()));
+        firstProduct.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, Float.toString(product.getTaxRate())));
+        firstProduct.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, Float.toString(product.getTaxAmount())));
 
 
-        TableRowBox firstProduct = new TableRowBox(configRow, products, 25, 900);
 
         verticalInvoiceItems.addElement(firstProduct);
         verticalInvoiceItems.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, "Test"));

@@ -6,38 +6,40 @@ import com.fairandsmart.invoices.element.container.VerticalElementContainer;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 
 import javax.xml.stream.XMLStreamWriter;
-import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
-import java.util.logging.Level;
 
 public class TableRowBox extends ElementBox {
 
     private static final Logger LOGGER = Logger.getLogger(VerticalElementContainer.class.getName());
 
-
-    private float[] columnSize;
-    private List<ElementBox> elements;
+    private float[] config;
     private BoundingBox box;
+    private List<ElementBox> elements;
 
-    public TableRowBox(float[] columnSize, List<ElementBox> elements, float posX, float posY) {
-        this.columnSize = columnSize;
-        this.elements = elements;
-
-        float height = 0F;
-
-        for(ElementBox oneElement : this.elements) {
-
-            if (height <= oneElement.getBoundingBox().getHeight()) {
-
-                height = oneElement.getBoundingBox().getHeight();
-            }
-
+    public TableRowBox(float[] config, float posX, float posY) {
+        this.config = config;
+        this.elements = new ArrayList<>();
+        float width = 0;
+        for (float row : config) {
+            width += row;
         }
+        box = new BoundingBox(posX, posY, width, 0);
+    }
 
-        // this.LOGGER.log(Level.INFO, Float.toString(height));
-
-        box = new BoundingBox(posX, posY, -1, height);
+    public void addElement(ElementBox element) throws Exception {
+        if ( elements.size() == config.length ) {
+            throw new Exception("Row is full, no more element allowed");
+        }
+        elements.add(element);
+        element.setWidth(config[elements.size()-1]);
+        element.getBoundingBox().setPosX(0);
+        element.getBoundingBox().setPosY(0);
+        element.translate(box.getPosX() + this.getColumnOffsetX(elements.size()-1), box.getPosY());
+        if ( element.getBoundingBox().getHeight() > box.getHeight() ) {
+            this.getBoundingBox().setHeight(element.getBoundingBox().getHeight());
+        }
     }
 
     @Override
@@ -46,72 +48,36 @@ public class TableRowBox extends ElementBox {
     }
 
     @Override
-    public void setWidth(float width) throws IOException {
-
+    public void setWidth(float width) throws Exception {
+        throw new Exception("Not allowed");
     }
 
     @Override
     public void setHeight(float height) throws Exception {
-
+        throw new Exception("Not allowed");
     }
 
     @Override
     public void translate(float offsetX, float offsetY) {
+        for (ElementBox element : elements) {
+            element.translate(offsetX, offsetY);
+        }
         this.getBoundingBox().translate(offsetX, offsetY);
+
     }
 
     public void build(PDPageContentStream stream, XMLStreamWriter writer) throws Exception {
-
-        float width = 0F;
-
-        int pos = 0;
-
-
-        for(ElementBox oneElement : this.elements) {
-
-
-            oneElement.translate(this.getBoundingBox().getPosX() + width, this.getBoundingBox().getPosY());
-            oneElement.setWidth(columnSize[pos]);
-
-            oneElement.build(stream, writer);
-
-
-
-            width += columnSize[pos];
-            pos++;
+        for(ElementBox element : this.elements) {
+            element.build(stream, writer);
         }
+    }
 
-        /*
-        for(TableCellBuilder oneCell : this.cells) {
-            oneCell.build(stream, writer, posWidth, posHeight);
-            posWidth += 10;
+    private float getColumnOffsetX (int numCol) {
+        float posX = 0;
+        for (int i=0; i<numCol; i++) {
+            posX += config[i];
         }
-        */
-
-        /*
-        stream.beginText();
-        stream.setNonStrokingColor(Color.BLACK);
-        stream.setFont(font, fontSize);
-        stream.newLineAtOffset(posX, posY-height);
-        stream.showText(text);
-        stream.endText();
-
-        */
-
-        /*
-
-        float[] convPos = convertZone(posX, posY, width, height);
-        writer.writeStartElement("DL_ZONE");
-        writer.writeAttribute("gedi_type", "ocr_line");
-        writer.writeAttribute("id", "line_1_" + nextElementNumber());
-        writer.writeAttribute("col", "" + (int) convPos[0]);
-        writer.writeAttribute("row", "" + (int) convPos[1]);
-        writer.writeAttribute("width", "" + (int) convPos[2]);
-        writer.writeAttribute("height", "" + (int) convPos[3]);
-        writer.writeAttribute("contents", text);
-        writer.writeEndElement();
-
-        */
+        return posX;
     }
 
 }

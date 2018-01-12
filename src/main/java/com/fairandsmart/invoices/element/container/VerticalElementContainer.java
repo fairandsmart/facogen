@@ -27,9 +27,9 @@ public class VerticalElementContainer extends ElementBox {
         if ( maxWidth > 0 && element.getBoundingBox().getWidth() > maxWidth ) {
             element.setWidth(box.getWidth());
         }
-        element.getBoundingBox().setPosX(box.getPosX());
-        element.getBoundingBox().setPosY(box.getPosY());
-        element.translate(0, 0 - this.box.getHeight() - element.getBoundingBox().getHeight());
+        element.getBoundingBox().setPosX(0);
+        element.getBoundingBox().setPosY(0);
+        element.translate(box.getPosX(), box.getPosY() - this.box.getHeight() - element.getBoundingBox().getHeight());
         this.box.setHeight(this.box.getHeight() + element.getBoundingBox().getHeight());
     }
 
