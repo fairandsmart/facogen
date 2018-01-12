@@ -19,6 +19,7 @@ public class SimpleTextBox extends ElementBox {
     private PDFont font;
     private float fontSize;
     private BoundingBox box;
+    private float lineHeight;
     private float underline;
     private float overline;
     private String text;
@@ -32,7 +33,8 @@ public class SimpleTextBox extends ElementBox {
         this.lines.add(text);
         this.underline = font.getFontDescriptor().getFontBoundingBox().getLowerLeftY() / 1000 * fontSize;
         this.overline = font.getFontDescriptor().getFontBoundingBox().getUpperRightY() / 1000 * fontSize;
-        this.box = new BoundingBox(posX, posY, fontSize * font.getStringWidth(text) / 1000, (overline - underline));
+        this.lineHeight = overline - underline;
+        this.box = new BoundingBox(posX, posY, fontSize * font.getStringWidth(text) / 1000, lineHeight);
     }
 
     @Override
@@ -57,7 +59,7 @@ public class SimpleTextBox extends ElementBox {
             }
         }
         this.lines.add(currentLine);
-        this.box.setHeight(this.lines.size() * (overline - underline));
+        this.box.setHeight(this.lines.size() * lineHeight);
     }
 
     @Override
@@ -74,30 +76,29 @@ public class SimpleTextBox extends ElementBox {
         stream.beginText();
         stream.setNonStrokingColor(Color.BLACK);
         stream.setFont(font, fontSize);
-        stream.newLineAtOffset(box.getPosX(), box.getPosY() - underline);
+        stream.newLineAtOffset(box.getPosX(), box.getPosY() + box.getHeight() - underline);
         for (int i=0; i<this.lines.size(); i++) {
-            if ( i > 0 ) {
-                stream.newLineAtOffset(0, underline - overline);
-            }
+            stream.newLineAtOffset(0, 0-lineHeight);
             stream.showText(this.lines.get(i));
         }
         stream.endText();
 
-        float offsetY = 0;
+        float offsetY = box.getHeight();
         for (int i=0; i<this.lines.size(); i++) {
-            offsetY = i * (overline - underline);
+            offsetY = offsetY - lineHeight;
             float offsetX = 0;
             String[] words = lines.get(i).split(" ");
+            List<String> wordIds = new ArrayList<>();
             for (String word : words) {
                 //TODO we need to count the number of spaces between word to include the good posX in the offset
                 float wordWidth = fontSize * font.getStringWidth(word) / 1000;
-                BoundingBox wordBox = new BoundingBox(box.getPosX() + offsetX, box.getPosY() - offsetY, wordWidth, overline - underline);
-                writeXMLZone(writer, "word", word, wordBox);
+                BoundingBox wordBox = new BoundingBox(box.getPosX() + offsetX, box.getPosY() + offsetY, wordWidth, lineHeight);
+                wordIds.add(writeXMLZone(writer, "word", word, wordBox));
                 offsetX = offsetX + wordWidth + (fontSize * font.getSpaceWidth() / 1000);
             }
             float lineWidth = fontSize * font.getStringWidth(lines.get(i)) / 1000;
-            BoundingBox lineBox = new BoundingBox(box.getPosX(), box.getPosY() - offsetY, lineWidth, overline - underline);
-            writeXMLZone(writer, "line", text, lineBox);
+            BoundingBox lineBox = new BoundingBox(box.getPosX(), box.getPosY() + offsetY, lineWidth, lineHeight);
+            writeXMLZone(writer, "line", this.lines.get(i), lineBox, wordIds);
         }
         //BoxBoundary zoneBox = new BoxBoundary(box.getPosX(), box.getPosY() + underline, box.getWidth(), overline - underline);
         //writeXMLZone(writer, "zone", text, zoneBox);

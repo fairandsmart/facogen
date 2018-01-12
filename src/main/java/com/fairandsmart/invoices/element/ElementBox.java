@@ -1,10 +1,13 @@
 package com.fairandsmart.invoices.element;
 
+import com.google.common.base.Strings;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
 import java.io.IOException;
+import java.util.Collections;
+import java.util.List;
 
 public abstract class ElementBox {
 
@@ -30,7 +33,11 @@ public abstract class ElementBox {
         return newbox;
     }
 
-    public String writeXMLZone(XMLStreamWriter writer, String type, String word, BoundingBox box) throws XMLStreamException {
+    public String writeXMLZone(XMLStreamWriter writer, String type, String content, BoundingBox box) throws XMLStreamException {
+        return this.writeXMLZone(writer, type, content, box, Collections.emptyList());
+    }
+
+    public String writeXMLZone(XMLStreamWriter writer, String type, String content, BoundingBox box, List<String> elements) throws XMLStreamException {
         BoundingBox tbox = convertBox(box);
         String id = type + "_" + nextElementId();
         writer.writeStartElement("DL_ZONE");
@@ -40,7 +47,10 @@ public abstract class ElementBox {
         writer.writeAttribute("row", "" + (int) tbox.getPosY());
         writer.writeAttribute("width", "" + (int) tbox.getWidth());
         writer.writeAttribute("height", "" + (int) tbox.getHeight());
-        writer.writeAttribute("content", word);
+        writer.writeAttribute("content", content);
+        if ( !elements.isEmpty() ) {
+            writer.writeAttribute("elements", String.join(";", elements));
+        }
         writer.writeEndElement();
         return id;
     }
