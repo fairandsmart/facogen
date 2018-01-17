@@ -17,6 +17,7 @@ import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 
 import javax.xml.stream.XMLStreamWriter;
 import java.awt.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,6 +49,7 @@ public class AmazonLayout implements InvoiceLayout {
         infos.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 10, 25, 775, "Retail / TaxInvoice / Cash Memorandum"));
         infos.build(contentStream, writer);
 
+        /*
         new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 10, 25, 761, "Sold By").build(contentStream, writer);
         new SimpleTextBox(PDType1Font.HELVETICA, 9, 25, 750, "ZIP TECHNOLOGIES").build(contentStream, writer);
         new SimpleTextBox(PDType1Font.HELVETICA, 9, 25, 740, "A-43, Ground Floor, Mohan Cooperative Industrial Estate,").build(contentStream, writer);
@@ -68,10 +70,28 @@ public class AmazonLayout implements InvoiceLayout {
         SimpleTextBox box1 = new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 9, 25, 600, "Nature of Transaction: sale");
         box1.setWidth(30);
         box1.build(contentStream, writer);
+        */
+
+        contentStream.moveTo(20, 500);
+        contentStream.lineTo( page.getMediaBox().getWidth()-(20*2), 500);
+        contentStream.stroke();
+        new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 9, 25, 500, "TAGADA54").build(contentStream, writer);
+        SimpleTextBox box = new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 9, 250, 500, "TAGADA121 TAGADA TAGADA12457896");
+        box.setWidth(40);
+        box.build(contentStream, writer);
+        VerticalElementContainer vtest = new VerticalElementContainer(25, 500, 500 );
+        vtest.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 9, 0, 0, "TAGADA - Tagada - 54"));
+        vtest.build(contentStream, writer);
 
 
-        float[] configRow = {20f, 120f, 60f, 60f, 60f, 60f, 60f, 60f};
-        TableRowBox firstLine = new TableRowBox(configRow, 0, 0);
+
+        contentStream.moveTo(20, 400);
+        contentStream.lineTo( page.getMediaBox().getWidth()-(20*2), 400);
+        contentStream.stroke();
+
+        VerticalElementContainer verticalInvoiceItems = new VerticalElementContainer(25, 400, 500 );
+        float[] config = {20f, 120f, 60f, 60f, 60f, 60f, 60f, 60f};
+        TableRowBox firstLine = new TableRowBox(config, 0, 0);
         firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "QTY"));
         firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "DESCRIPTION"));
         firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "GROSS AMOUNT"));
@@ -80,13 +100,12 @@ public class AmazonLayout implements InvoiceLayout {
         firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "TAX TYPE"));
         firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "TAX RATE"));
         firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "TAX AMOUNT(included in net)"));
-
-
-        VerticalElementContainer verticalInvoiceItems = new VerticalElementContainer(25, 380, 500 );
         verticalInvoiceItems.addElement(firstLine);
         verticalInvoiceItems.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, "Invoice for DMmZXznqN Oct 5, 2014"));
         verticalInvoiceItems.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, "Invoice for DMmZXznqN Oct 5, 2014"));
 
+
+        /*
         Product product = new Product(
                 1F,
                 "Microsoft Xbox 360 Controller for windows",
@@ -117,10 +136,12 @@ public class AmazonLayout implements InvoiceLayout {
         contentStream.moveTo(20, 320);
         contentStream.lineTo( page.getMediaBox().getWidth()-(20*2), 320);
         contentStream.stroke();
+        */
 
 
         verticalInvoiceItems.build(contentStream, writer);
 
+/*
 
         VerticalElementContainer footerBody = new VerticalElementContainer(25, 300, 500 );
 
@@ -136,6 +157,7 @@ public class AmazonLayout implements InvoiceLayout {
         footerBody.addElement(condition);
 
         footerBody.build(contentStream, writer);
+*/
 
         /*
         List<TableCellBuilder> cellFirstLine = new ArrayList<TableCellBuilder>();

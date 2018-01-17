@@ -28,8 +28,8 @@ public class VerticalElementContainer extends ElementBox {
             element.setWidth(box.getWidth());
         }
         element.getBoundingBox().setPosX(0);
-        element.getBoundingBox().setPosY(0);
         element.translate(box.getPosX(), box.getPosY() - this.box.getHeight() - element.getBoundingBox().getHeight());
+        element.getBoundingBox().setPosY(0);
         this.box.setHeight(this.box.getHeight() + element.getBoundingBox().getHeight());
     }
 
