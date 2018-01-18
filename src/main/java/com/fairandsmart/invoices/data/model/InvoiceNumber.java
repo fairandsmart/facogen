@@ -43,7 +43,6 @@ public class InvoiceNumber {
 
     public static class Generator implements ModelGenerator<InvoiceNumber> {
 
-        private static final Random rnd = new Random();
         private static final List<String> formats = new ArrayList<>();
         private static final Map<String, String> labels = new HashMap<>();
         {
@@ -74,12 +73,12 @@ public class InvoiceNumber {
 
         @Override
         public InvoiceNumber generate(GenerationContext ctx) {
-            int idxF = rnd.nextInt(formats.size());
+            int idxF = ctx.getRandom().nextInt(formats.size());
             Generex generex = new Generex(formats.get(idxF));
             String generated = generex.random();
 
             List<String> localizedLabels = labels.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguage())).map(Map.Entry::getKey).collect(Collectors.toList());
-            int idxL = rnd.nextInt(localizedLabels.size());
+            int idxL = ctx.getRandom().nextInt(localizedLabels.size());
             return new InvoiceNumber(localizedLabels.get(idxL), generated);
         }
     }

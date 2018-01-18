@@ -42,6 +42,10 @@ public class GenerationContext {
         this.language = language;
     }
 
+    public Random getRandom() {
+        return rnd;
+    }
+
     public static GenerationContext generate() {
         GenerationContext ctx = new GenerationContext();
         ctx.setCountry(countries.get(rnd.nextInt(countries.size())));

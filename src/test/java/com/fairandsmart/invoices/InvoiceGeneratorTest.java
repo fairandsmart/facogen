@@ -1,6 +1,7 @@
 package com.fairandsmart.invoices;
 
 import com.fairandsmart.invoices.data.generator.GenerationContext;
+import com.fairandsmart.invoices.data.model.InvoiceDate;
 import com.fairandsmart.invoices.data.model.InvoiceModel;
 import com.fairandsmart.invoices.data.model.InvoiceNumber;
 import com.fairandsmart.invoices.layout.amazon.AmazonLayout;
@@ -23,11 +24,12 @@ public class InvoiceGeneratorTest {
 
         InvoiceModel model = new InvoiceModel();
 
-        for ( int i=0; i<25; i++ ) {
-            GenerationContext ctx = GenerationContext.generate();
-            InvoiceNumber nb = new InvoiceNumber.Generator().generate(ctx);
-            System.out.println(nb);
-        }
+        GenerationContext ctx = GenerationContext.generate();
+        InvoiceNumber nb = new InvoiceNumber.Generator().generate(ctx);
+        InvoiceDate date = new InvoiceDate.Generator().generate(ctx);
+
+        System.out.println(nb);
+        System.out.println(date);
 
         InvoiceGenerator.getInstance().generateInvoice(new AmazonLayout(), model, pdf, xml, img);
     }
