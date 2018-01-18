@@ -43,19 +43,19 @@ public class AmazonLayout implements InvoiceLayout {
         //Text top
         VerticalElementContainer infos = new VerticalElementContainer(25, 810, 500 );
         infos.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, "Page 1 of 1, 1-1/1"));
-        infos.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, "Invoice for DMmZXznqN Oct 5, 2014"));
+        infos.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, "Invoice for "+model.getReference().getValue()+" "+model.getDate().getValue()));
         infos.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 10, 0, 0, "Retail / TaxInvoice / Cash Memorandum"));
         infos.build(contentStream, writer);
 
         new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 10, 25, 761, "Sold By").build(contentStream, writer);
-        new SimpleTextBox(PDType1Font.HELVETICA, 9, 25, 750, "ZIP TECHNOLOGIES").build(contentStream, writer);
+        new SimpleTextBox(PDType1Font.HELVETICA, 9, 25, 750,  model.getCompany().getLogo().getName()).build(contentStream, writer);
         new SimpleTextBox(PDType1Font.HELVETICA, 9, 25, 740, "A-43, Ground Floor, Mohan Cooperative Industrial Estate,").build(contentStream, writer);
         new SimpleTextBox(PDType1Font.HELVETICA, 9, 25, 730, "Main Matura Road,").build(contentStream, writer);
         new SimpleTextBox(PDType1Font.HELVETICA, 9, 25, 720, "New Delhi - 110044").build(contentStream, writer);
         new SimpleTextBox(PDType1Font.HELVETICA, 9, 25, 710, "Delhi, India").build(contentStream, writer);
-
-        new SimpleTextBox(PDType1Font.HELVETICA, 9, 25, 690, "VAT/TIN Number: 07920234124").build(contentStream, writer);
-        new SimpleTextBox(PDType1Font.HELVETICA, 9, 25, 680, "CST Number: 07920234124").build(contentStream, writer);
+        String vatSentence = model.getCompany().getVatNumber().getLabel()+" "+model.getCompany().getVatNumber().getValue();
+        new SimpleTextBox(PDType1Font.HELVETICA, 9, 25, 690, vatSentence).build(contentStream, writer);
+        new SimpleTextBox(PDType1Font.HELVETICA, 9, 25, 680, "CST Number: "+model.getCompany().getVatNumber().getValue()).build(contentStream, writer);
         new SimpleTextBox(PDType1Font.HELVETICA, 9, page.getMediaBox().getWidth()/2, 680, model.getReference().getValue()).build(contentStream, writer);
 
         contentStream.moveTo(20, 650);
@@ -83,13 +83,13 @@ public class AmazonLayout implements InvoiceLayout {
         verticalInvoiceItems.addElement(new HorizontalLineBox(0,0, page.getMediaBox().getWidth()-(20*2), 0));
 
         Product product = new Product(
-                1F,
-                "Microsoft Xbox 360 Controller for windows",
-                2390F,
-                2390F,
-                "CST",
-                12.5F,
-                0F
+            1F,
+            "Microsoft Xbox 360 Controller for windows",
+            2390F,
+            2390F,
+            "CST",
+            12.5F,
+            0F
         );
 
          /* TODO

@@ -12,4 +12,6 @@ public class Product {
     private float taxRate;
     private float taxAmount;
 
+
+
 }

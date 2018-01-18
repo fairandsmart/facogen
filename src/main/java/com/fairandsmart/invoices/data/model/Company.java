@@ -8,6 +8,8 @@ public class Company {
 
     private Logo logo;
 
+    private VATNumber vatNumber;
+
 
     public Company() {
     }
@@ -20,10 +22,21 @@ public class Company {
         this.logo = logo;
     }
 
+
+    public VATNumber getVatNumber() {
+        return vatNumber;
+    }
+
+    public void setVatNumber(VATNumber vatNumber) {
+        this.vatNumber = vatNumber;
+    }
+
+
     @Override
     public String toString() {
         return "Company{" +
                 "logo=" + logo +
+                ", vatNumber=" + vatNumber +
                 '}';
     }
 
@@ -33,6 +46,7 @@ public class Company {
         public Company generate(GenerationContext ctx) {
             Company model = new Company();
             model.setLogo(new Logo.Generator().generate(ctx));
+            model.setVatNumber(new VATNumber.Generator().generate(ctx));
             return model;
         }
     }
