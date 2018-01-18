@@ -44,7 +44,7 @@ public class AmazonLayout implements InvoiceLayout {
         VerticalElementContainer infos = new VerticalElementContainer(25, 810, 500 );
         infos.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, "Page 1 of 1, 1-1/1"));
         infos.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, "Invoice for DMmZXznqN Oct 5, 2014"));
-        infos.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 10, 25, 775, "Retail / TaxInvoice / Cash Memorandum"));
+        infos.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 10, 0, 0, "Retail / TaxInvoice / Cash Memorandum"));
         infos.build(contentStream, writer);
 
         new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 10, 25, 761, "Sold By").build(contentStream, writer);
