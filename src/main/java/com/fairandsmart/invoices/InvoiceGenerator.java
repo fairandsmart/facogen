@@ -52,8 +52,7 @@ public class InvoiceGenerator {
         xmlout.writeAttribute("docTag", "xml");
 
         PDDocument document = new PDDocument();
-        InvoiceLayout builder = new AmazonLayout();
-        builder.builtInvoice(model, document, xmlout);
+        layout.builtInvoice(model, document, xmlout);
         document.save(pdf.toFile());
 
         //Export as TIFF
