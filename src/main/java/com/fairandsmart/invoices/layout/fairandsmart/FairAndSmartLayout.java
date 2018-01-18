@@ -2,6 +2,7 @@ package com.fairandsmart.invoices.layout.fairandsmart;
 
 import be.quodlibet.boxable.BaseTable;
 import be.quodlibet.boxable.datatable.DataTable;
+import com.fairandsmart.invoices.data.model.InvoiceModel;
 import com.fairandsmart.invoices.layout.InvoiceLayout;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
@@ -20,7 +21,7 @@ import java.util.List;
 public class FairAndSmartLayout implements InvoiceLayout {
 
     @Override
-    public void builtInvoice(PDDocument document, XMLStreamWriter writer) throws IOException {
+    public void builtInvoice(InvoiceModel model, PDDocument document, XMLStreamWriter writer) throws IOException {
         PDPage page = new PDPage(PDRectangle.A4);
         document.addPage(page);
 

@@ -36,7 +36,7 @@ public class TableRowBox extends ElementBox {
         element.setWidth(config[elements.size()-1]);
         element.getBoundingBox().setPosX(0);
         element.getBoundingBox().setPosY(0);
-        element.translate(box.getPosX() + this.getColumnOffsetX(elements.size()-1), box.getPosY());
+        element.translate(box.getPosX() + this.getColumnOffsetX(elements.size()-1), box.getPosY() );
         if ( element.getBoundingBox().getHeight() > box.getHeight() ) {
             this.getBoundingBox().setHeight(element.getBoundingBox().getHeight());
         }
@@ -68,6 +68,11 @@ public class TableRowBox extends ElementBox {
 
     public void build(PDPageContentStream stream, XMLStreamWriter writer) throws Exception {
         for(ElementBox element : this.elements) {
+
+            if(element.getBoundingBox().getHeight() < this.getBoundingBox().getHeight()) {
+                element.translate(0,  this.getBoundingBox().getHeight() - element.getBoundingBox().getHeight());
+            }
+
             element.build(stream, writer);
         }
     }

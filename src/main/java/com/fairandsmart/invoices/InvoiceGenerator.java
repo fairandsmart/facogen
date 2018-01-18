@@ -1,5 +1,6 @@
 package com.fairandsmart.invoices;
 
+import com.fairandsmart.invoices.data.model.InvoiceModel;
 import com.fairandsmart.invoices.layout.InvoiceLayout;
 import com.fairandsmart.invoices.layout.amazon.AmazonLayout;
 import org.apache.pdfbox.pdmodel.PDDocument;
@@ -32,7 +33,7 @@ public class InvoiceGenerator {
     private InvoiceGenerator() {
     }
 
-    public void generateInvoice(Model model, Path pdf, Path xml, Path img) throws Exception {
+    public void generateInvoice(InvoiceLayout layout, InvoiceModel model,  Path pdf, Path xml, Path img) throws Exception {
 
         OutputStream xmlos = Files.newOutputStream(xml);
         XMLStreamWriter xmlout = XMLOutputFactory.newInstance().createXMLStreamWriter(new OutputStreamWriter(xmlos, "utf-8"));
@@ -52,7 +53,7 @@ public class InvoiceGenerator {
 
         PDDocument document = new PDDocument();
         InvoiceLayout builder = new AmazonLayout();
-        builder.builtInvoice(document, xmlout);
+        builder.builtInvoice(model, document, xmlout);
         document.save(pdf.toFile());
 
         //Export as TIFF
@@ -67,13 +68,5 @@ public class InvoiceGenerator {
         xmlout.writeEndDocument();
         xmlout.close();
     }
-
-
-    public enum Model {
-        BASIC,
-        AMAZON_MP
-    }
-
-
 
 }

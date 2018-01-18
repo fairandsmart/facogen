@@ -1,13 +1,14 @@
 package com.fairandsmart.invoices.layout.amazon;
 
-import com.fairandsmart.invoices.element.ElementBox;
+import com.fairandsmart.invoices.data.model.InvoiceModel;
 import com.fairandsmart.invoices.element.border.BorderBox;
 import com.fairandsmart.invoices.element.container.VerticalElementContainer;
 import com.fairandsmart.invoices.element.image.ImageBox;
 import com.fairandsmart.invoices.element.table.TableRowBox;
+import com.fairandsmart.invoices.element.line.HorizontalLineBox;
 import com.fairandsmart.invoices.element.textbox.SimpleTextBox;
 import com.fairandsmart.invoices.layout.InvoiceLayout;
-import com.fairandsmart.invoices.model.Product;
+import com.fairandsmart.invoices.data.Product;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
@@ -17,14 +18,11 @@ import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 
 import javax.xml.stream.XMLStreamWriter;
 import java.awt.*;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.List;
 
 public class AmazonLayout implements InvoiceLayout {
 
     @Override
-    public void builtInvoice(PDDocument document, XMLStreamWriter writer) throws Exception {
+    public void builtInvoice(InvoiceModel model, PDDocument document, XMLStreamWriter writer) throws Exception {
         PDPage page = new PDPage(PDRectangle.A4);
 
         document.addPage(page);
@@ -49,7 +47,6 @@ public class AmazonLayout implements InvoiceLayout {
         infos.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 10, 25, 775, "Retail / TaxInvoice / Cash Memorandum"));
         infos.build(contentStream, writer);
 
-        /*
         new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 10, 25, 761, "Sold By").build(contentStream, writer);
         new SimpleTextBox(PDType1Font.HELVETICA, 9, 25, 750, "ZIP TECHNOLOGIES").build(contentStream, writer);
         new SimpleTextBox(PDType1Font.HELVETICA, 9, 25, 740, "A-43, Ground Floor, Mohan Cooperative Industrial Estate,").build(contentStream, writer);
@@ -66,32 +63,12 @@ public class AmazonLayout implements InvoiceLayout {
         contentStream.stroke();
 
         new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 9, 25, 630, "Billing Address").build(contentStream, writer);
-        new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 9, page.getMediaBox().getWidth()/2, 630, "Billing Address").build(contentStream, writer);;
+        new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 9, page.getMediaBox().getWidth()/2, 630, "Shipping Address").build(contentStream, writer);;
         SimpleTextBox box1 = new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 9, 25, 600, "Nature of Transaction: sale");
-        box1.setWidth(30);
         box1.build(contentStream, writer);
-        */
 
-        contentStream.moveTo(20, 500);
-        contentStream.lineTo( page.getMediaBox().getWidth()-(20*2), 500);
-        contentStream.stroke();
-        new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 9, 25, 500, "TAGADA54").build(contentStream, writer);
-        SimpleTextBox box = new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 9, 250, 500, "TAGADA121 TAGADA TAGADA12457896");
-        box.setWidth(40);
-        box.build(contentStream, writer);
-        VerticalElementContainer vtest = new VerticalElementContainer(25, 500, 500 );
-        vtest.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 9, 0, 0, "TAGADA - Tagada - 54"));
-        vtest.build(contentStream, writer);
-
-
-
-        contentStream.moveTo(20, 400);
-        contentStream.lineTo( page.getMediaBox().getWidth()-(20*2), 400);
-        contentStream.stroke();
-
-        VerticalElementContainer verticalInvoiceItems = new VerticalElementContainer(25, 400, 500 );
-        float[] config = {20f, 120f, 60f, 60f, 60f, 60f, 60f, 60f};
-        TableRowBox firstLine = new TableRowBox(config, 0, 0);
+        float[] configRow = {20f, 120f, 60f, 60f, 60f, 60f, 60f, 60f};
+        TableRowBox firstLine = new TableRowBox(configRow, 0, 0);
         firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "QTY"));
         firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "DESCRIPTION"));
         firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "GROSS AMOUNT"));
@@ -100,12 +77,11 @@ public class AmazonLayout implements InvoiceLayout {
         firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "TAX TYPE"));
         firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "TAX RATE"));
         firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "TAX AMOUNT(included in net)"));
+
+        VerticalElementContainer verticalInvoiceItems = new VerticalElementContainer(25, 550, 500 );
         verticalInvoiceItems.addElement(firstLine);
-        verticalInvoiceItems.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, "Invoice for DMmZXznqN Oct 5, 2014"));
-        verticalInvoiceItems.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, "Invoice for DMmZXznqN Oct 5, 2014"));
+        verticalInvoiceItems.addElement(new HorizontalLineBox(0,0, page.getMediaBox().getWidth()-(20*2), 0));
 
-
-        /*
         Product product = new Product(
                 1F,
                 "Microsoft Xbox 360 Controller for windows",
@@ -116,9 +92,15 @@ public class AmazonLayout implements InvoiceLayout {
                 0F
         );
 
-        TableRowBox firstProduct = new TableRowBox(configRow, 25, 900);
+         /* TODO
+        VerticalElementContainer descriptionC = new VerticalElementContainer(0F,0F, 30);
+        descriptionC.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 9, 0, 0, product.getDescription()));
+        descriptionC.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, "SERIAL NUMBER 096"));
+        */
+
+        TableRowBox firstProduct = new TableRowBox(configRow, 0, 0);
         firstProduct.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, Float.toString(product.getQty())));
-        firstProduct.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 9, 0, 0, product.getDescription()));
+        firstProduct.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, product.getDescription()));
         firstProduct.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, Float.toString(product.getPriceByUnitWithoutVAT())));
         firstProduct.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, Float.toString(product.getDiscount())));
         firstProduct.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, Float.toString((product.getNetAmount()))));
@@ -126,23 +108,76 @@ public class AmazonLayout implements InvoiceLayout {
         firstProduct.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, Float.toString(product.getTaxRate())));
         firstProduct.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, Float.toString(product.getTaxAmount())));
 
-
-
         verticalInvoiceItems.addElement(firstProduct);
-        verticalInvoiceItems.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, "Test"));
 
-        verticalInvoiceItems.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, "Test"));
+        TableRowBox shipping = new TableRowBox(configRow, 0, 0);
+        shipping.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, ""));
+        shipping.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, "Shipping"));
+        shipping.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, "Rs 0.00"));
+        shipping.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, ""));
+        shipping.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, "Rs 0.00"));
+        shipping.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, "Tax"));
+        shipping.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, "0"));
+        shipping.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, "Rs 0.00"));
 
-        contentStream.moveTo(20, 320);
-        contentStream.lineTo( page.getMediaBox().getWidth()-(20*2), 320);
-        contentStream.stroke();
-        */
+        verticalInvoiceItems.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, ""));
+        verticalInvoiceItems.addElement(shipping);
+        verticalInvoiceItems.addElement(new HorizontalLineBox(0,0, page.getMediaBox().getWidth()-(20*2), 0));
+        verticalInvoiceItems.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, ""));
 
+        TableRowBox titleTotalInvoice = new TableRowBox(configRow, 0, 0);
+        titleTotalInvoice.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 9, 0, 0, ""));
+        titleTotalInvoice.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 9, 0, 0, ""));
+        titleTotalInvoice.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 9, 0, 0, "TOTAL GROSS AMOUNT"));
+        titleTotalInvoice.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 9, 0, 0, "TOTAL DISCOUNT"));
+        titleTotalInvoice.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 9, 0, 0, "FINAL NET AMOUNT"));
+        titleTotalInvoice.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 9, 0, 0, "TAX TYPE"));
+        titleTotalInvoice.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 9, 0, 0, "TAX RATE"));
+        titleTotalInvoice.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 9, 0, 0, "TAX AMOUNT"));
+        verticalInvoiceItems.addElement(titleTotalInvoice);
+
+        verticalInvoiceItems.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, ""));
+        verticalInvoiceItems.addElement(new HorizontalLineBox(0,0, page.getMediaBox().getWidth()-(20*2), 0));
+
+        TableRowBox totalInvoice1 = new TableRowBox(configRow, 0, 0);
+        totalInvoice1.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, ""));
+        totalInvoice1.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, ""));
+        totalInvoice1.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, "Rs. 2,390.00"));
+        totalInvoice1.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, ""));
+        totalInvoice1.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, "Rs. 2,390.00"));
+        totalInvoice1.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, "CST@"));
+        totalInvoice1.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, "12.5%"));
+        totalInvoice1.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, "Rs. 265.56"));
+        verticalInvoiceItems.addElement(totalInvoice1);
+
+        TableRowBox totalInvoice2 = new TableRowBox(configRow, 0, 0);
+        totalInvoice2.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, ""));
+        totalInvoice2.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, ""));
+        totalInvoice2.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, ""));
+        totalInvoice2.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, ""));
+        totalInvoice2.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, ""));
+        totalInvoice2.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, "Tax@"));
+        totalInvoice2.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, "0%"));
+        totalInvoice2.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, "Rs. 0.00"));
+        verticalInvoiceItems.addElement(totalInvoice2);
+
+        verticalInvoiceItems.addElement(new HorizontalLineBox(0,0, page.getMediaBox().getWidth()-(20*2), 0));
+
+        String certification = this.getClass().getClassLoader().getResource("parts/amazon/certification.png").getFile();
+        PDImageXObject pdCertification = PDImageXObject.createFromFile(certification, document);
+        ImageBox imageFooter = new ImageBox(pdCertification, 0,0, page.getMediaBox().getWidth()-40, pdBarcode.getHeight(), "certification");
+
+        verticalInvoiceItems.addElement(imageFooter);
+        verticalInvoiceItems.addElement(new HorizontalLineBox(0,0, page.getMediaBox().getWidth()-(20*2), 0));
+
+        SimpleTextBox addressFooter = new SimpleTextBox(PDType1Font.HELVETICA, 10, 0, 0, "Registered Address for ZIP TECHNOLOGIES, 245A, SANT NAGAR, 2nd Floor, East of Kailash, New Delhi - 110065, New Delhi, In");
+        addressFooter.setWidth(500);
+        verticalInvoiceItems.addElement(addressFooter);
+        verticalInvoiceItems.addElement(new HorizontalLineBox(0,0, page.getMediaBox().getWidth()-(20*2), 0));
 
         verticalInvoiceItems.build(contentStream, writer);
 
-/*
-
+        /*
         VerticalElementContainer footerBody = new VerticalElementContainer(25, 300, 500 );
 
         SimpleTextBox condition = new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, "I/ We hereby certify that " +
@@ -157,7 +192,16 @@ public class AmazonLayout implements InvoiceLayout {
         footerBody.addElement(condition);
 
         footerBody.build(contentStream, writer);
-*/
+        */
+
+        /*
+        String certification = this.getClass().getClassLoader().getResource("parts/amazon/certification.png").getFile();
+        PDImageXObject pdCertification = PDImageXObject.createFromFile(certification, document);
+        new ImageBox(pdCertification, 25, 150, page.getMediaBox().getWidth()-40, pdBarcode.getHeight(), "certification").build(contentStream, writer);
+
+        */
+
+        new HorizontalLineBox(20,110, page.getMediaBox().getWidth()-(20*2), 0).build(contentStream, writer);
 
         /*
         List<TableCellBuilder> cellFirstLine = new ArrayList<TableCellBuilder>();
@@ -183,9 +227,6 @@ public class AmazonLayout implements InvoiceLayout {
         String footer = this.getClass().getClassLoader().getResource("parts/amazon/footer.png").getFile();
         PDImageXObject pdFooter = PDImageXObject.createFromFile(footer, document);
         contentStream.drawImage(pdFooter, 25, 15, pdFooter.getWidth() / 1.7f, pdFooter.getHeight() / 1.7f);
-
-
-
         contentStream.close();
 
         writer.writeEndElement();

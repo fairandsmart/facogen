@@ -1,17 +1,4 @@
-package com.fairandsmart.invoices.model;
-
-
-/*
-
-        hmap.put("qty", "1");
-        hmap.put("description", "Microsoft Xbox 360 Controller for windows");
-        hmap.put("priceByUnitWithoutVAT", "2390");
-        hmap.put("discount", "0");
-        hmap.put("priceByUnitWithTax", "2390");
-        hmap.put("taxType", "CST");
-        hmap.put("taxRate", "12.5");
-        hmap.put("taxAmount", "265.56");
- */
+package com.fairandsmart.invoices.data;
 
 public class Product {
 
