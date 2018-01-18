@@ -60,6 +60,7 @@ public class InvoiceModel {
             InvoiceModel model = new InvoiceModel();
             model.setReference(new InvoiceNumber.Generator().generate(ctx));
             model.setDate(new InvoiceDate.Generator().generate(ctx));
+            model.setCompany(new Company.Generator().generate(ctx));
             return model;
         }
     }

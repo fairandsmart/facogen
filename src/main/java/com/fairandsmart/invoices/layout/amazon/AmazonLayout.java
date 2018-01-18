@@ -56,7 +56,7 @@ public class AmazonLayout implements InvoiceLayout {
 
         new SimpleTextBox(PDType1Font.HELVETICA, 9, 25, 690, "VAT/TIN Number: 07920234124").build(contentStream, writer);
         new SimpleTextBox(PDType1Font.HELVETICA, 9, 25, 680, "CST Number: 07920234124").build(contentStream, writer);
-        new SimpleTextBox(PDType1Font.HELVETICA, 9, page.getMediaBox().getWidth()/2, 680, "Invoice Number: DL-SDEA-140782631-24").build(contentStream, writer);
+        new SimpleTextBox(PDType1Font.HELVETICA, 9, page.getMediaBox().getWidth()/2, 680, model.getReference().getValue()).build(contentStream, writer);
 
         contentStream.moveTo(20, 650);
         contentStream.lineTo( page.getMediaBox().getWidth()-(20*2), 650);
