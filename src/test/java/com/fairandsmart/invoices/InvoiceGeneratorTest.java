@@ -3,6 +3,7 @@ package com.fairandsmart.invoices;
 import com.fairandsmart.invoices.data.generator.GenerationContext;
 import com.fairandsmart.invoices.data.model.InvoiceModel;
 import com.fairandsmart.invoices.layout.amazon.AmazonLayout;
+import com.fairandsmart.invoices.layout.test.VerticalContainerTestLayout;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;

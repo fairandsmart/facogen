@@ -19,13 +19,17 @@ public class VerticalElementContainer extends ElementBox {
 
     public VerticalElementContainer(float posX, float posY, float maxWidth) {
         this.elements = new ArrayList<>();
+        this.maxWidth = maxWidth;
         this.box = new BoundingBox(posX, posY, 0, 0);
     }
 
     public void addElement(ElementBox element) throws Exception {
         this.elements.add(element);
         if ( maxWidth > 0 && element.getBoundingBox().getWidth() > maxWidth ) {
-            element.setWidth(box.getWidth());
+            element.setWidth(maxWidth);
+        }
+        if ( element.getBoundingBox().getWidth() > this.getBoundingBox().getWidth() ) {
+            this.getBoundingBox().setWidth(element.getBoundingBox().getWidth());
         }
         element.getBoundingBox().setPosX(0);
         element.getBoundingBox().setPosY(0);
@@ -40,10 +44,15 @@ public class VerticalElementContainer extends ElementBox {
 
     @Override
     public void setWidth(float width) throws Exception {
+        this.setHeight(0);
+        this.box.setWidth(width);
         for ( ElementBox element : elements ) {
             element.setWidth(width);
+            element.getBoundingBox().setPosX(0);
+            element.getBoundingBox().setPosY(0);
+            element.translate(box.getPosX(), box.getPosY() - this.box.getHeight() - element.getBoundingBox().getHeight());
+            this.box.setHeight(this.box.getHeight() + element.getBoundingBox().getHeight());
         }
-        this.box.setWidth(width);
     }
 
     @Override
