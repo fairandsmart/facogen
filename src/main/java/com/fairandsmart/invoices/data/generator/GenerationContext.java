@@ -22,8 +22,18 @@ public class GenerationContext {
 
     private String country;
     private String language;
+    private String brandName;
 
     public GenerationContext() {
+        brandName = ".*";
+    }
+
+    public String getBrandName() {
+        return brandName;
+    }
+
+    public void setBrandName(String brandName) {
+        this.brandName = brandName;
     }
 
     public String getCountry() {
