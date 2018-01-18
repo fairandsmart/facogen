@@ -3,6 +3,8 @@ package com.fairandsmart.invoices.data.model;
 public class Company {
 
     private Logo logo;
+
+    /*
     private String name;
     private Address address;
     private String fax;
@@ -10,6 +12,7 @@ public class Company {
     private String email;
     private String website;
     private VATNumber vat;
+    */
 
 
 
