@@ -11,14 +11,13 @@ public class Product {
     private String sku;
     private String brand;
     private float priceWithTax;
-    private float priceWithTaxDisplay;
     private float priceWithoutTax;
-    private float priceWithoutTaxDisplay;
     private int quantity;
     private float taxRate;
     private float totalPriceWithTax;
     private float totalPriceWithoutTax;
     private float totalTax;
+    private String currency;
 
     public String getDescription() {
         return description;
@@ -76,28 +75,16 @@ public class Product {
         this.priceWithTax = priceWithTax;
     }
 
-    public float getPriceWithTaxDisplay() {
-        return priceWithTaxDisplay;
-    }
-
-    public void setPriceWithTaxDisplay(float priceWithTaxDisplay) {
-        this.priceWithTaxDisplay = priceWithTaxDisplay;
-    }
-
     public float getPriceWithoutTax() {
         return priceWithoutTax;
     }
 
+    public String getFormatedPriceWithoutTax() {
+        return String.format("%.2f", this.getPriceWithoutTax()) + " " + currency;
+    }
+
     public void setPriceWithoutTax(float priceWithoutTax) {
         this.priceWithoutTax = priceWithoutTax;
-    }
-
-    public float getPriceWithoutTaxDisplay() {
-        return priceWithoutTaxDisplay;
-    }
-
-    public void setPriceWithoutTaxDisplay(float priceWithoutTaxDisplay) {
-        this.priceWithoutTaxDisplay = priceWithoutTaxDisplay;
     }
 
     public int getQuantity() {
@@ -116,16 +103,39 @@ public class Product {
         this.taxRate = taxRate;
     }
 
+    public String getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
+
     public float getTotalPriceWithTax() {
         return priceWithTax * quantity;
     }
+
+    public String getFormatedTotalPriceWithTax() {
+
+        return String.format("%.2f", this.getTotalPriceWithTax()) + " " + currency;
+    }
+
 
     public float getTotalPriceWithoutTax() {
         return priceWithoutTax * quantity;
     }
 
+    public String getFormatedTotalPriceWithoutTax() {
+
+        return String.format("%.2f", this.getTotalPriceWithoutTax()) + " " + currency;
+    }
+
     public float getTotalTax() {
         return this.getTotalPriceWithTax() - this.getTotalPriceWithoutTax();
+    }
+
+    public String getFormatedTotalTax() {
+        return String.format("%.2f", this.getTotalTax()) + " " + currency;
     }
 
     @Override
@@ -138,9 +148,7 @@ public class Product {
                 ", sku='" + sku + '\'' +
                 ", brand='" + brand + '\'' +
                 ", priceWithTax=" + priceWithTax +
-                ", priceWithTaxDisplay=" + priceWithTaxDisplay +
                 ", priceWithoutTax=" + priceWithoutTax +
-                ", priceWithoutTaxDisplay=" + priceWithoutTaxDisplay +
                 ", quantity=" + quantity +
                 ", taxRate=" + taxRate +
                 '}';
