@@ -5,10 +5,18 @@ import com.fairandsmart.invoices.data.generator.ModelGenerator;
 
 public class Company {
 
-
     private Logo logo;
-
     private VATNumber vatNumber;
+/*
+    private String name;
+    private Address address;
+    private String fax;
+    private String phone;
+    private String email;
+    private String website;
+    private VATNumber vat;
+    */
+
 
 
     public Company() {
@@ -22,7 +30,6 @@ public class Company {
         this.logo = logo;
     }
 
-
     public VATNumber getVatNumber() {
         return vatNumber;
     }
@@ -30,7 +37,6 @@ public class Company {
     public void setVatNumber(VATNumber vatNumber) {
         this.vatNumber = vatNumber;
     }
-
 
     @Override
     public String toString() {
@@ -50,17 +56,5 @@ public class Company {
             return model;
         }
     }
-
-/*
-    private String name;
-    private Address address;
-    private String fax;
-    private String phone;
-    private String email;
-    private String website;
-    private VATNumber vat;
-    */
-
-
 
 }
