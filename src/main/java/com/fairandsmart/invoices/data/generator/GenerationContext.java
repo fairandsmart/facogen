@@ -25,6 +25,9 @@ public class GenerationContext {
         currencies.add("€");
         currencies.add("USD");
         currencies.add("$");
+        currencies.add("Rs.");
+        currencies.add("¥");
+        currencies.add("Yuan");
     }
 
     private String country;

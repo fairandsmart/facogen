@@ -48,11 +48,9 @@ public class AmazonLayout implements InvoiceLayout {
         infos.build(contentStream, writer);
 
         new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 10, 25, 761, "Sold By").build(contentStream, writer);
-        new SimpleTextBox(PDType1Font.HELVETICA, 9, 25, 750,  model.getCompany().getLogo().getName()).build(contentStream, writer);
-        new SimpleTextBox(PDType1Font.HELVETICA, 9, 25, 740, "A-43, Ground Floor, Mohan Cooperative Industrial Estate,").build(contentStream, writer);
-        new SimpleTextBox(PDType1Font.HELVETICA, 9, 25, 730, "Main Matura Road,").build(contentStream, writer);
-        new SimpleTextBox(PDType1Font.HELVETICA, 9, 25, 720, "New Delhi - 110044").build(contentStream, writer);
-        new SimpleTextBox(PDType1Font.HELVETICA, 9, 25, 710, "Delhi, India").build(contentStream, writer);
+        new SimpleTextBox(PDType1Font.HELVETICA, 9, 25, 750, model.getCompany().getLogo().getName()).build(contentStream, writer);
+        new SimpleTextBox(PDType1Font.HELVETICA, 9, 25, 740, model.getCompany().getAddress().getLine1() ).build(contentStream, writer);
+        new SimpleTextBox(PDType1Font.HELVETICA, 9, 25, 730,model.getCompany().getAddress().getZip()+" "+model.getCompany().getAddress().getCity()).build(contentStream, writer);
         String vatSentence = model.getCompany().getVatNumber().getLabel()+" "+model.getCompany().getVatNumber().getValue();
         new SimpleTextBox(PDType1Font.HELVETICA, 9, 25, 690, vatSentence).build(contentStream, writer);
         new SimpleTextBox(PDType1Font.HELVETICA, 9, 25, 680, "CST Number: "+model.getCompany().getVatNumber().getValue()).build(contentStream, writer);
@@ -62,9 +60,27 @@ public class AmazonLayout implements InvoiceLayout {
         contentStream.lineTo( page.getMediaBox().getWidth()-(20*2), 650);
         contentStream.stroke();
 
-        new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 9, 25, 630, "Billing Address").build(contentStream, writer);
-        new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 9, page.getMediaBox().getWidth()/2, 630, "Shipping Address").build(contentStream, writer);;
-        SimpleTextBox box1 = new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 9, 25, 600, "Nature of Transaction: sale");
+        VerticalElementContainer verticalAddressContainer = new VerticalElementContainer(25, 630, 250 );
+
+        verticalAddressContainer.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 9, 0, 0, "Billing Address"));
+        verticalAddressContainer.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 2, 5));
+        verticalAddressContainer.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, model.getClient().getBillingName() ));
+        verticalAddressContainer.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, model.getClient().getBillingAddress().getLine1() ));
+        verticalAddressContainer.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, model.getClient().getBillingAddress().getZip() + " "+model.getClient().getBillingAddress().getCity() ));
+
+        verticalAddressContainer.build(contentStream, writer);
+
+        VerticalElementContainer verticalAddressContainer2 = new VerticalElementContainer(page.getMediaBox().getWidth()/2, 630, 250 );
+
+        verticalAddressContainer2.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 9, 0, 0, "Shipping Address"));
+        verticalAddressContainer2.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 2, 5));
+        verticalAddressContainer2.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, model.getClient().getShippingName() ));
+        verticalAddressContainer2.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, model.getClient().getShippingAddress().getLine1() ));
+        verticalAddressContainer2.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, model.getClient().getShippingAddress().getZip() + " "+model.getClient().getShippingAddress().getCity() ));
+
+        verticalAddressContainer2.build(contentStream, writer);
+
+        SimpleTextBox box1 = new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 9, 25, 560, "Nature of Transaction: sale");
         box1.build(contentStream, writer);
 
         float[] configRow = {20f, 120f, 60f, 60f, 60f, 60f, 60f, 60f};
@@ -78,7 +94,7 @@ public class AmazonLayout implements InvoiceLayout {
         firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "TAX RATE"));
         firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "TAX AMOUNT"));
 
-        VerticalElementContainer verticalInvoiceItems = new VerticalElementContainer(25, 550, 500 );
+        VerticalElementContainer verticalInvoiceItems = new VerticalElementContainer(25, 520, 500 );
         verticalInvoiceItems.addElement(firstLine);
         verticalInvoiceItems.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 2, 5));
         verticalInvoiceItems.addElement(new HorizontalLineBox(0,0, page.getMediaBox().getWidth()-(20*2), 0));
@@ -218,11 +234,33 @@ public class AmazonLayout implements InvoiceLayout {
 
         */
 
+        VerticalElementContainer verticalFooterContainer = new VerticalElementContainer(25, 100, 450 );
+
+        verticalFooterContainer.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 9, 0, 0, "To return an item, visit http://www.amazon.in/returns"));
+        verticalFooterContainer.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 9, 0, 0, "For more information on your orders, visit http://"));
+        verticalFooterContainer.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 9, 0, 0, "www.amazon.in/your-account"));
+        verticalFooterContainer.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, "DMmZXznqN /-1 of 1 -// std-in-remote / 1005-17:40 / 1006-09:30"));
+        verticalFooterContainer.build(contentStream, writer);
+
+        String logo = this.getClass().getClassLoader().getResource("logo/"+model.getCompany().getLogo().getFullPath()).getFile();
+        PDImageXObject logoFooter = PDImageXObject.createFromFile(logo, document);
+        float ratio = logoFooter.getWidth() / logoFooter.getHeight();
+        contentStream.drawImage(logoFooter, 480, 10, 80, 80 / ratio);
+
+
+        String barCode = this.getClass().getClassLoader().getResource("parts/amazon/barcode2.jpg").getFile();
+        PDImageXObject barCodeFooter = PDImageXObject.createFromFile(barCode, document);
+        contentStream.drawImage(barCodeFooter, 25, 10, barCodeFooter.getWidth(), barCodeFooter.getHeight());
+        contentStream.close();
+
+
+        /*
         //footer
         String footer = this.getClass().getClassLoader().getResource("parts/amazon/footer.png").getFile();
         PDImageXObject pdFooter = PDImageXObject.createFromFile(footer, document);
         contentStream.drawImage(pdFooter, 25, 15, pdFooter.getWidth() / 1.7f, pdFooter.getHeight() / 1.7f);
         contentStream.close();
+        */
 
         writer.writeEndElement();
     }
