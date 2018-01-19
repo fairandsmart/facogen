@@ -71,12 +71,12 @@ public class AmazonLayout implements InvoiceLayout {
         TableRowBox firstLine = new TableRowBox(configRow, 0, 0);
         firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "QTY"));
         firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "DESCRIPTION"));
-        firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "GROSS AMOUNT"));
+        firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "UNIT PRICE"));
         firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "DISCOUNT"));
-        firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "NET AMOUNT (tax inclusive)"));
+        firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "TOTAL WITHOUT TAX"));
         firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "TAX TYPE"));
         firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "TAX RATE"));
-        firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "TAX AMOUNT(included in net)"));
+        firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "TAX AMOUNT"));
 
         VerticalElementContainer verticalInvoiceItems = new VerticalElementContainer(25, 550, 500 );
         verticalInvoiceItems.addElement(firstLine);
@@ -95,12 +95,12 @@ public class AmazonLayout implements InvoiceLayout {
             TableRowBox productLine = new TableRowBox(configRow, 0, 0);
             productLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, Float.toString(randomProduct.getQuantity())));
             productLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, randomProduct.getName()));
-            productLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, Float.toString(randomProduct.getPriceWithoutTaxDisplay())));
+            productLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, randomProduct.getFormatedPriceWithoutTax()));
             productLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, ""));
-            productLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, Float.toString((randomProduct.getTotalPriceWithTax()))));
+            productLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, randomProduct.getFormatedTotalPriceWithoutTax() ));
             productLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, ""));
             productLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, Float.toString(randomProduct.getTaxRate() * 100)+"%"));
-            productLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, String.format("%.2f", randomProduct.getTotalTax()) ));
+            productLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, randomProduct.getFormatedTotalTax() ));
 
             verticalInvoiceItems.addElement(productLine);
         }
@@ -108,12 +108,12 @@ public class AmazonLayout implements InvoiceLayout {
         TableRowBox shipping = new TableRowBox(configRow, 0, 0);
         shipping.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, ""));
         shipping.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, "Shipping"));
-        shipping.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, "Rs 0.00"));
+        shipping.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, "0.00"));
         shipping.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, ""));
-        shipping.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, "Rs 0.00"));
+        shipping.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, "0.00"));
         shipping.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, "Tax"));
         shipping.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, "0"));
-        shipping.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, "Rs 0.00"));
+        shipping.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, "0.00"));
 
         verticalInvoiceItems.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, ""));
         verticalInvoiceItems.addElement(shipping);
@@ -137,24 +137,13 @@ public class AmazonLayout implements InvoiceLayout {
         TableRowBox totalInvoice1 = new TableRowBox(configRow, 0, 0);
         totalInvoice1.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, ""));
         totalInvoice1.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, ""));
-        totalInvoice1.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, String.format("%.2f", model.getProductContainer().getTotalWithoutTax() )));
+        totalInvoice1.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, model.getProductContainer().getFormatedTotalWithoutTax() ));
         totalInvoice1.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, ""));
-        totalInvoice1.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, String.format("%.2f", model.getProductContainer().getTotalWithTax() )));
+        totalInvoice1.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, model.getProductContainer().getFormatedTotalWithTax() ));
         totalInvoice1.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, "CST@"));
-        totalInvoice1.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, "12.5%"));
-        totalInvoice1.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, String.format("%.2f", model.getProductContainer().getTotalTax() )));
+        totalInvoice1.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, Float.toString(model.getProductContainer().getProducts().get(0).getTaxRate() * 100)+"%"));
+        totalInvoice1.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, model.getProductContainer().getFormatedTotalTax() ));
         verticalInvoiceItems.addElement(totalInvoice1);
-
-        TableRowBox totalInvoice2 = new TableRowBox(configRow, 0, 0);
-        totalInvoice2.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, ""));
-        totalInvoice2.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, ""));
-        totalInvoice2.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, ""));
-        totalInvoice2.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, ""));
-        totalInvoice2.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, ""));
-        totalInvoice2.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, "Tax@"));
-        totalInvoice2.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, "0%"));
-        totalInvoice2.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, "Rs. 0.00"));
-        verticalInvoiceItems.addElement(totalInvoice2);
 
         verticalInvoiceItems.addElement(new HorizontalLineBox(0,0, page.getMediaBox().getWidth()-(20*2), 0));
 

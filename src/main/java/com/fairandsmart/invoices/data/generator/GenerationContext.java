@@ -8,6 +8,7 @@ public class GenerationContext {
 
     private static List<String> countries = new ArrayList<>();
     private static List<String> languages = new ArrayList<>();
+    private static List<String> currencies = new ArrayList<>();
     private static Random rnd = new Random();
     {
         countries.add("FR");
@@ -19,10 +20,17 @@ public class GenerationContext {
         languages.add("fr");
         //languages.add("en");
     }
+    {
+        currencies.add("EUR");
+        currencies.add("€");
+        currencies.add("USD");
+        currencies.add("$");
+    }
 
     private String country;
     private String language;
     private String brandName;
+    private String currency;
 
     public GenerationContext() {
         brandName = ".*";
@@ -52,6 +60,14 @@ public class GenerationContext {
         this.language = language;
     }
 
+    public String getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
+
     public Random getRandom() {
         return rnd;
     }
@@ -60,6 +76,7 @@ public class GenerationContext {
         GenerationContext ctx = new GenerationContext();
         ctx.setCountry(countries.get(rnd.nextInt(countries.size())));
         ctx.setLanguage(languages.get(rnd.nextInt(languages.size())));
+        ctx.setCurrency(currencies.get(rnd.nextInt(currencies.size())));
         return ctx;
     }
 }
