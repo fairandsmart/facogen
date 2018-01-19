@@ -80,6 +80,7 @@ public class AmazonLayout implements InvoiceLayout {
 
         VerticalElementContainer verticalInvoiceItems = new VerticalElementContainer(25, 550, 500 );
         verticalInvoiceItems.addElement(firstLine);
+        verticalInvoiceItems.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 5, 5));
         verticalInvoiceItems.addElement(new HorizontalLineBox(0,0, page.getMediaBox().getWidth()-(20*2), 0));
 
          /* TODO
@@ -102,7 +103,9 @@ public class AmazonLayout implements InvoiceLayout {
             productLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, Float.toString(randomProduct.getTaxRate() * 100)+"%"));
             productLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, String.format("%.2f", randomProduct.getTotalTax()) ));
 
+            verticalInvoiceItems.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 5, 5));
             verticalInvoiceItems.addElement(productLine);
+            verticalInvoiceItems.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 5, 5));
         }
 
         TableRowBox shipping = new TableRowBox(configRow, 0, 0);
@@ -117,7 +120,9 @@ public class AmazonLayout implements InvoiceLayout {
 
         verticalInvoiceItems.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, ""));
         verticalInvoiceItems.addElement(shipping);
+        verticalInvoiceItems.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 5, 5));
         verticalInvoiceItems.addElement(new HorizontalLineBox(0,0, page.getMediaBox().getWidth()-(20*2), 0));
+        verticalInvoiceItems.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 5, 5));
         verticalInvoiceItems.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, ""));
 
         TableRowBox titleTotalInvoice = new TableRowBox(configRow, 0, 0);
