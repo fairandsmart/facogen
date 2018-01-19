@@ -59,6 +59,7 @@ public class InvoiceModel {
                 "reference=" + reference +
                 ", date=" + date +
                 ", company=" + company +
+                ", productContainer=" + productContainer +
                 '}';
     }
 

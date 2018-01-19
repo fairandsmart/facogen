@@ -1,6 +1,7 @@
 package com.fairandsmart.invoices.layout.amazon;
 
 import com.fairandsmart.invoices.data.model.InvoiceModel;
+import com.fairandsmart.invoices.data.model.Product;
 import com.fairandsmart.invoices.element.border.BorderBox;
 import com.fairandsmart.invoices.element.container.VerticalElementContainer;
 import com.fairandsmart.invoices.element.image.ImageBox;
@@ -8,7 +9,6 @@ import com.fairandsmart.invoices.element.table.TableRowBox;
 import com.fairandsmart.invoices.element.line.HorizontalLineBox;
 import com.fairandsmart.invoices.element.textbox.SimpleTextBox;
 import com.fairandsmart.invoices.layout.InvoiceLayout;
-import com.fairandsmart.invoices.data.Product;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
@@ -82,33 +82,28 @@ public class AmazonLayout implements InvoiceLayout {
         verticalInvoiceItems.addElement(firstLine);
         verticalInvoiceItems.addElement(new HorizontalLineBox(0,0, page.getMediaBox().getWidth()-(20*2), 0));
 
-        Product product = new Product(
-            1F,
-            "Microsoft Xbox 360 Controller for windows",
-            2390F,
-            2390F,
-            "CST",
-            12.5F,
-            0F
-        );
-
          /* TODO
         VerticalElementContainer descriptionC = new VerticalElementContainer(0F,0F, 30);
         descriptionC.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 9, 0, 0, product.getDescription()));
         descriptionC.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, "SERIAL NUMBER 096"));
         */
 
-        TableRowBox firstProduct = new TableRowBox(configRow, 0, 0);
-        firstProduct.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, Float.toString(product.getQty())));
-        firstProduct.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, product.getDescription()));
-        firstProduct.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, Float.toString(product.getPriceByUnitWithoutVAT())));
-        firstProduct.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, Float.toString(product.getDiscount())));
-        firstProduct.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, Float.toString((product.getNetAmount()))));
-        firstProduct.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, product.getTaxType()));
-        firstProduct.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, Float.toString(product.getTaxRate())));
-        firstProduct.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, Float.toString(product.getTaxAmount())));
+        for(int w=0; w< model.getProductContainer().getProducts().size(); w++) {
 
-        verticalInvoiceItems.addElement(firstProduct);
+            Product randomProduct = model.getProductContainer().getProducts().get(w);
+
+            TableRowBox productLine = new TableRowBox(configRow, 0, 0);
+            productLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, Float.toString(randomProduct.getQuantity())));
+            productLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, randomProduct.getName()));
+            productLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, Float.toString(randomProduct.getPriceWithoutTaxDisplay())));
+            productLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, ""));
+            productLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, Float.toString((randomProduct.getTotalPriceWithTax()))));
+            productLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, ""));
+            productLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, Float.toString(randomProduct.getTaxRate() * 100)+"%"));
+            productLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, String.format("%.2f", randomProduct.getTotalTax()) ));
+
+            verticalInvoiceItems.addElement(productLine);
+        }
 
         TableRowBox shipping = new TableRowBox(configRow, 0, 0);
         shipping.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, ""));
@@ -142,12 +137,12 @@ public class AmazonLayout implements InvoiceLayout {
         TableRowBox totalInvoice1 = new TableRowBox(configRow, 0, 0);
         totalInvoice1.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, ""));
         totalInvoice1.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, ""));
-        totalInvoice1.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, "Rs. 2,390.00"));
+        totalInvoice1.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, String.format("%.2f", model.getProductContainer().getTotalWithoutTax() )));
         totalInvoice1.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, ""));
-        totalInvoice1.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, "Rs. 2,390.00"));
+        totalInvoice1.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, String.format("%.2f", model.getProductContainer().getTotalWithTax() )));
         totalInvoice1.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, "CST@"));
         totalInvoice1.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, "12.5%"));
-        totalInvoice1.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, "Rs. 265.56"));
+        totalInvoice1.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, String.format("%.2f", model.getProductContainer().getTotalTax() )));
         verticalInvoiceItems.addElement(totalInvoice1);
 
         TableRowBox totalInvoice2 = new TableRowBox(configRow, 0, 0);

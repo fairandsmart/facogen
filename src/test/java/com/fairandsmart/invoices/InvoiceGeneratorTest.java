@@ -4,11 +4,9 @@ import com.fairandsmart.invoices.data.generator.GenerationContext;
 import com.fairandsmart.invoices.data.model.InvoiceModel;
 import com.fairandsmart.invoices.layout.amazon.AmazonLayout;
 import com.fairandsmart.invoices.layout.test.VerticalContainerTestLayout;
-import com.sun.deploy.security.JarSignature;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
-import sun.security.timestamp.Timestamper;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
