@@ -1,6 +1,22 @@
 package com.fairandsmart.invoices.data.model;
 
+import com.fairandsmart.invoices.data.generator.GenerationContext;
+import com.fairandsmart.invoices.data.generator.ModelGenerator;
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVRecord;
+
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.stream.Collectors;
+
 public class Address {
+
+    private static final Logger LOGGER = Logger.getLogger(Address.class.getName());
 
     private String line1;
     private String line2;
@@ -79,5 +95,51 @@ public class Address {
                 ", city='" + city + '\'' +
                 ", country='" + country + '\'' +
                 '}';
+    }
+
+    public static class Generator implements ModelGenerator<Address> {
+
+        private static final String[] addressFiles = new String[] { "address/france.csv", "address/luxembourg.csv", "address/belgium.csv", "address/germany.csv" };
+        private static Map<Address, String> addresses = new HashMap<>();
+        {
+            for ( String addressFile : addressFiles ) {
+                try {
+                    Reader in = new InputStreamReader(Logo.class.getClassLoader().getResourceAsStream(addressFile));
+                    Iterable<CSVRecord> records = CSVFormat.newFormat(',').withFirstRecordAsHeader().parse(in);
+                    for (CSVRecord record : records) {
+                        String number = record.get("NUMBER");
+                        String street = record.get("STREET");
+                        String city = record.get("CITY");
+                        String postcode = record.get("POSTCODE");
+                        Address address = new Address(number + ", " + street, "", "", postcode, city, "France");
+                        switch ( addressFile.substring(8) ) {
+                            case "france.csv" :
+                                addresses.put(address, "FR");
+                                break;
+                            case "luxembourg.csv" :
+                                addresses.put(address, "LU");
+                                break;
+                            case "belgium.csv" :
+                                addresses.put(address, "BE");
+                                break;
+                            case "germany.csv" :
+                                addresses.put(address, "DE");
+                                break;
+                        }
+                    }
+                } catch (Exception e) {
+                    LOGGER.log(Level.SEVERE, "unable to parse csv source: " + addressFile, e);
+                }
+            }
+        }
+
+
+        @Override
+        public Address generate(GenerationContext ctx) {
+            List<Address> goodAddresses = addresses.entrySet().stream().filter(comp -> comp.getValue().matches(ctx.getCountry())).map(comp -> comp.getKey()).collect(Collectors.toList());
+            Address address = goodAddresses.get(ctx.getRandom().nextInt(goodAddresses.size()));
+            //TODO include a random line 3 with app n°2, etage 3...
+            return address;
+        }
     }
 }

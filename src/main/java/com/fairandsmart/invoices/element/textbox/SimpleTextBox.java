@@ -87,21 +87,21 @@ public class SimpleTextBox extends ElementBox {
         for (int i=0; i<this.lines.size(); i++) {
             offsetY = offsetY - lineHeight;
             float offsetX = 0;
-            String[] words = lines.get(i).split(" ");
-            List<String> wordIds = new ArrayList<>();
-            for (String word : words) {
-                //TODO we need to count the number of spaces between word to include the good posX in the offset
-                float wordWidth = fontSize * font.getStringWidth(word) / 1000;
-                BoundingBox wordBox = new BoundingBox(box.getPosX() + offsetX, box.getPosY() + offsetY, wordWidth, lineHeight);
-                wordIds.add(writeXMLZone(writer, "word", word, wordBox));
-                offsetX = offsetX + wordWidth + (fontSize * font.getSpaceWidth() / 1000);
+            if ( lines.get(i).length() > 0 ) {
+                String[] words = lines.get(i).split(" ");
+                List<String> wordIds = new ArrayList<>();
+                for (String word : words) {
+                    //TODO we need to count the number of spaces between word to include the good posX in the offset
+                    float wordWidth = fontSize * font.getStringWidth(word) / 1000;
+                    BoundingBox wordBox = new BoundingBox(box.getPosX() + offsetX, box.getPosY() + offsetY, wordWidth, lineHeight);
+                    wordIds.add(writeXMLZone(writer, "word", word, wordBox));
+                    offsetX = offsetX + wordWidth + (fontSize * font.getSpaceWidth() / 1000);
+                }
+                float lineWidth = fontSize * font.getStringWidth(lines.get(i)) / 1000;
+                BoundingBox lineBox = new BoundingBox(box.getPosX(), box.getPosY() + offsetY, lineWidth, lineHeight);
+                writeXMLZone(writer, "line", this.lines.get(i), lineBox, wordIds);
             }
-            float lineWidth = fontSize * font.getStringWidth(lines.get(i)) / 1000;
-            BoundingBox lineBox = new BoundingBox(box.getPosX(), box.getPosY() + offsetY, lineWidth, lineHeight);
-            writeXMLZone(writer, "line", this.lines.get(i), lineBox, wordIds);
         }
-        //BoxBoundary zoneBox = new BoxBoundary(box.getPosX(), box.getPosY() + underline, box.getWidth(), overline - underline);
-        //writeXMLZone(writer, "zone", text, zoneBox);
     }
 
 }

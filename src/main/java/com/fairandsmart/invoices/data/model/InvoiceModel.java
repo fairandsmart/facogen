@@ -16,6 +16,7 @@ public class InvoiceModel {
     private InvoiceNumber reference;
     private InvoiceDate date;
     private Company company;
+    private Client client;
     private ProductContainer productContainer;
 
     public InvoiceModel() {
@@ -45,6 +46,14 @@ public class InvoiceModel {
         this.company = company;
     }
 
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
     public ProductContainer getProductContainer() {
         return productContainer;
     }
@@ -59,6 +68,7 @@ public class InvoiceModel {
                 "reference=" + reference +
                 ", date=" + date +
                 ", company=" + company +
+                ", client=" + client +
                 ", productContainer=" + productContainer +
                 '}';
     }
@@ -71,6 +81,7 @@ public class InvoiceModel {
             model.setReference(new InvoiceNumber.Generator().generate(ctx));
             model.setDate(new InvoiceDate.Generator().generate(ctx));
             model.setCompany(new Company.Generator().generate(ctx));
+            model.setClient(new Client.Generator().generate(ctx));
             model.setProductContainer(new ProductContainer.Generator().generate(ctx));
             return model;
         }

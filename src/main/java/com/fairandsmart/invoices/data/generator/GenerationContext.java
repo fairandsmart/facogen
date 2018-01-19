@@ -17,7 +17,7 @@ public class GenerationContext {
     }
     {
         languages.add("fr");
-        languages.add("en");
+        //languages.add("en");
     }
 
     private String country;
