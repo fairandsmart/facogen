@@ -43,15 +43,15 @@ public class FaxNumber {
                 '}';
     }
 
-    public static class Generator implements ModelGenerator<InvoiceNumber> {
+    public static class Generator implements ModelGenerator<FaxNumber> {
 
         private static final Map<String, String> formats = new HashMap<>();
         private static final Map<String, String> labels = new HashMap<>();
         {
-            formats.put("0[0-9]{1}.[0-9]{2}.[0-9]{2}.[0-9]{2}.[0-9]{2}", "FR");
-            formats.put("0[0-9]{1}-[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}", "FR");
-            formats.put("+33 [0-9]{3} [0-9]{3} [0-9]{3}", "FR");
-            formats.put("+33 (0) [0-9]{1} [0-9]{2} [0-9]{2} [0-9]{2} [0-9]{2}", "FR");
+            formats.put("0[0-9]{1}[.][0-9]{2}[.][0-9]{2}[.][0-9]{2}[.][0-9]{2}", "FR");
+            formats.put("0[0-9]{1}[-][0-9]{2}[-][0-9]{2}[-][0-9]{2}[-][0-9]{2}", "FR");
+            formats.put("+33 [(]0[)][0-9]{3} [0-9]{3} [0-9]{3}", "FR");
+            formats.put("+33 [(]0[(][0-9]{1} [0-9]{2} [0-9]{2} [0-9]{2} [0-9]{2}", "FR");
         }
         {
             labels.put("Fax", "fr");
@@ -61,15 +61,15 @@ public class FaxNumber {
         }
 
         @Override
-        public InvoiceNumber generate(GenerationContext ctx) {
+        public FaxNumber generate(GenerationContext ctx) {
             List<String> localizedFormats = formats.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getCountry())).map(Map.Entry::getKey).collect(Collectors.toList());
-            int idxF = ctx.getRandom().nextInt(formats.size());
-            Generex generex = new Generex(formats.get(idxF));
+            int idxF = ctx.getRandom().nextInt(localizedFormats.size());
+            Generex generex = new Generex(localizedFormats.get(idxF));
             String generated = generex.random();
 
             List<String> localizedLabels = labels.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguage())).map(Map.Entry::getKey).collect(Collectors.toList());
             int idxL = ctx.getRandom().nextInt(localizedLabels.size());
-            return new InvoiceNumber(localizedLabels.get(idxL), generated);
+            return new FaxNumber(localizedLabels.get(idxL), generated);
         }
     }
 

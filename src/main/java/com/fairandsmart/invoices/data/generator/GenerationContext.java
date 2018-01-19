@@ -11,9 +11,9 @@ public class GenerationContext {
     private static Random rnd = new Random();
     {
         countries.add("FR");
-        countries.add("LU");
-        countries.add("BE");
-        countries.add("UK");
+        //countries.add("LU");
+        //countries.add("BE");
+        //countries.add("UK");
     }
     {
         languages.add("fr");
