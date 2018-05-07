@@ -21,7 +21,7 @@
         <version.dependency.plugin>3.0.2</version.dependency.plugin>
         <version.resource.plugin>3.0.2</version.resource.plugin>
         <version.junit>4.12</version.junit>
-        <version.pdfbox>2.0.8</version.pdfbox>
+        <version.pdfbox>2.0.9</version.pdfbox>
         <version.boxable>1.4</version.boxable>
     </properties>
 

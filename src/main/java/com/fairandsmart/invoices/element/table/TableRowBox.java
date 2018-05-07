@@ -2,7 +2,7 @@ package com.fairandsmart.invoices.element.table;
 
 import com.fairandsmart.invoices.element.BoundingBox;
 import com.fairandsmart.invoices.element.ElementBox;
-import com.fairandsmart.invoices.element.container.VerticalElementContainer;
+import com.fairandsmart.invoices.element.container.VerticalContainer;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 
 import javax.xml.stream.XMLStreamWriter;
@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 
 public class TableRowBox extends ElementBox {
 
-    private static final Logger LOGGER = Logger.getLogger(VerticalElementContainer.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(VerticalContainer.class.getName());
 
     private float[] config;
     private BoundingBox box;

@@ -32,6 +32,11 @@ public class FairAndSmartLayout implements InvoiceLayout {
         PDFont font = PDType1Font.HELVETICA_BOLD;
         PDPageContentStream contentStream = new PDPageContentStream(document, page);
 
+        // Page composition :
+        // Header
+        // Products Table
+        // Footer
+
 
         //Logo
         String logo = this.getClass().getClassLoader().getResource("parts/fairandsmart/logo.png").getFile();

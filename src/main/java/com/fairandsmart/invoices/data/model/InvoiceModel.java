@@ -1,20 +1,13 @@
 package com.fairandsmart.invoices.data.model;
 
-import com.fairandsmart.invoices.data.Product;
 import com.fairandsmart.invoices.data.generator.GenerationContext;
 import com.fairandsmart.invoices.data.generator.ModelGenerator;
-import com.mifmif.common.regex.Generex;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 public class InvoiceModel {
 
     private InvoiceNumber reference;
     private InvoiceDate date;
+    private PaymentInfo paymentInfo;
     private Company company;
     private Client client;
     private ProductContainer productContainer;
@@ -36,6 +29,14 @@ public class InvoiceModel {
 
     public void setDate(InvoiceDate date) {
         this.date = date;
+    }
+
+    public PaymentInfo getPaymentInfo() {
+        return paymentInfo;
+    }
+
+    public void setPaymentInfo(PaymentInfo paymentInfo) {
+        this.paymentInfo = paymentInfo;
     }
 
     public Company getCompany() {
@@ -67,6 +68,7 @@ public class InvoiceModel {
         return "InvoiceModel{" +
                 "reference=" + reference +
                 ", date=" + date +
+                ", paymentInfo=" + paymentInfo +
                 ", company=" + company +
                 ", client=" + client +
                 ", productContainer=" + productContainer +
@@ -80,6 +82,7 @@ public class InvoiceModel {
             InvoiceModel model = new InvoiceModel();
             model.setReference(new InvoiceNumber.Generator().generate(ctx));
             model.setDate(new InvoiceDate.Generator().generate(ctx));
+            model.setPaymentInfo(new PaymentInfo.Generator().generate(ctx));
             model.setCompany(new Company.Generator().generate(ctx));
             model.setClient(new Client.Generator().generate(ctx));
             model.setProductContainer(new ProductContainer.Generator().generate(ctx));

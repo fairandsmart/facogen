@@ -18,22 +18,23 @@ public class GenerationContext {
     }
     {
         languages.add("fr");
-        //languages.add("en");
+        languages.add("en");
     }
     {
         currencies.add("EUR");
         currencies.add("€");
         currencies.add("USD");
         currencies.add("$");
-        currencies.add("Rs.");
-        currencies.add("¥");
-        currencies.add("Yuan");
+        //currencies.add("Rs.");
+        //currencies.add("¥");
+        //currencies.add("Yuan");
     }
 
     private String country;
     private String language;
     private String brandName;
     private String currency;
+    private long date;
 
     public GenerationContext() {
         brandName = ".*";
@@ -73,6 +74,14 @@ public class GenerationContext {
 
     public Random getRandom() {
         return rnd;
+    }
+
+    public long getDate() {
+        return date;
+    }
+
+    public void setDate(long date) {
+        this.date = date;
     }
 
     public static GenerationContext generate() {

@@ -38,7 +38,7 @@ public class InvoiceGenerator {
         OutputStream xmlos = Files.newOutputStream(xml);
         XMLStreamWriter xmlout = XMLOutputFactory.newInstance().createXMLStreamWriter(new OutputStreamWriter(xmlos, "utf-8"));
         xmlout.writeStartDocument();
-        xmlout.writeStartElement("", "GEID", "http://lamp.cfar.umd.edu/media/projects/GEDI/");
+        xmlout.writeStartElement("", "GEDI", "http://lamp.cfar.umd.edu/media/projects/GEDI/");
         xmlout.writeAttribute("GEDI_version", "2.4");
         xmlout.writeAttribute("GEDI_date", "07/29/2013");
         xmlout.writeStartElement("USER");

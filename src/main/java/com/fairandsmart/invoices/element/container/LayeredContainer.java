@@ -9,15 +9,15 @@ import java.util.Map;
 import java.util.TreeMap;
 import java.util.logging.Logger;
 
-public class LayeredElementContainer extends ElementBox {
+public class LayeredContainer extends ElementBox {
 
-    private static final Logger LOGGER = Logger.getLogger(LayeredElementContainer.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(LayeredContainer.class.getName());
 
     private Map<Integer, ElementBox> elements;
     private BoundingBox box;
 
     //TODO manage aligment and padding
-    public LayeredElementContainer(float posX, float posY, float width, float height) {
+    public LayeredContainer(float posX, float posY, float width, float height) {
         this.elements = new TreeMap<>();
         this.box = new BoundingBox(posX, posY, width, height);
     }

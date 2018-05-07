@@ -22,6 +22,11 @@ public class ProductContainer {
     private float totalWithoutTax;
     private String currency;
 
+    //Added
+    private float totalEcoParticipation;
+    private float totalDiscount;
+    private float totalDeliveryCost;
+
     public ProductContainer(String currency) {
         this.setCurrency(currency);
     }
@@ -138,6 +143,7 @@ public class ProductContainer {
                 Product electibleProduct = products.get(ctx.getRandom().nextInt(products.size()));
                 electibleProduct.setQuantity(ctx.getRandom().nextInt(maxQuantity -1) +1);
                 electibleProduct.setCurrency(ctx.getCurrency());
+
                 productContainer.addProduct(electibleProduct);
             }
             return productContainer;

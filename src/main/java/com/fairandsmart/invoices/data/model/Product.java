@@ -14,10 +14,14 @@ public class Product {
     private float priceWithoutTax;
     private int quantity;
     private float taxRate;
-    private float totalPriceWithTax;
-    private float totalPriceWithoutTax;
-    private float totalTax;
     private String currency;
+
+    //Added
+    private float discount;
+    private float ecoParticipationWithoutTax;
+    private int taxReference;
+    private String deliveryType;
+
 
     public String getDescription() {
         return description;
@@ -138,6 +142,30 @@ public class Product {
         return String.format("%.2f", this.getTotalTax()) + " " + currency;
     }
 
+    public float getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(float discount) {
+        this.discount = discount;
+    }
+
+    public float getEcoParticipationWithoutTax() {
+        return ecoParticipationWithoutTax;
+    }
+
+    public void setEcoParticipationWithoutTax(float ecoParticipationWithoutTax) {
+        this.ecoParticipationWithoutTax = ecoParticipationWithoutTax;
+    }
+
+    public int getTaxReference() {
+        return taxReference;
+    }
+
+    public void setTaxReference(int taxReference) {
+        this.taxReference = taxReference;
+    }
+
     @Override
     public String toString() {
         return "Product{" +
@@ -151,9 +179,13 @@ public class Product {
                 ", priceWithoutTax=" + priceWithoutTax +
                 ", quantity=" + quantity +
                 ", taxRate=" + taxRate +
+                ", currency='" + currency + '\'' +
+                ", discount=" + discount +
+                ", ecoParticipationWithoutTax=" + ecoParticipationWithoutTax +
+                ", taxReference=" + taxReference +
+                ", deliveryType='" + deliveryType + '\'' +
                 '}';
     }
-
 
     /*
       "price": "479.0",

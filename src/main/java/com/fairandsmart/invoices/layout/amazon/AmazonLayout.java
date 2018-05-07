@@ -3,7 +3,7 @@ package com.fairandsmart.invoices.layout.amazon;
 import com.fairandsmart.invoices.data.model.InvoiceModel;
 import com.fairandsmart.invoices.data.model.Product;
 import com.fairandsmart.invoices.element.border.BorderBox;
-import com.fairandsmart.invoices.element.container.VerticalElementContainer;
+import com.fairandsmart.invoices.element.container.VerticalContainer;
 import com.fairandsmart.invoices.element.image.ImageBox;
 import com.fairandsmart.invoices.element.table.TableRowBox;
 import com.fairandsmart.invoices.element.line.HorizontalLineBox;
@@ -41,7 +41,7 @@ public class AmazonLayout implements InvoiceLayout {
         new ImageBox(pdBarcode, page.getMediaBox().getWidth() / 2, 710, pdBarcode.getWidth() / 2, pdBarcode.getHeight() / 2, "DMmZXznqN /-1 of 1 -// std-in-remote").build(contentStream, writer);
 
         //Text top
-        VerticalElementContainer infos = new VerticalElementContainer(25, 810, 500 );
+        VerticalContainer infos = new VerticalContainer(25, 810, 500 );
         infos.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, "Page 1 of 1, 1-1/1"));
         infos.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, "Invoice for "+model.getReference().getValue()+" "+model.getDate().getValue()));
         infos.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 10, 0, 0, "Retail / TaxInvoice / Cash Memorandum"));
@@ -60,7 +60,7 @@ public class AmazonLayout implements InvoiceLayout {
         contentStream.lineTo( page.getMediaBox().getWidth()-(20*2), 650);
         contentStream.stroke();
 
-        VerticalElementContainer verticalAddressContainer = new VerticalElementContainer(25, 630, 250 );
+        VerticalContainer verticalAddressContainer = new VerticalContainer(25, 630, 250 );
 
         verticalAddressContainer.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 9, 0, 0, "Billing Address"));
         verticalAddressContainer.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 2, 5));
@@ -70,7 +70,7 @@ public class AmazonLayout implements InvoiceLayout {
 
         verticalAddressContainer.build(contentStream, writer);
 
-        VerticalElementContainer verticalAddressContainer2 = new VerticalElementContainer(page.getMediaBox().getWidth()/2, 630, 250 );
+        VerticalContainer verticalAddressContainer2 = new VerticalContainer(page.getMediaBox().getWidth()/2, 630, 250 );
 
         verticalAddressContainer2.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 9, 0, 0, "Shipping Address"));
         verticalAddressContainer2.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 2, 5));
@@ -94,7 +94,7 @@ public class AmazonLayout implements InvoiceLayout {
         firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "TAX RATE"));
         firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "TAX AMOUNT"));
 
-        VerticalElementContainer verticalInvoiceItems = new VerticalElementContainer(25, 520, 500 );
+        VerticalContainer verticalInvoiceItems = new VerticalContainer(25, 520, 500 );
         verticalInvoiceItems.addElement(firstLine);
         verticalInvoiceItems.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 2, 5));
         verticalInvoiceItems.addElement(new HorizontalLineBox(0,0, page.getMediaBox().getWidth()-(20*2), 0));
@@ -234,7 +234,7 @@ public class AmazonLayout implements InvoiceLayout {
 
         */
 
-        VerticalElementContainer verticalFooterContainer = new VerticalElementContainer(25, 100, 450 );
+        VerticalContainer verticalFooterContainer = new VerticalContainer(25, 100, 450 );
 
         verticalFooterContainer.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 9, 0, 0, "To return an item, visit http://www.amazon.in/returns"));
         verticalFooterContainer.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 9, 0, 0, "For more information on your orders, visit http://"));

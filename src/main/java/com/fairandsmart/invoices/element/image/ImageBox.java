@@ -44,7 +44,7 @@ public class ImageBox extends ElementBox {
 
     @Override
     public void translate(float offsetX, float offsetY) {
-        this.getBoundingBox().translate(offsetX, offsetY);
+        box.translate(offsetX, offsetY);
     }
 
     @Override

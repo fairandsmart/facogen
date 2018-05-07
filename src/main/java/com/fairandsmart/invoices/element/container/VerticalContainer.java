@@ -2,22 +2,27 @@ package com.fairandsmart.invoices.element.container;
 
 import com.fairandsmart.invoices.element.BoundingBox;
 import com.fairandsmart.invoices.element.ElementBox;
+import com.fairandsmart.invoices.element.Padding;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 
 import javax.xml.stream.XMLStreamWriter;
+import java.awt.*;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class VerticalElementContainer extends ElementBox {
+public class VerticalContainer extends ElementBox {
 
-    private static final Logger LOGGER = Logger.getLogger(VerticalElementContainer.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(VerticalContainer.class.getName());
 
     private List<ElementBox> elements;
     private BoundingBox box;
+    private Color backgroundColor;
     private float maxWidth;
 
-    public VerticalElementContainer(float posX, float posY, float maxWidth) {
+    public VerticalContainer(float posX, float posY, float maxWidth) {
         this.elements = new ArrayList<>();
         this.maxWidth = maxWidth;
         this.box = new BoundingBox(posX, posY, 0, 0);
@@ -33,8 +38,12 @@ public class VerticalElementContainer extends ElementBox {
         }
         element.getBoundingBox().setPosX(0);
         element.getBoundingBox().setPosY(0);
-        element.translate(box.getPosX(), box.getPosY() - this.box.getHeight() - element.getBoundingBox().getHeight());
+        element.translate(box.getPosX(), box.getPosY() - this.box.getHeight());
         this.box.setHeight(this.box.getHeight() + element.getBoundingBox().getHeight());
+    }
+
+    public void setBackgroundColor(Color color) {
+        this.backgroundColor = color;
     }
 
     @Override
@@ -50,7 +59,8 @@ public class VerticalElementContainer extends ElementBox {
             element.setWidth(width);
             element.getBoundingBox().setPosX(0);
             element.getBoundingBox().setPosY(0);
-            element.translate(box.getPosX(), box.getPosY() - this.box.getHeight() - element.getBoundingBox().getHeight());
+            float offsetY = this.box.getHeight();
+            element.translate(box.getPosX(), box.getPosY() - offsetY);
             this.box.setHeight(this.box.getHeight() + element.getBoundingBox().getHeight());
         }
     }
@@ -70,6 +80,12 @@ public class VerticalElementContainer extends ElementBox {
 
     @Override
     public void build(PDPageContentStream stream, XMLStreamWriter writer) throws Exception {
+        if ( backgroundColor != null ) {
+            stream.setNonStrokingColor(backgroundColor);
+            stream.addRect(box.getPosX(), box.getPosY()-box.getHeight(), box.getWidth(), box.getHeight());
+            stream.fill();
+        }
+
         for ( ElementBox element : elements ) {
             element.build(stream, writer);
         }

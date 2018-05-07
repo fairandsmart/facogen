@@ -16,6 +16,10 @@ public class Client {
     private String shippingName;
     private Address shippingAddress;
 
+    //Added
+    private String clientNumber;
+    private String clientReference;
+
     public Client(String billingName, Address billingAddress, String shippingName, Address shippingAddress) {
         this.billingName = billingName;
         this.billingAddress = billingAddress;
