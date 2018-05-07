@@ -29,6 +29,7 @@ public class SimpleTextBox extends ElementBox {
     private float overline;
     private String text;
     private List<String> lines;
+    private String entityName;
 
     public SimpleTextBox(PDFont font, float fontSize, float posX, float posY, String text) throws Exception {
         this.padding = new Padding();
@@ -42,6 +43,14 @@ public class SimpleTextBox extends ElementBox {
         this.lineHeight = overline - underline;
         this.box = new BoundingBox(posX, posY, fontSize * font.getStringWidth(text) / 1000, lineHeight);
         this.textColor = Color.BLACK;
+    }
+
+    public String getEntityName() {
+        return entityName;
+    }
+
+    public void setEntityName(String entityName) {
+        this.entityName = entityName;
     }
 
     @Override
@@ -126,12 +135,15 @@ public class SimpleTextBox extends ElementBox {
                     //TODO we need to count the number of spaces between word to include the good posX in the offset
                     float wordWidth = fontSize * font.getStringWidth(word) / 1000;
                     BoundingBox wordBox = new BoundingBox(box.getPosX() + offsetX, box.getPosY() + offsetY, wordWidth, lineHeight);
-                    wordIds.add(writeXMLZone(writer, "word", word, wordBox));
+                    wordIds.add(writeXMLZone(writer, "ocr_word", word, wordBox));
                     offsetX = offsetX + wordWidth + (fontSize * font.getSpaceWidth() / 1000);
                 }
-                //float lineWidth = fontSize * font.getStringWidth(lines.get(i)) / 1000;
-                //BoundingBox lineBox = new BoundingBox(box.getPosX(), box.getPosY() + offsetY, lineWidth, lineHeight);
-                //writeXMLZone(writer, "line", this.lines.get(i), lineBox, wordIds);
+                if ( entityName != null && entityName.length() > 0 ) {
+                    offsetX = padding.getLeft();
+                    float lineWidth = fontSize * font.getStringWidth(lines.get(i)) / 1000;
+                    BoundingBox entityBox = new BoundingBox(box.getPosX() + offsetX, box.getPosY() + offsetY, lineWidth, lineHeight);
+                    writeXMLZone(writer, entityName, this.lines.get(i), entityBox, wordIds);
+                }
             }
             offsetY = offsetY - lineHeight;
         }

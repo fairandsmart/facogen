@@ -40,7 +40,7 @@ public abstract class ElementBox {
         //String id = type + "_" + nextElementId();
         String id = "" + nextElementId();
         writer.writeStartElement("DL_ZONE");
-        writer.writeAttribute("gedi_type", "ocr_" + type);
+        writer.writeAttribute("gedi_type", type);
         writer.writeAttribute("id", id);
         writer.writeAttribute("col", "" + (int) tbox.getPosX());
         writer.writeAttribute("row", "" + (int) tbox.getPosY());

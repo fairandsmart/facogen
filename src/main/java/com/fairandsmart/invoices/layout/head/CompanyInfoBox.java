@@ -41,6 +41,7 @@ public class CompanyInfoBox extends ElementBox {
         container.addElement(logoBox);
 
         SimpleTextBox name = new SimpleTextBox(fontBold, fontSize, 0,0, model.getCompany().getName());
+
         container.addElement(name);
         SimpleTextBox adresse1 = new SimpleTextBox(font, fontSize, 0,0, model.getCompany().getAddress().getLine1());
         container.addElement(adresse1);
