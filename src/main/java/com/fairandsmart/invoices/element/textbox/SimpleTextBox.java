@@ -32,6 +32,10 @@ public class SimpleTextBox extends ElementBox {
     private String entityName;
 
     public SimpleTextBox(PDFont font, float fontSize, float posX, float posY, String text) throws Exception {
+        this(font, fontSize, posX, posY, text, Color.BLACK, null);
+    }
+
+    public SimpleTextBox(PDFont font, float fontSize, float posX, float posY, String text, Color textColor, Color backgroundColor) throws Exception {
         this.padding = new Padding();
         this.font = font;
         this.fontSize = fontSize;
@@ -42,7 +46,8 @@ public class SimpleTextBox extends ElementBox {
         this.overline = font.getFontDescriptor().getFontBoundingBox().getUpperRightY() / 1000 * fontSize;
         this.lineHeight = overline - underline;
         this.box = new BoundingBox(posX, posY, fontSize * font.getStringWidth(text) / 1000, lineHeight);
-        this.textColor = Color.BLACK;
+        this.textColor = textColor;
+        this.backgroundColor = backgroundColor;
     }
 
     public String getEntityName() {

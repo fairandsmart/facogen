@@ -6,6 +6,7 @@ import com.fairandsmart.invoices.element.container.VerticalContainer;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 
 import javax.xml.stream.XMLStreamWriter;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
@@ -15,6 +16,7 @@ public class TableRowBox extends ElementBox {
     private static final Logger LOGGER = Logger.getLogger(VerticalContainer.class.getName());
 
     private float[] config;
+    private Color backgroundColor;
     private BoundingBox box;
     private List<ElementBox> elements;
 
@@ -42,6 +44,10 @@ public class TableRowBox extends ElementBox {
         }
     }
 
+    public void setBackgroundColor(Color color) {
+        this.backgroundColor = color;
+    }
+
     @Override
     public BoundingBox getBoundingBox() {
         return box;
@@ -67,12 +73,16 @@ public class TableRowBox extends ElementBox {
     }
 
     public void build(PDPageContentStream stream, XMLStreamWriter writer) throws Exception {
+        if ( backgroundColor != null ) {
+            stream.setNonStrokingColor(backgroundColor);
+            stream.addRect(box.getPosX(), box.getPosY() - box.getHeight(), box.getWidth(), box.getHeight());
+            stream.fill();
+        }
+
         for(ElementBox element : this.elements) {
-
-            if(element.getBoundingBox().getHeight() < this.getBoundingBox().getHeight()) {
-                element.translate(0,  this.getBoundingBox().getHeight() - element.getBoundingBox().getHeight());
-            }
-
+            //if(element.getBoundingBox().getHeight() < this.getBoundingBox().getHeight()) {
+            //    element.translate(0,  this.getBoundingBox().getHeight() - element.getBoundingBox().getHeight());
+            //}
             element.build(stream, writer);
         }
     }

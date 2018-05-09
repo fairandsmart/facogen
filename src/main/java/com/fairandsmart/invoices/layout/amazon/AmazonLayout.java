@@ -38,7 +38,7 @@ public class AmazonLayout implements InvoiceLayout {
         //Barcode top
         String barcode = this.getClass().getClassLoader().getResource("parts/amazon/barcode1.jpg").getFile();
         PDImageXObject pdBarcode = PDImageXObject.createFromFile(barcode, document);
-        new ImageBox(pdBarcode, page.getMediaBox().getWidth() / 2, 710, pdBarcode.getWidth() / 2, pdBarcode.getHeight() / 2, "DMmZXznqN /-1 of 1 -// std-in-remote").build(contentStream, writer);
+        new ImageBox(pdBarcode, page.getMediaBox().getWidth() / 2, 810, pdBarcode.getWidth() / 2, pdBarcode.getHeight() / 2, "DMmZXznqN /-1 of 1 -// std-in-remote").build(contentStream, writer);
 
         //Text top
         VerticalContainer infos = new VerticalContainer(25, 810, 500 );
@@ -85,14 +85,15 @@ public class AmazonLayout implements InvoiceLayout {
 
         float[] configRow = {20f, 120f, 60f, 60f, 60f, 60f, 60f, 60f};
         TableRowBox firstLine = new TableRowBox(configRow, 0, 0);
-        firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "QTY"));
-        firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "DESCRIPTION"));
-        firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "UNIT PRICE"));
-        firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "DISCOUNT"));
-        firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "TOTAL WITHOUT TAX"));
-        firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "TAX TYPE"));
-        firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "TAX RATE"));
-        firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "TAX AMOUNT"));
+        firstLine.setBackgroundColor(Color.YELLOW);
+        firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "QTY", Color.BLACK, Color.GRAY));
+        firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "DESCRIPTION", Color.BLACK, Color.GRAY));
+        firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "UNIT PRICE", Color.BLACK, Color.GRAY));
+        firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "DISCOUNT", Color.BLACK, Color.GRAY));
+        firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "TOTAL WITHOUT TAX", Color.BLACK, Color.GRAY));
+        firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "TAX TYPE", Color.BLACK, Color.GRAY));
+        firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "TAX RATE", Color.BLACK, Color.GRAY));
+        firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "TAX AMOUNT", Color.BLACK, Color.GRAY));
 
         VerticalContainer verticalInvoiceItems = new VerticalContainer(25, 520, 500 );
         verticalInvoiceItems.addElement(firstLine);
