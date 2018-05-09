@@ -11,8 +11,18 @@ import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 
 import javax.xml.stream.XMLStreamWriter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class GenericLayout implements InvoiceLayout {
+
+    private static final List<PDFont[]> FONTS = new ArrayList<>();
+    {
+        FONTS.add(new PDFont[] {PDType1Font.HELVETICA, PDType1Font.HELVETICA_BOLD, PDType1Font.HELVETICA_OBLIQUE} );
+        FONTS.add(new PDFont[] {PDType1Font.COURIER, PDType1Font.COURIER_BOLD, PDType1Font.COURIER_OBLIQUE} );
+        FONTS.add(new PDFont[] {PDType1Font.TIMES_ROMAN, PDType1Font.TIMES_BOLD, PDType1Font.TIMES_ITALIC} );
+    }
 
     @Override
     public void builtInvoice(InvoiceModel model, PDDocument document, XMLStreamWriter writer) throws Exception {
@@ -24,14 +34,14 @@ public class GenericLayout implements InvoiceLayout {
         writer.writeAttribute("width", "2480");
         writer.writeAttribute("height", "3508");
 
-        PDFont font = PDType1Font.HELVETICA;
-        PDFont fontBold = PDType1Font.HELVETICA_BOLD;
-        PDFont fontItalic = PDType1Font.HELVETICA_OBLIQUE;
+        Random random = new Random();
+        PDFont[] fonts = FONTS.get(random.nextInt(FONTS.size()));
+
         PDPageContentStream contentStream = new PDPageContentStream(document, page);
 
-        CompanyInfoBox companyInfoBox = new CompanyInfoBox(font, fontBold, 11, model, document);
+        CompanyInfoBox companyInfoBox = new CompanyInfoBox(fonts[0], fonts[1], 11, model, document);
         companyInfoBox.build(contentStream, writer);
-        companyInfoBox.translate(25, 800);
+        companyInfoBox.translate(25, 820);
         companyInfoBox.build(contentStream, writer);
 
         contentStream.close();

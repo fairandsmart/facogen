@@ -6,10 +6,12 @@ import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 
 import javax.xml.stream.XMLStreamWriter;
+import java.awt.*;
 
 public class ImageBox extends ElementBox {
 
     private PDImageXObject image;
+    private Color backgroundColor;
     private String text;
     private BoundingBox box;
 
@@ -21,6 +23,10 @@ public class ImageBox extends ElementBox {
         this.image = image;
         this.text = text;
         this.box = new BoundingBox(posX, posY, width, height);
+    }
+
+    public void setBackgroundColor(Color color) {
+        this.backgroundColor = color;
     }
 
     @Override
@@ -49,7 +55,13 @@ public class ImageBox extends ElementBox {
 
     @Override
     public void build(PDPageContentStream stream, XMLStreamWriter writer) throws Exception {
-        stream.drawImage(image, box.getPosX(), box.getPosY(), box.getWidth(), box.getHeight());
+        if ( backgroundColor != null ) {
+            stream.setNonStrokingColor(backgroundColor);
+            stream.addRect(box.getPosX(), box.getPosY() - box.getHeight(), box.getWidth(), box.getHeight());
+            stream.fill();
+        }
+
+        stream.drawImage(image, box.getPosX(), box.getPosY() - box.getHeight(), box.getWidth(), box.getHeight());
         this.writeXMLZone(writer, "ocr_carea", text, box);
     }
 

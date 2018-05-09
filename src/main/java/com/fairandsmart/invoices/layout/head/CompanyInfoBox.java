@@ -13,6 +13,7 @@ import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 
 import javax.xml.stream.XMLStreamWriter;
+import java.awt.*;
 
 public class CompanyInfoBox extends ElementBox {
 
@@ -38,32 +39,39 @@ public class CompanyInfoBox extends ElementBox {
         PDImageXObject logo = PDImageXObject.createFromFile(logoFile, document);
         ImageBox logoBox = new ImageBox(logo,  0,0, "logo");
         logoBox.setHeight(40);
+        logoBox.setBackgroundColor(Color.GRAY);
         container.addElement(logoBox);
 
         SimpleTextBox name = new SimpleTextBox(fontBold, fontSize, 0,0, model.getCompany().getName());
-
+        name.setEntityName("SN");
         container.addElement(name);
         SimpleTextBox adresse1 = new SimpleTextBox(font, fontSize, 0,0, model.getCompany().getAddress().getLine1());
+        adresse1.setEntityName("SA");
         container.addElement(adresse1);
         if ( model.getCompany().getAddress().getLine2() != null &&  model.getCompany().getAddress().getLine2().length() > 0 ) {
             SimpleTextBox adresse2 = new SimpleTextBox(font, fontSize, 0, 0, model.getCompany().getAddress().getLine2());
+            adresse2.setEntityName("SA");
             container.addElement(adresse2);
         }
         if ( model.getCompany().getAddress().getLine3() != null &&  model.getCompany().getAddress().getLine3().length() > 0 ) {
             SimpleTextBox adresse3 = new SimpleTextBox(font, fontSize, 0, 0, model.getCompany().getAddress().getLine3());
+            adresse3.setEntityName("SA");
             container.addElement(adresse3);
         }
 
         HorizontalContainer cityContainer = new HorizontalContainer(0,0);
         SimpleTextBox zip = new SimpleTextBox(font, fontSize, 0, 0, model.getCompany().getAddress().getZip());
         zip.setPadding(0, 0, 5, 0);
+        zip.setEntityName("SA");
         cityContainer.addElement(zip);
         SimpleTextBox city = new SimpleTextBox(font, fontSize, 0, 0, model.getCompany().getAddress().getCity());
+        city.setEntityName("SA");
         cityContainer.addElement(city);
         container.addElement(cityContainer);
 
         if ( model.getCompany().getAddress().getCountry() != null &&  model.getCompany().getAddress().getCountry().length() > 0 ) {
             SimpleTextBox country = new SimpleTextBox(font, fontSize, 0, 0, model.getCompany().getAddress().getCountry());
+            country.setEntityName("SA");
             container.addElement(country);
         }
 
@@ -74,6 +82,7 @@ public class CompanyInfoBox extends ElementBox {
             phoneContainer.addElement(phoneLabel);
             SimpleTextBox phoneValue = new SimpleTextBox(font, fontSize, 0, 0, model.getCompany().getPhone().getValue());
             phoneValue.setPadding(5, 0, 0, 0);
+            phoneValue.setEntityName("SCN");
             phoneContainer.addElement(phoneValue);
             container.addElement(phoneContainer);
         }
@@ -85,11 +94,34 @@ public class CompanyInfoBox extends ElementBox {
             faxContainer.addElement(faxLabel);
             SimpleTextBox faxValue = new SimpleTextBox(font, fontSize, 0, 0, model.getCompany().getFax().getValue());
             faxValue.setPadding(5, 0, 0, 0);
+            faxValue.setEntityName("SFAX");
             faxContainer.addElement(faxValue);
             container.addElement(faxContainer);
         }
 
+        if ( model.getCompany().getEmail() != null && model.getCompany().getEmail().length() > 0 ) {
+            HorizontalContainer emailContainer = new HorizontalContainer(0,0);
+            SimpleTextBox emailLabel = new SimpleTextBox(font, fontSize, 0, 0, "Email");
+            emailLabel.setPadding(0, 0, 10, 0);
+            emailContainer.addElement(emailLabel);
+            SimpleTextBox emailValue = new SimpleTextBox(font, fontSize, 0, 0, model.getCompany().getEmail());
+            emailValue.setPadding(5, 0, 0, 0);
+            emailValue.setEntityName("SEMAIL");
+            emailContainer.addElement(emailValue);
+            container.addElement(emailContainer);
+        }
 
+        if ( model.getCompany().getWebsite() != null && model.getCompany().getWebsite().length() > 0 ) {
+            HorizontalContainer websiteContainer = new HorizontalContainer(0,0);
+            SimpleTextBox websiteLabel = new SimpleTextBox(font, fontSize, 0, 0, "Email");
+            websiteLabel.setPadding(0, 0, 10, 0);
+            websiteContainer.addElement(websiteLabel);
+            SimpleTextBox websiteValue = new SimpleTextBox(font, fontSize, 0, 0, model.getCompany().getWebsite());
+            websiteValue.setPadding(5, 0, 0, 0);
+            websiteValue.setEntityName("SWEB");
+            websiteContainer.addElement(websiteValue);
+            container.addElement(websiteContainer);
+        }
 
     }
 
@@ -115,10 +147,6 @@ public class CompanyInfoBox extends ElementBox {
 
     @Override
     public void build(PDPageContentStream stream, XMLStreamWriter writer) throws Exception {
-
         container.build(stream, writer);
-
-        //TODO create a dedicated XML element for this container according to Devashish needs
-
     }
 }
