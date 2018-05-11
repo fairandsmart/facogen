@@ -3,6 +3,7 @@ package com.fairandsmart.invoices.layout.generic;
 import com.fairandsmart.invoices.data.model.InvoiceModel;
 import com.fairandsmart.invoices.layout.InvoiceLayout;
 import com.fairandsmart.invoices.layout.head.CompanyInfoBox;
+import com.fairandsmart.invoices.layout.head.HeadBox;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
@@ -39,10 +40,12 @@ public class GenericLayout implements InvoiceLayout {
 
         PDPageContentStream contentStream = new PDPageContentStream(document, page);
 
-        CompanyInfoBox companyInfoBox = new CompanyInfoBox(fonts[0], fonts[1], 11, model, document);
-        companyInfoBox.build(contentStream, writer);
-        companyInfoBox.translate(25, 820);
-        companyInfoBox.build(contentStream, writer);
+        HeadBox headBox = new HeadBox(fonts[0], fonts[1], fonts[2], 11, model, document);
+        headBox.translate(25,820);
+        //CompanyInfoBox companyInfoBox = new CompanyInfoBox(fonts[0], fonts[1], 11, model, document);
+        //companyInfoBox.translate(25, 820);
+        //companyInfoBox.build(contentStream, writer);
+        headBox.build(contentStream, writer);
 
         contentStream.close();
     }

@@ -132,7 +132,7 @@ public class CompanyInfoBox extends ElementBox {
 
     @Override
     public void setWidth(float width) throws Exception {
-        throw new Exception("Not allowed");
+        container.getBoundingBox().setWidth(width);
     }
 
     @Override
