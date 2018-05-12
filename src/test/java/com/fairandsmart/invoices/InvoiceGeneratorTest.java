@@ -22,7 +22,7 @@ public class InvoiceGeneratorTest {
             Files.createDirectory(generated);
         }
 
-        for ( int i=165; i<200; i++) {
+        for ( int i=0; i<40; i++) {
             //String ts = "" + System.currentTimeMillis();
             Path pdf = Paths.get("target/generated/basic-"+ i + ".pdf");
             Path xml = Paths.get("target/generated/basic-"+ i + ".xml");
