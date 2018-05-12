@@ -7,6 +7,7 @@ public class InvoiceModel {
 
     private InvoiceNumber reference;
     private InvoiceDate date;
+    private String lang;
     private PaymentInfo paymentInfo;
     private Company company;
     private Client client;
@@ -29,6 +30,14 @@ public class InvoiceModel {
 
     public void setDate(InvoiceDate date) {
         this.date = date;
+    }
+
+    public String getLang() {
+        return lang;
+    }
+
+    public void setLang(String lang) {
+        this.lang = lang;
     }
 
     public PaymentInfo getPaymentInfo() {
@@ -68,6 +77,7 @@ public class InvoiceModel {
         return "InvoiceModel{" +
                 "reference=" + reference +
                 ", date=" + date +
+                ", lang=" + lang +
                 ", paymentInfo=" + paymentInfo +
                 ", company=" + company +
                 ", client=" + client +
@@ -82,6 +92,7 @@ public class InvoiceModel {
             InvoiceModel model = new InvoiceModel();
             model.setReference(new InvoiceNumber.Generator().generate(ctx));
             model.setDate(new InvoiceDate.Generator().generate(ctx));
+            model.setLang(ctx.getLanguage());
             model.setPaymentInfo(new PaymentInfo.Generator().generate(ctx));
             model.setCompany(new Company.Generator().generate(ctx));
             model.setClient(new Client.Generator().generate(ctx));
