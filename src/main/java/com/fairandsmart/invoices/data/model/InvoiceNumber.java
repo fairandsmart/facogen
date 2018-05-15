@@ -77,7 +77,7 @@ public class InvoiceNumber {
             formatsInvoice.add("[4-9][0-9]{9}");
             formatsInvoice.add("FV201[0-7]00[0-9]{6}");
             formatsInvoice.add("00[0-9]{5}");
-            formatsInvoice.add("#FA00[0-9]{4}");
+            //formatsInvoice.add("#FA00[0-9]{4}"); Doesnot produce anything in Java
             formatsInvoice.add("FC500[0-9]{3}");
             formatsInvoice.add("INV-[0-9]{4}");
             formatsInvoice.add("[0-9]{6}-7[0-9]{5}");
@@ -90,7 +90,7 @@ public class InvoiceNumber {
             formatsCommand.add("[4-9][0-9]{9}");
             formatsCommand.add("CD201[0-7]00[0-9]{6}");
             formatsCommand.add("99[0-9]{5}");
-            formatsCommand.add("#CO00[0-9]{4}");
+           // formatsCommand.add("#CO00[0-9]{4}");
             formatsCommand.add("CM500[0-9]{3}");
             formatsCommand.add("COM-[0-9]{4}");
             formatsCommand.add("[0-9]{6}-7[0-9]{5}");
