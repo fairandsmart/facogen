@@ -70,17 +70,17 @@ public class InvoiceNumber {
         private static final Map<String, String> labelsInvoice = new HashMap<>();
         private static final Map<String, String> labelsCommand = new HashMap<>();
         {
-            formatsInvoice.add("[A-D][H-N]-[A-Z]{4}-[0-9]{9}-[0-9]{2}");
-            formatsInvoice.add("[0-9]{3}-[0-9]{7}-1[0-9]{6}");
-            formatsInvoice.add("1[0-9]{7}");
+            formatsInvoice.add("[A-D][H-N]-[A-Z]{2}-[0-9]{6}-[0-9]{2}");
+            formatsInvoice.add("[0-9]{3}-[0-9]{5}-1[0-9]{4}");
+            formatsInvoice.add("1[0-9]{6}");
             formatsInvoice.add("[3-7][0-9]{7}");
             formatsInvoice.add("[4-9][0-9]{9}");
-            formatsInvoice.add("FV201[0-7]00[0-9]{6}");
+            formatsInvoice.add("FV201[0-7]00[0-9]{4}");
             formatsInvoice.add("00[0-9]{5}");
-            //formatsInvoice.add("#FA00[0-9]{4}"); Doesnot produce anything in Java
+            //formatsInvoice.add("#FA00[0-9]{4}"); Does not produce anything in Java, cause of no facture number error
             formatsInvoice.add("FC500[0-9]{3}");
             formatsInvoice.add("INV-[0-9]{4}");
-            formatsInvoice.add("[0-9]{6}-7[0-9]{5}");
+            formatsInvoice.add("[0-9]{4}-7[0-9]{5}");
         }
         {
             formatsCommand.add("[A-D][H-N]-[A-Z]{4}-[0-9]{9}-[0-9]{2}");
@@ -98,6 +98,7 @@ public class InvoiceNumber {
         {
             labelsInvoice.put("Invoice Number", "en");
             labelsInvoice.put("Invoice ID", "en");
+            labelsInvoice.put("Invoice Reference", "en");
             labelsInvoice.put("Numéro de facture", "fr");
             labelsInvoice.put("N° facture", "fr");
             labelsInvoice.put("N°", "fr");
@@ -106,6 +107,7 @@ public class InvoiceNumber {
             labelsInvoice.put("Facture n°", "fr");
             labelsInvoice.put("Facture-n°", "fr");
             labelsInvoice.put("FACTURE No", "fr");
+            labelsInvoice.put("Référence de la facture", "fr");
         }
         {
             labelsCommand.put("Command Number", "en");

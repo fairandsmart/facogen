@@ -127,9 +127,11 @@ public class InvoiceDate {
             formats.put(new SimpleDateFormat("d MMM YYYY"), "fr");
         }
         {
-            labels.put("Invoice date", "en");
+            labels.put("Invoice Date", "en");
+            labels.put("Date", "en");
             labels.put("Du", "fr");
             labels.put("Date", "fr");
+            labels.put("Date de la facture", "fr");
         }
         {
             labelsCommand.put("Command date", "en");
