@@ -51,9 +51,9 @@ public class AmazonLayout implements InvoiceLayout {
         new SimpleTextBox(PDType1Font.HELVETICA, 9, 25, 750, model.getCompany().getLogo().getName()).build(contentStream, writer);
         new SimpleTextBox(PDType1Font.HELVETICA, 9, 25, 740, model.getCompany().getAddress().getLine1() ).build(contentStream, writer);
         new SimpleTextBox(PDType1Font.HELVETICA, 9, 25, 730,model.getCompany().getAddress().getZip()+" "+model.getCompany().getAddress().getCity()).build(contentStream, writer);
-        String vatSentence = model.getCompany().getVatNumber().getLabel()+" "+model.getCompany().getVatNumber().getValue();
+        String vatSentence = model.getCompany().getIdNumbers().getVatLabel()+" "+model.getCompany().getIdNumbers().getVatValue();
         new SimpleTextBox(PDType1Font.HELVETICA, 9, 25, 690, vatSentence).build(contentStream, writer);
-        new SimpleTextBox(PDType1Font.HELVETICA, 9, 25, 680, "CST Number: "+model.getCompany().getVatNumber().getValue()).build(contentStream, writer);
+        new SimpleTextBox(PDType1Font.HELVETICA, 9, 25, 680, "CST Number: "+model.getCompany().getIdNumbers().getVatValue()).build(contentStream, writer);
         new SimpleTextBox(PDType1Font.HELVETICA, 9, page.getMediaBox().getWidth()/2, 680, model.getReference().getValue()).build(contentStream, writer);
 
         contentStream.moveTo(20, 650);

@@ -21,7 +21,7 @@ public class Company {
     private static final Logger LOGGER = Logger.getLogger(Company.class.getName());
 
     private Logo logo;
-    private VATNumber vatNumber;
+    private IDNumbers idNumbers;
     private String name;
     private Address address;
     private FaxNumber fax;
@@ -43,12 +43,10 @@ public class Company {
         this.logo = logo;
     }
 
-    public VATNumber getVatNumber() {
-        return vatNumber;
-    }
+    public IDNumbers getIdNumbers() { return idNumbers; }
 
-    public void setVatNumber(VATNumber vatNumber) {
-        this.vatNumber = vatNumber;
+    public void setIdNumbers(IDNumbers idNumbers) {
+        this.idNumbers = idNumbers;
     }
 
     public String getName() {
@@ -127,7 +125,7 @@ public class Company {
     public String toString() {
         return "Company{" +
                 "logo=" + logo +
-                ", vatNumber=" + vatNumber +
+                ", idNumbers=" + idNumbers +
                 ", name='" + name + '\'' +
                 ", address=" + address +
                 ", fax=" + fax +
@@ -179,7 +177,7 @@ public class Company {
             List<Company> goodCompanies = companies.entrySet().stream().filter(comp -> comp.getValue().matches(ctx.getCountry())).map(comp -> comp.getKey()).collect(Collectors.toList());
             Company company = goodCompanies.get(ctx.getRandom().nextInt(goodCompanies.size()));
             company.setLogo(new Logo.Generator().generate(ctx));
-            company.setVatNumber(new VATNumber.Generator().generate(ctx));
+            company.setIdNumbers(new IDNumbers.Generator().generate(ctx));
             company.setPhone(new PhoneNumber.Generator().generate(ctx));
             company.setFax(new FaxNumber.Generator().generate(ctx));
             return company;
