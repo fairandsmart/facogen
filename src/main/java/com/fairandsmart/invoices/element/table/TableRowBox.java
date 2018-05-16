@@ -1,7 +1,6 @@
 package com.fairandsmart.invoices.element.table;
 
-import com.fairandsmart.invoices.element.BoundingBox;
-import com.fairandsmart.invoices.element.ElementBox;
+import com.fairandsmart.invoices.element.*;
 import com.fairandsmart.invoices.element.container.VerticalContainer;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 
@@ -19,8 +18,13 @@ public class TableRowBox extends ElementBox {
     private Color backgroundColor;
     private BoundingBox box;
     private List<ElementBox> elements;
+    private VAlign valign;
 
     public TableRowBox(float[] config, float posX, float posY) {
+        this(config, posX, posY, VAlign.TOP);
+    }
+
+    public TableRowBox(float[] config, float posX, float posY, VAlign valign) {
         this.config = config;
         this.elements = new ArrayList<>();
         float width = 0;
@@ -28,6 +32,7 @@ public class TableRowBox extends ElementBox {
             width += row;
         }
         box = new BoundingBox(posX, posY, width, 0);
+        this.valign = valign;
     }
 
     public void addElement(ElementBox element) throws Exception {
@@ -35,12 +40,29 @@ public class TableRowBox extends ElementBox {
             throw new Exception("Row is full, no more element allowed");
         }
         elements.add(element);
-        element.setWidth(config[elements.size()-1]);
+        element.setWidth(config[elements.size() - 1]);
         element.getBoundingBox().setPosX(0);
         element.getBoundingBox().setPosY(0);
         element.translate(box.getPosX() + this.getColumnOffsetX(elements.size()-1), box.getPosY() );
         if ( element.getBoundingBox().getHeight() > box.getHeight() ) {
             this.getBoundingBox().setHeight(element.getBoundingBox().getHeight());
+        }
+        this.realignElements();
+    }
+
+    private void realignElements() {
+        int cpt = 0;
+        for ( ElementBox element : elements ) {
+            float posY = box.getPosY();
+            switch ( valign ) {
+                case BOTTOM:
+                    posY = box.getPosY() - box.getHeight() + element.getBoundingBox().getHeight(); break;
+                case CENTER:
+                    posY = box.getPosY() - box.getHeight() + (element.getBoundingBox().getHeight()/2); break;
+            }
+            float transY = posY - element.getBoundingBox().getPosY();
+            element.translate(0, transY);
+            cpt++;
         }
     }
 
@@ -88,6 +110,7 @@ public class TableRowBox extends ElementBox {
     }
 
     private float getColumnOffsetX (int numCol) {
+        //TODO maybe the offset X could be store in a flaot[] like config...
         float posX = 0;
         for (int i=0; i<numCol; i++) {
             posX += config[i];
