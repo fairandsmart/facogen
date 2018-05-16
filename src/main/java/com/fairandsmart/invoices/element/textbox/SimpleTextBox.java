@@ -2,6 +2,7 @@ package com.fairandsmart.invoices.element.textbox;
 
 import com.fairandsmart.invoices.element.BoundingBox;
 import com.fairandsmart.invoices.element.ElementBox;
+import com.fairandsmart.invoices.element.HAlign;
 import com.fairandsmart.invoices.element.Padding;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDFont;
@@ -30,12 +31,17 @@ public class SimpleTextBox extends ElementBox {
     private String text;
     private List<String> lines;
     private String entityName;
+    private HAlign halign;
 
     public SimpleTextBox(PDFont font, float fontSize, float posX, float posY, String text) throws Exception {
         this(font, fontSize, posX, posY, text, Color.BLACK, null);
     }
 
     public SimpleTextBox(PDFont font, float fontSize, float posX, float posY, String text, Color textColor, Color backgroundColor) throws Exception {
+        this(font, fontSize, posX, posY, text, textColor, backgroundColor, HAlign.LEFT);
+    }
+
+    public SimpleTextBox(PDFont font, float fontSize, float posX, float posY, String text, Color textColor, Color backgroundColor, HAlign halign) throws Exception {
         this.padding = new Padding();
         this.font = font;
         this.fontSize = fontSize;
@@ -48,6 +54,7 @@ public class SimpleTextBox extends ElementBox {
         this.box = new BoundingBox(posX, posY, fontSize * font.getStringWidth(text) / 1000, lineHeight);
         this.textColor = textColor;
         this.backgroundColor = backgroundColor;
+        this.halign = halign;
     }
 
     public String getEntityName() {
@@ -108,6 +115,10 @@ public class SimpleTextBox extends ElementBox {
         this.textColor = color;
     }
 
+    public void setHalign(HAlign halign) {
+        this.halign = halign;
+    }
+
     @Override
     public void translate(float offsetX, float offsetY) {
         this.getBoundingBox().translate(offsetX, offsetY);
@@ -123,10 +134,21 @@ public class SimpleTextBox extends ElementBox {
         stream.beginText();
         stream.setNonStrokingColor(textColor);
         stream.setFont(font, fontSize);
-        stream.newLineAtOffset(box.getPosX() + padding.getLeft(), box.getPosY() - underline - padding.getTop() - lineHeight);
+        float lineOffsetX = 0;
+        stream.newLineAtOffset(box.getPosX(), box.getPosY() - underline - padding.getTop());
         for (int i=0; i<this.lines.size(); i++) {
+            float lineWidth = this.fontSize * this.font.getStringWidth(this.lines.get(i)) / 1000;
+            switch ( halign ) {
+                case LEFT :
+                    lineOffsetX = padding.getLeft(); break;
+                case RIGHT:
+                    lineOffsetX = box.getWidth() - lineWidth - padding.getRight(); break;
+                case CENTER:
+                    lineOffsetX = padding.getLeft() + ((box.getWidth() - lineWidth - padding.getHorizontalPadding()) / 2); break;
+            }
+            stream.newLineAtOffset(lineOffsetX, 0-lineHeight);
             stream.showText(this.lines.get(i));
-            stream.newLineAtOffset(0, 0 - lineHeight);
+            stream.newLineAtOffset(0-lineOffsetX, 0);
         }
         stream.endText();
 

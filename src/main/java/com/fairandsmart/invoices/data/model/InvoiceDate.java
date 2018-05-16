@@ -162,6 +162,9 @@ public class InvoiceDate {
             List<String> localizedLabelsExpedition = labelsExpedition.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguage())).map(Map.Entry::getKey).collect(Collectors.toList());
             List<String> localizedLabelsPayment = labelsPayment.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguage())).map(Map.Entry::getKey).collect(Collectors.toList());
             int idxL = ctx.getRandom().nextInt(localizedLabels.size());
+            int idxLC = ctx.getRandom().nextInt(localizedLabelsCommand.size());
+            int idxLE = ctx.getRandom().nextInt(localizedLabelsExpedition.size());
+            int idxLP = ctx.getRandom().nextInt(localizedLabelsPayment.size());
 
             Calendar calendar = Calendar.getInstance();
             calendar.setTimeInMillis(date);
@@ -171,9 +174,9 @@ public class InvoiceDate {
             Date commandDate = calendar.getTime();
             Date paymentDate = calendar.getTime();
             return new InvoiceDate(localizedLabels.get(idxL), localizedFormats.get(idxF).format(invoiceDate),
-                    localizedLabelsCommand.get(idxL), localizedFormats.get(idxF).format(commandDate),
-                    localizedLabelsExpedition.get(idxL), localizedFormats.get(idxF).format(expeditionDate),
-                    localizedLabelsPayment.get(idxL), localizedFormats.get(idxF).format(paymentDate));
+                    localizedLabelsCommand.get(idxLC), localizedFormats.get(idxF).format(commandDate),
+                    localizedLabelsExpedition.get(idxLE), localizedFormats.get(idxF).format(expeditionDate),
+                    localizedLabelsPayment.get(idxLP), localizedFormats.get(idxF).format(paymentDate));
         }
 
     }
