@@ -62,7 +62,8 @@ public class MACOMPLayout implements InvoiceLayout {
         PDPageContentStream contentStream = new PDPageContentStream(document, page);
 
         // Facture No. 123
-        new SimpleTextBox(fonts[1], 13, 310, 748, model.getReference().getLabel()+" : "+ model.getReference().getValue()).build(contentStream, writer);
+        new SimpleTextBox(fonts[1], fontSize, 310, 748, model.getReference().getLabel()+" : "+ model.getReference().getValue()).build(contentStream, writer);
+        new SimpleTextBox(fonts[1], fontSize, 310, 720, model.getReference().getLabelCommand()+" : "+ model.getReference().getValueCommand()).build(contentStream, writer);
 
         // Company Info Box
         CompanyInfoBox companyInfoBox = new CompanyInfoBox(fonts[2], fonts[1], fontSize, model, document);
