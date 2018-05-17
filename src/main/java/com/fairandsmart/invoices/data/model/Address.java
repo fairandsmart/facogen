@@ -111,20 +111,22 @@ public class Address {
                         String street = record.get("STREET");
                         String city = record.get("CITY");
                         String postcode = record.get("POSTCODE");
-                        Address address = new Address(number + ", " + street, "", "", postcode, city, "France");
-                        switch ( addressFile.substring(8) ) {
-                            case "france.csv" :
-                                addresses.put(address, "FR");
-                                break;
-                            case "luxembourg.csv" :
-                                addresses.put(address, "LU");
-                                break;
-                            case "belgium.csv" :
-                                addresses.put(address, "BE");
-                                break;
-                            case "germany.csv" :
-                                addresses.put(address, "DE");
-                                break;
+                        if(street != null && !street.isEmpty()) {
+                            Address address = new Address(number + ", " + street, "", "", postcode, city, "France");
+                            switch (addressFile.substring(8)) {
+                                case "france.csv":
+                                    addresses.put(address, "FR");
+                                    break;
+                                case "luxembourg.csv":
+                                    addresses.put(address, "LU");
+                                    break;
+                                case "belgium.csv":
+                                    addresses.put(address, "BE");
+                                    break;
+                                case "germany.csv":
+                                    addresses.put(address, "DE");
+                                    break;
+                            }
                         }
                     }
                 } catch (Exception e) {
