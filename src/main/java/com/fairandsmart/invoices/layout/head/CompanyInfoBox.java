@@ -75,24 +75,24 @@ public class CompanyInfoBox extends ElementBox {
             container.addElement(country);
         }
 
-        if ( model.getCompany().getPhone().getValue() != null &&  model.getCompany().getPhone().getValue().length() > 0 ) {
+        if ( model.getCompany().getContact().getphoneValue() != null &&  model.getCompany().getContact().getphoneValue().length() > 0 ) {
             HorizontalContainer phoneContainer = new HorizontalContainer(0,0);
-            SimpleTextBox phoneLabel = new SimpleTextBox(font, fontSize, 0, 0, model.getCompany().getPhone().getLabel());
+            SimpleTextBox phoneLabel = new SimpleTextBox(font, fontSize, 0, 0, model.getCompany().getContact().getphoneLabel());
             phoneLabel.setPadding(0, 0, 10, 0);
             phoneContainer.addElement(phoneLabel);
-            SimpleTextBox phoneValue = new SimpleTextBox(font, fontSize, 0, 0, model.getCompany().getPhone().getValue());
+            SimpleTextBox phoneValue = new SimpleTextBox(font, fontSize, 0, 0, model.getCompany().getContact().getphoneValue());
             phoneValue.setPadding(5, 0, 0, 0);
             phoneValue.setEntityName("SCN");
             phoneContainer.addElement(phoneValue);
             container.addElement(phoneContainer);
         }
 
-        if ( model.getCompany().getFax().getValue() != null &&  model.getCompany().getFax().getValue().length() > 0 ) {
+        if ( model.getCompany().getContact().getfaxValue() != null &&  model.getCompany().getContact().getfaxValue().length() > 0 ) {
             HorizontalContainer faxContainer = new HorizontalContainer(0,0);
-            SimpleTextBox faxLabel = new SimpleTextBox(font, fontSize, 0, 0, model.getCompany().getFax().getLabel());
+            SimpleTextBox faxLabel = new SimpleTextBox(font, fontSize, 0, 0, model.getCompany().getContact().getfaxLabel());
             faxLabel.setPadding(0, 0, 10, 0);
             faxContainer.addElement(faxLabel);
-            SimpleTextBox faxValue = new SimpleTextBox(font, fontSize, 0, 0, model.getCompany().getFax().getValue());
+            SimpleTextBox faxValue = new SimpleTextBox(font, fontSize, 0, 0, model.getCompany().getContact().getfaxValue());
             faxValue.setPadding(5, 0, 0, 0);
             faxValue.setEntityName("SFAX");
             faxContainer.addElement(faxValue);
