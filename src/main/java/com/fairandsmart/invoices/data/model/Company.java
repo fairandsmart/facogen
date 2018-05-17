@@ -25,7 +25,7 @@ public class Company {
     private String name;
     private Address address;
     private FaxNumber fax;
-    private PhoneNumber phone;
+    private ContactNumber contact;
     private String email;
     private String website;
     private String siren;
@@ -73,12 +73,12 @@ public class Company {
         this.fax = fax;
     }
 
-    public PhoneNumber getPhone() {
-        return phone;
+    public ContactNumber getContact() {
+        return contact;
     }
 
-    public void setPhone(PhoneNumber phone) {
-        this.phone = phone;
+    public void setContact(ContactNumber contact) {
+        this.contact = contact;
     }
 
     public String getEmail() {
@@ -129,7 +129,7 @@ public class Company {
                 ", name='" + name + '\'' +
                 ", address=" + address +
                 ", fax=" + fax +
-                ", phone=" + phone +
+                ", contact=" + contact +
                 ", email='" + email + '\'' +
                 ", website='" + website + '\'' +
                 ", siren='" + siren + '\'' +
@@ -178,7 +178,7 @@ public class Company {
             Company company = goodCompanies.get(ctx.getRandom().nextInt(goodCompanies.size()));
             company.setLogo(new Logo.Generator().generate(ctx));
             company.setIdNumbers(new IDNumbers.Generator().generate(ctx));
-            company.setPhone(new PhoneNumber.Generator().generate(ctx));
+            company.setContact(new ContactNumber.Generator().generate(ctx));
             company.setFax(new FaxNumber.Generator().generate(ctx));
             return company;
         }
