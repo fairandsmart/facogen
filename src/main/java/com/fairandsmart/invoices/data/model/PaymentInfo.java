@@ -97,16 +97,21 @@ public class PaymentInfo {
 
         {
             labelsType.put("Payment type", "en");
+            labelsType.put("Payment means", "en");
+            labelsType.put("Payed through", "en");
             labelsType.put("Type de paiement", "fr");
             labelsType.put("Moyen de paiement", "fr");
+            labelsType.put("Mode de règlement", "fr");
         }
         {
             valuesType.put("Paypal", "en");
+            valuesType.put("Credit card", "en");
+            valuesType.put("Bank Transfer", "en");
+            valuesType.put("Cheque", "en");
             valuesType.put("Paypal", "fr");
             valuesType.put("CB", "fr");
             valuesType.put("Virement", "fr");
             valuesType.put("Chèque", "fr");
-            valuesType.put("Credit card", "en");
         }
         {
             labelsTransaction.put("Transaction number", "en");
@@ -116,7 +121,6 @@ public class PaymentInfo {
             labelsFiscalZone.put("Fiscal zone", "en");
             labelsFiscalZone.put("Zone fiscale", "fr");
         }
-
 
 
         @Override

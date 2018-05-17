@@ -26,9 +26,6 @@ public class MACOMPLayout implements InvoiceLayout {
 
     private static List<String> cNum_heads_fr = new ArrayList<>();
     private static List<String> cNum_heads_en = new ArrayList<>();
-    private static List<String> paymentInfo_heads_fr = new ArrayList<>();
-    private static List<String> paymentInfo_heads_en = new ArrayList<>();
-
 
     {
         cNum_heads_fr.add("Numéro de client");
@@ -40,17 +37,6 @@ public class MACOMPLayout implements InvoiceLayout {
         cNum_heads_en.add("Client Number");
         cNum_heads_en.add("Client Reference");
         cNum_heads_en.add("Ref Client");
-    }
-
-    {
-        paymentInfo_heads_fr.add("Mode de règlement");
-        paymentInfo_heads_fr.add("Moyen de paiement");
-    }
-
-    {
-        paymentInfo_heads_en.add("Payment means");
-        paymentInfo_heads_en.add("Payed through");
-        paymentInfo_heads_en.add("Mode of Payment");
     }
 
     private static final List<PDFont[]> FONTS = new ArrayList<>();
@@ -126,6 +112,12 @@ public class MACOMPLayout implements InvoiceLayout {
 
         SimpleTextBox stoa = new SimpleTextBox(fonts[0], fontSize, 0,0, model.getCompany().getIdNumbers().getToaValue());
         invoiceInfo.addElement(stoa);
+
+        SimpleTextBox payTypeLabel = new SimpleTextBox(fonts[1], fontSize+1, 0,0, model.getPaymentInfo().getLabelType());
+        invoiceInfo.addElement(payTypeLabel);
+
+        SimpleTextBox payTypeValue = new SimpleTextBox(fonts[0], fontSize, 0,0, model.getPaymentInfo().getValueType());
+        invoiceInfo.addElement(payTypeValue);
 
         invoiceInfo.build(contentStream, writer);
         contentStream.close();
