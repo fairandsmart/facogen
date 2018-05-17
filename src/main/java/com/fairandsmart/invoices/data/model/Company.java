@@ -25,11 +25,9 @@ public class Company {
     private String name;
     private Address address;
     private ContactNumber contact;
+    // TODO Company email and website needed, should correspond to company name
     private String email;
     private String website;
-    private String siren;
-    private String nic;
-    private String siret;
 
     public Company() {
     }
@@ -88,30 +86,6 @@ public class Company {
         this.website = website;
     }
 
-    public String getSiren() {
-        return siren;
-    }
-
-    public void setSiren(String siren) {
-        this.siren = siren;
-    }
-
-    public String getNic() {
-        return nic;
-    }
-
-    public void setNic(String nic) {
-        this.nic = nic;
-    }
-
-    public String getSiret() {
-        return siret;
-    }
-
-    public void setSiret(String siret) {
-        this.siret = siret;
-    }
-
     @Override
     public String toString() {
         return "Company{" +
@@ -122,9 +96,6 @@ public class Company {
                 ", contact=" + contact +
                 ", email='" + email + '\'' +
                 ", website='" + website + '\'' +
-                ", siren='" + siren + '\'' +
-                ", nic='" + nic + '\'' +
-                ", siret='" + siret + '\'' +
                 '}';
     }
 
@@ -137,8 +108,6 @@ public class Company {
                 Reader in = new InputStreamReader(Logo.class.getClassLoader().getResourceAsStream(companiesFileFR));
                 Iterable<CSVRecord> records = CSVFormat.newFormat(';').withQuote('"').withFirstRecordAsHeader().parse(in);
                 for (CSVRecord record : records) {
-                    String siren = record.get("SIREN");
-                    String nic = record.get("NIC");
                     String name = record.get("ENSEIGNE");
                     String adresseL1 = record.get("L4_NORMALISEE");
                     String adresseL2 = record.get("L5_NORMALISEE");
@@ -148,9 +117,6 @@ public class Company {
                     if ( name.length() > 3 ) {
                         Company comp = new Company();
                         comp.setName(name);
-                        comp.setSiren(siren);
-                        comp.setNic(nic);
-                        comp.setSiret(siren + nic);
                         Address companyAddress = new Address(adresseL1, adresseL2, "", cp, ville, pays);
                         comp.setAddress(companyAddress);
                         companies.put(comp, "FR");
