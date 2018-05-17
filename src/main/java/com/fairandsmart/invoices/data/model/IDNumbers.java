@@ -112,9 +112,9 @@ public class IDNumbers {
             vatLabels.put("TVA numéro ", "fr");
             vatLabels.put("N° TVA Intracom", "fr");
             vatLabels.put("N° TVA", "fr");
-            vatLabels.put("VAT Number:", "en");
+            vatLabels.put("VAT Number", "en");
             vatLabels.put("VAT", "en");
-            vatLabels.put("VAT/TIN Number:", "en");
+            vatLabels.put("VAT/TIN Number", "en");
 
         }
 

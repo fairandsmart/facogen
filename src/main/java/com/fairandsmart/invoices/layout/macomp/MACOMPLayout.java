@@ -23,35 +23,12 @@ import java.util.Random;
 
 public class MACOMPLayout implements InvoiceLayout {
 
-    private static List<String> iDate_heads_fr = new ArrayList<>();
-    private static List<String> iDate_heads_en = new ArrayList<>();
-    private static List<String> iNum_heads_fr = new ArrayList<>();
-    private static List<String> iNum_heads_en = new ArrayList<>();
+
     private static List<String> cNum_heads_fr = new ArrayList<>();
     private static List<String> cNum_heads_en = new ArrayList<>();
     private static List<String> paymentInfo_heads_fr = new ArrayList<>();
     private static List<String> paymentInfo_heads_en = new ArrayList<>();
 
-    {
-        iDate_heads_fr.add("Date de la facture");
-        iDate_heads_fr.add("Date");
-    }
-
-    {
-        iDate_heads_en.add("Date");
-        iDate_heads_en.add("Invoice Date");
-    }
-
-    {
-        iNum_heads_fr.add("Facture N°");
-        iNum_heads_fr.add("Numéro de facture");
-        iNum_heads_fr.add("Référence de la facture");
-    }
-
-    {
-        iNum_heads_en.add("Invoice Number");
-        iNum_heads_en.add("Invoice Reference");
-    }
 
     {
         cNum_heads_fr.add("Numéro de client");
@@ -99,7 +76,7 @@ public class MACOMPLayout implements InvoiceLayout {
         PDPageContentStream contentStream = new PDPageContentStream(document, page);
 
         // Facture No. 123
-        new SimpleTextBox(fonts[1], 13, 350, 748, "Facture No. "+ model.getReference().getValue()).build(contentStream, writer);
+        new SimpleTextBox(fonts[1], 13, 310, 748, model.getReference().getLabel()+" : "+ model.getReference().getValue()).build(contentStream, writer);
 
         // Company Info Box
         CompanyInfoBox companyInfoBox = new CompanyInfoBox(fonts[2], fonts[1], fontSize, model, document);
@@ -120,7 +97,7 @@ public class MACOMPLayout implements InvoiceLayout {
         shippingInfoBox.build(contentStream, writer);
 
         VerticalContainer invoiceInfo = new VerticalContainer(300, 650, 400);
-        SimpleTextBox dateHead = new SimpleTextBox(fonts[1], fontSize+1, 0,0, iDate_heads_fr.get(random.nextInt(iDate_heads_fr.size())));
+        SimpleTextBox dateHead = new SimpleTextBox(fonts[1], fontSize+1, 0,0, model.getDate().getLabel());
         invoiceInfo.addElement(dateHead);
 
         SimpleTextBox idate = new SimpleTextBox(fonts[0], fontSize, 330,650, model.getDate().getValue());

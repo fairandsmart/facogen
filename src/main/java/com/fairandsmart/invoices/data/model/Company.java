@@ -24,7 +24,6 @@ public class Company {
     private IDNumbers idNumbers;
     private String name;
     private Address address;
-    private FaxNumber fax;
     private ContactNumber contact;
     private String email;
     private String website;
@@ -63,14 +62,6 @@ public class Company {
 
     public void setAddress(Address address) {
         this.address = address;
-    }
-
-    public FaxNumber getFax() {
-        return fax;
-    }
-
-    public void setFax(FaxNumber fax) {
-        this.fax = fax;
     }
 
     public ContactNumber getContact() {
@@ -128,7 +119,6 @@ public class Company {
                 ", idNumbers=" + idNumbers +
                 ", name='" + name + '\'' +
                 ", address=" + address +
-                ", fax=" + fax +
                 ", contact=" + contact +
                 ", email='" + email + '\'' +
                 ", website='" + website + '\'' +
@@ -179,7 +169,6 @@ public class Company {
             company.setLogo(new Logo.Generator().generate(ctx));
             company.setIdNumbers(new IDNumbers.Generator().generate(ctx));
             company.setContact(new ContactNumber.Generator().generate(ctx));
-            company.setFax(new FaxNumber.Generator().generate(ctx));
             return company;
         }
     }

@@ -30,81 +30,9 @@ public class ClientInfoBox extends ElementBox {
     private PDDocument document;
     private String addressType;
     private static Random rnd = new Random();
-    private static List<String> billing_heads_fr = new ArrayList<>();
-    private static List<String> shipping_heads_fr = new ArrayList<>();
-    private static List<String> billing_heads_en = new ArrayList<>();
-    private static List<String> shipping_heads_en = new ArrayList<>();
-
-    {
-        billing_heads_fr.add("Destinataire");
-        billing_heads_fr.add("Adresse Facturation");
-        billing_heads_fr.add("Adresse de Facturation");
-
-    }
-
-    {
-        shipping_heads_fr.add("Adresse Livraison");
-        shipping_heads_fr.add("Adresse de Livraison");
-        shipping_heads_fr.add("Livraison à");
-    }
-
-    {
-
-        billing_heads_en.add("Invoice To");
-        billing_heads_en.add("To");
-        billing_heads_en.add("Billing Address");
-        billing_heads_en.add("For");
-        billing_heads_en.add("Invoiced To");
-        billing_heads_en.add("Bill To");
-        billing_heads_en.add("Invoice Address");
-        billing_heads_en.add("Sold To");
-        billing_heads_en.add("Billed To");
-    }
-
-    {
-        shipping_heads_en.add("Delivery To");
-        shipping_heads_en.add("Deliver To");
-        shipping_heads_en.add("Shipping Address");
-        shipping_heads_en.add("Delivery Address");
-        shipping_heads_en.add("Shipped To");
-        shipping_heads_en.add("Delivered To");
-        shipping_heads_en.add("Ship To");
-    }
 
     public Random getRandom() {
         return rnd;
-    }
-
-    private String getAddHeading(String lang, String addType)
-    {
-
-        int cap = rnd.nextInt(2);
-        int colon = rnd.nextInt(2);
-        String head="", suffix ="";
-        if(colon==1)
-            suffix=":";
-
-        if(lang.equals("fr")){
-            if(addType.equals("Billing"))
-                head = billing_heads_fr.get(rnd.nextInt(billing_heads_fr.size()));
-            else if (addType.equals("Shipping"))
-                head = shipping_heads_fr.get(rnd.nextInt(shipping_heads_fr.size()));
-            if(cap==1)
-            return head.toUpperCase()+suffix;
-            else
-            return head+suffix;
-        }
-        else if(lang.equals("en")){
-            if(addType.equals("Billing"))
-                head = billing_heads_en.get(rnd.nextInt(billing_heads_en.size()));
-            else if (addType.equals("Shipping"))
-                head = shipping_heads_en.get(rnd.nextInt(shipping_heads_en.size()));
-            if(cap==1)
-                return head.toUpperCase()+suffix;
-            else
-                return head+suffix;
-        }
-        return "Error: Unknown Language";
     }
 
     public ClientInfoBox(PDFont font, PDFont fontBold, float fontSize, InvoiceModel model, PDDocument document, String addressType) throws Exception {
@@ -133,7 +61,7 @@ public class ClientInfoBox extends ElementBox {
         else if(addressType.equals("Shipping"))
             entityPrefix = "SH";
 
-        SimpleTextBox heading = new SimpleTextBox(fontBold, fontSize+2, 0,0, getAddHeading(model.getLang(), addressType));
+        SimpleTextBox heading = new SimpleTextBox(fontBold, fontSize+2, 0,0, callviaName(client_obj,"get"+addressType+"Head").toString());
         container.addElement(heading);
 
         SimpleTextBox name = new SimpleTextBox(fontBold, fontSize, 0,0, callviaName(client_obj,"get"+addressType+"Name").toString());
