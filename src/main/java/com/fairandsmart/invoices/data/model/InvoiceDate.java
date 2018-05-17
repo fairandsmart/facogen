@@ -21,15 +21,17 @@ public class InvoiceDate {
     private String valuePayment;
 
 
-    public InvoiceDate(String label, String value, String labelCommand, String valueCommand, String labelExpedition, String valueExpedition, String labelPayment, String valuePayment) {
+    public InvoiceDate(String label, String value
+                      // String labelCommand, String valueCommand, String labelExpedition, String valueExpedition, String labelPayment, String valuePayment
+    ) {
         this.label = label;
         this.value = value;
-        this.labelCommand = labelCommand;
-        this.valueCommand = valueCommand;
-        this.labelExpedition = labelExpedition;
-        this.valueExpedition = valueExpedition;
-        this.labelPayment = labelPayment;
-        this.valuePayment = valuePayment;
+//        this.labelCommand = labelCommand;
+//        this.valueCommand = valueCommand;
+//        this.labelExpedition = labelExpedition;
+//        this.valueExpedition = valueExpedition;
+//        this.labelPayment = labelPayment;
+//        this.valuePayment = valuePayment;
     }
 
     public String getValue() {
@@ -114,11 +116,11 @@ public class InvoiceDate {
 
         private static final long from = 252493200;
         private static final long to = System.currentTimeMillis() / 1000;
-        private static final Map<SimpleDateFormat, String> formats = new HashMap<>();
-        private static final Map<String, String> labels = new HashMap<>();
-        private static final Map<String, String> labelsCommand = new HashMap<>();
-        private static final Map<String, String> labelsExpedition = new HashMap<>();
-        private static final Map<String, String> labelsPayment = new HashMap<>();
+        private static final Map<SimpleDateFormat, String> formats = new LinkedHashMap<>();
+        private static final Map<String, String> labels = new LinkedHashMap<>();
+        private static final Map<String, String> labelsCommand = new LinkedHashMap<>();
+        private static final Map<String, String> labelsExpedition = new LinkedHashMap<>();
+        private static final Map<String, String> labelsPayment = new LinkedHashMap<>();
         {
             formats.put(new SimpleDateFormat("MMM d, YYYY"), "en");
             formats.put(new SimpleDateFormat("YYYY-MM-dd HH:mm:ss"), "en");
@@ -130,7 +132,7 @@ public class InvoiceDate {
             labels.put("Invoice Date", "en");
             labels.put("Date", "en");
             labels.put("Du", "fr");
-            labels.put("Date", "fr");
+            labels.put("Dated", "en");
             labels.put("Date de la facture", "fr");
         }
         {
@@ -170,10 +172,11 @@ public class InvoiceDate {
             calendar.add(Calendar.DAY_OF_WEEK, -4);
             Date commandDate = calendar.getTime();
             Date paymentDate = calendar.getTime();
-            return new InvoiceDate(localizedLabels.get(idxL), localizedFormats.get(idxF).format(invoiceDate),
-                    localizedLabelsCommand.get(idxL), localizedFormats.get(idxF).format(commandDate),
-                    localizedLabelsExpedition.get(idxL), localizedFormats.get(idxF).format(expeditionDate),
-                    localizedLabelsPayment.get(idxL), localizedFormats.get(idxF).format(paymentDate));
+            return new InvoiceDate(localizedLabels.get(idxL), localizedFormats.get(idxF).format(invoiceDate)
+//                    localizedLabelsCommand.get(idxL), localizedFormats.get(idxF).format(commandDate),
+//                    localizedLabelsExpedition.get(idxL), localizedFormats.get(idxF).format(expeditionDate),
+//                    localizedLabelsPayment.get(idxL), localizedFormats.get(idxF).format(paymentDate)
+            );
         }
 
     }
