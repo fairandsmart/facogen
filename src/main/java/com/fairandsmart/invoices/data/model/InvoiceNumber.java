@@ -112,6 +112,8 @@ public class InvoiceNumber {
         {
             labelsCommand.put("Command Number", "en");
             labelsCommand.put("Command ID", "en");
+            labelsCommand.put("Order ID", "en");
+            labelsCommand.put("Order Number", "en");
             labelsCommand.put("Numéro de commande", "fr");
             labelsCommand.put("N° commande", "fr");
             labelsCommand.put("N°", "fr");
