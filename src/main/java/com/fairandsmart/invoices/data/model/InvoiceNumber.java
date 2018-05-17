@@ -135,7 +135,8 @@ public class InvoiceNumber {
             List<String> localizedLabels = labelsInvoice.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguage())).map(Map.Entry::getKey).collect(Collectors.toList());
             List<String> localizedLabelsCommand = labelsCommand.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguage())).map(Map.Entry::getKey).collect(Collectors.toList());
             int idxL = ctx.getRandom().nextInt(localizedLabels.size());
-            return new InvoiceNumber(localizedLabels.get(idxL), generated, localizedLabelsCommand.get(idxL), generatedCommand);
+            int idxLC = ctx.getRandom().nextInt(localizedLabelsCommand.size());
+            return new InvoiceNumber(localizedLabels.get(idxL), generated, localizedLabelsCommand.get(idxLC), generatedCommand);
         }
     }
 }

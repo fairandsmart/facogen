@@ -29,7 +29,6 @@ public class TestSimpleTextBox implements InvoiceLayout {
         PDPage page = new PDPage(PDRectangle.A4);
         document.addPage(page);
 
-        document.addPage(page);
         writer.writeStartElement("DL_PAGE");
         writer.writeAttribute("gedi_type", "DL_PAGE");
         writer.writeAttribute("pageID", "1");
@@ -70,7 +69,65 @@ public class TestSimpleTextBox implements InvoiceLayout {
         stb4.setBackgroundColor(Color.YELLOW);
         stb4.setPadding(20, 10, 75, 50);
         stb4.build(contentStream, writer);
+        currentPosY -= stb4.getBoundingBox().getHeight();
 
+        System.out.println("posY: " + currentPosY);
+        SimpleTextBox stb5 = new SimpleTextBox(font, 12, 20, currentPosY, "Align Right");
+        stb5.setBackgroundColor(Color.LIGHT_GRAY);
+        stb5.setWidth(150);
+        stb5.setHalign(HAlign.RIGHT);
+        stb5.build(contentStream, writer);
+        currentPosY -= stb5.getBoundingBox().getHeight();
+
+        System.out.println("posY: " + currentPosY);
+        SimpleTextBox stb6 = new SimpleTextBox(font, 12, 20, currentPosY, "Align right with padding");
+        stb6.setBackgroundColor(Color.ORANGE);
+        stb6.setPadding(10, 0, 10, 0);
+        stb6.setWidth(200);
+        stb6.setHalign(HAlign.RIGHT);
+        stb6.build(contentStream, writer);
+        currentPosY -= stb6.getBoundingBox().getHeight();
+
+        System.out.println("posY: " + currentPosY);
+        SimpleTextBox stb7 = new SimpleTextBox(font, 12, 20, currentPosY, "Align center");
+        stb7.setBackgroundColor(Color.LIGHT_GRAY);
+        stb7.setWidth(150);
+        stb7.setHalign(HAlign.CENTER);
+        stb7.build(contentStream, writer);
+        currentPosY -= stb7.getBoundingBox().getHeight();
+
+        System.out.println("posY: " + currentPosY);
+        SimpleTextBox stb8 = new SimpleTextBox(font, 12, 20, currentPosY, "Align center padding asym");
+        stb8.setBackgroundColor(Color.ORANGE);
+        stb8.setPadding(10, 0, 50, 0);
+        stb8.setWidth(250);
+        stb8.setHalign(HAlign.CENTER);
+        stb8.build(contentStream, writer);
+        currentPosY -= stb8.getBoundingBox().getHeight();
+
+        System.out.println("posY: " + currentPosY);
+        SimpleTextBox stb9 = new SimpleTextBox(font, 12, 20, currentPosY, "Align right multi line of text should be placed");
+        stb9.setBackgroundColor(Color.LIGHT_GRAY);
+        stb9.setWidth(100);
+        stb9.setHalign(HAlign.RIGHT);
+        stb9.build(contentStream, writer);
+        currentPosY -= stb9.getBoundingBox().getHeight();
+
+        System.out.println("posY: " + currentPosY);
+        SimpleTextBox stb10 = new SimpleTextBox(font, 12, 20, currentPosY, "Align center multi line of text should be placed");
+        stb10.setBackgroundColor(Color.YELLOW);
+        stb10.setWidth(100);
+        stb10.setHalign(HAlign.CENTER);
+        stb10.build(contentStream, writer);
+        currentPosY -= stb10.getBoundingBox().getHeight();
+
+        System.out.println("posY: " + currentPosY);
+        SimpleTextBox stb11 = new SimpleTextBox(font, 12, 20, currentPosY, "Align center multi line of text with padding");
+        stb11.setBackgroundColor(Color.LIGHT_GRAY);
+        stb11.setPadding(10, 20, 20, 20);
+        stb11.setWidth(150);
+        stb11.setHalign(HAlign.CENTER);
+        stb11.build(contentStream, writer);
 
         contentStream.close();
 
