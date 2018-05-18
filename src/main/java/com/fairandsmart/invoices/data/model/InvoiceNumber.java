@@ -13,12 +13,16 @@ public class InvoiceNumber {
     private String value;
     private String labelCommand;
     private String valueCommand;
+    private String labelClient;
+    private String valueClient;
 
-    public InvoiceNumber(String label, String value, String labelCommand, String valueCommand) {
+    public InvoiceNumber(String label, String value, String labelCommand, String valueCommand, String labelClient, String valueClient) {
         this.label = label;
         this.value = value;
         this.labelCommand = labelCommand;
         this.valueCommand = valueCommand;
+        this.labelClient = labelClient;
+        this.valueClient = valueClient;
     }
 
     public String getLabel() {
@@ -53,6 +57,22 @@ public class InvoiceNumber {
         this.valueCommand = valueCommand;
     }
 
+    public String getLabelClient() {
+        return labelClient;
+    }
+
+    public void setLabelClient(String labelClient) {
+        this.labelClient = labelClient;
+    }
+
+    public String getValueClient() {
+        return valueClient;
+    }
+
+    public void setValueClient(String valueClient) {
+        this.valueClient = valueClient;
+    }
+
     @Override
     public String toString() {
         return "InvoiceNumber{" +
@@ -60,6 +80,8 @@ public class InvoiceNumber {
                 ", value='" + value + '\'' +
                 ", labelCommand='" + labelCommand + '\'' +
                 ", valueCommand='" + valueCommand + '\'' +
+                ", labelClient='" + labelClient + '\'' +
+                ", valueClient='" + valueClient + '\'' +
                 '}';
     }
 
@@ -67,8 +89,10 @@ public class InvoiceNumber {
 
         private static final List<String> formatsInvoice = new ArrayList<>();
         private static final List<String> formatsCommand = new ArrayList<>();
+        private static final List<String> formatsClient = new ArrayList<>();
         private static final Map<String, String> labelsInvoice = new LinkedHashMap<>();
         private static final Map<String, String> labelsCommand = new LinkedHashMap<>();
+        private static final Map<String, String> labelsClient = new LinkedHashMap<>();
         {
             formatsInvoice.add("[A-D][H-N]-[A-Z]{2}-[0-9]{6}-[0-9]{2}");
             formatsInvoice.add("[0-9]{3}-[0-9]{5}-1[0-9]{4}");
@@ -83,18 +107,32 @@ public class InvoiceNumber {
             formatsInvoice.add("[0-9]{4}-7[0-9]{5}");
         }
         {
-            formatsCommand.add("[A-D][H-N]-[A-Z]{1}-[0-9]{3}-[0-9]{2}");
-            formatsCommand.add("[0-9]{3}-[0-9]{3}-1[0-9]{2}");
+            formatsCommand.add("[A-D][H-N]-[A-Z]{1}-[0-9]{1}-[0-9]{1}");
+            formatsCommand.add("[0-9]{3}-[0-9]{3}");
             formatsCommand.add("2[0-9]{3}");
             formatsCommand.add("[1-2][0-9]{3}");
             formatsCommand.add("[4-9][0-9]{3}");
-            formatsCommand.add("CD201[0-7]00[0-9]{2}");
-            formatsCommand.add("99[0-9]{4}");
+            formatsCommand.add("CD201[0-7]00[0-9]{1}");
+            formatsCommand.add("99[0-9]{3}");
            // formatsCommand.add("#CO00[0-9]{4}");
-            formatsCommand.add("CM500[0-9]{3}");
-            formatsCommand.add("COM-[0-9]{4}");
-            formatsCommand.add("[0-9]{3}-7[0-9]{4}");
+            formatsCommand.add("CM5[0-9]{3}");
+            formatsCommand.add("COM-[0-9]{3}");
+            formatsCommand.add("[0-9]{3}-9[0-9]{2}");
         }
+        {
+            formatsClient.add("[A-D][H-N]-[A-Z]{2}-[0-9]{3}-[0-9]{2}");
+            formatsClient.add("[0-9]{3}-[0-9]{3}-1[0-9]{2}");
+            formatsClient.add("7[0-9]{4}");
+            formatsClient.add("[1-2][0-9]{4}");
+            formatsClient.add("[4-9][0-9]{4}");
+            formatsClient.add("CL10[0-7]00[0-9]{2}");
+            formatsClient.add("00[0-9]{4}");
+            // formatsClient.add("#CO00[0-9]{4}");
+            formatsClient.add("CL55[0-9]{3}");
+            formatsClient.add("CL-[0-9]{4}");
+            formatsClient.add("[0-9]{3}-0[0-9]{3}");
+        }
+
         {
             labelsInvoice.put("Invoice Number", "en");
             labelsInvoice.put("Invoice No.", "en");
@@ -102,7 +140,6 @@ public class InvoiceNumber {
             labelsInvoice.put("Invoice Reference", "en");
             labelsInvoice.put("Numéro de facture", "fr");
             labelsInvoice.put("N° facture", "fr");
-            labelsInvoice.put("N°", "fr");
             labelsInvoice.put("N° de facture", "fr");
             labelsInvoice.put("FACTURE N°", "fr");
             labelsInvoice.put("Facture n°", "fr");
@@ -117,27 +154,46 @@ public class InvoiceNumber {
             labelsCommand.put("Order Reference", "en");
             labelsCommand.put("Numéro de commande", "fr");
             labelsCommand.put("N° commande", "fr");
-            labelsCommand.put("N°", "fr");
             labelsCommand.put("N° de commande", "fr");
             labelsCommand.put("COMMANDE N°", "fr");
             labelsCommand.put("Commande n°", "fr");
             labelsCommand.put("Commande-n°", "fr");
-            labelsCommand.put("COMMAND No", "fr");
-            labelsCommand.put("Référence de la facture", "fr");
+            labelsCommand.put("COMMANDE No", "fr");
+            labelsCommand.put("Référence de la commande", "fr");
+        }
+        {
+            labelsClient.put("Client Number", "en");
+            labelsClient.put("Client No.", "en");
+            labelsClient.put("Client ID", "en");
+            labelsClient.put("Client Reference", "en");
+            labelsClient.put("Numéro de client", "fr");
+            labelsClient.put("N° client", "fr");
+            labelsClient.put("N° de client", "fr");
+            labelsClient.put("CLIENT N°", "fr");
+            labelsClient.put("Client n°", "fr");
+            labelsClient.put("Client-n°", "fr");
+            labelsClient.put("CLIENT No", "fr");
+            labelsClient.put("Référence de la client", "fr");
         }
 
         @Override
         public InvoiceNumber generate(GenerationContext ctx) {
             int idxF = ctx.getRandom().nextInt(formatsInvoice.size());
+
             Generex generex = new Generex(formatsInvoice.get(idxF));
             String generated = generex.random();
+
             generex = new Generex(formatsCommand.get(idxF));
             String generatedCommand = generex.random();
 
+            generex = new Generex(formatsClient.get(idxF));
+            String generatedClient = generex.random();
+
             List<String> localizedLabels = labelsInvoice.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguage())).map(Map.Entry::getKey).collect(Collectors.toList());
             List<String> localizedLabelsCommand = labelsCommand.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguage())).map(Map.Entry::getKey).collect(Collectors.toList());
+            List<String> localizedLabelsClient = labelsClient.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguage())).map(Map.Entry::getKey).collect(Collectors.toList());
             int idxL = ctx.getRandom().nextInt(localizedLabels.size());
-            return new InvoiceNumber(localizedLabels.get(idxL), generated, localizedLabelsCommand.get(idxL), generatedCommand);
+            return new InvoiceNumber(localizedLabels.get(idxL), generated, localizedLabelsCommand.get(idxL), generatedCommand, localizedLabelsClient.get(idxL), generatedClient);
         }
     }
 }
