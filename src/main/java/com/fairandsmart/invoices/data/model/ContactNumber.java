@@ -114,8 +114,6 @@ public class ContactNumber {
 
             List<String> localizedPLabels = phoneLabels.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguage())).map(Map.Entry::getKey).collect(Collectors.toList());
             List<String> localizedFLabels = faxLabels.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguage())).map(Map.Entry::getKey).collect(Collectors.toList());
-            System.out.println(localizedPLabels);
-            System.out.println(localizedFLabels);
             int idxL = ctx.getRandom().nextInt(localizedPLabels.size());
             System.out.println(idxL);
             return new ContactNumber(localizedPLabels.get(idxL), phoneNumber, localizedFLabels.get(idxL), faxNumber);

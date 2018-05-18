@@ -110,7 +110,7 @@ public class TableRowBox extends ElementBox {
     }
 
     private float getColumnOffsetX (int numCol) {
-        //TODO maybe the offset X could be store in a flaot[] like config...
+        //TODO maybe the offset X could be store in a float[] like config...
         float posX = 0;
         for (int i=0; i<numCol; i++) {
             posX += config[i];

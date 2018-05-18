@@ -22,10 +22,6 @@ public class Client {
     private String shippingName;
     private Address shippingAddress;
 
-    //TODO Add clientNumber generation with different heads (fr,en)
-    private String clientNumber;
-    private String clientReference;
-
     public Client(String billingHead, String billingName, Address billingAddress, String shippingHead,String shippingName, Address shippingAddress) {
         this.billingHead = billingHead;
         this.billingName = billingName;
