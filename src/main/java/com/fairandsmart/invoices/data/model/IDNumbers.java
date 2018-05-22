@@ -140,16 +140,22 @@ public class IDNumbers {
             }
             else{
                 // French Specific System
+                String space="";
+                Random random = new Random();
+                int random_space = random.nextInt(2);
+                if(random_space==1) { space=" "; }
 
                 Generex gensiren = new Generex("[0-9]{9}"); // For Siren Number
                 cidValue = gensiren.random();
+                int siren = Integer.parseInt(cidValue);
+                String cidVal[] = cidValue.split("(?<=\\G...)"); // For breaking string at every 3rd position
+                cidValue = cidVal[0] + space + cidVal[1] + space + cidVal[2];
 
                 Generex gennic = new Generex("[0-9]{5}");
-                siretValue = cidValue + gennic.random();
+                siretValue = cidValue + space + gennic.random();
 
-                int siren = Integer.parseInt(cidValue);
                 int key = (12 + 3 * (siren % 97))% 97; // To calculate key for TVA from SIREN
-                vatValue = "FR"+ String.valueOf(key) + cidValue; // TVA number
+                vatValue = "FR"+ space + String.valueOf(key) + space + cidValue; // TVA number
 
                 try {
                     toaValue = getToacode();
@@ -208,6 +214,7 @@ public class IDNumbers {
                     reader.close();
             }
 
+            if(Character.isLetter(lineIn.charAt(lineIn.length()-1))){return lineIn.substring(0,lineIn.length()-1) +" "+ lineIn.substring(lineIn.length()-1); }
             return lineIn;
         }
     }
