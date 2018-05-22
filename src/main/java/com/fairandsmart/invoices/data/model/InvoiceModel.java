@@ -3,6 +3,8 @@ package com.fairandsmart.invoices.data.model;
 import com.fairandsmart.invoices.data.generator.GenerationContext;
 import com.fairandsmart.invoices.data.generator.ModelGenerator;
 
+import java.util.Random;
+
 public class InvoiceModel {
 
     private InvoiceNumber reference;
@@ -12,6 +14,7 @@ public class InvoiceModel {
     private Company company;
     private Client client;
     private ProductContainer productContainer;
+    private static Random rnd = new Random();
 
     public InvoiceModel() {
     }
@@ -30,6 +33,16 @@ public class InvoiceModel {
 
     public void setDate(InvoiceDate date) {
         this.date = date;
+    }
+
+    public Random getRandom() {
+        return rnd;
+    }
+
+    public Object callviaName(Object c, String methodName) throws Exception
+    {
+        // Calls a method with its name as a string
+        return c.getClass().getMethod(methodName).invoke(c);
     }
 
     public String getLang() {
