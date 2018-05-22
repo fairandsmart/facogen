@@ -21,14 +21,34 @@ public class ProductContainer {
     private float totalWithTax;
     private float totalWithoutTax;
     private String currency;
+    private String descHead;
+    private String qtyHead;
+    private String unitPriceHead;
+    private String taxRateHead;
+    private String taxHead;
+    private String lineTotalHead;
+    private String withoutTaxTotalHead;
+    private String taxTotalHead;
+    private String withTaxTotalHead;
 
     //Added
     private float totalEcoParticipation;
     private float totalDiscount;
     private float totalDeliveryCost;
 
-    public ProductContainer(String currency) {
+    public ProductContainer(String currency, String descHead, String qtyHead, String unitPriceHead, String taxRateHead,
+                            String taxHead, String lineTotalHead, String withoutTaxTotalHead, String taxTotalHead, String withTaxTotalHead) {
         this.setCurrency(currency);
+        this.descHead = descHead;
+        this.qtyHead = qtyHead;
+        this.unitPriceHead = unitPriceHead;
+        this. taxRateHead = taxRateHead;
+        this.taxHead = taxHead;
+        this.lineTotalHead = lineTotalHead;
+        this.withoutTaxTotalHead = withoutTaxTotalHead;
+        this.taxTotalHead = taxTotalHead;
+        this.withTaxTotalHead = withTaxTotalHead;
+
     }
 
     public void addProduct(Product product) {
@@ -85,6 +105,42 @@ public class ProductContainer {
         return String.format("%.2f", this.getTotalTax()) + " " + currency;
     }
 
+    public String getDescHead() {
+        return descHead;
+    }
+
+    public String getQtyHead() {
+        return qtyHead;
+    }
+
+    public String getUPHead() {
+        return unitPriceHead;
+    }
+
+    public String getTaxRateHead() {
+        return taxRateHead;
+    }
+
+    public String getTaxHead() {
+        return taxHead;
+    }
+
+    public String getLineTotalHead() {
+        return lineTotalHead;
+    }
+
+    public String getTotalWithoutTaxHead() {
+        return withoutTaxTotalHead;
+    }
+
+    public String getTotalTaxHead() {
+        return taxTotalHead;
+    }
+
+    public String getTotalAmountHead() {
+        return withTaxTotalHead;
+    }
+
     @Override
     public String toString() {
         return "ProductContainer{" +
@@ -96,32 +152,134 @@ public class ProductContainer {
 
     public static class Generator implements ModelGenerator<ProductContainer> {
 
-        private static final List<String> formats = new ArrayList<>();
-        private static final Map<String, String> labels = new HashMap<>();
+        private static final Map<String, String> descHeads = new LinkedHashMap<>();
+        private static final Map<String, String> qtyHeads = new LinkedHashMap<>();
+        private static final Map<String, String> unitPriceHeads = new LinkedHashMap<>();
+        private static final Map<String, String> taxRateHeads = new LinkedHashMap<>();
+        private static final Map<String, String> taxHeads = new LinkedHashMap<>();
+        private static final Map<String, String> lineTotalHeads = new LinkedHashMap<>();
+
+        private static final Map<String, String> withoutTaxTotalHeads = new LinkedHashMap<>();
+        private static final Map<String, String> taxTotalHeads = new LinkedHashMap<>();
+        private static final Map<String, String> withTaxTotalHeads = new LinkedHashMap<>();
+
         {
-            formats.add("[A-D][H-N]-[A-Z]{4}-[0-9]{9}-[0-9]{2}");
-            formats.add("[0-9]{3}-[0-9]{7}-1[0-9]{6}");
-            formats.add("[3-7][0-9]{7}");
-            formats.add("1[0-9]{7}");
-            formats.add("[4-9][0-9]{9}");
-            formats.add("FV201[0-7]00[0-9]{6}");
-            formats.add("00[0-9]{5}");
-            formats.add("#FA00[0-9]{4}");
-            formats.add("FC500[0-9]{3}");
-            formats.add("INV-[0-9]{4}");
-            formats.add("[0-9]{6}-7[0-9]{5}");
+            descHeads.put("Désignation", "fr");
+            descHeads.put("Description", "fr");
+            descHeads.put("Désignation du Produit", "fr");
+            descHeads.put("Descriptions", "en");
+            descHeads.put("Product Description", "en");
+//            descHeads.put("Invoice Address", "en");
+//            descHeads.put("Bill To", "en");
+//            descHeads.put("Billed To", "en");
+//            descHeads.put("Billing Address", "en");
+//            descHeads.put("Sold To", "en");
         }
+
         {
-            labels.put("Invoice Number", "en");
-            labels.put("Invoice ID", "en");
-            labels.put("Numéro de facture", "fr");
-            labels.put("N° facture", "fr");
-            labels.put("N°", "fr");
-            labels.put("N° de facture", "fr");
-            labels.put("FACTURE N°", "fr");
-            labels.put("Facture n°", "fr");
-            labels.put("Facture-n°", "fr");
-            labels.put("FACTURE No", "fr");
+            qtyHeads.put("Qté", "fr");
+            qtyHeads.put("Quantité", "fr");
+          //  qtyHeads.put("Adresse de Livraison", "fr");
+            qtyHeads.put("Qty", "en");
+            qtyHeads.put("Quantity", "en");
+//            qtyHeads.put("Delivery Address", "en");
+//            qtyHeads.put("Ship To", "en");
+//            qtyHeads.put("Shipped To", "en");
+//            qtyHeads.put("Shipping Address", "en");
+//            qtyHeads.put("Send To", "en");
+        }
+
+        {
+            unitPriceHeads.put("PU", "fr");
+            unitPriceHeads.put("Prix Unitaire", "fr");
+            unitPriceHeads.put("P.U. HT", "fr");
+            unitPriceHeads.put("P.U.", "fr");
+            unitPriceHeads.put("U.P.", "en");
+            unitPriceHeads.put("Unit Price", "en");
+            unitPriceHeads.put("Price per unit", "en");
+//            unitPriceHeads.put("Ship To", "en");
+//            unitPriceHeads.put("Shipped To", "en");
+//            unitPriceHeads.put("Shipping Address", "en");
+//            unitPriceHeads.put("Send To", "en");
+        }
+
+        {
+            taxRateHeads.put("TVA", "fr");
+            taxRateHeads.put("Taux de TVA", "fr");
+//            taxRateHeads.put("Adresse Livraison", "fr");
+//            taxRateHeads.put("Adresse de Livraison", "fr");
+            taxRateHeads.put("VAT/TVA", "en");
+            taxRateHeads.put("TVA Rate", "en");
+//            taxRateHeads.put("Delivery Address", "en");
+//            taxRateHeads.put("Ship To", "en");
+//            taxRateHeads.put("Shipped To", "en");
+//            taxRateHeads.put("Shipping Address", "en");
+//            taxRateHeads.put("Send To", "en");
+        }
+
+        {
+            taxHeads.put("TVA", "fr");
+            taxHeads.put("Montant TVA", "fr");
+            //taxHeads.put("Adresse de Livraison", "fr");
+            taxHeads.put("VAT/TVA", "en");
+            taxHeads.put("TVA Amount", "en");
+//            taxHeads.put("Delivery Address", "en");
+//            taxHeads.put("Ship To", "en");
+//            taxHeads.put("Shipped To", "en");
+//            taxHeads.put("Shipping Address", "en");
+//            taxHeads.put("Send To", "en");
+        }
+
+        {
+            lineTotalHeads.put("Montant H.T.", "fr");
+            lineTotalHeads.put("Montant HT", "fr");
+         //  lineTotalHeads.put("Adresse de Livraison", "fr");
+            lineTotalHeads.put("Amount", "en");
+            lineTotalHeads.put("Total", "en");
+//            lineTotalHeads.put("Delivery Address", "en");
+//            lineTotalHeads.put("Ship To", "en");
+//            lineTotalHeads.put("Shipped To", "en");
+//            lineTotalHeads.put("Shipping Address", "en");
+//            lineTotalHeads.put("Send To", "en");
+        }
+
+        {
+            withoutTaxTotalHeads.put("Montant H.T.", "fr");
+            withoutTaxTotalHeads.put("Montant HT", "fr");
+          //  withoutTaxTotalHeads.put("Adresse de Livraison", "fr");
+            withoutTaxTotalHeads.put("Amount", "en");
+            withoutTaxTotalHeads.put("Total", "en");
+            withoutTaxTotalHeads.put("Total without tax", "en");
+//            withoutTaxTotalHeads.put("Ship To", "en");
+//            withoutTaxTotalHeads.put("Shipped To", "en");
+//            withoutTaxTotalHeads.put("Shipping Address", "en");
+//            withoutTaxTotalHeads.put("Send To", "en");
+        }
+
+        {
+            taxTotalHeads.put("Montant TVA", "fr");
+            taxTotalHeads.put("TVA", "fr");
+      //      taxTotalHeads.put("Adresse de Livraison", "fr");
+            taxTotalHeads.put("TVA Amount", "en");
+            taxTotalHeads.put("Tax Amount", "en");
+            taxTotalHeads.put("Total Tax", "en");
+//            taxTotalHeads.put("Ship To", "en");
+//            taxTotalHeads.put("Shipped To", "en");
+//            taxTotalHeads.put("Shipping Address", "en");
+//            taxTotalHeads.put("Send To", "en");
+        }
+
+        {
+            withTaxTotalHeads.put("Montant TTC", "fr");
+            withTaxTotalHeads.put("Total TTC", "fr");
+            withTaxTotalHeads.put("Net à payer", "fr");
+            withTaxTotalHeads.put("Total Amount", "en");
+            withTaxTotalHeads.put("Amount to pay", "en");
+            withTaxTotalHeads.put("Total Net", "en");
+//            withTaxTotalHeads.put("Ship To", "en");
+//            withTaxTotalHeads.put("Shipped To", "en");
+//            withTaxTotalHeads.put("Shipping Address", "en");
+//            withTaxTotalHeads.put("Send To", "en");
         }
 
         private List<Product> products;
@@ -136,8 +294,23 @@ public class ProductContainer {
         @Override
         public ProductContainer generate(GenerationContext ctx) {
 
+            List<String> localdescHeads = descHeads.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguage())).map(Map.Entry::getKey).collect(Collectors.toList());
+            List<String> localqtyHeads = qtyHeads.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguage())).map(Map.Entry::getKey).collect(Collectors.toList());
+            List<String> localUPHeads = unitPriceHeads.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguage())).map(Map.Entry::getKey).collect(Collectors.toList());
+            List<String> localtaxRateHeads = taxRateHeads.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguage())).map(Map.Entry::getKey).collect(Collectors.toList());
+            List<String> localtaxHeads = taxHeads.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguage())).map(Map.Entry::getKey).collect(Collectors.toList());
+            List<String> locallineTotalHeads = lineTotalHeads.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguage())).map(Map.Entry::getKey).collect(Collectors.toList());
+            List<String> localwithoutTaxTotalHeads = withoutTaxTotalHeads.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguage())).map(Map.Entry::getKey).collect(Collectors.toList());
+            List<String> localTaxTotalHeads = taxTotalHeads.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguage())).map(Map.Entry::getKey).collect(Collectors.toList());
+            List<String> localwithTaxTotalHeads = withTaxTotalHeads.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguage())).map(Map.Entry::getKey).collect(Collectors.toList());
+
+            int idxL = ctx.getRandom().nextInt(localqtyHeads.size());
+
+
             int maxProduct = 4;
-            ProductContainer productContainer = new ProductContainer(ctx.getCurrency());
+            ProductContainer productContainer = new ProductContainer(ctx.getCurrency(), localdescHeads.get(idxL), localqtyHeads.get(idxL),
+                                                localUPHeads.get(idxL), localtaxRateHeads.get(idxL), localtaxHeads.get(idxL), locallineTotalHeads.get(idxL),
+                                                localwithoutTaxTotalHeads.get(idxL), localTaxTotalHeads.get(idxL), localwithTaxTotalHeads.get(idxL));
             for (int i = 0; i < ctx.getRandom().nextInt(maxProduct -1)+1; i++) {
                 int maxQuantity = 5;
                 Product electibleProduct = products.get(ctx.getRandom().nextInt(products.size()));
@@ -146,6 +319,7 @@ public class ProductContainer {
 
                 productContainer.addProduct(electibleProduct);
             }
+           // System.out.println(productContainer);
             return productContainer;
         }
 
