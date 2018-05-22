@@ -1,5 +1,6 @@
 package com.fairandsmart.invoices.layout.head;
 
+import com.fairandsmart.invoices.data.model.IDNumbers;
 import com.fairandsmart.invoices.data.model.InvoiceModel;
 import com.fairandsmart.invoices.element.BoundingBox;
 import com.fairandsmart.invoices.element.ElementBox;
@@ -14,6 +15,8 @@ import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 
 import javax.xml.stream.XMLStreamWriter;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CompanyInfoBox extends ElementBox {
 
@@ -23,6 +26,17 @@ public class CompanyInfoBox extends ElementBox {
     private InvoiceModel model;
     private VerticalContainer container;
     private PDDocument document;
+    private static final List<String[]> idNumbersOrder = new ArrayList<>();
+    {
+       // idNumbersOrder.add(new String[] {"Siret", "Toa", "Vat"} );
+        idNumbersOrder.add(new String[] {"Toa", "Siret", "Vat"} );
+        idNumbersOrder.add(new String[] {"Toa", "Cid", "Vat"} );
+        idNumbersOrder.add(new String[] {"Cid", "Vat"} );
+        idNumbersOrder.add(new String[] {"Vat"} );
+        idNumbersOrder.add(new String[] {"Rcs", "Siret", "Vat"} );
+        idNumbersOrder.add(new String[] {"Rcs","Vat"} );
+        idNumbersOrder.add(new String[] {"Toa", "Rcs", "Siret", "Vat"} );
+    }
 
     public CompanyInfoBox(PDFont font, PDFont fontBold, float fontSize, InvoiceModel model, PDDocument document) throws Exception {
         this.font = font;
@@ -78,7 +92,7 @@ public class CompanyInfoBox extends ElementBox {
         if ( model.getCompany().getContact().getphoneValue() != null &&  model.getCompany().getContact().getphoneValue().length() > 0 ) {
             HorizontalContainer phoneContainer = new HorizontalContainer(0,0);
             SimpleTextBox phoneLabel = new SimpleTextBox(font, fontSize, 0, 0, model.getCompany().getContact().getphoneLabel());
-            phoneLabel.setPadding(0, 0, 10, 0);
+            phoneLabel.setPadding(0, 0, 5, 0);
             phoneContainer.addElement(phoneLabel);
             SimpleTextBox phoneValue = new SimpleTextBox(font, fontSize, 0, 0, model.getCompany().getContact().getphoneValue());
             phoneValue.setPadding(5, 0, 0, 0);
@@ -90,7 +104,7 @@ public class CompanyInfoBox extends ElementBox {
         if ( model.getCompany().getContact().getfaxValue() != null &&  model.getCompany().getContact().getfaxValue().length() > 0 ) {
             HorizontalContainer faxContainer = new HorizontalContainer(0,0);
             SimpleTextBox faxLabel = new SimpleTextBox(font, fontSize, 0, 0, model.getCompany().getContact().getfaxLabel());
-            faxLabel.setPadding(0, 0, 10, 0);
+            faxLabel.setPadding(0, 0, 5, 0);
             faxContainer.addElement(faxLabel);
             SimpleTextBox faxValue = new SimpleTextBox(font, fontSize, 0, 0, model.getCompany().getContact().getfaxValue());
             faxValue.setPadding(5, 0, 0, 0);
@@ -121,6 +135,38 @@ public class CompanyInfoBox extends ElementBox {
             websiteValue.setEntityName("SWEB");
             websiteContainer.addElement(websiteValue);
             container.addElement(websiteContainer);
+        }
+
+        IDNumbers idnumObj = model.getCompany().getIdNumbers();
+        String[] idNames = idNumbersOrder.get(model.getRandom().nextInt(idNumbersOrder.size()));
+       // String[] idNames = {"Toa", "Vat"};
+
+        for(String idName : idNames)
+        {
+            //System.out.println(idName);
+            HorizontalContainer companyIDContainer = new HorizontalContainer(0, 0);
+            if(idName.equals("Rcs")) // Special because not available in IDNumbers
+            {
+                SimpleTextBox RCSLabel = new SimpleTextBox(font, fontSize, 0, 0, "RCS "+model.getCompany().getAddress().getCity());
+                RCSLabel.setPadding(0, 0, 2, 0);
+                companyIDContainer.addElement(RCSLabel);
+                SimpleTextBox RCSValue = new SimpleTextBox(font, fontSize, 0, 0, idnumObj.getCidValue());
+                RCSValue.setEntityName("SCID");
+                RCSValue.setPadding(0, 0, 3, 0);
+                companyIDContainer.addElement(RCSValue);
+            }
+            else {
+                String labelName = "get" + idName + "Label";
+                String valueName = "get" + idName + "Value";
+                SimpleTextBox Label = new SimpleTextBox(font, fontSize, 0, 0, model.callviaName(idnumObj, labelName).toString());
+                Label.setPadding(0, 0, 2, 0);
+                companyIDContainer.addElement(Label);
+                SimpleTextBox Value = new SimpleTextBox(font, fontSize, 0, 0, model.callviaName(idnumObj, valueName).toString());
+                Value.setEntityName("S" + idName.toUpperCase());
+                Value.setPadding(0, 0, 3, 0);
+                companyIDContainer.addElement(Value);
+            }
+            container.addElement(companyIDContainer);
         }
 
     }

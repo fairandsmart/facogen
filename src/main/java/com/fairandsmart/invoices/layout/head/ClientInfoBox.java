@@ -29,11 +29,6 @@ public class ClientInfoBox extends ElementBox {
     private VerticalContainer container;
     private PDDocument document;
     private String addressType;
-    private static Random rnd = new Random();
-
-    public Random getRandom() {
-        return rnd;
-    }
 
     public ClientInfoBox(PDFont font, PDFont fontBold, float fontSize, InvoiceModel model, PDDocument document, String addressType) throws Exception {
         this.font = font;
@@ -46,12 +41,6 @@ public class ClientInfoBox extends ElementBox {
         this.init();
     }
 
-    private Object callviaName(Object c, String methodName) throws Exception
-    {
-        // Calls a method with its name as a string
-        return c.getClass().getMethod(methodName).invoke(c);
-    }
-
     private void init() throws Exception {
 
         String entityPrefix = "", addLine2 = "", addLine3 = "", acountry = "";
@@ -61,25 +50,25 @@ public class ClientInfoBox extends ElementBox {
         else if(addressType.equals("Shipping"))
             entityPrefix = "SH";
 
-        SimpleTextBox heading = new SimpleTextBox(fontBold, fontSize+2, 0,0, callviaName(client_obj,"get"+addressType+"Head").toString());
+        SimpleTextBox heading = new SimpleTextBox(fontBold, fontSize+2, 0,0, model.callviaName(client_obj,"get"+addressType+"Head").toString());
         container.addElement(heading);
 
-        SimpleTextBox name = new SimpleTextBox(fontBold, fontSize, 0,0, callviaName(client_obj,"get"+addressType+"Name").toString());
+        SimpleTextBox name = new SimpleTextBox(fontBold, fontSize, 0,0, model.callviaName(client_obj,"get"+addressType+"Name").toString());
         name.setEntityName(entityPrefix+"N");
         container.addElement(name);
 
-        SimpleTextBox adresse1 = new SimpleTextBox(font, fontSize, 0,0, callviaName(callviaName(client_obj,"get"+addressType+"Address"),"getLine1").toString());
+        SimpleTextBox adresse1 = new SimpleTextBox(font, fontSize, 0,0, model.callviaName(model.callviaName(client_obj,"get"+addressType+"Address"),"getLine1").toString());
         adresse1.setEntityName(entityPrefix+"A");
         container.addElement(adresse1);
 
-        addLine2 = callviaName(callviaName(client_obj,"get"+addressType+"Address"),"getLine2").toString();
+        addLine2 = model.callviaName(model.callviaName(client_obj,"get"+addressType+"Address"),"getLine2").toString();
         if ( addLine2 != null &&  addLine2.length() > 0 ) {
             SimpleTextBox adresse2 = new SimpleTextBox(font, fontSize, 0, 0, addLine2);
             adresse2.setEntityName(entityPrefix+"A");
             container.addElement(adresse2);
         }
 
-        addLine3 = callviaName(callviaName(client_obj,"get"+addressType+"Address"),"getLine3").toString();
+        addLine3 = model.callviaName(model.callviaName(client_obj,"get"+addressType+"Address"),"getLine3").toString();
         if ( addLine3!= null &&  addLine3.length() > 0 ) {
             SimpleTextBox adresse3 = new SimpleTextBox(font, fontSize, 0, 0, addLine3);
             adresse3.setEntityName(entityPrefix+"A");
@@ -88,24 +77,22 @@ public class ClientInfoBox extends ElementBox {
 
         HorizontalContainer cityContainer = new HorizontalContainer(0,0);
 
-        SimpleTextBox zip = new SimpleTextBox(font, fontSize, 0, 0, callviaName(callviaName(client_obj,"get"+addressType+"Address"),"getZip").toString());
+        SimpleTextBox zip = new SimpleTextBox(font, fontSize, 0, 0, model.callviaName(model.callviaName(client_obj,"get"+addressType+"Address"),"getZip").toString());
         zip.setPadding(0, 0, 5, 0);
         zip.setEntityName(entityPrefix+"A");
         cityContainer.addElement(zip);
 
-        SimpleTextBox city = new SimpleTextBox(font, fontSize, 0, 0, callviaName(callviaName(client_obj,"get"+addressType+"Address"),"getCity").toString());
+        SimpleTextBox city = new SimpleTextBox(font, fontSize, 0, 0, model.callviaName(model.callviaName(client_obj,"get"+addressType+"Address"),"getCity").toString());
         city.setEntityName(entityPrefix+"A");
         cityContainer.addElement(city);
         container.addElement(cityContainer);
 
-        acountry = callviaName(callviaName(client_obj,"get"+addressType+"Address"),"getCountry").toString();
+        acountry = model.callviaName(model.callviaName(client_obj,"get"+addressType+"Address"),"getCountry").toString();
         if ( acountry != null &&  acountry.length() > 0 ) {
             SimpleTextBox country = new SimpleTextBox(font, fontSize, 0, 0, acountry);
             country.setEntityName(entityPrefix+"A");
             container.addElement(country);
         }
-
-        // To Do: Add phone number & email of client in client.java
 
     }
 
