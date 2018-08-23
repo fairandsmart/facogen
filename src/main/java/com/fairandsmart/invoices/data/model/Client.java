@@ -31,9 +31,7 @@ public class Client {
         this.shippingAddress = shippingAddress;
     }
 
-    public String getBillingHead() {
-        return billingHead;
-    }
+    public String getBillingHead() { return billingHead;  }
 
     public void setBillingHead(String billingHead) {
         this.billingHead = billingHead;

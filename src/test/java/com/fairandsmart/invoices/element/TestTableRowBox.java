@@ -54,36 +54,36 @@ public class TestTableRowBox implements InvoiceLayout {
         float[] config = new float[] {50, 150, 50, 50};
         TableRowBox box1 = new TableRowBox(config, 0, 0);
         SimpleTextBox stb1 = new SimpleTextBox(font, 12, 0, 0, "COL11");
-        box1.addElement(stb1);
+        box1.addElement(stb1, false);
         SimpleTextBox stb2 = new SimpleTextBox(font, 12, 0, 0, "COL12");
-        box1.addElement(stb2);
+        box1.addElement(stb2, false);
         SimpleTextBox stb3 = new SimpleTextBox(font, 12, 0, 0, "COL13");
-        box1.addElement(stb3);
+        box1.addElement(stb3, false);
         SimpleTextBox stb4 = new SimpleTextBox(font, 12, 0, 0, "COL14");
-        box1.addElement(stb4);
+        box1.addElement(stb4, false);
         box1.setBackgroundColor(Color.GRAY);
         container.addElement(box1);
 
         TableRowBox box2 = new TableRowBox(config, 0,0);
         SimpleTextBox stb21 = new SimpleTextBox(font, 12, 0, 0, "COL21");
-        box2.addElement(stb21);
+        box2.addElement(stb21, false);
         SimpleTextBox stb22 = new SimpleTextBox(font, 12, 0, 0, "COL22");
-        box2.addElement(stb22);
+        box2.addElement(stb22, false);
         SimpleTextBox stb23 = new SimpleTextBox(font, 12, 0, 0, "COL23");
-        box2.addElement(stb23);
+        box2.addElement(stb23, false);
         SimpleTextBox stb24 = new SimpleTextBox(font, 12, 0, 0, "COL24");
-        box2.addElement(stb24);
+        box2.addElement(stb24, false);
         container.addElement(box2);
 
         TableRowBox box3 = new TableRowBox(config, 0,0, VAlign.BOTTOM);
         SimpleTextBox stb31 = new SimpleTextBox(font, 12, 0, 0, "This col is going to be more thant one line");
-        box3.addElement(stb31);
+        box3.addElement(stb31, false);
         SimpleTextBox stb32 = new SimpleTextBox(font, 12, 0, 0, "COL32");
-        box3.addElement(stb32);
+        box3.addElement(stb32, false);
         SimpleTextBox stb33 = new SimpleTextBox(font, 12, 0, 0, "COL33");
-        box3.addElement(stb33);
+        box3.addElement(stb33, false);
         SimpleTextBox stb34 = new SimpleTextBox(font, 12, 0, 0, "COL34");
-        box3.addElement(stb34);
+        box3.addElement(stb34, false);
         box3.setBackgroundColor(Color.LIGHT_GRAY);
         container.addElement(box3);
 

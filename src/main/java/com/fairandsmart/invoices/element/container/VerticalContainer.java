@@ -46,6 +46,22 @@ public class VerticalContainer extends ElementBox {
         this.backgroundColor = color;
     }
 
+    public void alignElements(String align, float width) {
+        for ( ElementBox element : elements ) {
+            float posX = box.getPosX();
+            System.out.println(width);
+            switch ( align ) {
+                case "CENTER":
+                    posX = (width - box.getPosX() - element.getBoundingBox().getWidth())/2; break;
+                case "RIGHT":
+                    posX = (width - box.getPosX()) - element.getBoundingBox().getWidth(); break;
+            }
+            float transX = posX - element.getBoundingBox().getPosX();
+            element.translate(transX, 0);
+        }
+    }
+
+
     @Override
     public BoundingBox getBoundingBox() {
         return box;

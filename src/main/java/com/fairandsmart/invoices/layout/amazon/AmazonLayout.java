@@ -86,14 +86,14 @@ public class AmazonLayout implements InvoiceLayout {
         float[] configRow = {20f, 120f, 60f, 60f, 60f, 60f, 60f, 60f};
         TableRowBox firstLine = new TableRowBox(configRow, 0, 0);
         firstLine.setBackgroundColor(Color.YELLOW);
-        firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "QTY", Color.BLACK, Color.GRAY));
-        firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "DESCRIPTION", Color.BLACK, Color.GRAY));
-        firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "UNIT PRICE", Color.BLACK, Color.GRAY));
-        firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "DISCOUNT", Color.BLACK, Color.GRAY));
-        firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "TOTAL WITHOUT TAX", Color.BLACK, Color.GRAY));
-        firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "TAX TYPE", Color.BLACK, Color.GRAY));
-        firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "TAX RATE", Color.BLACK, Color.GRAY));
-        firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "TAX AMOUNT", Color.BLACK, Color.GRAY));
+        firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "QTY", Color.BLACK, Color.GRAY), false);
+        firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "DESCRIPTION", Color.BLACK, Color.GRAY), false);
+        firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "UNIT PRICE", Color.BLACK, Color.GRAY), false);
+        firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "DISCOUNT", Color.BLACK, Color.GRAY), false);
+        firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "TOTAL WITHOUT TAX", Color.BLACK, Color.GRAY), false);
+        firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "TAX TYPE", Color.BLACK, Color.GRAY), false);
+        firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "TAX RATE", Color.BLACK, Color.GRAY), false);
+        firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "TAX AMOUNT", Color.BLACK, Color.GRAY), false);
 
         VerticalContainer verticalInvoiceItems = new VerticalContainer(25, 520, 500 );
         verticalInvoiceItems.addElement(firstLine);
@@ -111,14 +111,14 @@ public class AmazonLayout implements InvoiceLayout {
             Product randomProduct = model.getProductContainer().getProducts().get(w);
 
             TableRowBox productLine = new TableRowBox(configRow, 0, 0);
-            productLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, Float.toString(randomProduct.getQuantity())));
-            productLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, randomProduct.getName()));
-            productLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, randomProduct.getFormatedPriceWithoutTax()));
-            productLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, ""));
-            productLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, randomProduct.getFormatedTotalPriceWithoutTax() ));
-            productLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, ""));
-            productLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, Float.toString(randomProduct.getTaxRate() * 100)+"%"));
-            productLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, randomProduct.getFormatedTotalTax() ));
+            productLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, Float.toString(randomProduct.getQuantity())), false);
+            productLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, randomProduct.getName()), false);
+            productLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, randomProduct.getFormatedPriceWithoutTax()), false);
+            productLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, ""), false);
+            productLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, randomProduct.getFormatedTotalPriceWithoutTax() ), false);
+            productLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, ""), false);
+            productLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, Float.toString(randomProduct.getTaxRate() * 100)+"%"), false);
+            productLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, randomProduct.getFormatedTotalTax() ), false);
 
             verticalInvoiceItems.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 0, 5));
             verticalInvoiceItems.addElement(productLine);
@@ -126,14 +126,14 @@ public class AmazonLayout implements InvoiceLayout {
         }
 
         TableRowBox shipping = new TableRowBox(configRow, 0, 0);
-        shipping.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, ""));
-        shipping.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, "Shipping"));
-        shipping.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, "0.00"));
-        shipping.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, ""));
-        shipping.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, "0.00"));
-        shipping.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, "Tax"));
-        shipping.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, "0"));
-        shipping.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, "0.00"));
+        shipping.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, ""), false);
+        shipping.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, "Shipping"), false);
+        shipping.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, "0.00"), false);
+        shipping.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, ""), false);
+        shipping.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, "0.00"), false);
+        shipping.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, "Tax"), false);
+        shipping.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, "0"), false);
+        shipping.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 8, 0, 0, "0.00"), false);
 
         verticalInvoiceItems.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, ""));
         verticalInvoiceItems.addElement(shipping);
@@ -143,14 +143,14 @@ public class AmazonLayout implements InvoiceLayout {
         verticalInvoiceItems.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, ""));
 
         TableRowBox titleTotalInvoice = new TableRowBox(configRow, 0, 0);
-        titleTotalInvoice.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 9, 0, 0, ""));
-        titleTotalInvoice.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 9, 0, 0, ""));
-        titleTotalInvoice.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 9, 0, 0, "TOTAL GROSS AMOUNT"));
-        titleTotalInvoice.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 9, 0, 0, "TOTAL DISCOUNT"));
-        titleTotalInvoice.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 9, 0, 0, "FINAL NET AMOUNT"));
-        titleTotalInvoice.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 9, 0, 0, "TAX TYPE"));
-        titleTotalInvoice.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 9, 0, 0, "TAX RATE"));
-        titleTotalInvoice.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 9, 0, 0, "TAX AMOUNT"));
+        titleTotalInvoice.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 9, 0, 0, ""), false);
+        titleTotalInvoice.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 9, 0, 0, ""), false);
+        titleTotalInvoice.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 9, 0, 0, "TOTAL GROSS AMOUNT"), false);
+        titleTotalInvoice.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 9, 0, 0, "TOTAL DISCOUNT"), false);
+        titleTotalInvoice.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 9, 0, 0, "FINAL NET AMOUNT"), false);
+        titleTotalInvoice.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 9, 0, 0, "TAX TYPE"), false);
+        titleTotalInvoice.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 9, 0, 0, "TAX RATE"), false);
+        titleTotalInvoice.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 9, 0, 0, "TAX AMOUNT"), false);
         verticalInvoiceItems.addElement(titleTotalInvoice);
 
         verticalInvoiceItems.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, ""));
@@ -159,14 +159,14 @@ public class AmazonLayout implements InvoiceLayout {
         verticalInvoiceItems.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 0, 5));
 
         TableRowBox totalInvoice1 = new TableRowBox(configRow, 0, 0);
-        totalInvoice1.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, ""));
-        totalInvoice1.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, ""));
-        totalInvoice1.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, model.getProductContainer().getFormatedTotalWithoutTax() ));
-        totalInvoice1.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, ""));
-        totalInvoice1.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, model.getProductContainer().getFormatedTotalWithTax() ));
-        totalInvoice1.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, "CST@"));
-        totalInvoice1.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, Float.toString(model.getProductContainer().getProducts().get(0).getTaxRate() * 100)+"%"));
-        totalInvoice1.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, model.getProductContainer().getFormatedTotalTax() ));
+        totalInvoice1.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, ""), false);
+        totalInvoice1.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, ""), false);
+        totalInvoice1.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, model.getProductContainer().getFormatedTotalWithoutTax() ), false);
+        totalInvoice1.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, ""), false);
+        totalInvoice1.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, model.getProductContainer().getFormatedTotalWithTax() ), false);
+        totalInvoice1.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, "CST@"), false);
+        totalInvoice1.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, Float.toString(model.getProductContainer().getProducts().get(0).getTaxRate() * 100)+"%"), false);
+        totalInvoice1.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, model.getProductContainer().getFormatedTotalTax() ), false);
         verticalInvoiceItems.addElement(totalInvoice1);
 
         verticalInvoiceItems.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 0, 5));

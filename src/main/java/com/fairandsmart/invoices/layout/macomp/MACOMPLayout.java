@@ -2,11 +2,18 @@ package com.fairandsmart.invoices.layout.macomp;
 
 import com.fairandsmart.invoices.data.model.Client;
 import com.fairandsmart.invoices.data.model.InvoiceModel;
+import com.fairandsmart.invoices.element.HAlign;
+import com.fairandsmart.invoices.element.VAlign;
+import com.fairandsmart.invoices.element.line.HorizontalLineBox;
+import com.fairandsmart.invoices.element.table.TableRowBox;
 import com.fairandsmart.invoices.element.container.VerticalContainer;
+import com.fairandsmart.invoices.element.table.TableRowBox;
 import com.fairandsmart.invoices.element.textbox.SimpleTextBox;
 import com.fairandsmart.invoices.layout.InvoiceLayout;
+import com.fairandsmart.invoices.layout.footer.FootBox;
 import com.fairandsmart.invoices.layout.head.CompanyInfoBox;
 import com.fairandsmart.invoices.layout.head.ClientInfoBox;
+import com.fairandsmart.invoices.layout.product.ProductBox;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
@@ -14,30 +21,15 @@ import org.apache.pdfbox.pdmodel.common.PDRectangle;
 import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
+import com.fairandsmart.invoices.element.border.BorderBox;
 
 import javax.xml.stream.XMLStreamWriter;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class MACOMPLayout implements InvoiceLayout {
 
-
-    private static List<String> cNum_heads_fr = new ArrayList<>();
-    private static List<String> cNum_heads_en = new ArrayList<>();
-
-    {
-        cNum_heads_fr.add("Numéro de client");
-        cNum_heads_fr.add("Client N°");
-        cNum_heads_fr.add("Référence de la client");
-    }
-
-    {
-        cNum_heads_en.add("Client Number");
-        cNum_heads_en.add("Client Reference");
-        cNum_heads_en.add("Ref Client");
-    }
 
     private static final List<PDFont[]> FONTS = new ArrayList<>();
     {
@@ -57,13 +49,13 @@ public class MACOMPLayout implements InvoiceLayout {
         writer.writeAttribute("pageID", "1");
         writer.writeAttribute("width", "2480");
         writer.writeAttribute("height", "3508");
-        Random random = new Random();
-        PDFont[] fonts = FONTS.get(random.nextInt(FONTS.size()));
+        PDFont[] fonts = FONTS.get(model.getRandom().nextInt(FONTS.size()));
         PDPageContentStream contentStream = new PDPageContentStream(document, page);
 
         // Facture No. 123
-        new SimpleTextBox(fonts[1], fontSize, 310, 748, model.getReference().getLabel()+" : "+ model.getReference().getValue()).build(contentStream, writer);
-        new SimpleTextBox(fonts[1], fontSize, 310, 720, model.getReference().getLabelCommand()+" : "+ model.getReference().getValueCommand()).build(contentStream, writer);
+        new SimpleTextBox(fonts[1], fontSize+2, 310, 748, model.getReference().getLabel()+" : "+ model.getReference().getValue()).build(contentStream, writer);
+       // new SimpleTextBox(fonts[1], fontSize+2, 310, 730, model.getReference().getLabelCommand()+" : "+ model.getReference().getValueCommand()).build(contentStream, writer);
+        //new SimpleTextBox(fonts[1], fontSize+2, 310, 712, model.getReference().getLabelClient()+" : "+ model.getReference().getValueClient()).build(contentStream, writer);
 
         // Company Info Box
         CompanyInfoBox companyInfoBox = new CompanyInfoBox(fonts[2], fonts[1], fontSize, model, document);
@@ -74,54 +66,66 @@ public class MACOMPLayout implements InvoiceLayout {
         // Billing Address Block
         ClientInfoBox billingInfoBox = new ClientInfoBox(fonts[2], fonts[1], fontSize, model, document, "Billing");
         billingInfoBox.build(contentStream, writer);
-        billingInfoBox.translate(50, 650);
+        billingInfoBox.translate(50, 610);
         billingInfoBox.build(contentStream, writer);
 
         // Shipping Address Block
         ClientInfoBox shippingInfoBox = new ClientInfoBox(fonts[2], fonts[1], fontSize, model, document, "Shipping");
         shippingInfoBox.build(contentStream, writer);
-        shippingInfoBox.translate(50, 580);
+        shippingInfoBox.translate(50, 540);
         shippingInfoBox.build(contentStream, writer);
 
-        VerticalContainer invoiceInfo = new VerticalContainer(300, 650, 400);
-        SimpleTextBox dateHead = new SimpleTextBox(fonts[1], fontSize+1, 0,0, model.getDate().getLabel());
-        invoiceInfo.addElement(dateHead);
+        VerticalContainer invoiceInfo = new VerticalContainer(310, 580, 400);
 
-        SimpleTextBox idate = new SimpleTextBox(fonts[0], fontSize, 330,650, model.getDate().getValue());
-        invoiceInfo.addElement(idate);
+        float[] configRow = {150f, 200f};
+        TableRowBox elementInfoContainer = new TableRowBox(configRow, 0, 0);
+        SimpleTextBox Label = new SimpleTextBox(fonts[1], fontSize+1, 0,0, model.getDate().getLabel(),Color.BLACK, null, HAlign.LEFT);
+        elementInfoContainer.addElement(Label, false);
+        SimpleTextBox Value = new SimpleTextBox(fonts[0], fontSize, 0,0, model.getDate().getValue());
+        elementInfoContainer.addElement(Value, false);
+        invoiceInfo.addElement(elementInfoContainer);
+        invoiceInfo.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 0, 5));
 
-        SimpleTextBox vatHead = new SimpleTextBox(fonts[1], fontSize+1, 0,0, model.getCompany().getIdNumbers().getVatLabel());
-        invoiceInfo.addElement(vatHead);
+        TableRowBox elementInfoContainer1 = new TableRowBox(configRow,0, 0);
+        SimpleTextBox Label1 = new SimpleTextBox(fonts[1], fontSize+1, 0,0, model.getReference().getLabelClient(),Color.BLACK, null, HAlign.LEFT);
+        elementInfoContainer1.addElement(Label1, false);
+        SimpleTextBox Value1 = new SimpleTextBox(fonts[0], fontSize, 0,0, model.getReference().getValueClient());
+        elementInfoContainer1.addElement(Value1, false);
+        invoiceInfo.addElement(elementInfoContainer1);
+        invoiceInfo.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 0, 5));
 
-        SimpleTextBox svat = new SimpleTextBox(fonts[0], fontSize, 330,0, model.getCompany().getIdNumbers().getVatValue());
-        invoiceInfo.addElement(svat);
+        TableRowBox elementInfoContainer2 = new TableRowBox(configRow,0, 0);
+        SimpleTextBox Label2 = new SimpleTextBox(fonts[1], fontSize+1, 0,0, model.getReference().getLabelCommand(),Color.BLACK, null, HAlign.LEFT);
+        elementInfoContainer2.addElement(Label2, false);
+        SimpleTextBox Value2 = new SimpleTextBox(fonts[0], fontSize, 0,0, model.getReference().getValueCommand(),Color.BLACK, null, HAlign.LEFT);
+        elementInfoContainer2.addElement(Value2, false);
+        invoiceInfo.addElement(elementInfoContainer2);
+        invoiceInfo.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 0, 5));
 
-        SimpleTextBox cidHead = new SimpleTextBox(fonts[1], fontSize+1, 0,0, model.getCompany().getIdNumbers().getCidLabel());
-        invoiceInfo.addElement(cidHead);
-
-        SimpleTextBox scid = new SimpleTextBox(fonts[0], fontSize, 330,0, model.getCompany().getIdNumbers().getCidValue());
-        invoiceInfo.addElement(scid);
-
-        SimpleTextBox siretHead = new SimpleTextBox(fonts[1], fontSize+1, 0,0, model.getCompany().getIdNumbers().getSiretLabel());
-        invoiceInfo.addElement(siretHead);
-
-        SimpleTextBox ssiret = new SimpleTextBox(fonts[0], fontSize, 0,0, model.getCompany().getIdNumbers().getSiretValue());
-        invoiceInfo.addElement(ssiret);
-
-        SimpleTextBox toaHead = new SimpleTextBox(fonts[1], fontSize+1, 0,0, model.getCompany().getIdNumbers().getToaLabel());
-        invoiceInfo.addElement(toaHead);
-
-        SimpleTextBox stoa = new SimpleTextBox(fonts[0], fontSize, 0,0, model.getCompany().getIdNumbers().getToaValue());
-        invoiceInfo.addElement(stoa);
-
-        SimpleTextBox payTypeLabel = new SimpleTextBox(fonts[1], fontSize+1, 0,0, model.getPaymentInfo().getLabelType());
-        invoiceInfo.addElement(payTypeLabel);
-
-        SimpleTextBox payTypeValue = new SimpleTextBox(fonts[0], fontSize, 0,0, model.getPaymentInfo().getValueType());
-        invoiceInfo.addElement(payTypeValue);
+        TableRowBox elementInfoContainer3 = new TableRowBox(configRow,0, 0);
+        SimpleTextBox Label3 = new SimpleTextBox(fonts[1], fontSize+1, 0,0, model.getPaymentInfo().getLabelType(),Color.BLACK, null, HAlign.LEFT);
+        elementInfoContainer3.addElement(Label3, false);
+        SimpleTextBox Value3 = new SimpleTextBox(fonts[0], fontSize, 0,0, model.getPaymentInfo().getValueType(),Color.BLACK, null, HAlign.LEFT);
+        elementInfoContainer3.addElement(Value3, false);
+        invoiceInfo.addElement(elementInfoContainer3);
+        invoiceInfo.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 0, 5));
 
         invoiceInfo.build(contentStream, writer);
+
+        ProductBox products = new ProductBox(30, 400, model.getProductContainer(),fonts[2], fonts[1], fontSize);
+        products.build(contentStream, writer);
+
+        VerticalContainer footer = new VerticalContainer(50, 100, 1000);
+        footer.addElement(new HorizontalLineBox(0,0,530, 0));
+        footer.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 0, 3));
+        FootBox footBox = new FootBox(fonts[0], fonts[1], fonts[2], 11, model, document);
+       // footBox.translate(30,150);
+      //  footBox.build(contentStream, writer);
+        footer.addElement(footBox);
+        footer.build(contentStream, writer);
+
         contentStream.close();
+        writer.writeEndElement();
 
     }
 }

@@ -35,18 +35,31 @@ public class TableRowBox extends ElementBox {
         this.valign = valign;
     }
 
-    public void addElement(ElementBox element) throws Exception {
+    public void addElement(ElementBox element, boolean center_align) throws Exception {
         if ( elements.size() == config.length ) {
             throw new Exception("Row is full, no more element allowed");
         }
         elements.add(element);
         element.setWidth(config[elements.size() - 1]);
-        element.getBoundingBox().setPosX(0);
-        element.getBoundingBox().setPosY(0);
+
+        //TODO : Add Center Right & Left Horizonatal alignment
+
+        if(!(element.getBoundingBox().getPosY()==0 && element.getBoundingBox().getPosX()!=0))
+        {   // Translate only if x is not 0 and y is 0 which is in case of image center alignment
+            element.getBoundingBox().setPosX(0);
+            element.getBoundingBox().setPosY(0);
+        }
+
         element.translate(box.getPosX() + this.getColumnOffsetX(elements.size()-1), box.getPosY() );
+
+        if(center_align && elements.size()>1) {
+
+            element.translate(element.getBoundingBox().getWidth()/3 , box.getPosY() );
+        }
         if ( element.getBoundingBox().getHeight() > box.getHeight() ) {
             this.getBoundingBox().setHeight(element.getBoundingBox().getHeight());
         }
+
         this.realignElements();
     }
 

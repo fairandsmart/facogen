@@ -35,9 +35,11 @@ public class TestProductBox implements InvoiceLayout {
         writer.writeAttribute("height", "3508");
 
         PDPageContentStream contentStream = new PDPageContentStream(document, page);
-        PDFont font = PDType1Font.HELVETICA_BOLD;
+        PDFont font = PDType1Font.HELVETICA;
+        PDFont fontBold = PDType1Font.HELVETICA_BOLD;
+        float fontSize = 10;
 
-        ProductBox products = new ProductBox(25, 750, model.getProductContainer());
+        ProductBox products = new ProductBox(30, 500, model.getProductContainer(), font, fontBold, fontSize);
         products.build(contentStream, writer);
 
         contentStream.close();
@@ -47,14 +49,16 @@ public class TestProductBox implements InvoiceLayout {
 
     @Test
     public void test() throws Exception {
-        String ts = "" + System.currentTimeMillis();
-        Path pdf = Paths.get("target/productbox-"+ ts + ".pdf");
-        Path xml = Paths.get("target/productbox-"+ ts + ".xml");
-        Path img = Paths.get("target/productbox-"+ ts + ".tiff");
+        //String ts = "" + System.currentTimeMillis();
+        for (int i = 0; i < 20; i++) {
+            Path pdf = Paths.get("target/productbox-" + i + ".pdf");
+            Path xml = Paths.get("target/productbox-" + i + ".xml");
+            Path img = Paths.get("target/productbox-" + i + ".tiff");
 
-        GenerationContext ctx = GenerationContext.generate();
-        InvoiceModel model = new InvoiceModel.Generator().generate(ctx);
-        InvoiceGenerator.getInstance().generateInvoice(this, model, pdf, xml, img);
+            GenerationContext ctx = GenerationContext.generate();
+            InvoiceModel model = new InvoiceModel.Generator().generate(ctx);
+            InvoiceGenerator.getInstance().generateInvoice(this, model, pdf, xml, img);
+        }
     }
 }
 

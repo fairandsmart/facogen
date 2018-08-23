@@ -214,7 +214,16 @@ public class IDNumbers {
                     reader.close();
             }
 
-            if(Character.isLetter(lineIn.charAt(lineIn.length()-1))){return lineIn.substring(0,lineIn.length()-1) +" "+ lineIn.substring(lineIn.length()-1); }
+//            System.out.println(lineIn);
+//            System.out.println(lineIn.charAt(lineIn.length()-1));
+//            System.out.println(lineIn.substring(0,lineIn.length()-1));
+//            System.out.println(lineIn.charAt(lineIn.length()-1));
+            // TODO: Add a space between 321A as 321 A if it ends with alphabet
+//            if(Character.isLetter(lineIn.charAt(lineIn.length()-1)))
+//            {
+//                String line = lineIn.substring(0, lineIn.length()-1)+ " "+ lineIn.charAt(lineIn.length()-1) ;
+//                return line;
+//            }
             return lineIn;
         }
     }

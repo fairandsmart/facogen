@@ -34,18 +34,31 @@ public class SimpleTextBox extends ElementBox {
     private HAlign halign;
 
     public SimpleTextBox(PDFont font, float fontSize, float posX, float posY, String text) throws Exception {
-        this(font, fontSize, posX, posY, text, Color.BLACK, null);
+        this(font, fontSize, posX, posY, text, "undefined");
+    }
+
+    public SimpleTextBox(PDFont font, float fontSize, float posX, float posY, String text, String entityName) throws Exception {
+        this(font, fontSize, posX, posY, text, Color.BLACK, null, entityName);
     }
 
     public SimpleTextBox(PDFont font, float fontSize, float posX, float posY, String text, Color textColor, Color backgroundColor) throws Exception {
-        this(font, fontSize, posX, posY, text, textColor, backgroundColor, HAlign.LEFT);
+        this(font, fontSize, posX, posY, text, textColor, backgroundColor, HAlign.LEFT, "undefined");
+    }
+
+    public SimpleTextBox(PDFont font, float fontSize, float posX, float posY, String text, Color textColor, Color backgroundColor, String entityName) throws Exception {
+        this(font, fontSize, posX, posY, text, textColor, backgroundColor, HAlign.LEFT, entityName);
     }
 
     public SimpleTextBox(PDFont font, float fontSize, float posX, float posY, String text, Color textColor, Color backgroundColor, HAlign halign) throws Exception {
+        this(font, fontSize, posX, posY, text, textColor, backgroundColor, halign, "undefined");
+    }
+
+    public SimpleTextBox(PDFont font, float fontSize, float posX, float posY, String text, Color textColor, Color backgroundColor, HAlign halign, String entityName) throws Exception {
         this.padding = new Padding();
         this.font = font;
         this.fontSize = fontSize;
         this.text = text;
+        this.entityName = entityName;
         this.lines = new ArrayList<>();
         this.lines.add(text);
         this.underline = font.getFontDescriptor().getFontBoundingBox().getLowerLeftY() / 1000 * fontSize;
@@ -173,14 +186,14 @@ public class SimpleTextBox extends ElementBox {
                     //TODO we need to count the number of spaces between word to include the good posX in the offset
                     float wordWidth = fontSize * font.getStringWidth(word) / 1000;
                     BoundingBox wordBox = new BoundingBox(box.getPosX() + wordOffsetX, box.getPosY() + offsetY, wordWidth, lineHeight);
-                    wordIds.add(writeXMLZone(writer, "ocr_word", word, wordBox));
+                    wordIds.add(writeXMLZone(writer, "ocrx_word", word, wordBox, entityName));
                     wordOffsetX = wordOffsetX + wordWidth + (fontSize * font.getSpaceWidth() / 1000);
                 }
-                if ( entityName != null && entityName.length() > 0 ) {
-                    lineWidth = fontSize * font.getStringWidth(lines.get(i)) / 1000;
-                    BoundingBox entityBox = new BoundingBox(box.getPosX() + lineOffsetX, box.getPosY() + offsetY, lineWidth, lineHeight);
-                    writeXMLZone(writer, entityName, this.lines.get(i), entityBox, wordIds);
-                }
+//                if ( entityName != null && entityName.length() > 0 ) {
+//                    lineWidth = fontSize * font.getStringWidth(lines.get(i)) / 1000;
+//                    BoundingBox entityBox = new BoundingBox(box.getPosX() + lineOffsetX, box.getPosY() + offsetY, lineWidth, lineHeight);
+//                    writeXMLZone(writer, entityName, this.lines.get(i), entityBox, wordIds);
+//                }
             }
             offsetY = offsetY - lineHeight;
         }

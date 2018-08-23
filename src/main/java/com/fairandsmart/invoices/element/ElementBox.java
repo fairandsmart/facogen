@@ -31,13 +31,10 @@ public abstract class ElementBox {
         return newbox;
     }
 
-    public String writeXMLZone(XMLStreamWriter writer, String type, String content, BoundingBox box) throws XMLStreamException {
-        return this.writeXMLZone(writer, type, content, box, Collections.emptyList());
-    }
+    public String writeXMLZone(XMLStreamWriter writer, String type, String content, BoundingBox box, String cclass) throws XMLStreamException {
+        //return this.writeXMLZone(writer, type, content, box, Collections.emptyList());
 
-    public String writeXMLZone(XMLStreamWriter writer, String type, String content, BoundingBox box, List<String> elements) throws XMLStreamException {
         BoundingBox tbox = convertBox(box);
-        //String id = type + "_" + nextElementId();
         String id = "" + nextElementId();
         writer.writeStartElement("DL_ZONE");
         writer.writeAttribute("gedi_type", type);
@@ -46,13 +43,32 @@ public abstract class ElementBox {
         writer.writeAttribute("row", "" + (int) tbox.getPosY());
         writer.writeAttribute("width", "" + (int) tbox.getWidth());
         writer.writeAttribute("height", "" + (int) tbox.getHeight());
-        writer.writeAttribute("content", content);
-        if ( !elements.isEmpty() ) {
-            writer.writeAttribute("elements", String.join(";", elements));
-        }
+        writer.writeAttribute("contents", content);
+        writer.writeAttribute("correctclass", cclass);
         writer.writeEndElement();
+        writer.writeCharacters(System.getProperty("line.separator"));
         return id;
+
     }
+
+//    public String writeXMLZone(XMLStreamWriter writer, String type, String content, BoundingBox box, List<String> elements) throws XMLStreamException {
+//        BoundingBox tbox = convertBox(box);
+//        //String id = type + "_" + nextElementId();
+//        String id = "" + nextElementId();
+//        writer.writeStartElement("DL_ZONE");
+//        writer.writeAttribute("gedi_type", type);
+//        writer.writeAttribute("id", id);
+//        writer.writeAttribute("col", "" + (int) tbox.getPosX());
+//        writer.writeAttribute("row", "" + (int) tbox.getPosY());
+//        writer.writeAttribute("width", "" + (int) tbox.getWidth());
+//        writer.writeAttribute("height", "" + (int) tbox.getHeight());
+//        writer.writeAttribute("contents", content);
+//        if ( !elements.isEmpty() ) {
+//            writer.writeAttribute("elements", String.join(";", elements));
+//        }
+//        writer.writeEndElement();
+//        return id;
+//    }
 
     public abstract BoundingBox getBoundingBox();
 

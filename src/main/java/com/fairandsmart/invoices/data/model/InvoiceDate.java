@@ -122,7 +122,7 @@ public class InvoiceDate {
         private static final Map<String, String> labelsPayment = new LinkedHashMap<>();
         {
             formats.put(new SimpleDateFormat("MMM d, YYYY"), "en");
-            formats.put(new SimpleDateFormat("YYYY-MM-dd HH:mm:ss"), "en");
+          //  formats.put(new SimpleDateFormat("YYYY-MM-dd HH:mm:ss"), "en");
             formats.put(new SimpleDateFormat("dd/MM/YY"), "fr");
             formats.put(new SimpleDateFormat("d MMM, YYYY"), "en");
             formats.put(new SimpleDateFormat("d MMM YYYY"), "fr");

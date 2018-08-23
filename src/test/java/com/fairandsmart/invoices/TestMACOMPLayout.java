@@ -14,7 +14,7 @@ public class TestMACOMPLayout {
     @Test
     public void test() throws Exception {
         //String ts = "" + System.currentTimeMillis();
-        for ( int i=0; i<20; i++) {
+        for ( int i=11; i<16; i++) {
         Path pdf = Paths.get("target/macomp-"+ i + ".pdf");
         Path xml = Paths.get("target/macomp-"+ i + ".xml");
         Path img = Paths.get("target/macomp-"+ i + ".tiff");

@@ -30,6 +30,7 @@ public class ProductContainer {
     private String withoutTaxTotalHead;
     private String taxTotalHead;
     private String withTaxTotalHead;
+    private String snHead;
 
     //Added
     private float totalEcoParticipation;
@@ -37,7 +38,7 @@ public class ProductContainer {
     private float totalDeliveryCost;
 
     public ProductContainer(String currency, String descHead, String qtyHead, String unitPriceHead, String taxRateHead,
-                            String taxHead, String lineTotalHead, String withoutTaxTotalHead, String taxTotalHead, String withTaxTotalHead) {
+                            String taxHead, String lineTotalHead, String withoutTaxTotalHead, String taxTotalHead, String withTaxTotalHead, String snHead) {
         this.setCurrency(currency);
         this.descHead = descHead;
         this.qtyHead = qtyHead;
@@ -48,7 +49,7 @@ public class ProductContainer {
         this.withoutTaxTotalHead = withoutTaxTotalHead;
         this.taxTotalHead = taxTotalHead;
         this.withTaxTotalHead = withTaxTotalHead;
-
+        this.snHead = snHead;
     }
 
     public void addProduct(Product product) {
@@ -125,6 +126,10 @@ public class ProductContainer {
         return taxHead;
     }
 
+    public String getsnHead() {
+        return snHead;
+    }
+
     public String getLineTotalHead() {
         return lineTotalHead;
     }
@@ -158,7 +163,7 @@ public class ProductContainer {
         private static final Map<String, String> taxRateHeads = new LinkedHashMap<>();
         private static final Map<String, String> taxHeads = new LinkedHashMap<>();
         private static final Map<String, String> lineTotalHeads = new LinkedHashMap<>();
-
+        private static final Map<String, String> snHeads = new LinkedHashMap<>();
         private static final Map<String, String> withoutTaxTotalHeads = new LinkedHashMap<>();
         private static final Map<String, String> taxTotalHeads = new LinkedHashMap<>();
         private static final Map<String, String> withTaxTotalHeads = new LinkedHashMap<>();
@@ -174,6 +179,17 @@ public class ProductContainer {
 //            descHeads.put("Billed To", "en");
 //            descHeads.put("Billing Address", "en");
 //            descHeads.put("Sold To", "en");
+        }
+
+        {
+            snHeads.put("Non.", "fr");
+//            snHeads.put("Nombre", "fr");
+            snHeads.put("S.Non.", "fr");
+            snHeads.put("Numéro de série", "fr");
+            snHeads.put("No.", "en");
+//            snHeads.put("Number", "en");
+            snHeads.put("S.No.", "en");
+            snHeads.put("Serial Number", "en");
         }
 
         {
@@ -303,14 +319,14 @@ public class ProductContainer {
             List<String> localwithoutTaxTotalHeads = withoutTaxTotalHeads.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguage())).map(Map.Entry::getKey).collect(Collectors.toList());
             List<String> localTaxTotalHeads = taxTotalHeads.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguage())).map(Map.Entry::getKey).collect(Collectors.toList());
             List<String> localwithTaxTotalHeads = withTaxTotalHeads.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguage())).map(Map.Entry::getKey).collect(Collectors.toList());
-
+            List<String> localSNHeads = snHeads.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguage())).map(Map.Entry::getKey).collect(Collectors.toList());
             int idxL = ctx.getRandom().nextInt(localqtyHeads.size());
 
 
             int maxProduct = 4;
             ProductContainer productContainer = new ProductContainer(ctx.getCurrency(), localdescHeads.get(idxL), localqtyHeads.get(idxL),
                                                 localUPHeads.get(idxL), localtaxRateHeads.get(idxL), localtaxHeads.get(idxL), locallineTotalHeads.get(idxL),
-                                                localwithoutTaxTotalHeads.get(idxL), localTaxTotalHeads.get(idxL), localwithTaxTotalHeads.get(idxL));
+                                                localwithoutTaxTotalHeads.get(idxL), localTaxTotalHeads.get(idxL), localwithTaxTotalHeads.get(idxL), localSNHeads.get(idxL));
             for (int i = 0; i < ctx.getRandom().nextInt(maxProduct -1)+1; i++) {
                 int maxQuantity = 5;
                 Product electibleProduct = products.get(ctx.getRandom().nextInt(products.size()));

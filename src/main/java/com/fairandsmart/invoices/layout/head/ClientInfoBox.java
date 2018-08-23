@@ -4,6 +4,7 @@ import com.fairandsmart.invoices.data.model.Client;
 import com.fairandsmart.invoices.data.model.InvoiceModel;
 import com.fairandsmart.invoices.element.BoundingBox;
 import com.fairandsmart.invoices.element.ElementBox;
+import com.fairandsmart.invoices.element.border.BorderBox;
 import com.fairandsmart.invoices.element.container.HorizontalContainer;
 import com.fairandsmart.invoices.element.container.VerticalContainer;
 import com.fairandsmart.invoices.element.image.ImageBox;
@@ -41,17 +42,31 @@ public class ClientInfoBox extends ElementBox {
         this.init();
     }
 
+    public ClientInfoBox(VerticalContainer container) throws Exception {
+        this.container = container;
+    }
+
     private void init() throws Exception {
 
         String entityPrefix = "", addLine2 = "", addLine3 = "", acountry = "";
         Client client_obj = model.getClient();
+        int noBillHeading = model.getRandom().nextInt(10);
         if(addressType.equals("Billing"))
             entityPrefix = "B";
         else if(addressType.equals("Shipping"))
             entityPrefix = "SH";
+        SimpleTextBox heading;
 
-        SimpleTextBox heading = new SimpleTextBox(fontBold, fontSize+2, 0,0, model.callviaName(client_obj,"get"+addressType+"Head").toString());
+        if(addressType.equals("Billing") && noBillHeading>6)
+        {
+            heading = new SimpleTextBox(fontBold, fontSize+2, 0,0, "");
+        }
+        else
+            heading = new SimpleTextBox(fontBold, fontSize+2, 0,0, model.callviaName(client_obj,"get"+addressType+"Head").toString());
+
         container.addElement(heading);
+
+        //container.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 0, 5));
 
         SimpleTextBox name = new SimpleTextBox(fontBold, fontSize, 0,0, model.callviaName(client_obj,"get"+addressType+"Name").toString());
         name.setEntityName(entityPrefix+"N");
