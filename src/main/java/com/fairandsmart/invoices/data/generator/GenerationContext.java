@@ -84,6 +84,17 @@ public class GenerationContext {
         this.date = date;
     }
 
+    @Override
+    public String toString() {
+        return "GenerationContext{" +
+                "country='" + country + '\'' +
+                ", language='" + language + '\'' +
+                ", brandName='" + brandName + '\'' +
+                ", currency='" + currency + '\'' +
+                ", date=" + date +
+                '}';
+    }
+
     public static GenerationContext generate() {
         GenerationContext ctx = new GenerationContext();
         ctx.setCountry(countries.get(rnd.nextInt(countries.size())));

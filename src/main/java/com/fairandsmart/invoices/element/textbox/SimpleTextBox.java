@@ -57,14 +57,18 @@ public class SimpleTextBox extends ElementBox {
         this.padding = new Padding();
         this.font = font;
         this.fontSize = fontSize;
-        this.text = text;
+        if(text == null){
+            text = "";
+        }
+        this.text = VerifCharEncoding.remove(text);
+        //this.text = text.replace("\n", "").replace("\r", "");
         this.entityName = entityName;
         this.lines = new ArrayList<>();
-        this.lines.add(text);
+        this.lines.add(this.text);
         this.underline = font.getFontDescriptor().getFontBoundingBox().getLowerLeftY() / 1000 * fontSize;
         this.overline = font.getFontDescriptor().getFontBoundingBox().getUpperRightY() / 1000 * fontSize;
         this.lineHeight = overline - underline;
-        this.box = new BoundingBox(posX, posY, fontSize * font.getStringWidth(text) / 1000, lineHeight);
+        this.box = new BoundingBox(posX, posY, fontSize * font.getStringWidth(this.text) / 1000, lineHeight);
         this.textColor = textColor;
         this.backgroundColor = backgroundColor;
         this.halign = halign;
@@ -88,9 +92,9 @@ public class SimpleTextBox extends ElementBox {
         //TODO we need to count the number of spaces between word to include the good posX in the offset
         //TODO Maybe throw en exception when a single word is longer that the maxwidth (unseccable) or cut the word
         float contentWidth = width - this.padding.getHorizontalPadding();
-        if ( contentWidth <= 0 ) {
+        /*if ( contentWidth <= 0 ) {
             throw new IOException("unable to fit content in the desired width");
-        }
+        }*/
         String[] words = text.split(" ");
         this.lines = new ArrayList<>();
         String currentLine = "";

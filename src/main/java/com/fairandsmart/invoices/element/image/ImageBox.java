@@ -22,7 +22,7 @@ public class ImageBox extends ElementBox {
     public ImageBox(PDImageXObject image, float posX, float posY, float width, float height, String text) {
         this.image = image;
         this.text = text;
-        this.box = new BoundingBox(posX, posY, width, height);
+        this.box = new BoundingBox(posX, posY - height, width, height);
     }
 
     public void setBackgroundColor(Color color) {
@@ -36,6 +36,7 @@ public class ImageBox extends ElementBox {
 
     @Override
     public void setWidth(float width) {
+        //TODO This is not good at all as it's not takes into account the scaling
         if(box.getWidth()>width){
             box.setWidth(width);
         }
@@ -50,8 +51,10 @@ public class ImageBox extends ElementBox {
     @Override
     public void setHeight(float height) {
         float scale = height / box.getHeight();
+        float oldHeight = box.getHeight();
         box.setHeight(box.getHeight() * scale);
         box.setWidth(box.getWidth() * scale);
+        box.setPosY(box.getPosY() + oldHeight - box.getHeight());
     }
 
     @Override
@@ -63,11 +66,11 @@ public class ImageBox extends ElementBox {
     public void build(PDPageContentStream stream, XMLStreamWriter writer) throws Exception {
         if ( backgroundColor != null ) {
             stream.setNonStrokingColor(backgroundColor);
-            stream.addRect(box.getPosX(), box.getPosY() - box.getHeight(), box.getWidth(), box.getHeight());
+            stream.addRect(box.getPosX(), box.getPosY(), box.getWidth(), box.getHeight());
             stream.fill();
         }
 
-        stream.drawImage(image, box.getPosX(), box.getPosY() - box.getHeight(), box.getWidth(), box.getHeight());
+        stream.drawImage(image, box.getPosX(), box.getPosY(), box.getWidth(), box.getHeight());
         this.writeXMLZone(writer, "ocr_carea", text, box,"img");
     }
 

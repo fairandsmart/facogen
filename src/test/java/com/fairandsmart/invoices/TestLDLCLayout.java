@@ -14,14 +14,16 @@ public class TestLDLCLayout {
     @Test
     public void test() throws Exception {
         String ts = "" + System.currentTimeMillis();
-        Path pdf = Paths.get("target/ldlc-"+ ts + ".pdf");
-        Path xml = Paths.get("target/ldlc-"+ ts + ".xml");
-        Path img = Paths.get("target/ldlc-"+ ts + ".tiff");
+        for ( int i=0; i<100; i++) {
+            Path pdf = Paths.get("target/ldlc/ldlc" + ts + " .pdf");
+            Path xml = Paths.get("target/ldlc/ldlc" + ts + ".xml");
+            Path img = Paths.get("target/ldlc/ldlc" + ts + ".tiff");
 
-        GenerationContext ctx = GenerationContext.generate();
-        InvoiceModel model = new InvoiceModel.Generator().generate(ctx);
-        InvoiceLayout layout = new LDLCLayout();
-        InvoiceGenerator.getInstance().generateInvoice(layout, model, pdf, xml, img);
+            GenerationContext ctx = GenerationContext.generate();
+            InvoiceModel model = new InvoiceModel.Generator().generate(ctx);
+            InvoiceLayout layout = new LDLCLayout();
+            InvoiceGenerator.getInstance().generateInvoice(layout, model, pdf, xml, img);
+        }
     }
 
 }

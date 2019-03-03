@@ -323,7 +323,7 @@ public class ProductContainer {
             int idxL = ctx.getRandom().nextInt(localqtyHeads.size());
 
 
-            int maxProduct = 4;
+            int maxProduct = 6;
             ProductContainer productContainer = new ProductContainer(ctx.getCurrency(), localdescHeads.get(idxL), localqtyHeads.get(idxL),
                                                 localUPHeads.get(idxL), localtaxRateHeads.get(idxL), localtaxHeads.get(idxL), locallineTotalHeads.get(idxL),
                                                 localwithoutTaxTotalHeads.get(idxL), localTaxTotalHeads.get(idxL), localwithTaxTotalHeads.get(idxL), localSNHeads.get(idxL));

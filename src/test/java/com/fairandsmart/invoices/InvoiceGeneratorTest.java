@@ -17,12 +17,13 @@ public class InvoiceGeneratorTest {
     @Test
     public void testBasicTemplateGeneration() throws Exception {
 
+
         Path generated = Paths.get("target/generated");
         if ( !Files.exists(generated) ) {
             Files.createDirectory(generated);
         }
 
-        for ( int i=0; i<40; i++) {
+        for ( int i=0; i<4; i++) {
             //String ts = "" + System.currentTimeMillis();
             Path pdf = Paths.get("target/generated/basic-"+ i + ".pdf");
             Path xml = Paths.get("target/generated/basic-"+ i + ".xml");
@@ -33,6 +34,7 @@ public class InvoiceGeneratorTest {
             System.out.println("current: " + i);
 
         }
+
     }
 
 }

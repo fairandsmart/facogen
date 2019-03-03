@@ -7,9 +7,9 @@ import java.util.Random;
 
 public class InvoiceModel {
 
+    private String lang;
     private InvoiceNumber reference;
     private InvoiceDate date;
-    private String lang;
     private PaymentInfo paymentInfo;
     private Company company;
     private Client client;
