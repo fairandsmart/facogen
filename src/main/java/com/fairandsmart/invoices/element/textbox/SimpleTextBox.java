@@ -1,5 +1,6 @@
 package com.fairandsmart.invoices.element.textbox;
 
+import com.fairandsmart.invoices.VerifCharEncoding;
 import com.fairandsmart.invoices.element.BoundingBox;
 import com.fairandsmart.invoices.element.ElementBox;
 import com.fairandsmart.invoices.element.HAlign;
