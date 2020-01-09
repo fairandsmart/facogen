@@ -1,5 +1,38 @@
 package com.fairandsmart.invoices.layout.amazon;
 
+/*-
+ * #%L
+ * FacoGen / A tool for annotated GEDI based invoice generation.
+ * 
+ * Authors:
+ * 
+ * Xavier Lefevre <xavier.lefevre@fairandsmart.com> / FairAndSmart
+ * Nicolas Rueff <nicolas.rueff@fairandsmart.com> / FairAndSmart
+ * Alan Balbo <alan.balbo@fairandsmart.com> / FairAndSmart
+ * Frederic Pierre <frederic.pierre@fairansmart.com> / FairAndSmart
+ * Victor Guillaume <victor.guillaume@fairandsmart.com> / FairAndSmart
+ * Jérôme Blanchard <jerome.blanchard@fairandsmart.com> / FairAndSmart
+ * Aurore Hubert <aurore.hubert@fairandsmart.com> / FairAndSmart
+ * Kevin Meszczynski <kevin.meszczynski@fairandsmart.com> / FairAndSmart
+ * %%
+ * Copyright (C) 2019 Fair And Smart
+ * %%
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public
+ * License along with this program.  If not, see
+ * <http://www.gnu.org/licenses/gpl-3.0.html>.
+ * #L%
+ */
+
 import com.fairandsmart.invoices.data.model.InvoiceModel;
 import com.fairandsmart.invoices.data.model.Product;
 import com.fairandsmart.invoices.element.border.BorderBox;
@@ -85,7 +118,7 @@ public class AmazonLayout implements InvoiceLayout {
 
         float[] configRow = {20f, 120f, 60f, 60f, 60f, 60f, 60f, 60f};
         TableRowBox firstLine = new TableRowBox(configRow, 0, 0);
-        firstLine.setBackgroundColor(Color.YELLOW);
+        firstLine.setBackgroundColor(Color.GRAY);
         firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "QTY", Color.BLACK, Color.GRAY), false);
         firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "DESCRIPTION", Color.BLACK, Color.GRAY), false);
         firstLine.addElement(new SimpleTextBox(PDType1Font.HELVETICA_BOLD, 8, 0, 0, "UNIT PRICE", Color.BLACK, Color.GRAY), false);
@@ -173,11 +206,11 @@ public class AmazonLayout implements InvoiceLayout {
         verticalInvoiceItems.addElement(new HorizontalLineBox(0,0, page.getMediaBox().getWidth()-(20*2), 0));
         verticalInvoiceItems.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 0, 5));
 
-        String certification = this.getClass().getClassLoader().getResource("parts/amazon/certification.png").getFile();
-        PDImageXObject pdCertification = PDImageXObject.createFromFile(certification, document);
-        ImageBox imageFooter = new ImageBox(pdCertification, 0,0, page.getMediaBox().getWidth()-40, pdBarcode.getHeight(), "certification");
+        //String certification = this.getClass().getClassLoader().getResource("parts/amazon/certification.png").getFile();
+        //PDImageXObject pdCertification = PDImageXObject.createFromFile(certification, document);
+        //ImageBox imageFooter = new ImageBox(pdCertification, 0,0, page.getMediaBox().getWidth()-40, pdBarcode.getHeight(), "certification");
 
-        verticalInvoiceItems.addElement(imageFooter);
+        //verticalInvoiceItems.addElement(imageFooter);
         verticalInvoiceItems.addElement(new HorizontalLineBox(0,0, page.getMediaBox().getWidth()-(20*2), 0));
         verticalInvoiceItems.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 0, 5));
 
