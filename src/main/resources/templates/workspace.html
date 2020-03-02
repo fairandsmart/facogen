@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Fair&Smart Generator">
+    <meta name="author" content="Fair&Smart">
+    <link rel="stylesheet" href="//stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"><link rel="stylesheet" href="/public/css/styles.css">
+    <link rel="shortcut icon" href="/public/img/favicon.ico">
+    <title>Fair&Smart Generator</title>
+</head>
+<body>
+<div class="container mt-4 ml-2 mr-2">
+    <div class="jumbotron d-flex flex-row justify-content-around align-items-center pt-2 pl-4 pr-4 pb-3">
+        <div>
+            <h1 class="display-4">Fair&Smart Generator</h1>
+            <p class="lead">
+                This is Fair & Smart Augmented Data Generator.<br/>
+            </p>
+        </div>
+        <img src="/public/img/root.logo.png">
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#"><span style="text-transform: uppercase">{workspace.owner}</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/api/ws">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarGenerate" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Generate Content</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarGenerate">
+                        <a class="dropdown-item" type="button" data-toggle="modal" data-target="#generateInvoiceModal">Invoices</a>
+                        <a class="dropdown-item" type="button" data-toggle="modal" data-target="#generatePayslipModal">Payslip</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDownload" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Download All</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDownload">
+                        <a class="dropdown-item" href="#">Format zip</a>
+                        <a class="dropdown-item" href="#">Format tar.gz</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" type="button" data-toggle="modal" data-target="#purgeWorkspaceModal">Purge Workspace</a>
+                </li>
+            </ul>
+            <span class="navbar-text">
+                <a class="nav-link" type="button" data-toggle="modal" data-target="#viewJobsModal"><i><b>{workspace.activeJobs}</b> active / <b>{workspace.jobs.size}</b> total job(s)</i></a>
+            </span>
+        </div>
+    </nav>
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-striped w-100 table-sm" id="workspace-content">
+                <thead>
+                <tr>
+                    <th data-priority="1">Nom</th>
+                    <th>Taille</th>
+                    <th>Type</th>
+                    <th class="sort-numeric">Date de Création</th>
+                    <th class="sort-numeric">Date de Modification</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {#if workspace.content.size gt 0}
+                {#for item in workspace.content}
+                    <tr>
+                        <td>
+                            <i class="fa fa-file mr-2"></i>
+                            <a href="/api/ws/{workspace.id}/content/{item.name}?download=false">{item.name}</a>
+                        </td>
+                        <td>{item.size}</td>
+                        <td>{item.mimeType}</td>
+                        <td>{item.creationDate}</td>
+                        <td>{item.modificationDate}</td>
+                        <td>
+                            <a href="/api/ws/{workspace.id}/content/{item.name}?download=true" class="mr-3"><i class="fas fa-download"></i></a>
+                            <a href="/api/ws/{workspace.id}/content/{item.name}"><i class="fas fa-eye"></i></a>
+                        </td>
+                    </tr>
+                {/for}
+                {#else}
+                    <tr>
+                        <td colspan="6">Aucun contenu dans cet espace de travail</td>
+                    </tr>
+                {/if}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div id="generateInvoiceModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <form method="post" action="/api/ws/{workspace.id}/jobs">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Submit Generation Job</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="jobType">Job Type</label>
+                        <input type="text" class="form-control" id="jobType" value="invoices.generate" readonly/>
+                    </div>
+                    <div class="form-group">
+                        <label for="numberOfSamples">Number of samples to generate</label>
+                        <input type="text" class="form-control" id="numberOfSamples"/>
+                        <small id="numberOfSamplesHelp" class="form-text text-muted">According to your account you may be limited by workspace size.</small>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary" id="upload">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div id="purgeWorkspaceModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <form method="post" action="/api/ws/{workspace.id}/purge">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Purge Workspace</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="wsname">Workspace Name</label>
+                        <input type="text" class="form-control" id="wsname" name="wsname"/>
+                        <small id="wsnameHelp" class="form-text text-muted">Please confirm workspace anem to allow purge.</small>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-danger" id="purge">Purge</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div id="viewJobsModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Jobs list</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-sm" id="jobs-content">
+                    <thead>
+                    <tr>
+                        <th class="sort-numeric">Start Date</th>
+                        <th class="sort-numeric">Stop Date</th>
+                        <th data-priority="1">Type</th>
+                        <th>Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {#if workspace.jobs.size gt 0}
+                    {#for job in workspace.jobs}
+                    <tr>
+                        <td>{job.startDate}</td>
+                        <td>{job.stopDate}</td>
+                        <td>
+                            <i class="fa fa-file mr-2"></i>{job.type}
+                        </td>
+                        <td>{job.status}</td>
+                    </tr>
+                    {/for}
+                    {#else}
+                    <tr>
+                        <td colspan="6">Aucun job dans cet espace de travail</td>
+                    </tr>
+                    {/if}
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="//code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="//cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="//stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>
+
