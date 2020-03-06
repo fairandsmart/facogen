@@ -47,7 +47,7 @@ public class TestgenericLayout {
     @Test
     public void test() throws Exception {
       //  String i = "" + System.currentTimeMillis();
-        for ( int i=17448; i<19000; i++) {
+        for ( int i=1; i<10; i++) {
 //        Path pdf = Paths.get("target/pdf/gen-"+ i + ".pdf");
 //        Path xml = Paths.get("target/xml/gen-"+ i + ".xml");
 //        Path img = Paths.get("target/tiff/gen-"+ i + ".tiff");

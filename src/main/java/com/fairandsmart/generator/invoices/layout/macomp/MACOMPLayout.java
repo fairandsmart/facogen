@@ -52,13 +52,11 @@ import org.apache.pdfbox.pdmodel.common.PDRectangle;
 import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 
-import javax.enterprise.context.ApplicationScoped;
 import javax.xml.stream.XMLStreamWriter;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@ApplicationScoped
 public class MACOMPLayout implements InvoiceLayout {
 
     private static final List<PDFont[]> FONTS = new ArrayList<>();
