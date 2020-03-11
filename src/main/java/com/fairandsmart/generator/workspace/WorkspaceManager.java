@@ -76,7 +76,7 @@ public class WorkspaceManager {
     protected void init() {
         LOGGER.log(Level.INFO, "Initialising Workspace Service");
         if ( home.startsWith("~") ) {
-            home = home.replaceFirst("\\~", System.getProperty("user.home")).replace("\\", "/");
+            home = home.replaceFirst("\\~", System.getProperty("user.home").replace("\\", "/"));
         }
         this.root = Paths.get(home, WORKSPACES_HOME);
         LOGGER.log(Level.INFO, "Initializing service with root folder: " + root);
