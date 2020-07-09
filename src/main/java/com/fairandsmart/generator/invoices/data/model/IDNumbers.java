@@ -96,9 +96,9 @@ public class IDNumbers {
         return "IDNumbers{" +
                 "vatValue='" + vatValue + '\'' +
                 ", vatLabel='" + vatLabel + '\'' +
-                " cidValue='" + cidValue + '\'' +
+                ", cidValue='" + cidValue + '\'' +
                 ", cidLabel='" + cidLabel + '\'' +
-                " siretValue='" + siretValue + '\'' +
+                ", siretValue='" + siretValue + '\'' +
                 ", siretLabel='" + siretLabel + '\'' +
                 ", toaValue='" + toaValue + '\'' +
                 ", toaLabel='" + toaLabel + '\'' +
@@ -232,7 +232,7 @@ public class IDNumbers {
             String cwdPath = new File("").getAbsolutePath();       // current working directory
             try
             {
-                fileReader = new FileReader(cwdPath+ "/src/main/resources/apecodes.txt" );
+                fileReader = new FileReader(cwdPath+ "/src/main/resources/common/apecodes.txt" );
                 reader = new BufferedReader(fileReader);
                 int i = 1;
                 while (((lineIn = reader.readLine()) !=null) && i!=random_line) {
