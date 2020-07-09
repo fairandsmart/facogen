@@ -33,10 +33,10 @@ package com.fairandsmart.generator.job.handler;
  * #L%
  */
 
-import com.fairandsmart.generator.invoices.InvoiceGenerator;
-import com.fairandsmart.generator.invoices.data.generator.GenerationContext;
-import com.fairandsmart.generator.invoices.data.model.InvoiceModel;
-import com.fairandsmart.generator.invoices.layout.InvoiceLayout;
+import com.fairandsmart.generator.documents.InvoiceGenerator;
+import com.fairandsmart.generator.documents.data.generator.GenerationContext;
+import com.fairandsmart.generator.documents.data.model.InvoiceModel;
+import com.fairandsmart.generator.documents.layout.InvoiceLayout;
 import com.fairandsmart.generator.job.JobManager;
 import com.fairandsmart.generator.job.JobNotFoundException;
 import com.fairandsmart.generator.job.entity.Job;

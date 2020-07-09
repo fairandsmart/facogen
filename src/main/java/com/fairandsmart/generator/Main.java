@@ -1,9 +1,9 @@
 package com.fairandsmart.generator;
 
-import com.fairandsmart.generator.invoices.InvoiceGenerator;
-import com.fairandsmart.generator.invoices.data.generator.GenerationContext;
-import com.fairandsmart.generator.invoices.data.model.InvoiceModel;
-import com.fairandsmart.generator.invoices.layout.loria.LoriaLayout;
+import com.fairandsmart.generator.documents.InvoiceGenerator;
+import com.fairandsmart.generator.documents.data.generator.GenerationContext;
+import com.fairandsmart.generator.documents.data.model.InvoiceModel;
+import com.fairandsmart.generator.documents.layout.loria.LoriaLayout;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
