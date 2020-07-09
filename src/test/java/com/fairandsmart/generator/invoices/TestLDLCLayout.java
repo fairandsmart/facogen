@@ -33,24 +33,30 @@ package com.fairandsmart.generator.invoices;
  * #L%
  */
 
-import com.fairandsmart.generator.invoices.layout.InvoiceLayout;
-import com.fairandsmart.generator.invoices.layout.ldlc.LDLCLayout;
 import com.fairandsmart.generator.invoices.data.generator.GenerationContext;
 import com.fairandsmart.generator.invoices.data.model.InvoiceModel;
+import com.fairandsmart.generator.invoices.layout.InvoiceLayout;
+import com.fairandsmart.generator.invoices.layout.ldlc.LDLCLayout;
 import org.junit.Test;
 
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class TestLDLCLayout {
 
     @Test
-    public void test() throws Exception {
-        String ts = "" + System.currentTimeMillis();
-        for ( int i=0; i<100; i++) {
-            Path pdf = Paths.get("target/ldlc/ldlc" + ts + " .pdf");
-            Path xml = Paths.get("target/ldlc/ldlc" + ts + ".xml");
-            Path img = Paths.get("target/ldlc/ldlc" + ts + ".tiff");
+    public static void test(int nb) throws Exception {
+
+        Path ldlc = Paths.get("target/ldlc");
+        if ( !Files.exists(ldlc) ) {
+            Files.createDirectory(ldlc);
+        }
+
+        for ( int i=1; i<=nb; i++) {
+            Path pdf = Paths.get("target/ldlc/ldlc" + i + " .pdf");
+            Path xml = Paths.get("target/ldlc/ldlc" + i + ".xml");
+            Path img = Paths.get("target/ldlc/ldlc" + i + ".tiff");
 
             GenerationContext ctx = GenerationContext.generate();
             InvoiceModel model = new InvoiceModel.Generator().generate(ctx);

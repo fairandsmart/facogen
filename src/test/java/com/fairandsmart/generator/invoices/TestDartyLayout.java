@@ -39,20 +39,40 @@ import com.fairandsmart.generator.invoices.layout.InvoiceLayout;
 import com.fairandsmart.generator.invoices.layout.darty.DartyLayout;
 import org.junit.Test;
 
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class TestDartyLayout {
 
     @Test
-    public void test() throws Exception {
-        String ts = "" + System.currentTimeMillis();
+    public static void test(int nb) throws Exception {
 
-        for ( int i=0; i<100; i++) {
+        Path darty = Paths.get("target/darty");
+        if ( !Files.exists(darty) ) {
+            Files.createDirectory(darty);
+        }
 
-            Path pdf = Paths.get("target/darty/darty" + ts + ".pdf");
-            Path xml = Paths.get("target/darty/darty" + ts + ".xml");
-            Path img = Paths.get("target/darty/darty" + ts + ".tiff");
+        Path directoryPdf = Paths.get("target/darty/pdf");
+        if ( !Files.exists(directoryPdf) ) {
+            Files.createDirectory(directoryPdf);
+        }
+
+        Path directoryXml = Paths.get("target/darty/xml");
+        if ( !Files.exists(directoryXml) ) {
+            Files.createDirectory(directoryXml);
+        }
+
+        Path directoryTiff = Paths.get("target/darty/tiff");
+        if ( !Files.exists(directoryTiff) ) {
+            Files.createDirectory(directoryTiff);
+        }
+
+        for ( int i=1; i<=nb; i++) {
+
+            Path pdf = Paths.get("target/darty/pdf/darty" + i + ".pdf");
+            Path xml = Paths.get("target/darty/xml/darty" + i + ".xml");
+            Path img = Paths.get("target/darty/tiff/darty" + i + ".tiff");
 
             GenerationContext ctx = GenerationContext.generate();
             InvoiceModel model = new InvoiceModel.Generator().generate(ctx);

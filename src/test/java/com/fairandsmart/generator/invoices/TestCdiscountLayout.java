@@ -39,20 +39,25 @@ import com.fairandsmart.generator.invoices.layout.InvoiceLayout;
 import com.fairandsmart.generator.invoices.layout.cdiscount.CdiscountLayout;
 import org.junit.Test;
 
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class TestCdiscountLayout {
 
     @Test
-    public void test() throws Exception {
-        String ts = "" + System.currentTimeMillis();
+    public static void test(int nb) throws Exception {
 
-        for ( int i=0; i<100; i++) {
+        Path cdiscount = Paths.get("target/cdiscount");
+        if ( !Files.exists(cdiscount) ) {
+            Files.createDirectory(cdiscount);
+        }
 
-            Path pdf = Paths.get("target/cdiscount/cdiscount" + ts + ".pdf");
-            Path xml = Paths.get("target/cdiscount/cdiscount" + ts + ".xml");
-            Path img = Paths.get("target/cdiscount/cdiscount" + ts + ".tiff");
+        for ( int i=1; i<=nb; i++) {
+
+            Path pdf = Paths.get("target/cdiscount/cdiscount" + i + ".pdf");
+            Path xml = Paths.get("target/cdiscount/cdiscount" + i + ".xml");
+            Path img = Paths.get("target/cdiscount/cdiscount" + i + ".tiff");
 
             GenerationContext ctx = GenerationContext.generate();
             ctx.setCountry("FR");

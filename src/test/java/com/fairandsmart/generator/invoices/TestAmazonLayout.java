@@ -33,28 +33,49 @@ package com.fairandsmart.generator.invoices;
  * #L%
  */
 
+import com.fairandsmart.generator.invoices.data.generator.GenerationContext;
 import com.fairandsmart.generator.invoices.data.model.InvoiceModel;
 import com.fairandsmart.generator.invoices.layout.InvoiceLayout;
 import com.fairandsmart.generator.invoices.layout.amazon.AmazonLayout;
-import com.fairandsmart.generator.invoices.data.generator.GenerationContext;
 import org.junit.Test;
 
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class TestAmazonLayout {
 
     @Test
-    public void test() throws Exception {
-        String ts = "" + System.currentTimeMillis();
-        Path pdf = Paths.get("target/amazon-"+ ts + ".pdf");
-        Path xml = Paths.get("target/amazon-"+ ts + ".xml");
-        Path img = Paths.get("target/amazon-"+ ts + ".tiff");
+    public static void test(int nb) throws Exception {
+        Path amazon = Paths.get("target/amazon");
+        if ( !Files.exists(amazon) ) {
+            Files.createDirectory(amazon);
+        }
 
-        GenerationContext ctx = GenerationContext.generate();
-        InvoiceModel model = new InvoiceModel.Generator().generate(ctx);
-        InvoiceLayout layout = new AmazonLayout();
-        InvoiceGenerator.getInstance().generateInvoice(layout, model, pdf, xml, img);
+        Path directoryPdf = Paths.get("target/amazon/pdf");
+        if ( !Files.exists(directoryPdf) ) {
+            Files.createDirectory(directoryPdf);
+        }
+
+        Path directoryXml = Paths.get("target/amazon/xml");
+        if ( !Files.exists(directoryXml) ) {
+            Files.createDirectory(directoryXml);
+        }
+
+        Path directoryTiff = Paths.get("target/amazon/tiff");
+        if ( !Files.exists(directoryTiff) ) {
+            Files.createDirectory(directoryTiff);
+        }
+        for(int i=1; i<=nb; i++){
+            Path pdf = Paths.get("target/amazon/pdf/amazon-"+ i + ".pdf");
+            Path xml = Paths.get("target/amazon/xml/amazon-"+ i + ".xml");
+            Path img = Paths.get("target/amazon/tiff/amazon-"+ i + ".tiff");
+            
+            GenerationContext ctx = GenerationContext.generate();
+            InvoiceModel model = new InvoiceModel.Generator().generate(ctx);
+            InvoiceLayout layout = new AmazonLayout();
+            InvoiceGenerator.getInstance().generateInvoice(layout, model, pdf, xml, img);
+        }
     }
 
 }

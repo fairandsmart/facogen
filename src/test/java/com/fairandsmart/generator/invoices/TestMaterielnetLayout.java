@@ -33,25 +33,30 @@ package com.fairandsmart.generator.invoices;
  * #L%
  */
 
-import com.fairandsmart.generator.invoices.layout.InvoiceLayout;
 import com.fairandsmart.generator.invoices.data.generator.GenerationContext;
 import com.fairandsmart.generator.invoices.data.model.InvoiceModel;
+import com.fairandsmart.generator.invoices.layout.InvoiceLayout;
 import com.fairandsmart.generator.invoices.layout.materielnet.MaterielnetLayout;
 import org.junit.Test;
 
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class TestMaterielnetLayout {
 
     @Test
-    public void test() throws Exception {
-        String ts = "" + System.currentTimeMillis();
+    public static void test(int nb) throws Exception {
 
-        for ( int i=0; i<100; i++) {
-            Path pdf = Paths.get("target/materielnet/materielnet-" + ts + ".pdf");
-            Path xml = Paths.get("target/materielnet/materielnet" + ts + ".xml");
-            Path img = Paths.get("target/materielnet/materielnet" + ts + ".tiff");
+        Path materielnet = Paths.get("target/materielnet");
+        if ( !Files.exists(materielnet) ) {
+            Files.createDirectory(materielnet);
+        }
+
+        for ( int i=1; i<=nb; i++) {
+            Path pdf = Paths.get("target/materielnet/materielnet-" + i + ".pdf");
+            Path xml = Paths.get("target/materielnet/materielnet" + i + ".xml");
+            Path img = Paths.get("target/materielnet/materielnet" +i + ".tiff");
 
             GenerationContext ctx = GenerationContext.generate();
             ctx.setCountry("FR");

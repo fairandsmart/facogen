@@ -15,7 +15,7 @@ package com.fairandsmart.generator.invoices;
  * Aurore Hubert <aurore.hubert@fairandsmart.com> / FairAndSmart
  * Kevin Meszczynski <kevin.meszczynski@fairandsmart.com> / FairAndSmart
  * %%
- * Copyright (C) 2019 Fair And Smart
+ * Copyright (C) 2019 - 2020 Fair And Smart
  * %%
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as
@@ -36,35 +36,30 @@ package com.fairandsmart.generator.invoices;
 import com.fairandsmart.generator.invoices.data.generator.GenerationContext;
 import com.fairandsmart.generator.invoices.data.model.InvoiceModel;
 import com.fairandsmart.generator.invoices.layout.InvoiceLayout;
-import com.fairandsmart.generator.invoices.layout.bdmobilier.BDmobilierLayout;
+import com.fairandsmart.generator.invoices.layout.naturedecouvertes.NatureDecouvertesLayout;
 import org.junit.Test;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class TestBDmobilierLayout {
+public class TestNatureDecouvertesLayout {
 
     @Test
     public static void test(int nb) throws Exception {
-
-        Path bdmobilier = Paths.get("target/bdmobilier");
-        if ( !Files.exists(bdmobilier) ) {
-            Files.createDirectory(bdmobilier);
-        }
-
-        for ( int i=1; i<=nb; i++) {
-
-            Path pdf = Paths.get("target/bdmobilier/bdmobilier" + i + ".pdf");
-            Path xml = Paths.get("target/bdmobilier/bdmobilier" + i + ".xml");
-            Path img = Paths.get("target/bdmobilier/bdmobilier" + i + ".tiff");
+        Path natureDecouvertes = Paths.get("target/natureDecouvertes");
+        if ( !Files.exists(natureDecouvertes)) {
+            Files.createDirectory(natureDecouvertes);}
+        for(int i=1; i<=nb; i++){
+            Path pdf = Paths.get("target/natureDecouvertes/natureDecouvertes-"+ i + ".pdf");
+            Path xml = Paths.get("target/natureDecouvertes/natureDecouvertes-"+ i + ".xml");
+            Path img = Paths.get("target/natureDecouvertes/natureDecouvertes-"+ i + ".tiff");
 
             GenerationContext ctx = GenerationContext.generate();
-            ctx.setCountry("FR");
-            ctx.setLanguage("fr");
             InvoiceModel model = new InvoiceModel.Generator().generate(ctx);
-            InvoiceLayout layout = new BDmobilierLayout();
+            InvoiceLayout layout = new NatureDecouvertesLayout();
             InvoiceGenerator.getInstance().generateInvoice(layout, model, pdf, xml, img);
         }
     }
+
 }

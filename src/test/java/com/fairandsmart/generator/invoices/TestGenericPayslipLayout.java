@@ -15,7 +15,7 @@ package com.fairandsmart.generator.invoices;
  * Aurore Hubert <aurore.hubert@fairandsmart.com> / FairAndSmart
  * Kevin Meszczynski <kevin.meszczynski@fairandsmart.com> / FairAndSmart
  * %%
- * Copyright (C) 2019 Fair And Smart
+ * Copyright (C) 2019 - 2020 Fair And Smart
  * %%
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as
@@ -34,37 +34,31 @@ package com.fairandsmart.generator.invoices;
  */
 
 import com.fairandsmart.generator.invoices.data.generator.GenerationContext;
-import com.fairandsmart.generator.invoices.data.model.InvoiceModel;
-import com.fairandsmart.generator.invoices.layout.InvoiceLayout;
-import com.fairandsmart.generator.invoices.layout.bdmobilier.BDmobilierLayout;
+import com.fairandsmart.generator.invoices.data.model.PayslipModel;
+import com.fairandsmart.generator.invoices.layout.payslip.GenericPayslipLayout;
 import org.junit.Test;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class TestBDmobilierLayout {
-
+public class TestGenericPayslipLayout {
     @Test
-    public static void test(int nb) throws Exception {
-
-        Path bdmobilier = Paths.get("target/bdmobilier");
-        if ( !Files.exists(bdmobilier) ) {
-            Files.createDirectory(bdmobilier);
+    public void test() throws Exception {
+        Path amazon = Paths.get("target/payslip");
+        if ( !Files.exists(amazon) ) {
+            Files.createDirectory(amazon);
         }
-
-        for ( int i=1; i<=nb; i++) {
-
-            Path pdf = Paths.get("target/bdmobilier/bdmobilier" + i + ".pdf");
-            Path xml = Paths.get("target/bdmobilier/bdmobilier" + i + ".xml");
-            Path img = Paths.get("target/bdmobilier/bdmobilier" + i + ".tiff");
+        for(int i=1; i<=1; i++){
+            Path pdf = Paths.get("target/payslip/payslip-"+ i + ".pdf");
+            Path xml = Paths.get("target/payslip/payslip-"+ i + ".xml");
+            Path img = Paths.get("target/payslip/payslip-"+ i + ".tiff");
 
             GenerationContext ctx = GenerationContext.generate();
-            ctx.setCountry("FR");
-            ctx.setLanguage("fr");
-            InvoiceModel model = new InvoiceModel.Generator().generate(ctx);
-            InvoiceLayout layout = new BDmobilierLayout();
-            InvoiceGenerator.getInstance().generateInvoice(layout, model, pdf, xml, img);
+            PayslipModel model = new PayslipModel.Generator().generate(ctx);
+            System.out.println(model);
+            GenericPayslipLayout layout = new GenericPayslipLayout();
+            PayslipGenerator.getInstance().generatePayslip(layout, model, pdf, xml, img);
         }
     }
 }

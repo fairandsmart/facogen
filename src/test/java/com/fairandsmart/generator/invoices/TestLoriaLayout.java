@@ -15,7 +15,7 @@ package com.fairandsmart.generator.invoices;
  * Aurore Hubert <aurore.hubert@fairandsmart.com> / FairAndSmart
  * Kevin Meszczynski <kevin.meszczynski@fairandsmart.com> / FairAndSmart
  * %%
- * Copyright (C) 2019 Fair And Smart
+ * Copyright (C) 2019 - 2020 Fair And Smart
  * %%
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as
@@ -36,34 +36,34 @@ package com.fairandsmart.generator.invoices;
 import com.fairandsmart.generator.invoices.data.generator.GenerationContext;
 import com.fairandsmart.generator.invoices.data.model.InvoiceModel;
 import com.fairandsmart.generator.invoices.layout.InvoiceLayout;
-import com.fairandsmart.generator.invoices.layout.bdmobilier.BDmobilierLayout;
+import com.fairandsmart.generator.invoices.layout.loria.LoriaLayout;
 import org.junit.Test;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class TestBDmobilierLayout {
+public class TestLoriaLayout {
 
     @Test
     public static void test(int nb) throws Exception {
 
-        Path bdmobilier = Paths.get("target/bdmobilier");
-        if ( !Files.exists(bdmobilier) ) {
-            Files.createDirectory(bdmobilier);
+        Path loria = Paths.get("target/loria");
+        if ( !Files.exists(loria) ) {
+            Files.createDirectory(loria);
         }
 
         for ( int i=1; i<=nb; i++) {
 
-            Path pdf = Paths.get("target/bdmobilier/bdmobilier" + i + ".pdf");
-            Path xml = Paths.get("target/bdmobilier/bdmobilier" + i + ".xml");
-            Path img = Paths.get("target/bdmobilier/bdmobilier" + i + ".tiff");
+            Path pdf = Paths.get("target/loria/loria" + i + ".pdf");
+            Path xml = Paths.get("target/loria/loria" + i + ".xml");
+            Path img = Paths.get("target/loria/loria" + i + ".tiff");
 
             GenerationContext ctx = GenerationContext.generate();
             ctx.setCountry("FR");
             ctx.setLanguage("fr");
             InvoiceModel model = new InvoiceModel.Generator().generate(ctx);
-            InvoiceLayout layout = new BDmobilierLayout();
+            InvoiceLayout layout = new LoriaLayout();
             InvoiceGenerator.getInstance().generateInvoice(layout, model, pdf, xml, img);
         }
     }

@@ -39,24 +39,29 @@ import com.fairandsmart.generator.invoices.layout.InvoiceLayout;
 import com.fairandsmart.generator.invoices.layout.macomp.MACOMPLayout;
 import org.junit.Test;
 
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class TestMACOMPLayout {
 
     @Test
-    public void test() throws Exception {
-        //String ts = "" + System.currentTimeMillis();
-        for ( int i=11; i<16; i++) {
+    public static void test(int nb) throws Exception {
+        
+        Path macomp = Paths.get("target/macomp");
+        if ( !Files.exists(macomp) ) {
+            Files.createDirectory(macomp);
+        }
+        
+        for ( int i=1; i<=nb; i++) {
         Path pdf = Paths.get("target/macomp-"+ i + ".pdf");
         Path xml = Paths.get("target/macomp-"+ i + ".xml");
         Path img = Paths.get("target/macomp-"+ i + ".tiff");
+
         GenerationContext ctx = GenerationContext.generate();
         InvoiceModel model = new InvoiceModel.Generator().generate(ctx);
         InvoiceLayout layout = new MACOMPLayout();
         InvoiceGenerator.getInstance().generateInvoice(layout, model, pdf, xml, img);
-        System.out.println("current: " + i);
-
         }
     }
 
