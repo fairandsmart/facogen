@@ -35,7 +35,6 @@ package com.fairandsmart.generator.documents;
 
 import com.fairandsmart.generator.documents.data.generator.GenerationContext;
 import com.fairandsmart.generator.documents.data.model.PayslipModel;
-import com.fairandsmart.generator.documents.layout.payslip.GenericPayslipLayout;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.rendering.ImageType;
 import org.apache.pdfbox.rendering.PDFRenderer;
@@ -66,7 +65,7 @@ public class PayslipGenerator {
     private PayslipGenerator() {
     }
 
-    public void generatePayslip(GenericPayslipLayout layout, PayslipModel model, Path pdf, Path xml, Path img) throws Exception {
+    public void generatePayslip(com.fairandsmart.generator.documents.layout.payslip.GenericPayslipLayout layout, PayslipModel model, Path pdf, Path xml, Path img) throws Exception {
 
         OutputStream xmlos = Files.newOutputStream(xml);
         XMLStreamWriter xmlout = XMLOutputFactory.newInstance().createXMLStreamWriter(new OutputStreamWriter(xmlos, "utf-8"));
@@ -118,7 +117,7 @@ public class PayslipGenerator {
             Path img = Paths.get("target/generated/" + args[0] + "/basic-"+ i + ".tiff");
             GenerationContext ctx = GenerationContext.generate();
             PayslipModel model = new PayslipModel.Generator().generate(ctx);
-            PayslipGenerator.getInstance().generatePayslip(new GenericPayslipLayout(), model, pdf, xml, img);
+            PayslipGenerator.getInstance().generatePayslip(new com.fairandsmart.generator.documents.layout.payslip.GenericPayslipLayout(), model, pdf, xml, img);
             System.out.println("current: " + i);
         }
     }
