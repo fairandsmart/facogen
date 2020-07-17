@@ -1,7 +1,11 @@
 package com.fairandsmart.generator.documents.layout.payslip;
 
 import com.fairandsmart.generator.documents.data.model.PayslipModel;
+import com.fairandsmart.generator.documents.element.container.HorizontalContainer;
 import com.fairandsmart.generator.documents.element.container.VerticalContainer;
+import com.fairandsmart.generator.documents.element.head.CompanyInfoBox;
+import com.fairandsmart.generator.documents.element.head.EmployeeInfoBox;
+import com.fairandsmart.generator.documents.element.image.ImageBox;
 import com.fairandsmart.generator.documents.element.textbox.SimpleTextBox;
 import com.mifmif.common.regex.Generex;
 import org.apache.pdfbox.pdmodel.PDDocument;
@@ -10,8 +14,11 @@ import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.common.PDRectangle;
 import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
+import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 
 import javax.xml.stream.XMLStreamWriter;
+import java.awt.*;
+import java.util.List;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -20,6 +27,7 @@ public class GenericPayslipLayout {
     private PDFont[] fonts;
     PayslipModel model;
     private int dateAvailable;
+
     // 1 available, 0 not available, -1 used
 
     public String name() {
@@ -35,6 +43,7 @@ public class GenericPayslipLayout {
     public void builtPayslip(PayslipModel model, PDDocument document, XMLStreamWriter writer) throws Exception {
         this.model = model;
 
+        float[] configRow3 = {170f, 170f, 170f};
         PDPage page = new PDPage(PDRectangle.A4);
         document.addPage(page);
         writer.writeStartElement("DL_PAGE");
@@ -53,10 +62,24 @@ public class GenericPayslipLayout {
         boolean titleCenter = model.getRandom().nextBoolean();
         boolean titleDate = model.getRandom().nextBoolean();
         boolean periodMonth = model.getRandom().nextBoolean();
-        VerticalContainer firstPart = null;
+        boolean logo = model.getRandom().nextBoolean();
+
+        //payslip parts
+        VerticalContainer firstPart = null,secondPart = null, thirdPart = null;
+
+        //companyInfo
+        CompanyInfoBox companyInfoBox = new CompanyInfoBox(fonts[2], fonts[1], fontSize, model, document);
+        CompanyInfoBox companyAddress = new CompanyInfoBox(companyInfoBox.getCompanyAddressBlock());
+        CompanyInfoBox companyContact = new CompanyInfoBox(companyInfoBox.getCompanyContactBlock());
+        CompanyInfoBox companyId = new CompanyInfoBox(companyInfoBox.getCompanyIdBlock());
+
+        EmployeeInfoBox employeeInfoBox = new EmployeeInfoBox(fonts[2], fonts[1], fontSize, model, document);
+        EmployeeInfoBox employeeAddress = new EmployeeInfoBox(employeeInfoBox.getEmployeeAddressBlock());
+        ImageBox companyLogo =  companyInfoBox.getLogoBox(42, Color.WHITE);
+
 
         //titleCenter test
-        if(titleCenter){
+        if(true){
             firstPart = new VerticalContainer(976 * ratioPage,page.getMediaBox().getHeight()-21*ratioPage,0);
 
             firstPart.addElement(new SimpleTextBox(fonts[1], fontSize, 0, 0, model.getHeadTitle(), "SA"));
@@ -74,33 +97,31 @@ public class GenericPayslipLayout {
 
 
             //bloc society
-            contentStream.setNonStrokingColor(155,175,181);
-            float cursorX = 55 * ratioPage;
-            float cursorY = page.getMediaBox().getHeight()-804*ratioPage;
-            contentStream.fillRect(cursorX,cursorY,1199*ratioPage, 612 * ratioPage);
-            contentStream.setNonStrokingColor(0, 0, 0); //black text
-            contentStream.beginText();
-            contentStream.setFont(font, 12);
-            contentStream.moveTextPositionByAmount(cursorX, cursorY);
-            contentStream.drawString("BLOC SOCIETE");
-            contentStream.endText();
+            secondPart = new VerticalContainer(55 * ratioPage,page.getMediaBox().getHeight()-200*ratioPage,0);
+
+
+            if(logo){
+                //secondPart.addElement(companyLogo);
+               String img = this.getClass().getClassLoader().getResource("common/logo/" + model.getCompany().getLogo().getFullPath()).getFile();
+               PDImageXObject imgLogo =  PDImageXObject.createFromFile(img, document);
+               float ratioImage = (float)imgLogo.getWidth() / (float)imgLogo.getHeight();
+                contentStream.drawImage(imgLogo,55,page.getMediaBox().getHeight()-50,42,ratioImage*42);
+                companyLogo.build(contentStream,writer);
+            }
+            secondPart.addElement(companyAddress);
+            secondPart.addElement(companyContact);
+            secondPart.addElement(companyId);
+
 
             //bloc employee
-            contentStream.setNonStrokingColor(201,103,49);
-            cursorX = 1299 * ratioPage;
-            cursorY = page.getMediaBox().getHeight()-804*ratioPage;
-            contentStream.fillRect(cursorX,cursorY,1118*ratioPage, 612 * ratioPage);
-            contentStream.setNonStrokingColor(0, 0, 0); //black text
-            contentStream.beginText();
-            contentStream.setFont(font, 12);
-            contentStream.moveTextPositionByAmount(cursorX, cursorY);
-            contentStream.drawString("BLOC EMPLOYE");
-            contentStream.endText();
+            thirdPart = new VerticalContainer(1299*ratioPage,page.getMediaBox().getHeight()-200*ratioPage,0);
+            thirdPart.addElement(employeeAddress);
+
 
             //bloc info salaire
             contentStream.setNonStrokingColor(156,163,131);
-            cursorX = 64 * ratioPage;
-            cursorY = page.getMediaBox().getHeight()-2856*ratioPage;
+            float cursorX = 64 * ratioPage;
+            float cursorY = page.getMediaBox().getHeight()-2856*ratioPage;
             contentStream.fillRect(cursorX,cursorY,2328*ratioPage, 2004 * ratioPage);
             contentStream.setNonStrokingColor(0, 0, 0); //black text
             contentStream.beginText();
@@ -111,7 +132,7 @@ public class GenericPayslipLayout {
 
         }else{
             boolean titleLeft = model.getRandom().nextBoolean();
-            if(titleLeft){
+            if(true){
 
                 firstPart = new VerticalContainer(90 * ratioPage,page.getMediaBox().getHeight()-33*ratioPage,0);
 
@@ -127,26 +148,25 @@ public class GenericPayslipLayout {
                         firstPart.addElement(new SimpleTextBox(fonts[0], fontSize, 0, 0, model.getDate().getLabelEnd() + ": " + model.getDate().getValueEnd(), "SA"));
                     }
                 }
-                //bloc title
-                float cursorX = 6 * ratioPage;
-                float cursorY = page.getMediaBox().getHeight()-380*ratioPage;
 
                 //bloc society
-                contentStream.setNonStrokingColor(155,175,181);
-                cursorX = 1080 * ratioPage;
-                cursorY = page.getMediaBox().getHeight()-377*ratioPage;
-                contentStream.fillRect(cursorX,cursorY,1329*ratioPage, 344 * ratioPage);
-                contentStream.setNonStrokingColor(0, 0, 0); //black text
-                contentStream.beginText();
-                contentStream.setFont(font, 12);
-                contentStream.moveTextPositionByAmount(cursorX, cursorY);
-                contentStream.drawString("BLOC SOCIETE");
-                contentStream.endText();
+                secondPart = new VerticalContainer(1080 * ratioPage,page.getMediaBox().getHeight()-33*ratioPage,0);
+                if(true){
+                    HorizontalContainer society = new HorizontalContainer(0,0);
+                    companyLogo.translate(200,0);
+                    society.addElement(companyLogo);
+                    VerticalContainer employerInfo = new VerticalContainer(0,0,0);
+                    employerInfo.addElement(companyAddress);
+                    employerInfo.addElement(companyContact);
+                    employerInfo.addElement(companyId);
+                    society.addElement(employerInfo);
+                    secondPart.addElement(society);
+                }
 
                 //bloc employee
                 contentStream.setNonStrokingColor(201,103,49);
-                cursorX = 87 * ratioPage;
-                cursorY = page.getMediaBox().getHeight()-909*ratioPage;
+                float cursorX = 87 * ratioPage;
+                float cursorY = page.getMediaBox().getHeight()-909*ratioPage;
                 contentStream.fillRect(cursorX,cursorY,2376*ratioPage, 521 * ratioPage);
                 contentStream.setNonStrokingColor(0, 0, 0); //black text
                 contentStream.beginText();
@@ -243,6 +263,9 @@ public class GenericPayslipLayout {
             }
         }
         firstPart.build(contentStream,writer);
+
+        secondPart.build(contentStream,writer);
+        thirdPart.build(contentStream,writer);
 
         contentStream.close();
         writer.writeEndElement();

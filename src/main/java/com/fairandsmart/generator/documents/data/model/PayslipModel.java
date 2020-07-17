@@ -42,7 +42,7 @@ import java.util.stream.Collectors;
 
 public class PayslipModel extends Model {
     private PayslipDate date;
-    private Employer employer;
+    private Company employer;
     private String applicableLaw;
     private Employee employee;
     //private PayElements payElements;
@@ -82,13 +82,6 @@ public class PayslipModel extends Model {
         this.applicableLaw = applicableLaw;
     }
 
-    public Employer getEmployer() {
-        return employer;
-    }
-
-    public void setEmployer(Employer employer) {
-        this.employer = employer;
-    }
 
     public PayslipDate getDate() {
         return date;
@@ -104,8 +97,8 @@ public class PayslipModel extends Model {
                 " date=" + getDate() +
                 ", lang=" + getLang() +
                 ", paymentInfo=" + getPaymentInfo() +
-                ", employer=" + getEmployer() +
-                ", employee=" + getClient() +
+                ", employer=" + getCompany() +
+                ", employee=" + getEmployee() +
                 ", payElements=" + getProductContainer() +
                 '}';
     }
@@ -129,8 +122,8 @@ public class PayslipModel extends Model {
             model.setDate(new PayslipDate.Generator().generate(ctx));
             model.setLang(ctx.getLanguage());
             model.setPaymentInfo(new PaymentInfo.Generator().generate(ctx));
-            model.setEmployer(new Employer.Generator().generate(ctx));
-            //model.setEmployee(new Employee.Generator().generate(ctx));
+            model.setCompany(new Company.Generator().generate(ctx));
+            model.setEmployee(new Employee.Generator().generate(ctx));
             //model.setPayElements(new PayElements.Generator().generate(ctx));
 
             List<String> localizedHeaderLabel = headerLabels.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguage())).map(Map.Entry::getKey).collect(Collectors.toList());

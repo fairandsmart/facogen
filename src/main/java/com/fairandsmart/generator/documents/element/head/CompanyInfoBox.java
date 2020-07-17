@@ -34,13 +34,13 @@ package com.fairandsmart.generator.documents.element.head;
  */
 
 import com.fairandsmart.generator.documents.data.model.IDNumbers;
-import com.fairandsmart.generator.documents.data.model.InvoiceModel;
+import com.fairandsmart.generator.documents.data.model.Model;
 import com.fairandsmart.generator.documents.element.BoundingBox;
 import com.fairandsmart.generator.documents.element.ElementBox;
 import com.fairandsmart.generator.documents.element.container.HorizontalContainer;
 import com.fairandsmart.generator.documents.element.container.VerticalContainer;
-import com.fairandsmart.generator.documents.element.textbox.SimpleTextBox;
 import com.fairandsmart.generator.documents.element.image.ImageBox;
+import com.fairandsmart.generator.documents.element.textbox.SimpleTextBox;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDFont;
@@ -56,7 +56,7 @@ public class CompanyInfoBox extends ElementBox {
     private PDFont font;
     private PDFont fontBold;
     private float fontSize;
-    private InvoiceModel model;
+    private Model model;
     private VerticalContainer container;
     private HorizontalContainer hcontainer;
     private PDDocument document;
@@ -80,7 +80,7 @@ public class CompanyInfoBox extends ElementBox {
     public CompanyInfoBox( HorizontalContainer hcontainer){this.hcontainer = hcontainer;}
     public CompanyInfoBox( VerticalContainer container){this.container = container;}
 
-    public CompanyInfoBox(PDFont font, PDFont fontBold, float fontSize, InvoiceModel model, PDDocument document) throws Exception {
+    public CompanyInfoBox(PDFont font, PDFont fontBold, float fontSize, Model model, PDDocument document) throws Exception {
         this.font = font;
         this.fontBold = fontBold;
         this.fontSize = fontSize;
