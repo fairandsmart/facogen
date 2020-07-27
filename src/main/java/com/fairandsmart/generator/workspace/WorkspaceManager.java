@@ -37,7 +37,6 @@ import com.fairandsmart.generator.job.JobManager;
 import com.fairandsmart.generator.security.AuthenticationService;
 import com.fairandsmart.generator.workspace.entity.FileItem;
 import com.fairandsmart.generator.workspace.entity.Workspace;
-import com.fairandsmart.generator.workspace.entity.WorkspaceContent;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import javax.annotation.PostConstruct;
