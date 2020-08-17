@@ -1,4 +1,4 @@
-## Welcome to GitHub Pages
+## Welcome to Facogen, an invoice generator project
 
 You can use the [editor on GitHub](https://github.com/fairandsmart/facogen/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
 
