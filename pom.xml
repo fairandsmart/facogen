@@ -15,7 +15,7 @@
         <version.dependency.plugin>3.0.2</version.dependency.plugin>
         <version.resource.plugin>3.0.2</version.resource.plugin>
 
-        <quarkus-plugin.version>1.1.1.Final</quarkus-plugin.version>
+        <quarkus-plugin.version>1.6.1.Final</quarkus-plugin.version>
         <quarkus.platform.artifact-id>quarkus-universe-bom</quarkus.platform.artifact-id>
         <quarkus.platform.group-id>io.quarkus</quarkus.platform.group-id>
         <quarkus.platform.version>1.6.1.Final</quarkus.platform.version>
@@ -24,7 +24,7 @@
         <version.pdfbox>2.0.20</version.pdfbox>
         <version.jempbox>1.8.13</version.jempbox>
         <version.boxable>1.4</version.boxable>
-        <version.log4j>1.2.17</version.log4j>
+        <version.log4j>2.13.3</version.log4j>
         <version.jai>1.3.0</version.jai>
         <version.generex>1.0.2</version.generex>
         <version.gson>2.8.2</version.gson>
@@ -100,8 +100,8 @@
             <version>${version.boxable}</version>
         </dependency>
         <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
             <version>${version.log4j}</version>
         </dependency>
         <dependency>
