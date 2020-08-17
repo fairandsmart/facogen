@@ -1,0 +1,30 @@
+<project name="Facogen FairAndSmart Generator">
+    <skin>
+        <groupId>org.apache.maven.skins</groupId>
+        <artifactId>maven-fluido-skin</artifactId>
+        <version>1.9</version>
+    </skin>
+    <custom>
+        <fluidoSkin>
+            <topBarEnabled>true</topBarEnabled>
+            <sideBarEnabled>true</sideBarEnabled>
+            <googleSearch>
+                <sitesearch>${project.url}</sitesearch>
+            </googleSearch>
+            <gitHub>
+                <projectId>fairandsmart/facogen</projectId>
+                <ribbonOrientation>right</ribbonOrientation>
+                <ribbonColor>gray</ribbonColor>
+            </gitHub>
+        </fluidoSkin>
+    </custom>
+    <body>
+        <menu name="Overview">
+            <item name="Introduction" href="index.html"/>
+            <item name="Usage" href="usage.html"/>
+            <item name="FAQ" href="FAQ.html"/>
+            <item name="Changelog" href="changelog.html"/>
+        </menu>
+        <menu ref="reports" inherit="top"/>
+    </body>
+</project>
