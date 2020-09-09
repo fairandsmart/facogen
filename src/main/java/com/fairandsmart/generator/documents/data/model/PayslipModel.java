@@ -45,8 +45,13 @@ public class PayslipModel extends Model {
     private Company employer;
     private String applicableLaw;
     private Employee employee;
-    //private PayElements payElements;
+    private SalaryCotisationTable salaryTable;
+    private EmployeeInformation employeeInformation;
+    private LeaveInformation leaveInformation;
+    private SumUpSalary sumUpSalary;
+
     private String headTitle;
+
 
     public PayslipModel() {}
 
@@ -91,19 +96,59 @@ public class PayslipModel extends Model {
         this.date = date;
     }
 
+    public void setEmployer(Company employer) {
+        this.employer = employer;
+    }
+
+    public void setSalaryTable(SalaryCotisationTable salaryTable) {
+        this.salaryTable = salaryTable;
+    }
+
+    public void setEmployeeInformation(EmployeeInformation employeeInformation) {
+        this.employeeInformation = employeeInformation;
+    }
+
+    public Company getEmployer() {
+        return employer;
+    }
+
+    public SalaryCotisationTable getSalaryTable() {
+        return salaryTable;
+    }
+
+    public EmployeeInformation getEmployeeInformation() {
+        return employeeInformation;
+    }
+
+    public LeaveInformation getLeaveInformation() {
+        return leaveInformation;
+    }
+
+    public void setLeaveInformation(LeaveInformation leaveInformation) {
+        this.leaveInformation = leaveInformation;
+    }
+
+    public SumUpSalary getSumUpSalary() {
+        return sumUpSalary;
+    }
+
+    public void setSumUpSalary(SumUpSalary sumUpSalary) {
+        this.sumUpSalary = sumUpSalary;
+    }
+
     @Override
     public String toString() {
         return "PayslipModel{" +
-                " date=" + getDate() +
-                ", lang=" + getLang() +
-                ", paymentInfo=" + getPaymentInfo() +
-                ", employer=" + getCompany() +
+                "date=" + getDate() +
+                ", employer=" + getEmployer() +
+                ", applicableLaw='" + getApplicableLaw() + '\'' +
                 ", employee=" + getEmployee() +
-                ", payElements=" + getProductContainer() +
+                ", salaryTable=" + getSalaryTable() +
+                ", employeeInformation=" + getEmployeeInformation() +
+                ", leaveInformation=" + getLeaveInformation() +
+                ", headTitle='" + headTitle + '\'' +
                 '}';
     }
-
-
 
 
     public static class Generator implements ModelGenerator<PayslipModel> {
@@ -124,7 +169,10 @@ public class PayslipModel extends Model {
             model.setPaymentInfo(new PaymentInfo.Generator().generate(ctx));
             model.setCompany(new Company.Generator().generate(ctx));
             model.setEmployee(new Employee.Generator().generate(ctx));
-            //model.setPayElements(new PayElements.Generator().generate(ctx));
+            model.setEmployeeInformation(new EmployeeInformation.Generator().generate(ctx));
+            model.setSalaryTable(new SalaryCotisationTable.Generator().generate(ctx));
+            model.setLeaveInformation(new LeaveInformation.Generator().generate(ctx));
+            model.setSumUpSalary(new SumUpSalary.Generator().generate(ctx));
 
             List<String> localizedHeaderLabel = headerLabels.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguage())).map(Map.Entry::getKey).collect(Collectors.toList());
             int idxvL = new Random().nextInt(localizedHeaderLabel.size());

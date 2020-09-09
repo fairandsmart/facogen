@@ -42,7 +42,7 @@ import com.fairandsmart.generator.workspace.WorkspaceNotFoundException;
 import com.fairandsmart.generator.workspace.entity.Workspace;
 import io.quarkus.qute.Template;
 import io.quarkus.qute.TemplateInstance;
-import sun.misc.JavaxCryptoSealedObjectAccess;
+//import sun.misc.JavaxCryptoSealedObjectAccess;
 
 import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;

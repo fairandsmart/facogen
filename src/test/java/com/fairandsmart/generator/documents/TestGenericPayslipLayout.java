@@ -49,7 +49,7 @@ public class TestGenericPayslipLayout {
         if ( !Files.exists(amazon) ) {
             Files.createDirectory(amazon);
         }
-        for(int i=1; i<=1; i++){
+        for(int i=1; i<=6; i++){
             Path pdf = Paths.get("target/payslip/payslip-"+ i + ".pdf");
             Path xml = Paths.get("target/payslip/payslip-"+ i + ".xml");
             Path img = Paths.get("target/payslip/payslip-"+ i + ".tiff");

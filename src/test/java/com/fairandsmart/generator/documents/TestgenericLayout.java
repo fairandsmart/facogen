@@ -77,7 +77,9 @@ public class TestgenericLayout {
             InvoiceModel model = new InvoiceModel.Generator().generate(ctx);
             InvoiceLayout layout = new NGenericLayout();
             InvoiceGenerator.getInstance().generateInvoice(layout, model, pdf, xml, img);
-        }catch (Exception e){}
+        }catch (Exception e){
+            System.out.println("exception occured" + e);
+        }
      }
     }
 

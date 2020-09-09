@@ -1,0 +1,92 @@
+[
+  [{
+    "codeElement": null,
+    "heading": "Assurance retraite",
+    "base": null,
+    "salaryRate": null,
+    "employeeContributions": null,
+    "employerRate": null,
+    "employerContributions": null
+  },
+    {
+      "codeElement": 132,
+      "heading": "Sécurité sociale",
+      "base": 145,
+      "salaryRate": 26,
+      "employeeContributions": 487,
+      "employerRate": 71,
+      "employerContributions": 32
+    },
+    {
+      "codeElement": 132,
+      "heading": "Complémentaire",
+      "base": 145,
+      "salaryRate": 26,
+      "employeeContributions": 487,
+      "employerRate": 71,
+      "employerContributions": 32
+    },
+    {
+      "codeElement": 132,
+      "heading": "Supplémentaire",
+      "base": 145,
+      "salaryRate": 26,
+      "employeeContributions": 487,
+      "employerRate": 71,
+      "employerContributions": 32
+    }],
+  [{
+    "codeElement": null,
+    "heading": "Retraite",
+    "base": null,
+    "salaryRate": null,
+    "employeeContributions": null,
+    "employerRate": null,
+    "employerContributions": null
+  },
+    {
+      "codeElement": 12,
+      "heading": "Assurance Vieillesse déplafonnée",
+      "base": 54,
+      "salaryRate": 5465,
+      "employeeContributions": 215,
+      "employerRate": 21,
+      "employerContributions": 45
+    },
+    {
+      "codeElement": 12,
+      "heading": "Assurance Vieillesse plafonnée",
+      "base": 54,
+      "salaryRate": 5465,
+      "employeeContributions": 215,
+      "employerRate": 21,
+      "employerContributions": 45
+    },
+    {
+      "codeElement": 12,
+      "heading": "Retraite complémentaire tranche A ARRCO",
+      "base": 54,
+      "salaryRate": 5465,
+      "employeeContributions": 215,
+      "employerRate": 21,
+      "employerContributions": 45
+    },
+    {
+      "codeElement": 12,
+      "heading": "Retraite complémentaire AGFF tranche A",
+      "base": 54,
+      "salaryRate": 5465,
+      "employeeContributions": 215,
+      "employerRate": 21,
+      "employerContributions": 45
+    },
+    {
+      "codeElement": 12,
+      "heading": "Retraite complémentaire GMP",
+      "base": 54,
+      "salaryRate": 5465,
+      "employeeContributions": 215,
+      "employerRate": 21,
+      "employerContributions": 45
+    }]
+]
