@@ -45,6 +45,11 @@ public class LeaveInformation {
         return labels.get(this.random.nextInt(labels.size()));
     }
 
+    public String getPrisLabel() {
+        List<String> labels = new ArrayList<String>(Arrays.asList("PRIS","Pris"));
+        return labels.get(this.random.nextInt(labels.size()));
+    }
+
     public String getSoldeLabel() {
         List<String> labels = new ArrayList<String>(Arrays.asList("SOLDE","Resté"));
         return labels.get(this.random.nextInt(labels.size()));
@@ -99,7 +104,6 @@ public class LeaveInformation {
             int[] cpNN = {acq[0],pris[0],acq[0]-pris[0]} ; //+ min
             int[] cpN = {acq[1],pris[1],acq[1]-pris[1]} ; //+ min
             return new LeaveInformation(mnt, date1,cpNN,cpN);
-
         }
     }
 }

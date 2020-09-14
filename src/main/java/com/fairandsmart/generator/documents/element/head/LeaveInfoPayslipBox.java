@@ -129,6 +129,73 @@ public class LeaveInfoPayslipBox extends ElementBox {
         return result;
     }
 
+    public VerticalContainer getLeaveInformationTable1() throws  Exception
+    {
+        float[] configRow = {70f, 70f};
+        VerticalContainer idContainer = new VerticalContainer(0,0,0);
+        HorizontalContainer titleContainer = new HorizontalContainer(0, 0);
+        HorizontalContainer encours = new HorizontalContainer(0, 0);
+        HorizontalContainer acquis = new HorizontalContainer(0, 0);
+        HorizontalContainer pris = new HorizontalContainer(0, 0);
+        HorizontalContainer solde = new HorizontalContainer(0, 0);
+
+        SimpleTextBox Label = new SimpleTextBox(font, fontSize, 0, 0, "Congés payés");
+        Label.setPadding(0, 0, 2, 0);
+        titleContainer.addElement(Label);
+        Label.setWidth(configRow[0]);
+        idContainer.addElement(titleContainer);
+
+        // encours
+        SimpleTextBox Label0 = new SimpleTextBox(font, fontSize, 0, 0, "En cours");
+        Label0.setPadding(0, 0, 2, 0);
+        Label0.setWidth(configRow[0]);
+        encours.addElement(Label0);
+        SimpleTextBox Value0 = new SimpleTextBox(font, fontSize, 0, 0, Integer.toString(model.getLeaveInformation().getCpN()[0]));
+        // Value.setEntityName("S" + idName.toUpperCase());
+        Value0.setPadding(0, 0, 3, 0);
+        Value0.setWidth(configRow[1]);
+        encours.addElement(Value0);
+        idContainer.addElement(encours);
+
+        // Ecquis
+        SimpleTextBox Label1 = new SimpleTextBox(font, fontSize, 0, 0, model.getLeaveInformation().getAquisLabel());
+        Label1.setPadding(0, 0, 2, 0);
+        Label1.setWidth(configRow[0]);
+        acquis.addElement(Label1);
+        SimpleTextBox Value = new SimpleTextBox(font, fontSize, 0, 0, Integer.toString(model.getLeaveInformation().getCpNMinus1()[0]));
+        // Value.setEntityName("S" + idName.toUpperCase());
+        Value.setPadding(0, 0, 3, 0);
+        Value.setWidth(configRow[1]);
+        acquis.addElement(Value);
+        idContainer.addElement(acquis);
+
+        // pris
+        SimpleTextBox Label2 = new SimpleTextBox(font, fontSize, 0, 0, model.getLeaveInformation().getPrisLabel());
+        Label2.setPadding(0, 0, 2, 0);
+        Label2.setWidth(configRow[0]);
+        pris.addElement(Label2);
+        SimpleTextBox Value1 = new SimpleTextBox(font, fontSize, 0, 0, Integer.toString(model.getLeaveInformation().getCpNMinus1()[1]));
+        // Value.setEntityName("S" + idName.toUpperCase());
+        Value1.setPadding(0, 0, 3, 0);
+        Value1.setWidth(configRow[1]);
+        pris.addElement(Value1);
+        idContainer.addElement(pris);
+
+        // solde
+        SimpleTextBox Label3 = new SimpleTextBox(font, fontSize, 0, 0, model.getLeaveInformation().getSoldeLabel());
+        Label3.setPadding(0, 0, 2, 0);
+        Label3.setWidth(configRow[0]);
+        solde.addElement(Label3);
+        SimpleTextBox Value2 = new SimpleTextBox(font, fontSize, 0, 0, Integer.toString(model.getLeaveInformation().getCpNMinus1()[2]));
+        // Value.setEntityName("S" + idName.toUpperCase());
+        Value2.setPadding(0, 0, 3, 0);
+        Value2.setWidth(configRow[1]);
+        solde.addElement(Value2);
+        idContainer.addElement(solde);
+
+        return idContainer;
+    }
+
     @Override
     public BoundingBox getBoundingBox() {
         if(container!=null)

@@ -40,7 +40,7 @@ public class GenericPayslipLayout {
     PayslipModel model;
 
     // 1 available, 0 not available, -1 used
-    private int dateAvailable;
+    private int LeaveInfosAvailable;
     // TODO
     private int invoiceNumAvailable;
     private int ciDAvailable;
@@ -63,7 +63,7 @@ public class GenericPayslipLayout {
     public void builtPayslip(PayslipModel model, PDDocument document, XMLStreamWriter writer) throws Exception {
         this.model = model;
 
-        this.dateAvailable = model.getRandom().nextInt(2);
+        this.LeaveInfosAvailable = model.getRandom().nextInt(2);
 
         // sets of table row possible sizes
         float[] configRow2 = {255f, 255f};
@@ -124,6 +124,7 @@ public class GenericPayslipLayout {
 
         Boolean logoIndependent = true ; // model.getRandom().nextBoolean();
         Boolean headElementsInBlock = false; //model.getRandom().nextBoolean();
+        Boolean leaveInformationInTop = model.getRandom().nextBoolean();
 
         // Title and date
         SimpleTextBox title = new SimpleTextBox(fonts[1], fontSize, 0, 0, model.getHeadTitle(), "SA");
@@ -158,9 +159,21 @@ public class GenericPayslipLayout {
         title_period.addElement(employeeAddress);
         title_period.addElement(emptyBox);
         title_period.addElement(emptyBox);
-        title_period.addElement(new SimpleTextBox(fonts[1], fontSize+2, 0, 0," Congé " ));
-        title_period.addElement(leaveDatePayslipBox);
-        title_period.addElement(leaveAmountPayslipBox);
+        //title_period.addElement(new SimpleTextBox(fonts[1], fontSize+2, 0, 0," Congé " ));
+
+        if (leaveInformationInTop) {
+            int rand= model.getRandom().nextInt(2);
+            switch (rand){
+                case 0:
+                    title_period.addElement(leaveDatePayslipBox);
+                    title_period.addElement(leaveAmountPayslipBox);
+                    break;
+                case 1:
+                    title_period.addElement(new LeaveInfoPayslipBox (leaveInfoPayslipBox.getLeaveInformationTable1()));
+                    break;
+            }
+            LeaveInfosAvailable = -1;
+        }
 
         CompanyInfoBox iInfor = new CompanyInfoBox(title_period);
 
@@ -203,14 +216,18 @@ public class GenericPayslipLayout {
 
         Map<Integer, ElementBox> sumUpElements = new HashMap<>();
         {
-            sumUpElements.put(1, iSumUpr); //companyAddIDCont);
-            compElements.put(2, emptyBox); // title
+           // sumUpElements.put(1, emptyBox); // title
+            sumUpElements.put(2, iSumUpr); //companyAddIDCont);
         }
-        fourthPart.addElement(emptyBox,false);
+        if (LeaveInfosAvailable != -1){
+            sumUpElements.put(1,new LeaveInfoPayslipBox (leaveInfoPayslipBox.getLeaveInformationTable1()));
+        }else {
+            sumUpElements.put(1, emptyBox);
+        }
+        //fourthPart.addElement(emptyBox,false);
         for(int i =0; i < sumUpElements.size(); i++)
             fourthPart.addElement(sumUpElements.get(i+1), false);
         payslipPage.addElement(fourthPart);
-
 
        /* payslipPage.addElement(fifthPart);*/
 
