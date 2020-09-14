@@ -12,6 +12,9 @@ import com.fairandsmart.generator.documents.element.head.EmployeeInfoBox;
 import com.fairandsmart.generator.documents.element.head.EmployeeInfoPayslipBox;
 import com.fairandsmart.generator.documents.element.head.LeaveInfoPayslipBox;
 import com.fairandsmart.generator.documents.element.image.ImageBox;
+import com.fairandsmart.generator.documents.element.line.HorizontalLineBox;
+import com.fairandsmart.generator.documents.element.line.HorizontalLineBoxV2;
+import com.fairandsmart.generator.documents.element.line.VerticalLineBox;
 import com.fairandsmart.generator.documents.element.product.ProductBox;
 import com.fairandsmart.generator.documents.element.salary.SalaryBox;
 import com.fairandsmart.generator.documents.element.table.TableRowBox;
@@ -118,9 +121,6 @@ public class GenericPayslipLayout {
 
         // SumUp Information
         SumUpSalaryPayslipBox sumUpSalaryPayslipBox = new SumUpSalaryPayslipBox(fonts[2],fonts[1], fontSize, model, document);
-        SumUpSalaryPayslipBox netImposPayslipBox = new SumUpSalaryPayslipBox(sumUpSalaryPayslipBox.getNetImposabelBlock());
-        SumUpSalaryPayslipBox netAPayerPayslipBox = new SumUpSalaryPayslipBox(sumUpSalaryPayslipBox.getNetAPayerBlock());
-
 
         Boolean logoIndependent = true ; // model.getRandom().nextBoolean();
         Boolean headElementsInBlock = false; //model.getRandom().nextBoolean();
@@ -183,6 +183,7 @@ public class GenericPayslipLayout {
         thirdPart =  new TableRowBox(configRow1v1,0,0);
         SalaryBox salaryTable = new SalaryBox(0, 0, model.getSalaryTable(),fonts[2], fonts[1], fontSize);
 
+
         CompanyInfoBox employeeInfotry = new CompanyInfoBox(companyInfoBox.concatContainersVertically
                 (new ElementBox[]{emptyBox, emptyBox, salaryTable }));
 
@@ -194,13 +195,11 @@ public class GenericPayslipLayout {
 
         fourthPart =  new TableRowBox(configRow2v1,0,0);
         /////
-        VerticalContainer sumUp = new VerticalContainer(0,0,0);
 
-        sumUp.addElement(netImposPayslipBox);
-        sumUp.addElement(emptyBox);
-        sumUp.addElement(netAPayerPayslipBox);
+       SumUpSalaryPayslipBox iSumUpr = new SumUpSalaryPayslipBox(sumUpSalaryPayslipBox.concatContainersVertically(
+               new ElementBox[]{new SumUpSalaryPayslipBox(sumUpSalaryPayslipBox.getNetImposabelBlock()),
+                       new SumUpSalaryPayslipBox(sumUpSalaryPayslipBox.getNetAPayerBlock())}));
 
-        SumUpSalaryPayslipBox iSumUpr = new SumUpSalaryPayslipBox(sumUp);
 
         Map<Integer, ElementBox> sumUpElements = new HashMap<>();
         {
@@ -218,6 +217,7 @@ public class GenericPayslipLayout {
         ///
         payslipPage.translate(30,785);
         payslipPage.build(contentStream, writer);
+
         contentStream.close();
         writer.writeEndElement();
 

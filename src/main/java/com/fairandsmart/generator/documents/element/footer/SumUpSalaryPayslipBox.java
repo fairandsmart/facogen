@@ -37,14 +37,19 @@ import com.fairandsmart.generator.documents.data.model.IDNumbers;
 import com.fairandsmart.generator.documents.data.model.PayslipModel;
 import com.fairandsmart.generator.documents.element.BoundingBox;
 import com.fairandsmart.generator.documents.element.ElementBox;
+import com.fairandsmart.generator.documents.element.HAlign;
 import com.fairandsmart.generator.documents.element.container.HorizontalContainer;
 import com.fairandsmart.generator.documents.element.container.VerticalContainer;
+import com.fairandsmart.generator.documents.element.line.HorizontalLineBoxV2;
+import com.fairandsmart.generator.documents.element.line.VerticalLineBox;
 import com.fairandsmart.generator.documents.element.textbox.SimpleTextBox;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDFont;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
 
 import javax.xml.stream.XMLStreamWriter;
+import java.awt.*;
 
 public class SumUpSalaryPayslipBox extends ElementBox {
 
@@ -82,36 +87,57 @@ public class SumUpSalaryPayslipBox extends ElementBox {
 
     public VerticalContainer getNetImposabelBlock() throws Exception
     {
+        float[] configRow = {240f, 90f};
         VerticalContainer idContainer = new VerticalContainer(0,0,0);
         HorizontalContainer container = new HorizontalContainer(0, 0);
+        SimpleTextBox emptyBox= new SimpleTextBox(PDType1Font.HELVETICA, fontSize, 0, 0, "", Color.BLACK, null, HAlign.CENTER);
 
+
+        idContainer.addElement(new HorizontalLineBoxV2(0,0, configRow[0]+configRow[1]+15, 0));
         SimpleTextBox Label = new SimpleTextBox(font, fontSize, 0, 0, model.getSumUpSalary().getNetImposabletLabel());
         Label.setPadding(0, 0, 2, 0);
+        Label.setWidth(configRow[0]);
         container.addElement(Label);
         SimpleTextBox Value = new SimpleTextBox(font, fontSize, 0, 0, Double.toString(model.getSumUpSalary().getNetImposable()));
         // Value.setEntityName("S" + idName.toUpperCase());
         Value.setPadding(0, 0, 3, 0);
+        Value.setWidth(configRow[1]);
         container.addElement(Value);
 
         idContainer.addElement(container);
+        idContainer.addElement(emptyBox);
+        idContainer.addElement(new HorizontalLineBoxV2(0,0, configRow[0]+configRow[1]+15, 0));
+        idContainer.addElement(new VerticalLineBox(0,0, 0, idContainer.getBoundingBox().getHeight())); //  sumUp.getBoundingBox().getPosY()
+        idContainer.addElement(new VerticalLineBox(0,0,  configRow[0], idContainer.getBoundingBox().getHeight())); //  sumUp.getBoundingBox().getPosY()
+        idContainer.addElement(new VerticalLineBox(0,0,  configRow[0]+configRow[1]+15, idContainer.getBoundingBox().getHeight())); //  sumUp.getBoundingBox().getPosY()
 
         return idContainer;
     }
 
     public VerticalContainer getNetAPayerBlock() throws Exception
     {
+        float[] configRow = {240f, 90f};
         VerticalContainer idContainer = new VerticalContainer(0,0,0);
         HorizontalContainer container = new HorizontalContainer(0, 0);
+        SimpleTextBox emptyBox= new SimpleTextBox(PDType1Font.HELVETICA, fontSize, 0, 0, "", Color.BLACK, null, HAlign.CENTER);
+
+        idContainer.addElement(new HorizontalLineBoxV2(0,0, configRow[0]+configRow[1]+15, 0));
 
         SimpleTextBox Label = new SimpleTextBox(font, fontSize, 0, 0, model.getSumUpSalary().getNetApayerLabel());
         Label.setPadding(0, 0, 2, 0);
+        Label.setWidth(configRow[0]);
         container.addElement(Label);
         SimpleTextBox Value = new SimpleTextBox(font, fontSize, 0, 0, Double.toString(model.getSumUpSalary().getNetApayer()));
         // Value.setEntityName("S" + idName.toUpperCase());
         Value.setPadding(0, 0, 3, 0);
+        Value.setWidth(configRow[1]);
         container.addElement(Value);
-
         idContainer.addElement(container);
+        idContainer.addElement(emptyBox);
+        idContainer.addElement(new HorizontalLineBoxV2(0,0, configRow[0]+configRow[1]+15, 0));
+        idContainer.addElement(new VerticalLineBox(0,0, 0, idContainer.getBoundingBox().getHeight())); //  sumUp.getBoundingBox().getPosY()
+        idContainer.addElement(new VerticalLineBox(0,0,  configRow[0], idContainer.getBoundingBox().getHeight())); //  sumUp.getBoundingBox().getPosY()
+        idContainer.addElement(new VerticalLineBox(0,0,  configRow[0]+configRow[1]+15, idContainer.getBoundingBox().getHeight())); //  sumUp.getBoundingBox().getPosY()
 
         return idContainer;
     }

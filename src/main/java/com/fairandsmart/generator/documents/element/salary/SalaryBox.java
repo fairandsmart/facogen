@@ -154,9 +154,10 @@ public class SalaryBox extends ElementBox {
                 halign = HAlign.LEFT;
                 productLine.addElement(new SimpleTextBox(fontBold, fontSize, 0, 0, salaryElement, Color.BLACK, null, halign, colname), false);
             }
+           // container.addElement(new HorizontalLineBox(0,0, head.getBoundingBox().getWidth()+30, 0));
             container.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 0, 5));
             container.addElement(productLine);
-            container.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 0, 5));
+           // container.addElement(new BorderBox(Color.BLACK,Color.BLACK, 0,0, 0, 0, 5));
         }
 
         container.addElement(new HorizontalLineBox(0,0, head.getBoundingBox().getWidth()+30, 0));

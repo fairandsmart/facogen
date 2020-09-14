@@ -235,7 +235,6 @@ public class GenericPayslipLayout0 {
         //bas de page
 
         firstPart.build(contentStream,writer);
-
         secondPart.build(contentStream,writer);
         thirdPart.build(contentStream,writer);
         fourthPart.build(contentStream,writer);
