@@ -2,111 +2,93 @@
   [{
     "codeElement": 21,
     "heading": "SALAIRE BRUT",
-    "base": 545,
-    "salaryRate": 54654,
-    "employeeContributions": 245,
-    "employerRate": 545,
-    "employerContributions": 245
+    "base": 0,
+    "salaryRate": 0,
+    "employeeContributions": 1,
+    "employerRate": 0,
+    "employerContributions": 0
   }],
   [{
     "codeElement": 454,
     "heading": "SALAIRE DE BASE",
-    "base": 454,
-    "salaryRate": 4564,
-    "employeeContributions": 2145,
-    "employerRate": 545,
-    "employerContributions": 154
+    "base": 151.67,
+    "salaryRate": 2,
+    "employeeContributions": 0,
+    "employerRate": 0,
+    "employerContributions": 0
   },
   {
     "codeElement": 12,
     "heading": "H. supp majorées à 25%",
-    "base": 54,
-    "salaryRate": 5465,
-    "employeeContributions": 215,
-    "employerRate": 21,
-    "employerContributions": 45
+    "base": 17.33,
+    "salaryRate": 2,
+    "employeeContributions": 1,
+    "employerRate": 0,
+    "employerContributions": 0
   },
     {
       "codeElement": 12,
       "heading": "SOUS TOTAL SALAIRE DE BASE",
-      "base": 54,
-      "salaryRate": 5465,
-      "employeeContributions": 215,
-      "employerRate": 21,
-      "employerContributions": 45
+      "base": 196,
+      "salaryRate": 0,
+      "employeeContributions": 1,
+      "employerRate": 0,
+      "employerContributions": 0
     },
     {
       "codeElement": 12,
       "heading": "PRIME ANCIENNETÉ / SAL BASE",
-      "base": 54,
-      "salaryRate": 5465,
-      "employeeContributions": 215,
-      "employerRate": 21,
-      "employerContributions": 45
+      "base": 1,
+      "salaryRate": 2,
+      "employeeContributions": 1,
+      "employerRate": 0,
+      "employerContributions": 0
     },
     {
       "codeElement": 12,
       "heading": "SALAIRE BRUT",
-      "base": 54,
-      "salaryRate": 5465,
-      "employeeContributions": 215,
-      "employerRate": 21,
-      "employerContributions": 45
+      "base": 0,
+      "salaryRate": 0,
+      "employeeContributions": 1,
+      "employerRate": 0,
+      "employerContributions": 0
     }],
   [
     {
       "codeElement": 12,
       "heading": "SALAIRE DE BASE",
-      "base": 54,
-      "salaryRate": 5465,
-      "employeeContributions": 215,
-      "employerRate": 21,
-      "employerContributions": 45
+      "base": 151.67,
+      "salaryRate": 2,
+      "employeeContributions": 0,
+      "employerRate": 0,
+      "employerContributions": 0
     },
     {
       "codeElement": 12,
-      "heading": "I.J.SS DÉDUITE",
-      "base": 54,
-      "salaryRate": 5465,
-      "employeeContributions": 215,
-      "employerRate": 21,
-      "employerContributions": 45
+      "heading": "H. Supp majorées à 25 %",
+      "base": 8.77,
+      "salaryRate": 19.229,
+      "employeeContributions": 1,
+      "employerRate": 0,
+      "employerContributions": 0
     },
     {
       "codeElement": 12,
-      "heading": "HEURES D’ABSENCE",
-      "base": 54,
-      "salaryRate": 5465,
-      "employeeContributions": 215,
-      "employerRate": 21,
-      "employerContributions": 45
-    },
-    {
-      "codeElement": 12,
-      "heading": "MAINTIEN DE SALAIRE",
-      "base": 54,
-      "salaryRate": 5465,
-      "employeeContributions": 215,
-      "employerRate": 21,
-      "employerContributions": 45
-    },
-    {
-      "codeElement": 12,
-      "heading": "Mt RETENUE POUR GARANTIE DU NET",
-      "base": 54,
-      "salaryRate": 5465,
-      "employeeContributions": 215,
-      "employerRate": 21,
-      "employerContributions": 45
+      "heading": "BPAC AVANTAGE EN NATURE VEHICULE",
+      "base": 161.82,
+      "salaryRate": 0,
+      "employeeContributions": 0,
+      "employerRate": 0,
+      "employerContributions": 0
     },
     {
       "codeElement": 12,
       "heading": "SALAIRE BRUT",
-      "base": 54,
-      "salaryRate": 5465,
-      "employeeContributions": 215,
-      "employerRate": 21,
-      "employerContributions": 45
+      "base": 0,
+      "salaryRate": 0,
+      "employeeContributions": 1,
+      "employerRate": 0,
+      "employerContributions": 0
     }
   ]
 ]

@@ -11,7 +11,7 @@
   {
     "codeElement": 132,
     "heading": "Sécurité sociale",
-    "base": 145,
+    "base": 1,
     "salaryRate": 26,
     "employeeContributions": 487,
     "employerRate": 71,
@@ -20,7 +20,7 @@
     {
       "codeElement": 132,
       "heading": "Complémentaire santé",
-      "base": 145,
+      "base": 1,
       "salaryRate": 26,
       "employeeContributions": 487,
       "employerRate": 71,
@@ -29,7 +29,7 @@
     {
       "codeElement": 132,
       "heading": "Incapacité, invalidité, capital décès ",
-      "base": 145,
+      "base": 1,
       "salaryRate": 26,
       "employeeContributions": 487,
       "employerRate": 71,
@@ -47,7 +47,7 @@
   {
     "codeElement": 12,
     "heading": "Sécurité sociale",
-    "base": 54,
+    "base": 1,
     "salaryRate": 5465,
     "employeeContributions": 215,
     "employerRate": 21,
@@ -66,7 +66,7 @@
     {
       "codeElement": 12,
       "heading": "Sécurité sociale - maladie maternité",
-      "base": 54,
+      "base": 1,
       "salaryRate": 5465,
       "employeeContributions": 215,
       "employerRate": 21,
@@ -75,7 +75,7 @@
     {
       "codeElement": 12,
       "heading": "Invalidité décès",
-      "base": 54,
+      "base": 1,
       "salaryRate": 5465,
       "employeeContributions": 215,
       "employerRate": 21,
@@ -84,7 +84,7 @@
     {
       "codeElement": 12,
       "heading": "Complémentaire incapacité invalidité décès TA",
-      "base": 54,
+      "base": 1,
       "salaryRate": 5465,
       "employeeContributions": 215,
       "employerRate": 21,

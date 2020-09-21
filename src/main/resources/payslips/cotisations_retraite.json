@@ -11,7 +11,7 @@
     {
       "codeElement": 132,
       "heading": "Sécurité sociale",
-      "base": 145,
+      "base": 1,
       "salaryRate": 26,
       "employeeContributions": 487,
       "employerRate": 71,
@@ -20,7 +20,7 @@
     {
       "codeElement": 132,
       "heading": "Complémentaire",
-      "base": 145,
+      "base": 1,
       "salaryRate": 26,
       "employeeContributions": 487,
       "employerRate": 71,
@@ -29,7 +29,7 @@
     {
       "codeElement": 132,
       "heading": "Supplémentaire",
-      "base": 145,
+      "base": 1,
       "salaryRate": 26,
       "employeeContributions": 487,
       "employerRate": 71,
@@ -47,7 +47,7 @@
     {
       "codeElement": 12,
       "heading": "Assurance Vieillesse déplafonnée",
-      "base": 54,
+      "base": 1,
       "salaryRate": 5465,
       "employeeContributions": 215,
       "employerRate": 21,
@@ -56,7 +56,7 @@
     {
       "codeElement": 12,
       "heading": "Assurance Vieillesse plafonnée",
-      "base": 54,
+      "base": 1,
       "salaryRate": 5465,
       "employeeContributions": 215,
       "employerRate": 21,
@@ -65,7 +65,7 @@
     {
       "codeElement": 12,
       "heading": "Retraite complémentaire tranche A ARRCO",
-      "base": 54,
+      "base": 1,
       "salaryRate": 5465,
       "employeeContributions": 215,
       "employerRate": 21,
@@ -74,7 +74,7 @@
     {
       "codeElement": 12,
       "heading": "Retraite complémentaire AGFF tranche A",
-      "base": 54,
+      "base": 1,
       "salaryRate": 5465,
       "employeeContributions": 215,
       "employerRate": 21,
@@ -83,7 +83,7 @@
     {
       "codeElement": 12,
       "heading": "Retraite complémentaire GMP",
-      "base": 54,
+      "base": 1,
       "salaryRate": 5465,
       "employeeContributions": 215,
       "employerRate": 21,

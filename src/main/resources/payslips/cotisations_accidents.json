@@ -3,7 +3,7 @@
     {
       "codeElement": 132,
       "heading": "Assurances accidents de travail - maladies professionnelles ",
-      "base": 145,
+      "base": 1,
       "salaryRate": 26,
       "employeeContributions": 487,
       "employerRate": 71,
@@ -13,7 +13,7 @@
     {
       "codeElement": 12,
       "heading": "Accidents de travail - maladies professionnelles",
-      "base": 54,
+      "base": 1,
       "salaryRate": 5465,
       "employeeContributions": 215,
       "employerRate": 21,
