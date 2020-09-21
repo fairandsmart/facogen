@@ -46,7 +46,7 @@ public class LeaveInformation {
     }
 
     public String getPrisLabel() {
-        List<String> labels = new ArrayList<String>(Arrays.asList("PRIS","Pris"));
+        List<String> labels = new ArrayList<String>(Arrays.asList("PRIS","Pris", "Total pris"));
         return labels.get(this.random.nextInt(labels.size()));
     }
 
@@ -98,9 +98,11 @@ public class LeaveInformation {
             Date date1 = new Date();
             double mnt = rand.nextDouble();
             int[] maxes = {34 , 30, 20};
-            int max = maxes[rand.nextInt(maxes.length)];
+            int max = maxes[rand.nextInt(maxes.length-1)];
             int[] acq = {rand.nextInt(max),rand.nextInt(max)};
-            int[] pris = {rand.nextInt(acq[0]), rand.nextInt(acq[1])};
+            int[] pris = {0, rand.nextInt(acq[1])};
+            if (acq[0] != 0) pris[0] = rand.nextInt(acq[0]);
+            if (acq[1] != 0) pris[1] = rand.nextInt(acq[1]);
             int[] cpNN = {acq[0],pris[0],acq[0]-pris[0]} ; //+ min
             int[] cpN = {acq[1],pris[1],acq[1]-pris[1]} ; //+ min
             return new LeaveInformation(mnt, date1,cpNN,cpN);
