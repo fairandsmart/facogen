@@ -100,7 +100,8 @@ public class LeaveInformation {
             int[] maxes = {34 , 30, 20};
             int max = maxes[rand.nextInt(maxes.length-1)];
             int[] acq = {rand.nextInt(max),rand.nextInt(max)};
-            int[] pris = {0, rand.nextInt(acq[1])};
+            int[] pris = {0, 0};
+
             if (acq[0] != 0) pris[0] = rand.nextInt(acq[0]);
             if (acq[1] != 0) pris[1] = rand.nextInt(acq[1]);
             int[] cpNN = {acq[0],pris[0],acq[0]-pris[0]} ; //+ min

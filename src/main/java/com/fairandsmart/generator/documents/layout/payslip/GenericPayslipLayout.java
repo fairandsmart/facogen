@@ -213,6 +213,9 @@ public class GenericPayslipLayout {
                new ElementBox[]{new SumUpSalaryPayslipBox(sumUpSalaryPayslipBox.getNetImposabelBlock()),
                        new SumUpSalaryPayslipBox(sumUpSalaryPayslipBox.getNetAPayerBlock())}));
 
+       /* model.getSalaryTable().getBrutSalary();
+        model.getSalaryTable().getNetImposabel();
+        model.getSalaryTable().getNetSalary();*/
 
         Map<Integer, ElementBox> sumUpElements = new HashMap<>();
         {

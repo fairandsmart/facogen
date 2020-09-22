@@ -98,7 +98,7 @@ public class SumUpSalaryPayslipBox extends ElementBox {
         Label.setPadding(0, 0, 2, 0);
         Label.setWidth(configRow[0]);
         container.addElement(Label);
-        SimpleTextBox Value = new SimpleTextBox(font, fontSize, 0, 0, Double.toString(model.getSumUpSalary().getNetImposable()));
+        SimpleTextBox Value = new SimpleTextBox(font, fontSize, 0, 0, Double.toString(model.getSalaryTable().getNetImposabel()));
         // Value.setEntityName("S" + idName.toUpperCase());
         Value.setPadding(0, 0, 3, 0);
         Value.setWidth(configRow[1]);
@@ -141,6 +141,7 @@ public class SumUpSalaryPayslipBox extends ElementBox {
 
         return idContainer;
     }
+
 
 
     public VerticalContainer concatContainersVertically(ElementBox parts[]) throws  Exception

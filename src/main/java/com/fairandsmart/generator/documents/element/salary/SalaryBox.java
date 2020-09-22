@@ -102,15 +102,35 @@ public class SalaryBox extends ElementBox {
                 break;
             case "Rubrique":  salaryElement = salaryLine.getHeading();
                 break;
-            case "Base":  salaryElement = Float.toString(salaryLine.getBase());
+            case "Base":
+                if (salaryLine.getBase()==0) salaryElement ="";
+                else {
+                    salaryElement = Float.toString(salaryLine.getBase());
+                }
                 break;
-            case "TxSalarial":  salaryElement = Float.toString(salaryLine.getSalaryRate());
+            case "TxSalarial":
+                if (salaryLine.getSalaryRate()==0) salaryElement ="";
+                else {
+                    salaryElement = Float.toString(salaryLine.getSalaryRate());
+                }
                 break;
-            case "CtSalarial":  salaryElement = Float.toString(salaryLine.getEmployeeContributions());
+            case "CtSalarial":
+                if (salaryLine.getEmployeeContributions()==0) salaryElement ="";
+                else {
+                    salaryElement = Float.toString(salaryLine.getEmployeeContributions());
+                }
                 break;
-            case "TxPatrnl":  salaryElement = Float.toString(salaryLine.getEmployerRate());
+            case "TxPatrnl":
+                if (salaryLine.getEmployerRate()==0 ) salaryElement ="";
+                else {
+                    salaryElement = Float.toString(salaryLine.getEmployerRate());
+                }
                 break;
-            case "CotPatrnl":  salaryElement = Float.toString(salaryLine.getEmployerContributions());
+            case "CotPatrnl":
+                if (salaryLine.getEmployerContributions()==0 ) salaryElement ="";
+                else {
+                    salaryElement = Float.toString(salaryLine.getEmployerContributions());
+                }
                 break;
 
             default: return "Invalid Product Name";

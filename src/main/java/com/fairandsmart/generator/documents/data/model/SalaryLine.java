@@ -100,6 +100,19 @@ public class SalaryLine {
         this.employerContributions = employerContributions;
     }
 
+    public SalaryLine(int codeElement, String heading, float base, float salaryRate, float employeeContributions, float employerRate, float employerContributions) {
+        this.codeElement = codeElement;
+        this.heading = heading;
+        this.base = base;
+        this.salaryRate = salaryRate;
+        this.employeeContributions = employeeContributions;
+        this.employerRate = employerRate;
+        this.employerContributions = employerContributions;
+    }
+
+    public SalaryLine() {
+    }
+
     @Override
     public String toString() {
         return "SalaryLine{" +

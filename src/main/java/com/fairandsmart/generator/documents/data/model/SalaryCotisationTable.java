@@ -52,6 +52,7 @@ public class SalaryCotisationTable {
     private float baseSalary =1539.42f;
     private float brutSalary = 1539.42f;
     private float netSalary =0 ;
+    private float netImposabel =0;
     private float tauxHorr = 10.15f;
 
     // News
@@ -80,6 +81,37 @@ public class SalaryCotisationTable {
         // TODO ADD THE NECESSARY CALCULATIONS
             }
 
+    public List<Float> getTotalCotisations(List<SalaryLine> listCot) {
+        float sumEmployee = 0;
+        float sumEmployer = 0;
+        List<Float> list = new ArrayList<>() ;
+
+        for (int i = 0; i < listCot.size(); i++) {
+            sumEmployee += listCot.get(i).getEmployeeContributions();
+            sumEmployer += listCot.get(i).getEmployerContributions();
+        }
+        list.add(sumEmployee);
+        list.add(sumEmployer);
+        return list;
+    }
+
+    public List<SalaryLine> getTotalCotisationslist(List<Float> listCot){
+        List<SalaryLine> totalCot = new ArrayList<SalaryLine>();
+        int rnd= random.nextInt(2);
+        switch (rnd){
+            case 0 :
+                SalaryLine s = new SalaryLine(0,"Total des retenues",0, 0,listCot.get(0), 0, listCot.get(1) );
+                totalCot.add(s);
+                break;
+            case 1:
+                SalaryLine s1 = new SalaryLine(0,"TOTAL CONTRIBUTIONS ET COTISATIONS SALARIALES",0, 0,listCot.get(0), 0, 0 );
+                totalCot.add(s1);
+            SalaryLine s2 = new SalaryLine(0,"TOTAL CONTRIBUTIONS ET COTISATIONS PATRONALES",0, 0,0, 0, listCot.get(1) );
+            totalCot.add(s2);
+            break;
+    }
+    return totalCot;
+    }
     public List<SalaryLine> getSalaryTableLines() {
         return salaryTableLines;
     }
@@ -174,6 +206,14 @@ public class SalaryCotisationTable {
 
     public void setTauxHorr(float tauxHorr) {
         this.tauxHorr = tauxHorr;
+    }
+
+    public float getNetImposabel() {
+        return netImposabel;
+    }
+
+    public void setNetImposabel(float netImposabel) {
+        this.netImposabel = netImposabel;
     }
 
     @Override
@@ -289,6 +329,27 @@ public class SalaryCotisationTable {
             Type collectionType = new TypeToken<Collection<Collection<SalaryLine>>>(){}.getType();
             chomageCotisation = gson.fromJson(jsonReader, collectionType);
         }
+
+        // autres cotisations
+        private List<List<SalaryLine>> othercotisations;// products;
+        private static final String othercotisationsFile = "payslips/cotisations_autres.json";
+        {
+            Reader jsonReader = new InputStreamReader(SalaryCotisationTable.class.getClassLoader().getResourceAsStream(othercotisationsFile));
+            Gson gson = new Gson();
+            Type collectionType = new TypeToken<Collection<Collection<SalaryLine>>>(){}.getType();
+            othercotisations = gson.fromJson(jsonReader, collectionType);
+        }
+
+        // csg deductible
+        private List<List<SalaryLine>> csgcotisations;// products;
+        private static final String csgcotisationsFile = "payslips/cotisations_csg_nondeduct.json";
+        {
+            Reader jsonReader = new InputStreamReader(SalaryCotisationTable.class.getClassLoader().getResourceAsStream(csgcotisationsFile));
+            Gson gson = new Gson();
+            Type collectionType = new TypeToken<Collection<Collection<SalaryLine>>>(){}.getType();
+            csgcotisations = gson.fromJson(jsonReader, collectionType);
+        }
+
         // composantes remuneration
         private List<List<SalaryLine>> composantesRenum;// products;
         private static final String composantesRenumFile = "payslips/composantes_remunération.json";
@@ -306,6 +367,8 @@ public class SalaryCotisationTable {
             float brut;
             float tauxHorr;
             float base;
+            List<SalaryLine> listCotisations = new ArrayList<SalaryLine>();
+
             List<String> localcodeElementHead = codeElementHeads.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguage())).map(Map.Entry::getKey).collect(Collectors.toList());
             List<String> localheadingHead = headingHeads.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguage())).map(Map.Entry::getKey).collect(Collectors.toList());
             List<String> localbaseHead = baseHeads.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguage())).map(Map.Entry::getKey).collect(Collectors.toList());
@@ -356,6 +419,7 @@ public class SalaryCotisationTable {
                     salaryTableContainer.addLineSalary(s1);
                     brut += s1.getEmployeeContributions();
                 }
+                salaryTableContainer.setBrutSalary(brut);
 
                 SalaryLine s2 = composantesRemunLines.get(composantesRemunLines.size()-1);
                 s2.setEmployeeContributions(brut);
@@ -369,6 +433,7 @@ public class SalaryCotisationTable {
                 if (s.getSalaryRate() != 0) s.setEmployeeContributions(s.getBase()*s.getSalaryRate());
                 if (s.getEmployerRate() != 0) s.setEmployerContributions(s.getBase()*s.getEmployerRate());
                 salaryTableContainer.addLineSalary(s);
+                listCotisations.add(s);
             }
             // accident de travail
             List<SalaryLine> accidentLines = accidentCotisation.get(ctx.getRandom().nextInt(accidentCotisation.size()));
@@ -378,6 +443,7 @@ public class SalaryCotisationTable {
                 if (s.getSalaryRate() != 0) s.setEmployeeContributions(s.getBase()*s.getSalaryRate());
                 if (s.getEmployerRate() != 0) s.setEmployerContributions(s.getBase()*s.getEmployerRate());
                 salaryTableContainer.addLineSalary(s);
+                listCotisations.add(s);
             }
             // Retraite
             List<SalaryLine> retraiteLines = retaraiteCotisation.get(ctx.getRandom().nextInt(retaraiteCotisation.size()));
@@ -387,6 +453,7 @@ public class SalaryCotisationTable {
                 if (s.getSalaryRate() != 0) s.setEmployeeContributions(s.getBase()*s.getSalaryRate());
                 if (s.getEmployerRate() != 0) s.setEmployerContributions(s.getBase()*s.getEmployerRate());
                 salaryTableContainer.addLineSalary(s);
+                listCotisations.add(s);
             }
             // prestations familiales
             List<SalaryLine> prestationLines = prestationsCotisation.get(ctx.getRandom().nextInt(prestationsCotisation.size()));
@@ -396,6 +463,7 @@ public class SalaryCotisationTable {
                 if (s.getSalaryRate() != 0) s.setEmployeeContributions(s.getBase()*s.getSalaryRate());
                 if (s.getEmployerRate() != 0) s.setEmployerContributions(s.getBase()*s.getEmployerRate());
                 salaryTableContainer.addLineSalary(s);
+                listCotisations.add(s);
             }
             // chomage
             List<SalaryLine> chomageLines = chomageCotisation.get(ctx.getRandom().nextInt(chomageCotisation.size()));
@@ -405,11 +473,54 @@ public class SalaryCotisationTable {
                 if (s.getSalaryRate() != 0) s.setEmployeeContributions(s.getBase()*s.getSalaryRate());
                 if (s.getEmployerRate() != 0) s.setEmployerContributions(s.getBase()*s.getEmployerRate());
                 salaryTableContainer.addLineSalary(s);
+                listCotisations.add(s);
             }
+            // autres contributions due à l'emplyeur
+            List<SalaryLine> otherCotLines = othercotisations.get(ctx.getRandom().nextInt(othercotisations.size()));
+            for (int i= 0; i<otherCotLines.size(); i++){
+                SalaryLine s = otherCotLines.get(i);
+                if (s.getBase() == 1)s.setBase(brut);
+                if (s.getSalaryRate() != 0) s.setEmployeeContributions(s.getBase()*s.getSalaryRate());
+                if (s.getEmployerRate() != 0) s.setEmployerContributions(s.getBase()*s.getEmployerRate());
+                salaryTableContainer.addLineSalary(s);
+                listCotisations.add(s);
+            }
+            // Total des retenues
+            List<Float> totalRetenue = salaryTableContainer.getTotalCotisations(listCotisations);
 
+            List<SalaryLine> totalCotisations = salaryTableContainer.getTotalCotisationslist(totalRetenue);
+            for (int i= 0; i<totalCotisations.size(); i++){
+               salaryTableContainer.addLineSalary(totalCotisations.get(i));
+            }
+            // Total imposable
+            float netImpos = brut-totalRetenue.get(0);
+            salaryTableContainer.setNetImposabel(netImpos);
+            SalaryLine netimposable = new SalaryLine(0,"Net Imposable ",0,0,netImpos,0,0);
+            salaryTableContainer.addLineSalary(netimposable);
+
+            // csg non deductible
+            List<SalaryLine> csgCotLines = csgcotisations.get(ctx.getRandom().nextInt(csgcotisations.size()));
+            for (int i= 0; i<csgCotLines.size(); i++){
+                SalaryLine s = csgCotLines.get(i);
+                if (s.getBase() == 1)s.setBase(brut);
+                if (s.getSalaryRate() != 0) s.setEmployeeContributions(s.getBase()*s.getSalaryRate());
+                if (s.getEmployerRate() != 0) s.setEmployerContributions(s.getBase()*s.getEmployerRate());
+                csgCotLines.set(i,s);
+                salaryTableContainer.addLineSalary(s);
+            }
+            float adeduire=0;
+            // a deduite du net imoosable
+            for (int i=0;i<csgCotLines.size();i++){
+                adeduire+= csgCotLines.get(i).getEmployeeContributions();
+            }
+            float net=netimposable.getEmployeeContributions()-adeduire;
+
+            salaryTableContainer.setNetSalary(net);
+            //net à payer avnt impot sur le revenue
+            SalaryLine s1 = new SalaryLine(0,"NET À PAYER AVANT IMPOT SUR LE REVENU",0,0,net,0,0);
+            salaryTableContainer.addLineSalary(s1);
+            //
             return salaryTableContainer;
         }
-
     }
-
 }
