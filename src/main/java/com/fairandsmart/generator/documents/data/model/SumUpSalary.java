@@ -51,7 +51,12 @@ public class SumUpSalary {
     }
 
     public String getNetImposabletLabel() {
-        List<String> labels = new ArrayList<String>(Arrays.asList("Net à payer avant impôt sur le revenue :", "Net imposable : "));
+        List<String> labels = new ArrayList<String>(Arrays.asList( "Net imposable : "));
+        return labels.get(this.random.nextInt(labels.size()));
+    }
+
+    public String getNetAvantImpotLabel() {
+        List<String> labels = new ArrayList<String>(Arrays.asList( "Net à payer avant impôt sur le revenue :"));
         return labels.get(this.random.nextInt(labels.size()));
     }
 

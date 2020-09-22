@@ -54,9 +54,12 @@ import java.awt.*;
 import java.util.List;
 import java.util.*;
 import java.util.logging.Logger;
+import java.text.DecimalFormat;
+
 
 public class SalaryBox extends ElementBox {
 
+    private static DecimalFormat df = new DecimalFormat("0.00");
     private static final Logger LOGGER = Logger.getLogger(VerticalContainer.class.getName());
     private PDFont font;
     private PDFont fontBold;
@@ -105,31 +108,31 @@ public class SalaryBox extends ElementBox {
             case "Base":
                 if (salaryLine.getBase()==0) salaryElement ="";
                 else {
-                    salaryElement = Float.toString(salaryLine.getBase());
+                    salaryElement = df.format(salaryLine.getBase());
                 }
                 break;
             case "TxSalarial":
                 if (salaryLine.getSalaryRate()==0) salaryElement ="";
                 else {
-                    salaryElement = Float.toString(salaryLine.getSalaryRate());
+                    salaryElement = df.format(salaryLine.getSalaryRate());
                 }
                 break;
             case "CtSalarial":
                 if (salaryLine.getEmployeeContributions()==0) salaryElement ="";
                 else {
-                    salaryElement = Float.toString(salaryLine.getEmployeeContributions());
+                    salaryElement = df.format(salaryLine.getEmployeeContributions());
                 }
                 break;
             case "TxPatrnl":
                 if (salaryLine.getEmployerRate()==0 ) salaryElement ="";
                 else {
-                    salaryElement = Float.toString(salaryLine.getEmployerRate());
+                    salaryElement = df.format(salaryLine.getEmployerRate());
                 }
                 break;
             case "CotPatrnl":
                 if (salaryLine.getEmployerContributions()==0 ) salaryElement ="";
                 else {
-                    salaryElement = Float.toString(salaryLine.getEmployerContributions());
+                    salaryElement = df.format(salaryLine.getEmployerContributions());
                 }
                 break;
 

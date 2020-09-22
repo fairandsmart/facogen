@@ -35,7 +35,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class GenericPayslipLayout {
-    private float fontSize = 10;
+    private float fontSize = 9.5f;
     private PDFont[] fonts;
     PayslipModel model;
 
@@ -67,7 +67,7 @@ public class GenericPayslipLayout {
 
         // sets of table row possible sizes
         float[] configRow2 = {255f, 255f};
-        float[] configRow2v1 = {160f, 360f};
+        float[] configRow2v1 = {360f, 160f};
         float[] configRow2v2 = {360f, 150f};
         float[] configRow1v1 = {500f};
         float[] configRow3 = {170f, 170f, 170f};
@@ -217,29 +217,30 @@ public class GenericPayslipLayout {
         model.getSalaryTable().getNetImposabel();
         model.getSalaryTable().getNetSalary();*/
 
+
         Map<Integer, ElementBox> sumUpElements = new HashMap<>();
         {
            // sumUpElements.put(1, emptyBox); // title
-            sumUpElements.put(2, iSumUpr); //companyAddIDCont);
+            sumUpElements.put(1, new SumUpSalaryPayslipBox(sumUpSalaryPayslipBox.getSumUpSalaryTable1())); //companyAddIDCont); iSumUpr
         }
         if (LeaveInfosAvailable != -1){
             int rnd = model.getRandom().nextInt(4);
             switch (rnd){
                 case 0 :
-                    sumUpElements.put(1,new LeaveInfoPayslipBox (leaveInfoPayslipBox.getLeaveInformationTable1()));
+                    sumUpElements.put(2,new LeaveInfoPayslipBox (leaveInfoPayslipBox.getLeaveInformationTable1()));
                     break;
                 case 1 :
-                    sumUpElements.put(1,new LeaveInfoPayslipBox (leaveInfoPayslipBox.getLeaveInformationTable2()));
+                    sumUpElements.put(2,new LeaveInfoPayslipBox (leaveInfoPayslipBox.getLeaveInformationTable2()));
                     break;
                 case 2 :
-                    sumUpElements.put(1,new LeaveInfoPayslipBox (leaveInfoPayslipBox.getLeaveInformationTable3()));
+                    sumUpElements.put(2,new LeaveInfoPayslipBox (leaveInfoPayslipBox.getLeaveInformationTable3()));
                     break;
                 case 3 :
-                    sumUpElements.put(1,new LeaveInfoPayslipBox (leaveInfoPayslipBox.getLeaveInformationTable4()));
+                    sumUpElements.put(2,new LeaveInfoPayslipBox (leaveInfoPayslipBox.getLeaveInformationTable4()));
                     break;
             }
         }else {
-            sumUpElements.put(1, emptyBox);
+            sumUpElements.put(2, emptyBox);
         }
         //fourthPart.addElement(emptyBox,false);
         for(int i =0; i < sumUpElements.size(); i++)
