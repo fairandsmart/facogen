@@ -389,7 +389,7 @@ public class SalaryCotisationTable {
             List<SalaryLine> composantesRemunLines = composantesRenum.get(ctx.getRandom().nextInt(composantesRenum.size()));
 
             if(composantesRemunLines.size() == 1){
-                brut= (float)(salaryTableContainer.getBrutSalary()+salaryTableContainer.random.nextDouble()*1000);
+                brut= (float)(salaryTableContainer.getBrutSalary()+salaryTableContainer.random.nextDouble()*100);
                 salaryTableContainer.setBrutSalary(brut);
                 SalaryLine s = composantesRemunLines.get(0);
                 s.setEmployeeContributions(brut);
@@ -414,7 +414,7 @@ public class SalaryCotisationTable {
                     // taux
                     if (s1.getSalaryRate()==2)s1.setSalaryRate(tauxHorr+salaryTableContainer.random.nextFloat()*10);
                     // cotisations salarié
-                    if( s1.getBase()!=0 && s1.getSalaryRate()!=0) s1.setEmployeeContributions(s1.getSalaryRate()*s1.getBase());
+                    if( s1.getBase()!=0 && s1.getSalaryRate()!=0) s1.setEmployeeContributions(s1.getSalaryRate()*s1.getBase()/100);
                     else if(s1.getBase()!=0 && s1.getSalaryRate()==0) s1.setEmployeeContributions(s1.getBase());
                     salaryTableContainer.addLineSalary(s1);
                     brut += s1.getEmployeeContributions();
@@ -430,8 +430,8 @@ public class SalaryCotisationTable {
             for (int i= 0; i<santeLines.size(); i++){
                 SalaryLine s = santeLines.get(i);
                 if (s.getBase() == 1)s.setBase(brut);
-                if (s.getSalaryRate() != 0) s.setEmployeeContributions(s.getBase()*s.getSalaryRate());
-                if (s.getEmployerRate() != 0) s.setEmployerContributions(s.getBase()*s.getEmployerRate());
+                if (s.getSalaryRate() != 0) s.setEmployeeContributions(s.getBase()*s.getSalaryRate()/100);
+                if (s.getEmployerRate() != 0) s.setEmployerContributions(s.getBase()*s.getEmployerRate()/100);
                 salaryTableContainer.addLineSalary(s);
                 listCotisations.add(s);
             }
@@ -440,8 +440,8 @@ public class SalaryCotisationTable {
             for (int i= 0; i<accidentLines.size(); i++){
                 SalaryLine s = accidentLines.get(i);
                 if (s.getBase() == 1)s.setBase(brut);
-                if (s.getSalaryRate() != 0) s.setEmployeeContributions(s.getBase()*s.getSalaryRate());
-                if (s.getEmployerRate() != 0) s.setEmployerContributions(s.getBase()*s.getEmployerRate());
+                if (s.getSalaryRate() != 0) s.setEmployeeContributions(s.getBase()*s.getSalaryRate()/100);
+                if (s.getEmployerRate() != 0) s.setEmployerContributions(s.getBase()*s.getEmployerRate()/100);
                 salaryTableContainer.addLineSalary(s);
                 listCotisations.add(s);
             }
@@ -450,8 +450,8 @@ public class SalaryCotisationTable {
             for (int i= 0; i<retraiteLines.size(); i++){
                 SalaryLine s = retraiteLines.get(i);
                 if (s.getBase() == 1)s.setBase(brut);
-                if (s.getSalaryRate() != 0) s.setEmployeeContributions(s.getBase()*s.getSalaryRate());
-                if (s.getEmployerRate() != 0) s.setEmployerContributions(s.getBase()*s.getEmployerRate());
+                if (s.getSalaryRate() != 0) s.setEmployeeContributions(s.getBase()*s.getSalaryRate()/100);
+                if (s.getEmployerRate() != 0) s.setEmployerContributions(s.getBase()*s.getEmployerRate()/100);
                 salaryTableContainer.addLineSalary(s);
                 listCotisations.add(s);
             }
@@ -460,8 +460,8 @@ public class SalaryCotisationTable {
             for (int i= 0; i<prestationLines.size(); i++){
                 SalaryLine s = prestationLines.get(i);
                 if (s.getBase() == 1)s.setBase(brut);
-                if (s.getSalaryRate() != 0) s.setEmployeeContributions(s.getBase()*s.getSalaryRate());
-                if (s.getEmployerRate() != 0) s.setEmployerContributions(s.getBase()*s.getEmployerRate());
+                if (s.getSalaryRate() != 0) s.setEmployeeContributions(s.getBase()*s.getSalaryRate()/100);
+                if (s.getEmployerRate() != 0) s.setEmployerContributions(s.getBase()*s.getEmployerRate()/100);
                 salaryTableContainer.addLineSalary(s);
                 listCotisations.add(s);
             }
@@ -470,8 +470,8 @@ public class SalaryCotisationTable {
             for (int i= 0; i<chomageLines.size(); i++){
                 SalaryLine s = chomageLines.get(i);
                 if (s.getBase() == 1)s.setBase(brut);
-                if (s.getSalaryRate() != 0) s.setEmployeeContributions(s.getBase()*s.getSalaryRate());
-                if (s.getEmployerRate() != 0) s.setEmployerContributions(s.getBase()*s.getEmployerRate());
+                if (s.getSalaryRate() != 0) s.setEmployeeContributions(s.getBase()*s.getSalaryRate()/100);
+                if (s.getEmployerRate() != 0) s.setEmployerContributions(s.getBase()*s.getEmployerRate()/100);
                 salaryTableContainer.addLineSalary(s);
                 listCotisations.add(s);
             }
@@ -480,8 +480,8 @@ public class SalaryCotisationTable {
             for (int i= 0; i<otherCotLines.size(); i++){
                 SalaryLine s = otherCotLines.get(i);
                 if (s.getBase() == 1)s.setBase(brut);
-                if (s.getSalaryRate() != 0) s.setEmployeeContributions(s.getBase()*s.getSalaryRate());
-                if (s.getEmployerRate() != 0) s.setEmployerContributions(s.getBase()*s.getEmployerRate());
+                if (s.getSalaryRate() != 0) s.setEmployeeContributions(s.getBase()*s.getSalaryRate()/100);
+                if (s.getEmployerRate() != 0) s.setEmployerContributions(s.getBase()*s.getEmployerRate()/100);
                 salaryTableContainer.addLineSalary(s);
                 listCotisations.add(s);
             }
@@ -503,8 +503,8 @@ public class SalaryCotisationTable {
             for (int i= 0; i<csgCotLines.size(); i++){
                 SalaryLine s = csgCotLines.get(i);
                 if (s.getBase() == 1)s.setBase(brut);
-                if (s.getSalaryRate() != 0) s.setEmployeeContributions(s.getBase()*s.getSalaryRate());
-                if (s.getEmployerRate() != 0) s.setEmployerContributions(s.getBase()*s.getEmployerRate());
+                if (s.getSalaryRate() != 0) s.setEmployeeContributions(s.getBase()*s.getSalaryRate()/100);
+                if (s.getEmployerRate() != 0) s.setEmployerContributions(s.getBase()*s.getEmployerRate()/100);
                 csgCotLines.set(i,s);
                 salaryTableContainer.addLineSalary(s);
             }

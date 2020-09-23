@@ -1,7 +1,7 @@
 [
   [
   {
-    "codeElement": 132,
+    "codeElement": null,
     "heading": "Autres contibutions dues par l'employeur",
     "base": 0,
     "salaryRate": 0,
@@ -19,39 +19,40 @@
       "employerContributions": null
     },
     {
-      "codeElement": 132,
-      "heading": "CSG deductible à l'IR ",
+      "codeElement": null,
+      "heading": "CSG deductible à l'IR",
       "base": 1,
-      "salaryRate": 26,
-      "employeeContributions": 487,
-      "employerRate": 71,
-      "employerContributions": 32
-    }],
+      "salaryRate": 6.9,
+      "employeeContributions": 1,
+      "employerRate": 0,
+      "employerContributions": 0
+    }
+  ],
   [{
-    "codeElement": 154,
+    "codeElement": null,
     "heading": "CSG deductible",
-    "base": 12,
-    "salaryRate": 245,
-    "employeeContributions": 545,
-    "employerRate": 545,
-    "employerContributions": 45
+    "base": 1,
+    "salaryRate": 6.7,
+    "employeeContributions": 1,
+    "employerRate": 0,
+    "employerContributions": 0
   },
   {
-    "codeElement": 12,
+    "codeElement": null,
     "heading": "AUTRES CONTRIBUTIONS DUES PAR L'EMPLOYEUR",
     "base": 1,
-    "salaryRate": 65,
-    "employeeContributions": 215,
-    "employerRate": 21,
-    "employerContributions": 45
+    "salaryRate": 0,
+    "employeeContributions": 0,
+    "employerRate": 8.6,
+    "employerContributions": 1
   },
     {
-      "codeElement": 12,
+      "codeElement": null,
       "heading": "ALLEGEMENT DE COTISATIONS",
       "base": 1,
-      "salaryRate": 5465,
-      "employeeContributions": 215,
-      "employerRate": 21,
-      "employerContributions": 45
+      "salaryRate": 0,
+      "employeeContributions": 0,
+      "employerRate": 0,
+      "employerContributions": 0
     }]
 ]

@@ -206,21 +206,51 @@ public class GenericPayslipLayout {
         payslipPage.addElement(secondPart);
         payslipPage.addElement(thirdPart);
 
+
+
+        if (LeaveInfosAvailable != -1){
         fourthPart =  new TableRowBox(configRow2v1,0,0);
-        /////
+            Map<Integer, ElementBox> sumUpElements = new HashMap<>();
+            {
+                sumUpElements.put(1, new SumUpSalaryPayslipBox(sumUpSalaryPayslipBox.getSumUpSalaryTable1())); //companyAddIDCont); iSumUpr
+            }
 
-       SumUpSalaryPayslipBox iSumUpr = new SumUpSalaryPayslipBox(sumUpSalaryPayslipBox.concatContainersVertically(
+            int rnd = model.getRandom().nextInt(4);
+            switch (rnd){
+                case 0 :
+                    sumUpElements.put(2,new LeaveInfoPayslipBox (leaveInfoPayslipBox.getLeaveInformationTable1()));
+                    break;
+                case 1 :
+                    sumUpElements.put(2,new LeaveInfoPayslipBox (leaveInfoPayslipBox.getLeaveInformationTable2()));
+                    break;
+                case 2 :
+                    sumUpElements.put(2,new LeaveInfoPayslipBox (leaveInfoPayslipBox.getLeaveInformationTable3()));
+                    break;
+                case 3 :
+                    sumUpElements.put(2,new LeaveInfoPayslipBox (leaveInfoPayslipBox.getLeaveInformationTable4()));
+                    break;
+            }
+            for(int i =0; i < sumUpElements.size(); i++)
+                fourthPart.addElement(sumUpElements.get(i+1), false);
+        }else {
+            fourthPart =  new TableRowBox(configRow1v1,0,0);
+            Map<Integer, ElementBox> sumUpElements = new HashMap<>();
+            {
+                sumUpElements.put(1, new SumUpSalaryPayslipBox(sumUpSalaryPayslipBox.getSumUpSalaryTable2())); //companyAddIDCont); iSumUpr
+            }
+            for(int i =0; i < sumUpElements.size(); i++)
+                fourthPart.addElement(sumUpElements.get(i+1), false);
+        }
+
+
+       /*SumUpSalaryPayslipBox iSumUpr = new SumUpSalaryPayslipBox(sumUpSalaryPayslipBox.concatContainersVertically(
                new ElementBox[]{new SumUpSalaryPayslipBox(sumUpSalaryPayslipBox.getNetImposabelBlock()),
-                       new SumUpSalaryPayslipBox(sumUpSalaryPayslipBox.getNetAPayerBlock())}));
-
-       /* model.getSalaryTable().getBrutSalary();
-        model.getSalaryTable().getNetImposabel();
-        model.getSalaryTable().getNetSalary();*/
+                       new SumUpSalaryPayslipBox(sumUpSalaryPayslipBox.getNetAPayerBlock(0))}));
+        */
 
 
-        Map<Integer, ElementBox> sumUpElements = new HashMap<>();
+      /*  Map<Integer, ElementBox> sumUpElements = new HashMap<>();
         {
-           // sumUpElements.put(1, emptyBox); // title
             sumUpElements.put(1, new SumUpSalaryPayslipBox(sumUpSalaryPayslipBox.getSumUpSalaryTable1())); //companyAddIDCont); iSumUpr
         }
         if (LeaveInfosAvailable != -1){
@@ -242,9 +272,8 @@ public class GenericPayslipLayout {
         }else {
             sumUpElements.put(2, emptyBox);
         }
-        //fourthPart.addElement(emptyBox,false);
-        for(int i =0; i < sumUpElements.size(); i++)
-            fourthPart.addElement(sumUpElements.get(i+1), false);
+        //fourthPart.addElement(emptyBox,false);*/
+
         payslipPage.addElement(fourthPart);
 
        /* payslipPage.addElement(fifthPart);*/

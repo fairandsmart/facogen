@@ -1,7 +1,7 @@
 [
   [{
     "codeElement": null,
-    "heading": "Assurance retraite",
+    "heading": "RETRAITE",
     "base": null,
     "salaryRate": null,
     "employeeContributions": null,
@@ -9,35 +9,36 @@
     "employerContributions": null
   },
     {
-      "codeElement": 132,
-      "heading": "Sécurité sociale",
+      "codeElement": null,
+      "heading": "Sécu. Social Plafonée",
       "base": 1,
-      "salaryRate": 26,
-      "employeeContributions": 487,
-      "employerRate": 71,
-      "employerContributions": 32
+      "salaryRate": 6.9,
+      "employeeContributions": 1,
+      "employerRate": 8.29,
+      "employerContributions": 1
     },
     {
-      "codeElement": 132,
-      "heading": "Complémentaire",
+      "codeElement": null,
+      "heading": "Sécu. Social Déplafonée",
       "base": 1,
-      "salaryRate": 26,
-      "employeeContributions": 487,
-      "employerRate": 71,
-      "employerContributions": 32
+      "salaryRate": 0.4,
+      "employeeContributions": 1,
+      "employerRate": 1.8,
+      "employerContributions": 0
     },
     {
-      "codeElement": 132,
-      "heading": "Supplémentaire",
+      "codeElement": null,
+      "heading": "Complémentaire Tranche 1",
       "base": 1,
-      "salaryRate": 26,
-      "employeeContributions": 487,
-      "employerRate": 71,
-      "employerContributions": 32
+      "salaryRate": 4.01,
+      "employeeContributions": 1,
+      "employerRate": 6.01,
+      "employerContributions": 1
     }],
+
   [{
     "codeElement": null,
-    "heading": "Retraite",
+    "heading": "RETRAITE",
     "base": null,
     "salaryRate": null,
     "employeeContributions": null,
@@ -45,48 +46,49 @@
     "employerContributions": null
   },
     {
-      "codeElement": 12,
-      "heading": "Assurance Vieillesse déplafonnée",
+      "codeElement": null,
+      "heading": "Sécu. Soc Plafonée",
       "base": 1,
-      "salaryRate": 5465,
-      "employeeContributions": 215,
-      "employerRate": 21,
-      "employerContributions": 45
+      "salaryRate": 4.83,
+      "employeeContributions": 1,
+      "employerRate": 5.99,
+      "employerContributions": 1
     },
     {
-      "codeElement": 12,
-      "heading": "Assurance Vieillesse plafonnée",
+      "codeElement": null,
+      "heading": "Sécu. Soc Plafonnéee",
       "base": 1,
-      "salaryRate": 5465,
-      "employeeContributions": 215,
-      "employerRate": 21,
-      "employerContributions": 45
+      "salaryRate": 0.28,
+      "employeeContributions": 1,
+      "employerRate": 1.33,
+      "employerContributions": 1
     },
     {
-      "codeElement": 12,
-      "heading": "Retraite complémentaire tranche A ARRCO",
+      "codeElement": null,
+      "heading": "Complémentaire Tranche 1",
       "base": 1,
-      "salaryRate": 5465,
-      "employeeContributions": 215,
-      "employerRate": 21,
-      "employerContributions": 45
+      "salaryRate": 4.675,
+      "employeeContributions": 1,
+      "employerRate": 5.075,
+      "employerContributions": 1
     },
     {
-      "codeElement": 12,
-      "heading": "Retraite complémentaire AGFF tranche A",
+      "codeElement": null,
+      "heading": "Complémentaire Tranche B",
       "base": 1,
-      "salaryRate": 5465,
-      "employeeContributions": 215,
-      "employerRate": 21,
-      "employerContributions": 45
+      "salaryRate": 8.7,
+      "employeeContributions": 1,
+      "employerRate": 14.05,
+      "employerContributions": 1
     },
     {
-      "codeElement": 12,
-      "heading": "Retraite complémentaire GMP",
+      "codeElement": null,
+      "heading": "CET",
       "base": 1,
-      "salaryRate": 5465,
-      "employeeContributions": 215,
-      "employerRate": 21,
-      "employerContributions": 45
-    }]
+      "salaryRate": 0.13,
+      "employeeContributions": 1,
+      "employerRate": 0.22,
+      "employerContributions": 1
+    }
+  ]
 ]

@@ -84,7 +84,7 @@ public class SumUpSalaryPayslipBox extends ElementBox {
     private void init() throws Exception
     {
         container.addElement(concatContainersVertically(new ElementBox[] {
-                getNetImposabelBlock(), getNetAPayerBlock()} ) );
+                getNetImposabelBlock(), getNetAPayerBlock(0)} ) );
     }
 
     public VerticalContainer getNetImposabelBlock() throws Exception
@@ -140,12 +140,12 @@ public class SumUpSalaryPayslipBox extends ElementBox {
         idContainer.addElement(new HorizontalLineBoxV2(0,0, configRow[0]+configRow[1]+15, 0));
         idContainer.addElement(new VerticalLineBox(0,0, 0, idContainer.getBoundingBox().getHeight())); //  sumUp.getBoundingBox().getPosY()
         idContainer.addElement(new VerticalLineBox(0,0,  configRow[0], idContainer.getBoundingBox().getHeight())); //  sumUp.getBoundingBox().getPosY()
-        idContainer.addElement(new VerticalLineBox(0,0,  configRow[0]+configRow[1]+15, idContainer.getBoundingBox().getHeight())); //  sumUp.getBoundingBox().getPosY()
+      //  idContainer.addElement(new VerticalLineBox(0,0,  configRow[0]+configRow[1]+15, idContainer.getBoundingBox().getHeight())); //  sumUp.getBoundingBox().getPosY()
 
         return idContainer;
     }
 
-    public VerticalContainer getNetAPayerBlock() throws Exception
+    public VerticalContainer getNetAPayerBlock(float impot) throws Exception
     {
         float[] configRow = {240f, 90f};
         VerticalContainer idContainer = new VerticalContainer(0,0,0);
@@ -158,7 +158,7 @@ public class SumUpSalaryPayslipBox extends ElementBox {
         Label.setPadding(0, 0, 2, 0);
         Label.setWidth(configRow[0]);
         container.addElement(Label);
-        SimpleTextBox Value = new SimpleTextBox(font, fontSize, 0, 0, df.format(model.getSumUpSalary().getNetApayer()));
+        SimpleTextBox Value = new SimpleTextBox(font, fontSize, 0, 0, df.format(model.getSalaryTable().getNetSalary()-impot));
         // Value.setEntityName("S" + idName.toUpperCase());
         Value.setPadding(0, 0, 3, 0);
         Value.setWidth(configRow[1]);
@@ -168,7 +168,7 @@ public class SumUpSalaryPayslipBox extends ElementBox {
         idContainer.addElement(new HorizontalLineBoxV2(0,0, configRow[0]+configRow[1]+15, 0));
         idContainer.addElement(new VerticalLineBox(0,0, 0, idContainer.getBoundingBox().getHeight())); //  sumUp.getBoundingBox().getPosY()
         idContainer.addElement(new VerticalLineBox(0,0,  configRow[0], idContainer.getBoundingBox().getHeight())); //  sumUp.getBoundingBox().getPosY()
-        idContainer.addElement(new VerticalLineBox(0,0,  configRow[0]+configRow[1]+15, idContainer.getBoundingBox().getHeight())); //  sumUp.getBoundingBox().getPosY()
+       // idContainer.addElement(new VerticalLineBox(0,0,  configRow[0]+configRow[1]+15, idContainer.getBoundingBox().getHeight())); //  sumUp.getBoundingBox().getPosY()
 
         return idContainer;
     }
@@ -232,7 +232,8 @@ public class SumUpSalaryPayslipBox extends ElementBox {
         Value1.setWidth(configRow[2]);
         acquis.addElement(Value1);
 
-        SimpleTextBox Value2 = new SimpleTextBox(font, fontSize, 0, 0, df.format(model.getSalaryTable().getNetImposabel()*taux));
+        float impot = model.getSalaryTable().getNetImposabel()*taux/100;
+        SimpleTextBox Value2 = new SimpleTextBox(font, fontSize, 0, 0, df.format(impot));
         // Value.setEntityName("S" + idName.toUpperCase());
         Value2.setPadding(0, 0, 3, 0);
         Value2.setWidth(configRow[3]);
@@ -243,11 +244,90 @@ public class SumUpSalaryPayslipBox extends ElementBox {
         idContainer.addElement(new HorizontalLineBoxV2(0,0, getNetAvantImpotBlock().getBoundingBox().getWidth()+10, 0));
 
 
-        idContainer.addElement(getNetAPayerBlock());
+        idContainer.addElement(getNetAPayerBlock(impot));
 
         idContainer.addElement(new HorizontalLineBoxV2(0,0, getNetAvantImpotBlock().getBoundingBox().getWidth()+10, 0));
         idContainer.addElement(new VerticalLineBox(0,0, 0, idContainer.getBoundingBox().getHeight())); //  sumUp.getBoundingBox().getPosY()
         idContainer.addElement(new VerticalLineBox(0,0,  getNetAvantImpotBlock().getBoundingBox().getWidth()+10, idContainer.getBoundingBox().getHeight())); //  sumUp.getBoundingBox().getPosY()
+
+        return idContainer;
+    }
+
+    public VerticalContainer getSumUpSalaryTable2() throws  Exception
+    {
+        float[] configRow = {170f, 110f, 110f, 110f};
+        VerticalContainer idContainer = new VerticalContainer(0,0,0);
+        HorizontalContainer titleContainer = new HorizontalContainer(0, 0);
+        HorizontalContainer encours = new HorizontalContainer(0, 0);
+        HorizontalContainer encours1 = new HorizontalContainer(0, 0);
+        HorizontalContainer acquis = new HorizontalContainer(0, 0);
+
+        idContainer.addElement(new HorizontalLineBoxV2(0,0, 500, 0));
+
+        idContainer.addElement(getNetAvantImpotBlock());
+
+        idContainer.addElement(new HorizontalLineBoxV2(0,0, 500, 0));
+
+        SimpleTextBox Label = new SimpleTextBox(font, fontSize, 0, 0, "Impot sur le revenu");
+        Label.setPadding(0, 0, 2, 0);
+        Label.setWidth(configRow[0]);
+        titleContainer.addElement(Label);
+
+        SimpleTextBox Label1 = new SimpleTextBox(font, fontSize, 0, 0, "Revenu");
+        Label1.setPadding(0, 0, 2, 0);
+        Label1.setWidth(configRow[1]);
+        titleContainer.addElement(Label1);
+
+        SimpleTextBox Label2 = new SimpleTextBox(font, fontSize, 0, 0, "Taux non personalisé");
+        Label2.setPadding(0, 0, 2, 0);
+        Label2.setWidth(configRow[2]);
+        titleContainer.addElement(Label2);
+
+        SimpleTextBox Label3 = new SimpleTextBox(font, fontSize, 0, 0, "Montant");
+        Label3.setPadding(0, 0, 2, 0);
+        Label3.setWidth(configRow[3]);
+        titleContainer.addElement(Label3);
+
+        idContainer.addElement(titleContainer);
+
+        idContainer.addElement(new HorizontalLineBoxV2(0,0, 500, 0));
+
+        // Ecquis
+        SimpleTextBox Label4 = new SimpleTextBox(font, fontSize, 0, 0, "Impot sur le revenu prevelvé à la source");
+        Label4.setPadding(0, 0, 2, 0);
+        Label4.setWidth(configRow[0]);
+        acquis.addElement(Label4);
+
+        SimpleTextBox Value = new SimpleTextBox(font, fontSize, 0, 0, df.format(model.getSalaryTable().getNetImposabel()));
+        // Value.setEntityName("S" + idName.toUpperCase());
+        Value.setPadding(0, 0, 3, 0);
+        Value.setWidth(configRow[1]);
+        acquis.addElement(Value);
+
+        float taux = 10+model.getRandom().nextFloat()*10;
+        SimpleTextBox Value1 = new SimpleTextBox(font, fontSize, 0, 0, df.format(taux));
+        // Value.setEntityName("S" + idName.toUpperCase());
+        Value1.setPadding(0, 0, 3, 0);
+        Value1.setWidth(configRow[2]);
+        acquis.addElement(Value1);
+
+        float impot = model.getSalaryTable().getNetImposabel()*taux/100;
+        SimpleTextBox Value2 = new SimpleTextBox(font, fontSize, 0, 0, df.format(impot));
+        // Value.setEntityName("S" + idName.toUpperCase());
+        Value2.setPadding(0, 0, 3, 0);
+        Value2.setWidth(configRow[3]);
+        acquis.addElement(Value2);
+
+        idContainer.addElement(acquis);
+
+        idContainer.addElement(new HorizontalLineBoxV2(0,0, 500, 0));
+
+
+        idContainer.addElement(getNetAPayerBlock(impot));
+
+        idContainer.addElement(new HorizontalLineBoxV2(0,0, 500, 0));
+        idContainer.addElement(new VerticalLineBox(0,0, 0, idContainer.getBoundingBox().getHeight())); //  sumUp.getBoundingBox().getPosY()
+        idContainer.addElement(new VerticalLineBox(0,0,  500, idContainer.getBoundingBox().getHeight())); //  sumUp.getBoundingBox().getPosY()
 
         return idContainer;
     }

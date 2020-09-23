@@ -1,7 +1,7 @@
 [
   [{
     "codeElement": null,
-    "heading": "Allocations familiales ",
+    "heading": "FAMILIALE-SECURITE SOCIALE ",
     "base": null,
     "salaryRate": null,
     "employeeContributions": null,
@@ -9,17 +9,17 @@
     "employerContributions": null
   },
     {
-      "codeElement": 132,
-      "heading": "Assurance chômage ",
+      "codeElement": null,
+      "heading": "AF ",
       "base": 1,
-      "salaryRate": 26,
-      "employeeContributions": 487,
-      "employerRate": 71,
-      "employerContributions": 32
+      "salaryRate": 0,
+      "employeeContributions": 0,
+      "employerRate": 0.52,
+      "employerContributions": 1
     }],
   [{
     "codeElement": null,
-    "heading": "Familiale",
+    "heading": "FAMILLE",
     "base": null,
     "salaryRate": null,
     "employeeContributions": null,
@@ -27,12 +27,12 @@
     "employerContributions": null
   },
     {
-      "codeElement": 12,
-      "heading": "Sécurité sociale",
+      "codeElement": null,
+      "heading": "Famille",
       "base": 1,
-      "salaryRate": 5465,
-      "employeeContributions": 215,
-      "employerRate": 21,
-      "employerContributions": 45
+      "salaryRate": 0,
+      "employeeContributions": 0,
+      "employerRate": 3.45,
+      "employerContributions": 1
     }]
 ]
