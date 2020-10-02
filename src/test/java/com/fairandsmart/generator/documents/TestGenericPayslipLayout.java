@@ -44,12 +44,12 @@ import java.nio.file.Paths;
 
 public class TestGenericPayslipLayout {
     @Test
-    public void test() throws Exception {
+    public static void test(int nb) throws Exception {
         Path amazon = Paths.get("target/payslip");
         if ( !Files.exists(amazon) ) {
             Files.createDirectory(amazon);
         }
-        for(int i=1; i<=6; i++){
+        for(int i=1; i<=nb; i++){
             Path pdf = Paths.get("target/payslip/payslip-"+ i + ".pdf");
             Path xml = Paths.get("target/payslip/payslip-"+ i + ".xml");
             Path img = Paths.get("target/payslip/payslip-"+ i + ".tiff");

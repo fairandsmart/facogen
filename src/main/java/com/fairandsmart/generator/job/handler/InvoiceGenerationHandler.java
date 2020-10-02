@@ -118,6 +118,7 @@ public class InvoiceGenerationHandler implements JobHandler {
                 int stop = start + qty;
                 //TODO Filter layouts according to param
                 List<InvoiceLayout> availableLayouts = layouts.stream().collect(Collectors.toList());
+                LOGGER.log(Level.INFO, "availableLayouts.size() = "+availableLayouts.size());
                 if ( availableLayouts.size() == 0 ) {
                     report.append("Unable to find available layouts for this job.");
                     manager.fail(jobId, report.toString());
@@ -133,6 +134,7 @@ public class InvoiceGenerationHandler implements JobHandler {
                     InvoiceGenerator.getInstance().generateInvoice(availableLayouts.get(i % availableLayouts.size()), model, pdf, xml, img);
                     manager.progress(jobId, (long)((i-start)*100)/qty);
                 }
+                LOGGER.log(Level.INFO, "All invoices generated");
                 report.append("All invoices generated");
                 manager.complete(jobId, report.toString());
             } catch (Exception e) {

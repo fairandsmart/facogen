@@ -1,5 +1,38 @@
 package com.fairandsmart.generator.documents.layout.payslip;
 
+/*-
+ * #%L
+ * FacoGen / A tool for annotated GEDI based invoice generation.
+ * 
+ * Authors:
+ * 
+ * Xavier Lefevre <xavier.lefevre@fairandsmart.com> / FairAndSmart
+ * Nicolas Rueff <nicolas.rueff@fairandsmart.com> / FairAndSmart
+ * Alan Balbo <alan.balbo@fairandsmart.com> / FairAndSmart
+ * Frederic Pierre <frederic.pierre@fairansmart.com> / FairAndSmart
+ * Victor Guillaume <victor.guillaume@fairandsmart.com> / FairAndSmart
+ * Jérôme Blanchard <jerome.blanchard@fairandsmart.com> / FairAndSmart
+ * Aurore Hubert <aurore.hubert@fairandsmart.com> / FairAndSmart
+ * Kevin Meszczynski <kevin.meszczynski@fairandsmart.com> / FairAndSmart
+ * %%
+ * Copyright (C) 2019 - 2020 Fair And Smart
+ * %%
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public
+ * License along with this program.  If not, see
+ * <http://www.gnu.org/licenses/gpl-3.0.html>.
+ * #L%
+ */
+
 import com.fairandsmart.generator.documents.data.model.PayslipModel;
 import com.fairandsmart.generator.documents.element.ElementBox;
 import com.fairandsmart.generator.documents.element.HAlign;
@@ -7,10 +40,7 @@ import com.fairandsmart.generator.documents.element.border.BorderBox;
 import com.fairandsmart.generator.documents.element.container.HorizontalContainer;
 import com.fairandsmart.generator.documents.element.container.VerticalContainer;
 import com.fairandsmart.generator.documents.element.footer.SumUpSalaryPayslipBox;
-import com.fairandsmart.generator.documents.element.head.CompanyInfoBox;
-import com.fairandsmart.generator.documents.element.head.EmployeeInfoBox;
-import com.fairandsmart.generator.documents.element.head.EmployeeInfoPayslipBox;
-import com.fairandsmart.generator.documents.element.head.LeaveInfoPayslipBox;
+import com.fairandsmart.generator.documents.element.head.*;
 import com.fairandsmart.generator.documents.element.image.ImageBox;
 import com.fairandsmart.generator.documents.element.line.HorizontalLineBox;
 import com.fairandsmart.generator.documents.element.line.HorizontalLineBoxV2;
@@ -19,6 +49,7 @@ import com.fairandsmart.generator.documents.element.product.ProductBox;
 import com.fairandsmart.generator.documents.element.salary.SalaryBox;
 import com.fairandsmart.generator.documents.element.table.TableRowBox;
 import com.fairandsmart.generator.documents.element.textbox.SimpleTextBox;
+import com.fairandsmart.generator.documents.layout.PayslipLayout;
 import com.mifmif.common.regex.Generex;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
@@ -28,13 +59,15 @@ import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.xml.stream.XMLStreamWriter;
 import java.awt.*;
 import java.util.List;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class GenericPayslipLayout {
+@ApplicationScoped
+public class GenericPayslipLayout implements PayslipLayout {
     private float fontSize = 9.5f;
     private PDFont[] fonts;
     PayslipModel model;
@@ -50,6 +83,7 @@ public class GenericPayslipLayout {
     private int oNumAvailable;
     private int pInfoAvailable;
 
+    @Override
     public String name() {
         return "Generic Payslip";
     }
@@ -60,6 +94,7 @@ public class GenericPayslipLayout {
         FONTS.add(new PDFont[] {PDType1Font.TIMES_ROMAN, PDType1Font.TIMES_BOLD, PDType1Font.TIMES_ITALIC} );
     }
 
+    @Override
     public void builtPayslip(PayslipModel model, PDDocument document, XMLStreamWriter writer) throws Exception {
         this.model = model;
 
@@ -98,11 +133,11 @@ public class GenericPayslipLayout {
         boolean logo = model.getRandom().nextBoolean();
 
         //companyInfo
-        CompanyInfoBox companyInfoBox = new CompanyInfoBox(fonts[2], fonts[1], fontSize, model, document);
+        CompanyInfoBoxPayslip companyInfoBox = new CompanyInfoBoxPayslip(fonts[2], fonts[1], fontSize, model, document);
 
         CompanyInfoBox companyAddress = new CompanyInfoBox(companyInfoBox.getCompanyAddressBlock());
         CompanyInfoBox companyContact = new CompanyInfoBox(companyInfoBox.getCompanyContactBlock());
-        CompanyInfoBox companyId = new CompanyInfoBox(companyInfoBox.getCompanyIdBlock());
+        //CompanyInfoBox companyId = new CompanyInfoBox(companyInfoBox.getCompanyIdBlock());
 
         EmployeeInfoBox employeeInfoBox = new EmployeeInfoBox(fonts[2], fonts[1], fontSize, model, document);
         EmployeeInfoBox employeeAddress = new EmployeeInfoBox(employeeInfoBox.getEmployeeAddressBlock());
@@ -142,13 +177,13 @@ public class GenericPayslipLayout {
         }
         firstPart = new TableRowBox(configRow3, 0, 0);
 
-        CompanyInfoBox companyAddIDCont = new CompanyInfoBox(companyInfoBox.concatContainersVertically
+        CompanyInfoBoxPayslip companyAddIDCont = new CompanyInfoBoxPayslip(companyInfoBox.concatContainersVertically
                 (new ElementBox[]{companyLogo, companyInfoBox.getCompanyAddressBlock(), companyInfoBox.getCompanyIdBlock() }));
 
-        CompanyInfoBox employeeInfo = new CompanyInfoBox(companyInfoBox.concatContainersVertically
+        CompanyInfoBoxPayslip employeeInfo = new CompanyInfoBoxPayslip(companyInfoBox.concatContainersVertically
                 (new ElementBox[]{employeeCode, employeeMat, employeeSSN }));
 
-        CompanyInfoBox employeeInfoFinal = new CompanyInfoBox(companyInfoBox.concatContainersVertically
+        CompanyInfoBoxPayslip employeeInfoFinal = new CompanyInfoBoxPayslip(companyInfoBox.concatContainersVertically
                 (new ElementBox[]{companyAddIDCont, emptyBox, employeeInfo }));
 
         VerticalContainer title_period = new VerticalContainer(0,0,0);
@@ -175,7 +210,7 @@ public class GenericPayslipLayout {
             LeaveInfosAvailable = -1;
         }
 
-        CompanyInfoBox iInfor = new CompanyInfoBox(title_period);
+        CompanyInfoBoxPayslip iInfor = new CompanyInfoBoxPayslip(title_period);
 
         Map<Integer, ElementBox> compElements = new HashMap<>();
         {
@@ -197,7 +232,7 @@ public class GenericPayslipLayout {
         SalaryBox salaryTable = new SalaryBox(0, 0, model.getSalaryTable(),fonts[2], fonts[1], fontSize);
 
 
-        CompanyInfoBox employeeInfotry = new CompanyInfoBox(companyInfoBox.concatContainersVertically
+        CompanyInfoBoxPayslip employeeInfotry = new CompanyInfoBoxPayslip(companyInfoBox.concatContainersVertically
                 (new ElementBox[]{emptyBox, emptyBox, salaryTable }));
 
         thirdPart.addElement(employeeInfotry,false);
