@@ -49,7 +49,11 @@ import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 
 import javax.xml.stream.XMLStreamWriter;
 import java.awt.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class EmployeeInfoPayslipBox extends ElementBox {
@@ -100,104 +104,6 @@ public class EmployeeInfoPayslipBox extends ElementBox {
     }
 
 
-
-    public VerticalContainer getCompanyAddressBlock() throws Exception
-    {
-        VerticalContainer addContainer = new VerticalContainer(0,0,0);
-        SimpleTextBox name = new SimpleTextBox(fontBold, fontSize, 0, 0, model.getCompany().getName(), "SN");
-        //name.setEntityName("SN");
-        addContainer.addElement(name);
-        SimpleTextBox adresse1 = new SimpleTextBox(font, fontSize, 0, 0, model.getCompany().getAddress().getLine1(), "SA");
-        //adresse1.setEntityName("SA");
-        addContainer.addElement(adresse1);
-
-        if (model.getCompany().getAddress().getLine2() != null && model.getCompany().getAddress().getLine2().length() > 0) {
-            SimpleTextBox adresse2 = new SimpleTextBox(font, fontSize, 0, 0, model.getCompany().getAddress().getLine2(),"SA");
-            //adresse2.setEntityName("SA");
-            addContainer.addElement(adresse2);
-        }
-
-        if (model.getCompany().getAddress().getLine3() != null && model.getCompany().getAddress().getLine3().length() > 0) {
-            SimpleTextBox adresse3 = new SimpleTextBox(font, fontSize, 0, 0, model.getCompany().getAddress().getLine3(),"SA");
-            //adresse3.setEntityName("SA");
-            addContainer.addElement(adresse3);
-        }
-
-        HorizontalContainer cityContainer = new HorizontalContainer(0, 0);
-        SimpleTextBox zip = new SimpleTextBox(font, fontSize, 0, 0, model.getCompany().getAddress().getZip(),"SA");
-        zip.setPadding(0, 0, 5, 0);
-        //zip.setEntityName("SA");
-        cityContainer.addElement(zip);
-        SimpleTextBox city = new SimpleTextBox(font, fontSize, 0, 0, model.getCompany().getAddress().getCity(),"SA");
-        //city.setEntityName("SA");
-        cityContainer.addElement(city);
-        addContainer.addElement(cityContainer);
-
-        if (model.getCompany().getAddress().getCountry() != null && model.getCompany().getAddress().getCountry().length() > 0) {
-            SimpleTextBox country = new SimpleTextBox(font, fontSize, 0, 0, model.getCompany().getAddress().getCountry(),"SA");
-            //country.setEntityName("SA");
-            addContainer.addElement(country);
-        }
-        return addContainer;
-    }
-
-
-
-    public VerticalContainer getCompanyContactBlock() throws Exception
-    {
-        VerticalContainer contactContainer = new VerticalContainer(0, 0, 0);
-
-        if (model.getCompany().getContact().getphoneValue() != null && model.getCompany().getContact().getphoneValue().length() > 0) {
-            HorizontalContainer phoneContainer = new HorizontalContainer(0, 0);
-            SimpleTextBox phoneLabel = new SimpleTextBox(font, fontSize, 0, 0, model.getCompany().getContact().getphoneLabel());
-            phoneLabel.setPadding(0, 0, 5, 0);
-            phoneContainer.addElement(phoneLabel);
-            SimpleTextBox phoneValue = new SimpleTextBox(font, fontSize, 0, 0, model.getCompany().getContact().getphoneValue(),"SCN");
-            phoneValue.setPadding(5, 0, 0, 0);
-            //phoneValue.setEntityName("SCN");
-            phoneContainer.addElement(phoneValue);
-            //phoneContainer.setBackgroundColor(Color.PINK);
-            contactContainer.addElement(phoneContainer);
-        }
-
-        if (model.getCompany().getContact().getfaxValue() != null && model.getCompany().getContact().getfaxValue().length() > 0) {
-            HorizontalContainer faxContainer = new HorizontalContainer(0, 0);
-            SimpleTextBox faxLabel = new SimpleTextBox(font, fontSize, 0, 0, model.getCompany().getContact().getfaxLabel());
-            faxLabel.setPadding(0, 0, 5, 0);
-            faxContainer.addElement(faxLabel);
-            SimpleTextBox faxValue = new SimpleTextBox(font, fontSize, 0, 0, model.getCompany().getContact().getfaxValue(),"SFAX");
-            faxValue.setPadding(5, 0, 0, 0);
-            //faxValue.setEntityName("SFAX");
-            faxContainer.addElement(faxValue);
-            contactContainer.addElement(faxContainer);
-        }
-
-        if (model.getCompany().getEmail() != null && model.getCompany().getEmail().length() > 0) {
-            HorizontalContainer emailContainer = new HorizontalContainer(0, 0);
-            SimpleTextBox emailLabel = new SimpleTextBox(font, fontSize, 0, 0, "Email");
-            emailLabel.setPadding(0, 0, 10, 0);
-            emailContainer.addElement(emailLabel);
-            SimpleTextBox emailValue = new SimpleTextBox(font, fontSize, 0, 0, model.getCompany().getEmail(),"SEMAIL");
-            emailValue.setPadding(5, 0, 0, 0);
-            //emailValue.setEntityName("SEMAIL");
-            emailContainer.addElement(emailValue);
-            contactContainer.addElement(emailContainer);
-        }
-
-        if (model.getCompany().getWebsite() != null && model.getCompany().getWebsite().length() > 0) {
-            HorizontalContainer websiteContainer = new HorizontalContainer(0, 0);
-            SimpleTextBox websiteLabel = new SimpleTextBox(font, fontSize, 0, 0, "Website");
-            websiteLabel.setPadding(0, 0, 10, 0);
-            websiteContainer.addElement(websiteLabel);
-            SimpleTextBox websiteValue = new SimpleTextBox(font, fontSize, 0, 0, model.getCompany().getWebsite(),"SWEB");
-            websiteValue.setPadding(5, 0, 0, 0);
-            //websiteValue.setEntityName("SWEB");
-            websiteContainer.addElement(websiteValue);
-            contactContainer.addElement(websiteContainer);
-        }
-
-        return contactContainer;
-    }
 
     public VerticalContainer getEmployeeCodeBlock() throws Exception
     {
@@ -253,6 +159,372 @@ public class EmployeeInfoPayslipBox extends ElementBox {
         return idContainer;
     }
 
+    public VerticalContainer getEmployeeDateStartBlock() throws Exception
+    {
+        VerticalContainer idContainer = new VerticalContainer(0,0,0);
+        HorizontalContainer companyIDContainer = new HorizontalContainer(0, 0);
+
+        SimpleTextBox Label = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getDateStartLabel());
+        Label.setPadding(0, 0, 2, 0);
+        companyIDContainer.addElement(Label);
+        SimpleTextBox Value = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getArrivalDate());
+        // Value.setEntityName("S" + idName.toUpperCase());
+        Value.setPadding(0, 0, 3, 0);
+        companyIDContainer.addElement(Value);
+
+        idContainer.addElement(companyIDContainer);
+
+        return idContainer;
+    }
+
+    public VerticalContainer getEmploiBlock() throws Exception
+    {
+        VerticalContainer idContainer = new VerticalContainer(0,0,0);
+        HorizontalContainer companyIDContainer = new HorizontalContainer(0, 0);
+
+        SimpleTextBox Label = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getEmploymentLabel());
+        Label.setPadding(0, 0, 2, 0);
+        companyIDContainer.addElement(Label);
+        SimpleTextBox Value = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getEmployment());
+        // Value.setEntityName("S" + idName.toUpperCase());
+        Value.setPadding(0, 0, 3, 0);
+        companyIDContainer.addElement(Value);
+
+        idContainer.addElement(companyIDContainer);
+
+        return idContainer;
+    }
+
+    public VerticalContainer getQualifBlock() throws Exception
+    {
+        VerticalContainer idContainer = new VerticalContainer(0,0,0);
+        HorizontalContainer companyIDContainer = new HorizontalContainer(0, 0);
+
+        SimpleTextBox Label = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getQualifLabel());
+        Label.setPadding(0, 0, 2, 0);
+        companyIDContainer.addElement(Label);
+        SimpleTextBox Value = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getAssignment());
+        // Value.setEntityName("S" + idName.toUpperCase());
+        Value.setPadding(0, 0, 3, 0);
+        companyIDContainer.addElement(Value);
+
+        idContainer.addElement(companyIDContainer);
+
+        return idContainer;
+    }
+
+    public VerticalContainer getReleaseDateBlock() throws Exception
+    {
+        VerticalContainer idContainer = new VerticalContainer(0,0,0);
+        HorizontalContainer companyIDContainer = new HorizontalContainer(0, 0);
+
+        SimpleTextBox Label = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getReleaseDateLabel());
+        Label.setPadding(0, 0, 2, 0);
+        companyIDContainer.addElement(Label);
+        SimpleTextBox Value = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getReleaseDate());
+        // Value.setEntityName("S" + idName.toUpperCase());
+        Value.setPadding(0, 0, 3, 0);
+        companyIDContainer.addElement(Value);
+
+        idContainer.addElement(companyIDContainer);
+
+        return idContainer;
+    }
+
+    public VerticalContainer getClassificationBlock() throws Exception
+    {
+        VerticalContainer idContainer = new VerticalContainer(0,0,0);
+        HorizontalContainer companyIDContainer = new HorizontalContainer(0, 0);
+
+        SimpleTextBox Label = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getClassificationLabel());
+        Label.setPadding(0, 0, 2, 0);
+        companyIDContainer.addElement(Label);
+        SimpleTextBox Value = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getClassification());
+        // Value.setEntityName("S" + idName.toUpperCase());
+        Value.setPadding(0, 0, 3, 0);
+        companyIDContainer.addElement(Value);
+
+        idContainer.addElement(companyIDContainer);
+
+        return idContainer;
+    }
+
+    public VerticalContainer getCoeffBlock() throws Exception
+    {
+        VerticalContainer idContainer = new VerticalContainer(0,0,0);
+        HorizontalContainer companyIDContainer = new HorizontalContainer(0, 0);
+
+        SimpleTextBox Label = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getCoeffLabel());
+        Label.setPadding(0, 0, 2, 0);
+        companyIDContainer.addElement(Label);
+        SimpleTextBox Value = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getCoef());
+        // Value.setEntityName("S" + idName.toUpperCase());
+        Value.setPadding(0, 0, 3, 0);
+        companyIDContainer.addElement(Value);
+
+        idContainer.addElement(companyIDContainer);
+
+        return idContainer;
+    }
+
+    public VerticalContainer getSocialSecurityCeilingBlock() throws Exception
+    {
+        VerticalContainer idContainer = new VerticalContainer(0,0,0);
+        HorizontalContainer companyIDContainer = new HorizontalContainer(0, 0);
+
+        SimpleTextBox Label = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getSocialSecurityCeilingLabel());
+        Label.setPadding(0, 0, 2, 0);
+        companyIDContainer.addElement(Label);
+        SimpleTextBox Value = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getSocialSecurityCeiling());
+        // Value.setEntityName("S" + idName.toUpperCase());
+        Value.setPadding(0, 0, 3, 0);
+        companyIDContainer.addElement(Value);
+
+        idContainer.addElement(companyIDContainer);
+
+        return idContainer;
+    }
+
+    public VerticalContainer getHourlyRateBlock() throws Exception
+    {
+        VerticalContainer idContainer = new VerticalContainer(0,0,0);
+        HorizontalContainer companyIDContainer = new HorizontalContainer(0, 0);
+
+        SimpleTextBox Label = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getHourlyRateLabel());
+        Label.setPadding(0, 0, 2, 0);
+        companyIDContainer.addElement(Label);
+        SimpleTextBox Value = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getHourlyRate());
+        // Value.setEntityName("S" + idName.toUpperCase());
+        Value.setPadding(0, 0, 3, 0);
+        companyIDContainer.addElement(Value);
+
+        idContainer.addElement(companyIDContainer);
+
+        return idContainer;
+    }
+
+    public VerticalContainer getDateSeniorityBlock() throws Exception
+    {
+        VerticalContainer idContainer = new VerticalContainer(0,0,0);
+        HorizontalContainer companyIDContainer = new HorizontalContainer(0, 0);
+
+        SimpleTextBox Label = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getDateSeniorityLabel());
+        Label.setPadding(0, 0, 2, 0);
+        companyIDContainer.addElement(Label);
+        SimpleTextBox Value = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getDateSeniority());
+        // Value.setEntityName("S" + idName.toUpperCase());
+        Value.setPadding(0, 0, 3, 0);
+        companyIDContainer.addElement(Value);
+
+        idContainer.addElement(companyIDContainer);
+
+        return idContainer;
+    }
+
+    public VerticalContainer getMonthlyPayRefBlock() throws Exception
+    {
+        VerticalContainer idContainer = new VerticalContainer(0,0,0);
+        HorizontalContainer companyIDContainer = new HorizontalContainer(0, 0);
+
+        SimpleTextBox Label = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getMonthlyRefPayLabel());
+        Label.setPadding(0, 0, 2, 0);
+        companyIDContainer.addElement(Label);
+        SimpleTextBox Value = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getMonthlyPayRef());
+        // Value.setEntityName("S" + idName.toUpperCase());
+        Value.setPadding(0, 0, 3, 0);
+        companyIDContainer.addElement(Value);
+
+        idContainer.addElement(companyIDContainer);
+
+        return idContainer;
+    }
+
+    public VerticalContainer getMonthlyPayBlock() throws Exception
+    {
+        VerticalContainer idContainer = new VerticalContainer(0,0,0);
+        HorizontalContainer companyIDContainer = new HorizontalContainer(0, 0);
+
+        SimpleTextBox Label = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getMonthlyPayLabel());
+        Label.setPadding(0, 0, 2, 0);
+        companyIDContainer.addElement(Label);
+        SimpleTextBox Value = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getMonthlyPay());
+        // Value.setEntityName("S" + idName.toUpperCase());
+        Value.setPadding(0, 0, 3, 0);
+        companyIDContainer.addElement(Value);
+
+        idContainer.addElement(companyIDContainer);
+
+        return idContainer;
+    }
+
+    public VerticalContainer getTimeTableBlock() throws Exception
+    {
+        VerticalContainer idContainer = new VerticalContainer(0,0,0);
+        HorizontalContainer companyIDContainer = new HorizontalContainer(0, 0);
+
+        SimpleTextBox Label = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getTimeTableLabel());
+        Label.setPadding(0, 0, 2, 0);
+        companyIDContainer.addElement(Label);
+        SimpleTextBox Value = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getTimetable());
+        // Value.setEntityName("S" + idName.toUpperCase());
+        Value.setPadding(0, 0, 3, 0);
+        companyIDContainer.addElement(Value);
+
+        idContainer.addElement(companyIDContainer);
+
+        return idContainer;
+    }
+
+    public VerticalContainer getEchelonBlock() throws Exception
+    {
+        VerticalContainer idContainer = new VerticalContainer(0,0,0);
+        HorizontalContainer companyIDContainer = new HorizontalContainer(0, 0);
+
+        SimpleTextBox Label = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getEchelonLabel());
+        Label.setPadding(0, 0, 2, 0);
+        companyIDContainer.addElement(Label);
+        SimpleTextBox Value = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getEchelon());
+        // Value.setEntityName("S" + idName.toUpperCase());
+        Value.setPadding(0, 0, 3, 0);
+        companyIDContainer.addElement(Value);
+
+        idContainer.addElement(companyIDContainer);
+
+        return idContainer;
+    }
+
+    public VerticalContainer getContratBlock() throws Exception
+    {
+        VerticalContainer idContainer = new VerticalContainer(0,0,0);
+        HorizontalContainer companyIDContainer = new HorizontalContainer(0, 0);
+
+        SimpleTextBox Label = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getContratLabel());
+        Label.setPadding(0, 0, 2, 0);
+        companyIDContainer.addElement(Label);
+        SimpleTextBox Value = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getContratType());
+        // Value.setEntityName("S" + idName.toUpperCase());
+        Value.setPadding(0, 0, 3, 0);
+        companyIDContainer.addElement(Value);
+
+        idContainer.addElement(companyIDContainer);
+
+        return idContainer;
+    }
+
+    public VerticalContainer getAssignementBlock() throws Exception
+    {
+        VerticalContainer idContainer = new VerticalContainer(0,0,0);
+        HorizontalContainer companyIDContainer = new HorizontalContainer(0, 0);
+
+        SimpleTextBox Label = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getAssignementLabel());
+        Label.setPadding(0, 0, 2, 0);
+        companyIDContainer.addElement(Label);
+        SimpleTextBox Value = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getAssignment());
+        // Value.setEntityName("S" + idName.toUpperCase());
+        Value.setPadding(0, 0, 3, 0);
+        companyIDContainer.addElement(Value);
+
+        idContainer.addElement(companyIDContainer);
+
+        return idContainer;
+    }
+
+    public VerticalContainer getCoefMinBlock() throws Exception
+    {
+        VerticalContainer idContainer = new VerticalContainer(0,0,0);
+        HorizontalContainer companyIDContainer = new HorizontalContainer(0, 0);
+
+        SimpleTextBox Label = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getMinCoeffLabel());
+        Label.setPadding(0, 0, 2, 0);
+        companyIDContainer.addElement(Label);
+        SimpleTextBox Value = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getMincoef());
+        // Value.setEntityName("S" + idName.toUpperCase());
+        Value.setPadding(0, 0, 3, 0);
+        companyIDContainer.addElement(Value);
+
+        idContainer.addElement(companyIDContainer);
+
+        return idContainer;
+    }
+
+    public VerticalContainer getPeriodBlock() throws Exception
+    {
+        VerticalContainer idContainer = new VerticalContainer(0,0,0);
+        HorizontalContainer companyIDContainer = new HorizontalContainer(0, 0);
+
+        SimpleTextBox Label = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getPaymentPeriodLabel());
+        Label.setPadding(0, 0, 2, 0);
+        companyIDContainer.addElement(Label);
+        String pattern = "MM/yyyy";
+        DateFormat df = new SimpleDateFormat(pattern);
+        String dateAsString = df.format(model.getEmployeeInformation().getPeriode());
+        SimpleTextBox Value = new SimpleTextBox(font, fontSize, 0, 0, dateAsString);
+        // Value.setEntityName("S" + idName.toUpperCase());
+        Value.setPadding(0, 0, 3, 0);
+        companyIDContainer.addElement(Value);
+
+        idContainer.addElement(companyIDContainer);
+
+        return idContainer;
+    }
+
+    public VerticalContainer getPaymentDateBlock() throws Exception
+    {
+        VerticalContainer idContainer = new VerticalContainer(0,0,0);
+        HorizontalContainer companyIDContainer = new HorizontalContainer(0, 0);
+
+        SimpleTextBox Label = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getPaymentDateLabel());
+        Label.setPadding(0, 0, 2, 0);
+        companyIDContainer.addElement(Label);
+        SimpleTextBox Value = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getPaymentDate());
+        // Value.setEntityName("S" + idName.toUpperCase());
+        Value.setPadding(0, 0, 3, 0);
+        companyIDContainer.addElement(Value);
+
+        idContainer.addElement(companyIDContainer);
+
+        return idContainer;
+    }
+    public VerticalContainer getPaymentPeriodeDatesBlock() throws Exception
+    {
+        VerticalContainer idContainer = new VerticalContainer(0,0,0);
+        HorizontalContainer companyIDContainer = new HorizontalContainer(0, 0);
+
+        SimpleTextBox Label = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getPaymentPeriodDatesLabel());
+        Label.setPadding(0, 0, 2, 0);
+        companyIDContainer.addElement(Label);
+
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(model.getEmployeeInformation().getPeriode());
+        cal.set(Calendar.DAY_OF_MONTH, cal.getActualMinimum(Calendar.DAY_OF_MONTH));
+        String pattern = "MM/yyyy";
+        DateFormat df = new SimpleDateFormat(pattern);
+        String date1AsString = df.format(cal.getTime());
+
+        SimpleTextBox Label1 = new SimpleTextBox(font, fontSize, 0, 0, "Du" );
+        Label1.setPadding(0, 0, 2, 0);
+        companyIDContainer.addElement(Label1);
+        SimpleTextBox Value = new SimpleTextBox(font, fontSize, 0, 0, date1AsString);
+        // Value.setEntityName("S" + idName.toUpperCase());
+        Value.setPadding(0, 0, 3, 0);
+        companyIDContainer.addElement(Value);
+
+        SimpleTextBox Label2 = new SimpleTextBox(font, fontSize, 0, 0, "à" );
+        Label2.setPadding(0, 0, 2, 0);
+        companyIDContainer.addElement(Label2);
+
+        cal.set(Calendar.DAY_OF_MONTH, cal.getActualMaximum(Calendar.DAY_OF_MONTH));
+
+        String date2AsString = df.format(cal.getTime());
+        SimpleTextBox Value1 = new SimpleTextBox(font, fontSize, 0, 0, date2AsString);
+        // Value.setEntityName("S" + idName.toUpperCase());
+        Value1.setPadding(0, 0, 3, 0);
+        companyIDContainer.addElement(Value1);
+
+        idContainer.addElement(companyIDContainer);
+
+        return idContainer;
+    }
 
     public VerticalContainer concatContainersVertically(ElementBox parts[]) throws  Exception
     {   int x = 1;
@@ -263,6 +535,9 @@ public class EmployeeInfoPayslipBox extends ElementBox {
         }
         return result;
     }
+
+
+
 
     @Override
     public BoundingBox getBoundingBox() {

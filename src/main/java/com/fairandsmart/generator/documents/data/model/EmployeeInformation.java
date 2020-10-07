@@ -37,6 +37,12 @@ import com.fairandsmart.generator.documents.data.generator.GenerationContext;
 import com.fairandsmart.generator.documents.data.generator.ModelGenerator;
 import com.github.javafaker.Faker;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.lang.reflect.Type;
 import java.util.*;
 import java.util.logging.Logger;
 
@@ -57,6 +63,7 @@ public class EmployeeInformation {
     private String timetable; //horaire
     private String hourlyRate; //tauxHoraire
     private String mincoef;
+    private String coef;
     private String monthlyPay; //salaireMensuel
     private String monthlyPayRef; //salaireMensuelRef
     private String categoryLabel; //libCategorie
@@ -65,6 +72,7 @@ public class EmployeeInformation {
     private String releaseDate; //dateSortie
     private String meansOfPayment; //moyenPaiement
     private String PaymentDate;
+    private Date periode;
 
     public EmployeeInformation(String employeCode, String registrationNumber, String socialSecurityNumber, String assignment,
                                String employment, String classification, String echelon, String contratType,
@@ -94,6 +102,9 @@ public class EmployeeInformation {
         this.meansOfPayment = meansOfPayment;
         this.PaymentDate = PaymentDate;
 
+    }
+
+    public EmployeeInformation() {
     }
 
     public String getEmployeCode() {
@@ -168,6 +179,42 @@ public class EmployeeInformation {
         return PaymentDate;
     }
 
+    public String getEmployment() {
+        return employment;
+    }
+
+    public String getContratType() {
+        return contratType;
+    }
+
+    public String getArrivalDate() {
+        return arrivalDate;
+    }
+
+    public String getCoef() {
+        return coef;
+    }
+
+    public void setSocialSecurityNumber(String socialSecurityNumber) {
+        this.socialSecurityNumber = socialSecurityNumber;
+    }
+
+    public void setEmployment(String employment) {
+        this.employment = employment;
+    }
+
+    public void setContratType(String contratType) {
+        this.contratType = contratType;
+    }
+
+    public void setArrivalDate(String arrivalDate) {
+        this.arrivalDate = arrivalDate;
+    }
+
+    public void setCoef(String coef) {
+        this.coef = coef;
+    }
+
     public void setEmployeCode(String employeCode) {
         this.employeCode = employeCode;
     }
@@ -236,6 +283,14 @@ public class EmployeeInformation {
         PaymentDate = paymentDate;
     }
 
+    public Date getPeriode() {
+        return periode;
+    }
+
+    public void setPeriode(Date periode) {
+        this.periode = periode;
+    }
+
     public String getEmployeCodeLabel() {
         List<String> labels = new ArrayList<String>(Arrays.asList("Code","Code Salarié"));
         return labels.get(this.random.nextInt(labels.size()));
@@ -251,6 +306,98 @@ public class EmployeeInformation {
         return labels.get(this.random.nextInt(labels.size()));
     }
 
+    public String getDateStartLabel() {
+        List<String> labels = new ArrayList<String>(Arrays.asList("Entrée le : ","Date d'entrée"));
+        return labels.get(this.random.nextInt(labels.size()));
+    }
+
+    public String getEmploymentLabel() {
+        List<String> labels = new ArrayList<String>(Arrays.asList("Emploi :"));
+        return labels.get(this.random.nextInt(labels.size()));
+    }
+
+    public String getQualifLabel() {
+        List<String> labels = new ArrayList<String>(Arrays.asList("Qualification :","Qualif"));
+        return labels.get(this.random.nextInt(labels.size()));
+    }
+
+    public String getReleaseDateLabel() {
+        List<String> labels = new ArrayList<String>(Arrays.asList("Sortie le :","Date de sortie"));
+        return labels.get(this.random.nextInt(labels.size()));
+    }
+
+    public String getClassificationLabel() {
+        List<String> labels = new ArrayList<String>(Arrays.asList("Classification :","Classif : "));
+        return labels.get(this.random.nextInt(labels.size()));
+    }
+
+    public String getCoeffLabel() {
+        List<String> labels = new ArrayList<String>(Arrays.asList("Coeff :"));
+        return labels.get(this.random.nextInt(labels.size()));
+    }
+
+    public String getSocialSecurityCeilingLabel() {
+        List<String> labels = new ArrayList<String>(Arrays.asList("Plafond sécu :","Plafond Sécurité Sociale"));
+        return labels.get(this.random.nextInt(labels.size()));
+    }
+
+    public String getHourlyRateLabel() {
+        List<String> labels = new ArrayList<String>(Arrays.asList("Taux horaire :", "SMIC Horaire :"));
+        return labels.get(this.random.nextInt(labels.size()));
+    }
+
+    public String getDateSeniorityLabel() {
+        List<String> labels = new ArrayList<String>(Arrays.asList("Ancienneté :", "Date Ancienneté :"));
+        return labels.get(this.random.nextInt(labels.size()));
+    }
+
+    public String getMonthlyRefPayLabel() {
+        List<String> labels = new ArrayList<String>(Arrays.asList("Sal.Mens.Ref :"));
+        return labels.get(this.random.nextInt(labels.size()));
+    }
+
+    public String getMonthlyPayLabel() {
+        List<String> labels = new ArrayList<String>(Arrays.asList("Sal.Mens :","Salaire mensuel :"));
+        return labels.get(this.random.nextInt(labels.size()));
+    }
+
+    public String getTimeTableLabel() {
+        List<String> labels = new ArrayList<String>(Arrays.asList("Horraire :","Indice ou nombre d'heure"));
+        return labels.get(this.random.nextInt(labels.size()));
+    }
+
+    public String getEchelonLabel() {
+        List<String> labels = new ArrayList<String>(Arrays.asList("echelon :","Echelon","Ech"));
+        return labels.get(this.random.nextInt(labels.size()));
+    }
+
+    public String getContratLabel() {
+        List<String> labels = new ArrayList<String>(Arrays.asList("Contrat :"));
+        return labels.get(this.random.nextInt(labels.size()));
+    }
+
+    public String getAssignementLabel() {
+        List<String> labels = new ArrayList<String>(Arrays.asList("Affectation :"));
+        return labels.get(this.random.nextInt(labels.size()));
+    }
+
+    public String getMinCoeffLabel() {
+        List<String> labels = new ArrayList<String>(Arrays.asList("Coef. min :"));
+        return labels.get(this.random.nextInt(labels.size()));
+    }
+
+    public String getPaymentDateLabel() {
+        List<String> labels = new ArrayList<String>(Arrays.asList("Payment le:", "Date de paiement"));
+        return labels.get(this.random.nextInt(labels.size()));
+    }
+    public String getPaymentPeriodLabel() {
+        List<String> labels = new ArrayList<String>(Arrays.asList("Periode :"));
+        return labels.get(this.random.nextInt(labels.size()));
+    }
+    public String getPaymentPeriodDatesLabel() {
+        List<String> labels = new ArrayList<String>(Arrays.asList("Periode du paiement :",""));
+        return labels.get(this.random.nextInt(labels.size()));
+    }
 
     @Override
     public String toString() {
@@ -282,24 +429,39 @@ public class EmployeeInformation {
     public static class Generator implements ModelGenerator<EmployeeInformation> {
 //TODO LISTS DE HEADS ET DE CONTENU
 
+        private List<DepartCommune> DepartsComm;
+        private static final String DepartCommFile = "payslips/employee/commonCodeInsee.json";
+        {
+            Reader jsonReader = new InputStreamReader(EmployeeInformation.class.getClassLoader().getResourceAsStream(DepartCommFile));
+            Gson gson = new Gson();
+            Type collectionType = new TypeToken<Collection<DepartCommune>>(){}.getType();
+            DepartsComm = gson.fromJson(jsonReader, collectionType);
+        }
+
         @Override
         public EmployeeInformation generate(GenerationContext ctx) {
             Faker faker = Faker.instance(Locale.forLanguageTag(ctx.getLanguage()));
             Random rand =new Random();
+            EmployeeInformation employeeInformation = new EmployeeInformation();
 
-            String employeCode = faker.regexify("[1-9]{3}[a-z]{1}");
+
+                    String employeCode = faker.regexify("[1-9]{3}[a-z]{1}");
             String registrationNumber = String.format("%03d", rand.nextInt(100)+1);
 
-            String gender = ""+rand.nextInt(2)+1;
+            String gender = ""+(rand.nextInt(2)+1);
             String yearBirth = String.format("%02d", rand.nextInt(99)+1);
 
             String monthBirth = String.format("%02d", rand.nextInt(12)+1);
-            String departmentCode = "" + rand.nextInt(95)+1; // 99 etranger 2A 2B No 20
-            String commonBirth = faker.regexify("[0-9]{3}"); //"" + rand.nextInt(95)+1;
+
+            DepartCommune departComm = DepartsComm.get(ctx.getRandom().nextInt(DepartsComm.size()));
+            String departmentCode = departComm.getCode_dept();
+            String commonBirth = departComm.getCode_comm();
+
             String orderBirth = String.format("%03d", rand.nextInt(999)+1);
             String keySS = String.format("%02d", rand.nextInt(99)+1);
 
-            String socialSecurityNumber = gender + yearBirth +monthBirth+ departmentCode +commonBirth+orderBirth + keySS;
+
+            String socialSecurityNumber = gender + yearBirth + monthBirth+ departmentCode +commonBirth+orderBirth + keySS;
             String assignment = null;
             String employment = null;
             String classification = null;
