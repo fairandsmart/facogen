@@ -1,0 +1,98 @@
+[
+  {"coefficient": 120		,
+    "baseMin": 1541.00
+  },
+  {"coefficient":125		,
+    "baseMin":1545.64
+  },
+  {"coefficient":130		,
+    "baseMin":1549.84
+  },
+  {"coefficient":135		,
+    "baseMin":1554.04
+  },
+  {"coefficient":140		,
+    "baseMin":1558.25
+  },
+  {"coefficient":145		,
+    "baseMin":1562.45
+  },
+  {"coefficient":150		,
+    "baseMin":1566.65
+  },
+  {"coefficient":155		,
+    "baseMin":1570.86
+  },
+  {"coefficient":160		,
+    "baseMin":1575.06
+  },
+  {"coefficient":165		,
+    "baseMin":1579.26
+  },
+  {"coefficient":170		,
+    "baseMin":1583.46
+  },
+  {"coefficient":175		,
+    "baseMin":1587.67
+  },
+  {"coefficient":180		,
+    "baseMin":1591.87
+  },
+  {"coefficient":185		,
+    "baseMin":1608.38
+  },
+  {"coefficient":190		,
+    "baseMin":1639.14
+  },
+  {"coefficient":195		,
+    "baseMin":1680.15
+  },
+  {"coefficient":200		,
+    "baseMin":1684.91
+  },
+  {"coefficient":215		,
+    "baseMin":1752.72
+  },
+  {"coefficient":230		,
+    "baseMin":1839.82
+  },
+  {"coefficient":245		,
+    "baseMin":1924.95
+  },
+  {"coefficient":260		,
+    "baseMin":2026.23
+  },
+  {"coefficient":280		,
+    "baseMin":2127.57
+  },
+  {"coefficient":300		,
+    "baseMin":2239.01
+  },
+  {"coefficient":320		,
+    "baseMin":2366.66
+  },
+  {"coefficient":340		,
+    "baseMin":2488.24
+  },
+  {"coefficient":350		,
+    "baseMin":2502.42
+  },
+  {"coefficient":375		,
+    "baseMin":2674.64
+  },
+  {"coefficient":400		,
+    "baseMin":2836.76
+  },
+  {"coefficient":450		,
+    "baseMin":3140.69
+  },
+  {"coefficient":500		,
+    "baseMin":3444.61
+  },
+  {"coefficient":600		,
+    "baseMin":4042.38
+  },
+  {"coefficient":700		,
+    "baseMin":4640.12
+  }
+]

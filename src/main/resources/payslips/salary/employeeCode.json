@@ -1,466 +1,953 @@
-Code 2017	Libellé 2017
+[
+  {"code_categorie":"1",
+    "categorie":"Agriculteurs"
+  ,
+    "list_emploi":
+    [{"code":"10",
+      "libelle":"Agriculteur (salarié de leur exploitation)"}
+    ,{"code":"100x"
+    ,"libelle":"Agriculteur et éleveurs, salarié de leur exploitation"}
+    ]},
+  {"code_categorie":"2",
+    "categorie":"Artisans, commerçant et chef d'entreprises"
+  ,
+    "list_emploi":
+    [{"code":"21"
+    ,"libelle":"Artisan (salarié de leur entreprise)"}
+    ,{"code":"210x"
+    ,"libelle":"Artisan salarié de leur entreprise"}
+    ,{"code":"22"
+    ,"libelle":"Commerçant et assimilé (salarié de leur entreprise)"}
+    ,{"code":"220x"
+    ,"libelle":"Commerçant et assimilés, salarié de leur entreprise"}
+    ,{"code":"23"
+    ,"libelle":"Chef d'entreprise de 10 salarié ou plu (salarié de leur entreprise)"}
+    ,{"code":"231a",
+      "libelle":"Chef de grande entreprise de 500 salarié et plus"}
+    ,{"code":"232a",
+      "libelle":"Chef de moyenne entreprise, de 50 à 499 salariés"}
+    ,{"code":"233a",
+      "libelle":"Chef d'entreprise du bâtiment et de travaux publics, de 10 à 49 salariés"}
+    ,{"code":"233b",
+      "libelle":"Chef d'entreprise de l'industrie ou de transports, de 10 à 49 salariés"}
+    ,{"code":"233c",
+      "libelle":"Chef d'entreprise commerciale, de 10 à 49 salariés"}
+    ,{"code":"233d",
+      "libelle":"Chef d'entreprise de services, de 10 à 49 salariés"}
+    ]},
 
-1	Agriculteurs
-10	Agriculteurs (salariés de leur exploitation)
-100x	Agriculteurs et éleveurs, salariés de leur exploitation
-2	Artisans, commerçants et chefs d'entreprises
-21	Artisans (salariés de leur entreprise)
-210x	Artisans salariés de leur entreprise
-22	Commerçants et assimilés (salariés de leur entreprise)
-220x	Commerçants et assimilés, salariés de leur entreprise
-23	Chefs d'entreprise de 10 salariés ou plus (salariés de leur entreprise)
-231a	Chefs de grande entreprise de 500 salariés et plus
-232a	Chefs de moyenne entreprise, de 50 à 499 salariés
-233a	Chefs d'entreprise du bâtiment et des travaux publics, de 10 à 49 salariés
-233b	Chefs d'entreprise de l'industrie ou des transports, de 10 à 49 salariés
-233c	Chefs d'entreprise commerciale, de 10 à 49 salariés
-233d	Chefs d'entreprise de services, de 10 à 49 salariés
-3	Cadres et professions intellectuelles supérieures
-31	Professions libérales (exercées sous statut de salarié)
-311c	Chirurgiens dentistes
-311d	Psychologues, psychanalystes, psychothérapeutes (non médecins)
-311e	Vétérinaires
-312a	Avocats
-331a	Personnels de direction de la fonction publique (Etat, collectivités locales, hôpitaux)
-33	Cadres de la fonction publique
-332a	Ingénieurs de l'Etat (y.c. ingénieurs militaires) et assimilés
-332b	Ingénieurs des collectivités locales et des hôpitaux
-333a	Magistrats*
-333b	Inspecteurs et autres personnels de catégorie A des Impôts, du Trésor et des Douanes
-333c	Cadres de la Poste*
-333d	Cadres administratifs de France Télécom (statut public)
-333e	Autres personnels administratifs de catégorie A de l'Etat (hors Enseignement, Patrimoine, Impôts, Trésor, Douanes)
-333f	Personnels administratifs de catégorie A des collectivités locales et hôpitaux publics (hors Enseignement, Patrimoine)
-334a	Officiers des Armées et de la Gendarmerie (sauf officiers généraux)*
-335a	Personnes exerçant un mandat politique ou syndical*
-34	Professeurs, professions scientifiques
-341a	Professeurs agrégés et certifiés de l'enseignement secondaire
-341b	Chefs d'établissement de l'enseignement secondaire et inspecteurs
-342b	Professeurs et maîtres de conférences
-342c	Professeurs agrégés et certifiés en fonction dans l'enseignement supérieur
-342d	Personnel enseignant temporaire de l'enseignement supérieur
-342f	Directeurs et chargés de recherche de la recherche publique
-342g	Ingénieurs d'étude et de recherche de la recherche publique
-342h	Allocataires de la recherche publique
-343a	Psychologues spécialistes de l'orientation scolaire et professionnelle
-344a	Médecins hospitaliers sans activité libérale
-344b	Médecins salariés non hospitaliers
-344c	Internes en médecine, odontologie et pharmacie
-344d	Pharmaciens salariés
-35	Professions de l'information, des arts et des spectacles
-351a	Bibliothécaires, archivistes, conservateurs et autres cadres du patrimoine
-352a	Journalistes (y c. rédacteurs en chef)
-352b	Auteurs littéraires, scénaristes, dialoguistes
-353a	Directeurs de journaux, administrateurs de presse, directeurs d'éditions (littéraire, musicale, audiovisuelle et multimédia)
-353b	Directeurs, responsables de programmation et de production de l'audiovisuel et des spectacles
-353c	Cadres artistiques et technico-artistiques de la réalisation de l'audiovisuel et des spectacles
-354a	Artistes plasticiens
-354b	Artistes de la musique et du chant
-354c	Artistes dramatiques
-354e	Artistes de la danse
-354f	Artistes du cirque et des spectacles divers
-354g	Professeurs d'art (hors établissements scolaires)
-37	Cadres administratifs et commerciaux d'entreprises
-371a	Cadres d'état-major administratifs, financiers, commerciaux des grandes entreprises
-372a	Cadres chargés d'études économiques, financières, commerciales
-372b	Cadres de l'organisation ou du contrôle des services administratifs et financiers
-372c	Cadres spécialistes des ressources humaines et du recrutement
-372d	Cadres spécialistes de la formation
-372e	Juristes
-372f	Cadres de la documentation, de l'archivage (hors fonction publique)
-373a	Cadres des services financiers ou comptables des grandes entreprises
-373b	Cadres des autres services administratifs des grandes entreprises
-373c	Cadres des services financiers ou comptables des petites et moyennes entreprises
-373d	Cadres des autres services administratifs des petites et moyennes entreprises
-374a	Cadres de l'exploitation des magasins de vente du commerce de détail
-374b	Chefs de produits, acheteurs du commerce et autres cadres de la mercatique
-374c	Cadres commerciaux des grandes entreprises (hors commerce de détail)
-374d	Cadres commerciaux des petites et moyennes entreprises (hors commerce de détail)
-375a	Cadres de la publicité
-375b	Cadres des relations publiques et de la communication
-376a	Cadres des marchés financiers
-376b	Cadres des opérations bancaires
-376c	Cadres commerciaux de la banque
-376d	Chefs d'établissements et responsables de l'exploitation bancaire
-376e	Cadres des services techniques des assurances
-376f	Cadres des services techniques des organismes de sécurité sociale et assimilés
-376g	Cadres de l'immobilier
-377a	Cadres de l'hôtellerie et de la restauration
-38	Ingénieurs et cadres techniques d'entreprises
-380a	Directeurs techniques des grandes entreprises
-381b	Ingénieurs et cadres d'étude et développement de l'agriculture, la pêche, les eaux et forêts
-381c	Ingénieurs et cadres de production et d'exploitation de l'agriculture, la pêche, les eaux et forêts
-382a	Ingénieurs et cadres d'étude du bâtiment et des travaux publics
-382b	Architectes salariés
-382c	Ingénieurs, cadres de chantier et conducteurs de travaux (cadres) du bâtiment et des travaux publics
-382d	Ingénieurs et cadres technico-commerciaux en bâtiment, travaux publics
-383a	Ingénieurs et cadres d'étude, recherche et développement en électricité, électronique
-383b	Ingénieurs et cadres de fabrication en matériel électrique, électronique
-383c	Ingénieurs et cadres technico-commerciaux en matériel électrique ou électronique professionnel
-384a	Ingénieurs et cadres d'étude, recherche et développement en mécanique et travail des métaux
-384b	Ingénieurs et cadres de fabrication en mécanique et travail des métaux
-384c	Ingénieurs et cadres technico-commerciaux en matériel mécanique professionnel
-385a	Ingénieurs et cadres d'étude, recherche et développement des industries de transformation (agroalimentaire, chimie, métallurgie, matériaux lourds)
-385b	Ingénieurs et cadres de fabrication des industries de transformation (agroalimentaire, chimie, métallurgie, matériaux lourds)
-385c	Ingénieurs et cadres technico-commerciaux des industries de transformations (biens intermédiaires)
-386b	Ingénieurs et cadres d'étude, recherche et développement de la distribution d'énergie, eau
-386c	Ingénieurs et cadres d'étude, recherche et développement des autres industries (imprimerie, matériaux souples, ameublement et bois)
-386d	Ingénieurs et cadres de la production et de la distribution d'énergie, eau
-386e	Ingénieurs et cadres de fabrication des autres industries (imprimerie, matériaux souples, ameublement et bois)
-387a	Ingénieurs et cadres des achats et approvisionnements industriels
-387b	Ingénieurs et cadres de la logistique, du planning et de l'ordonnancement
-387c	Ingénieurs et cadres des méthodes de production
-387d	Ingénieurs et cadres du contrôle-qualité
-387e	Ingénieurs et cadres de la maintenance, de l'entretien et des travaux neufs
-387f	Ingénieurs et cadres techniques de l'environnement
-388a	Ingénieurs et cadres d'étude, recherche et développement en informatique
-388b	Ingénieurs et cadres d'administration, maintenance, support et services aux utilisateurs en informatique
-388c	Chefs de projets informatiques, responsables informatiques
-388d	Ingénieurs et cadres technico-commerciaux en informatique et télécommunications
-388e	Ingénieurs et cadres spécialistes des télécommunications
-389a	Ingénieurs et cadres techniques de l'exploitation des transports
-389b	Officiers et cadres navigants techniques et commerciaux de l'aviation civile
-389c	Officiers et cadres navigants techniques de la marine marchande
-4	Professions intermédiaires
-42	Professeurs des écoles, instituteurs et professions assimilées
-421a	Instituteurs
-421b	Professeurs des écoles
-422a	Professeurs d'enseignement général des collèges
-422b	Professeurs de lycée professionnel
-422c	Maîtres auxiliaires et professeurs contractuels de l'enseignement secondaire
-422d	Conseillers principaux d'éducation
-422e	Surveillants et aides-éducateurs des établissements d'enseignement
-423a	Moniteurs d'école de conduite
-423b	Formateurs et animateurs de formation continue
-424a	Moniteurs et éducateurs sportifs, sportifs professionnels
-425a	Sous-bibliothécaires, cadres intermédiaires du patrimoine
-43	Professions intermédiaires de la santé et du travail social
-431a	Cadres infirmiers et assimilés
-431b	Infirmiers psychiatriques
-431c	Puéricultrices
-431d	Infirmiers spécialisés (autres qu'infirmiers psychiatriques et puéricultrices)
-431e	Sages-femmes salariées
-431f	Infirmiers en soins généraux, salariés
-432b	Masseurs-kinésithérapeutes rééducateurs, salariés
-432d	Autres spécialistes de la rééducation, salariés
-433a	Techniciens médicaux
-433b	Opticiens lunetiers et audioprothésistes salariés
-433c	Autres spécialistes de l'appareillage médical salariés
-433d	Préparateurs en pharmacie
-434a	Cadres de l'intervention socio-éducative
-434b	Assistants de service social
-434c	Conseillers en économie sociale familiale
-434d	Educateurs spécialisés
-434e	Moniteurs éducateurs
-434f	Educateurs techniques spécialisés, moniteurs d'atelier
-434g	Educateurs de jeunes enfants
-435a	Directeurs de centres socioculturels et de loisirs
-435b	Animateurs socioculturels et de loisirs
-44	Clergé, religieux
-441a	Clergé séculier
-441b	Clergé régulier
-45	Professions intermédiaires administratives de la fonction publique
-451a	Professions intermédiaires de la Poste
-451b	Professions intermédiaires administratives de France Télécom (statut public)
-451c	Contrôleurs des Impôts, du Trésor, des Douanes et assimilés*
-451d	Ingénieurs du contrôle de la navigation aérienne*
-451e	Autres personnels administratifs de catégorie B de l'Etat (hors Enseignement, Patrimoine, Impôts, Trésor, Douanes)
-451g	Professions intermédiaires administratives des collectivités locales
-451h	Professions intermédiaires administratives des hôpitaux
-452a	Inspecteurs et officiers de police*
-452b	Adjudants-chefs, adjudants et sous-officiers de rang supérieur de l'Armée et de la Gendarmerie*
-46	Professions intermédiaires administratives et commerciales des entreprises
-461b	Secrétaires de direction, assistants de direction (non cadres)
-461c	Secrétaires de niveau supérieur (non cadres, hors secrétaires de direction)
-461d	Maîtrise et techniciens des services financiers ou comptables
-461e	Maîtrise et techniciens administratifs des services juridiques ou du personnel
-461f	Maîtrise et techniciens administratifs des autres services administratifs
-462a	Chefs de petites surfaces de vente
-462b	Maîtrise de l'exploitation des magasins de vente
-462c	Acheteurs non classés cadres, aides-acheteurs
-462d	Animateurs commerciaux des magasins de vente, marchandiseurs (non cadres)
-462e	Autres professions intermédiaires commerciales (sauf techniciens des forces de vente)
-463a	Techniciens commerciaux et technico-commerciaux, représentants en informatique
-463b	Techniciens commerciaux et technico-commerciaux, représentants en biens d'équipement, en biens intermédiaires, commerce interindustriel (hors informatique)
-463c	Techniciens commerciaux et technico-commerciaux, représentants en biens de consommation auprès d'entreprises
-463d	Techniciens commerciaux et technico-commerciaux, représentants en services auprès d'entreprises ou de professionnels (hors banque, assurance, informatique)
-463e	Techniciens commerciaux et technico-commerciaux, représentants auprès de particuliers (hors banque, assurance, informatique)
-464a	Assistants de la publicité, des relations publiques
-464b	Interprètes, traducteurs
-465a	Concepteurs et assistants techniques des arts graphiques, de la mode et de la décoration salariés
-465b	Assistants techniques de la réalisation des spectacles vivants et audiovisuels salariés
-465c	Photographes
-466a	Responsables commerciaux et administratifs des transports de voyageurs et du tourisme (non cadres)
-466b	Responsables commerciaux et administratifs des transports de marchandises (non cadres)
-466c	Responsables d'exploitation des transports de voyageurs et de marchandises (non cadres)
-467a	Chargés de clientèle bancaire
-467b	Techniciens des opérations bancaires
-467c	Professions intermédiaires techniques et commerciales des assurances
-467d	Professions intermédiaires techniques des organismes de sécurité sociale
-468a	Maîtrise de restauration : salle et service
-468b	Maîtrise de l'hébergement : hall et étages
-47	Techniciens (sauf techniciens tertiaires)
-471a	Techniciens d'étude et de conseil en agriculture, eaux et forêt
-471b	Techniciens d'exploitation et de contrôle de la production en agriculture, eaux et forêt
-472a	Dessinateurs en bâtiment, travaux publics
-472b	Géomètres, topographes
-472c	Métreurs et techniciens divers du bâtiment et des travaux publics
-472d	Techniciens des travaux publics de l'Etat et des collectivités locales
-473a	Dessinateurs en électricité, électromécanique et électronique
-473b	Techniciens de recherche-développement et des méthodes de fabrication en électricité, électromécanique et électronique
-473c	Techniciens de fabrication et de contrôle-qualité en électricité, électromécanique et électronique
-474a	Dessinateurs en construction mécanique et travail des métaux
-474b	Techniciens de recherche-développement et des méthodes de fabrication en construction mécanique et travail des métaux
-474c	Techniciens de fabrication et de contrôle-qualité en construction mécanique et travail des métaux
-475a	Techniciens de recherche-développement et des méthodes de production des industries de transformation
-475b	Techniciens de production et de contrôle-qualité des industries de transformation
-476a	Assistants techniques, techniciens de l'imprimerie et de l'édition
-476b	Techniciens de l'industrie des matériaux souples, de l'ameublement et du bois
-477a	Techniciens de la logistique, du planning et de l'ordonnancement
-477b	Techniciens d'installation et de maintenance des équipements industriels (électriques, électromécaniques, mécaniques, hors informatique)
-477c	Techniciens d'installation et de maintenance des équipements non industriels (hors informatique et télécommunications)
-477d	Techniciens de l'environnement et du traitement des pollutions
-478a	Techniciens d'étude et de développement en informatique
-478b	Techniciens de production, d'exploitation en informatique
-478c	Techniciens d'installation, de maintenance, support et services aux utilisateurs en informatique
-478d	Techniciens des télécommunications et de l'informatique des réseaux
-479a	Techniciens des laboratoires de recherche publique ou de l'enseignement
-479b	Experts salariés de niveau technicien, techniciens divers
-48	Contremaîtres, agents de maîtrise (maîtrise administrative exclue)
-480a	Contremaîtres et agents d'encadrement (non cadres) en agriculture, sylviculture
-480b	Maîtres d'équipage de la marine marchande et de la pêche
-481a	Conducteurs de travaux (non cadres)
-481b	Chefs de chantier (non cadres)
-482a	Agents de maîtrise en fabrication de matériel électrique, électronique
-483a	Agents de maîtrise en construction mécanique, travail des métaux
-484a	Agents de maîtrise en fabrication : agroalimentaire, chimie, plasturgie, pharmacie.
-484b	Agents de maîtrise en fabrication : métallurgie, matériaux lourds et autres industries de transformation
-485a	Agents de maîtrise et techniciens en production et distribution d'énergie, eau, chauffage
-485b	Agents de maîtrise en fabrication des autres industries (imprimerie, matériaux souples, ameublement et bois)
-486b	Agents de maîtrise en maintenance, installation en électricité et électronique
-486c	Agents de maîtrise en maintenance, installation en électromécanique
-486d	Agents de maîtrise en maintenance, installation en mécanique
-486e	Agents de maîtrise en entretien général, installation, travaux neufs (hors mécanique, électromécanique, électronique)
-487a	Responsables d'entrepôt, de magasinage
-487b	Responsables du tri, de l'emballage, de l'expédition et autres responsables de la manutention
-488a	Maîtrise de restauration  : cuisine/production
-488b	Maîtrise de restauration  : gestion d'établissement
-5	Employés
-52	Employés civils et agents de service de la fonction publique
-521a	Employés de la Poste
-521b	Employés de France Télécom (statut public)
-522a	Agents de constatation ou de recouvrement des Impôts, du Trésor, des Douanes*
-523a	Adjoints administratifs de la fonction publique (y c. enseignement)*
-523b	Adjoints administratifs de l'Etat et assimilés (sauf Poste, France Télécom)
-523c	Adjoints administratifs des collectivités locales
-523d	Adjoints administratifs des hôpitaux publics
-524a	Agents administratifs de la fonction publique (y c. enseignement)*
-524b	Agents administratifs de l'Etat et assimilés (sauf Poste, France Télécom)
-524c	Agents administratifs des collectivités locales
-524d	Agents administratifs des hôpitaux publics
-525a	Agents de service des établissements primaires
-525b	Agents de service des autres établissements d'enseignement
-525c	Agents de service de la fonction publique (sauf écoles, hôpitaux)
-525d	Agents de service hospitaliers
-526a	Aides-soignants
-526b	Assistants dentaires, médicaux et vétérinaires, aides de techniciens médicaux
-526c	Auxiliaires de puériculture
-526d	Aides médico-psychologiques
-526e	Ambulanciers salariés
-53	Policiers, militaires et agents de surveillance
-531a	Agents de police de l'Etat*
-531b	Agents des polices municipales*
-531c	Surveillants de l'administration pénitentiaire*
-532a	Gendarmes (de grade inférieur à adjudant)*
-532b	Sergents et sous-officiers de grade équivalent des Armées (sauf pompiers militaires)*
-532c	Hommes du rang (sauf pompiers militaires)*
-533a	Pompiers (y.c. pompiers militaires)
-533b	Agents techniques forestiers, gardes des espaces naturels
-533c	Agents de surveillance du patrimoine et des administrations
-534a	Agents civils de sécurité et de surveillance
-534b	Convoyeurs de fonds, gardes du corps, enquêteurs privés et métiers assimilés (salariés)
-54	Employés administratifs d'entreprise
-541b	Agents d'accueil qualifiés, hôtesses d'accueil et d'information
-541c	Agents d'accueil non qualifiés
-541d	Standardistes, téléphonistes
-542a	Secrétaires
-542b	Dactylos, sténodactylos (sans secrétariat), opérateurs de traitement de texte
-543b	Employés qualifiés des services comptables ou financiers
-543c	Employés non qualifiés des services comptables ou financiers
-543e	Employés qualifiés des services du personnel et des services juridiques
-543f	Employés qualifiés des services commerciaux des entreprises (hors vente)
-543g	Employés administratifs qualifiés des autres services des entreprises
-543h	Employés administratifs non qualifiés
-544a	Employés et opérateurs d'exploitation en informatique
-545a	Employés administratifs des services techniques de la banque
-545b	Employés des services commerciaux de la banque
-545c	Employés des services techniques des assurances
-545d	Employés des services techniques des organismes de sécurité sociale et assimilés
-546a	Contrôleurs des transports (personnels roulants)
-546b	Agents des services commerciaux des transports de voyageurs et du tourisme
-546c	Employés administratifs d'exploitation des transports de marchandises
-546d	Hôtesses de l'air et stewards
-546e	Autres agents et hôtesses d'accompagnement (transports, tourisme)
-55	Employés de commerce
-551a	Employés de libre service du commerce et magasiniers
-552a	Caissiers de magasin
-553b	Vendeurs polyvalents des grands magasins
-553c	 Autres vendeurs non spécialisés
-554a	Vendeurs en alimentation
-554b	Vendeurs en ameublement, décor, équipement du foyer
-554c	Vendeurs en droguerie, bazar, quincaillerie, bricolage
-554d	Vendeurs du commerce de fleurs
-554e	Vendeurs en habillement et articles de sport
-554f	Vendeurs en produits de beauté, de luxe (hors biens culturels) et optique
-554g	Vendeurs de biens culturels (livres, disques, multimédia, objets d'art)
-554h	Vendeurs de tabac, presse et articles divers
-554j	Pompistes et gérants de station-service (salariés ou mandataires)
-555a	Vendeurs par correspondance, télévendeurs
-56	Personnels des services directs aux particuliers
-556a	Vendeurs en gros de biens d'équipement, biens intermédiaires
-561b	Serveurs, commis de restaurant, garçons qualifiés
-561c	Serveurs, commis de restaurant, garçons non qualifiés
-561d	Aides de cuisine, apprentis de cuisine et employés polyvalents de la restauration
-561e	Employés de l'hôtellerie : réception et hall
-561f	Employés d'étage et employés polyvalents de l'hôtellerie
-562a	Manucures, esthéticiens
-562b	Coiffeurs salariés
-563a	Assistantes maternelles, gardiennes d'enfants, familles d'accueil
-563b	Aides à domicile, aides ménagères, travailleuses familiales
-563c	Employés de maison et personnels de ménage chez des particuliers
-564a	Concierges, gardiens d'immeubles
-564b	Employés des services divers
-6	Ouvriers
-62	Ouvriers qualifiés de type industriel
-621a	Chefs d'équipe du gros oeuvre et des travaux publics
-621b	Ouvriers qualifiés du travail du béton
-621c	Conducteurs qualifiés d'engins de chantiers du bâtiment et des travaux publics
-621d	Ouvriers des travaux publics en installations électriques et de télécommunications
-621e	Autres ouvriers qualifiés des travaux publics
-621f	Ouvriers qualifiés des travaux publics (salariés de l'Etat et des collectivités locales)
-621g	Mineurs de fond qualifiés et autres ouvriers qualifiés des industries d'extraction (carrières, pétrole, gaz...)
-622a	Opérateurs qualifiés sur machines automatiques en production électrique ou électronique
-622c	Monteurs câbleurs qualifiés en électricité
-622d	Câbleurs qualifiés en électronique (prototype, unité, petite série)
-622e	Autres monteurs câbleurs en électronique
-622f	Bobiniers qualifiés
-622g	Plateformistes, contrôleurs qualifiés de matériel électrique ou électronique
-623a	Chaudronniers-tôliers industriels, opérateurs qualifiés du travail en forge, conducteurs qualifiés d'équipement de formage, traceurs qualifiés
-623b	Tuyauteurs industriels qualifiés
-623d	Opérateurs qualifiés sur machine de soudage
-623e	Soudeurs manuels
-623f	Opérateurs qualifiés d'usinage des métaux travaillant à l'unité ou en petite série, moulistes qualifiés
-623g	Opérateurs qualifiés d'usinage des métaux sur autres machines (sauf moulistes)
-624b	Monteurs, metteurs au point très qualifiés d'ensembles mécaniques travaillant à l'unité ou en petite série
-624c	Monteurs qualifiés d'ensembles mécaniques travaillant en moyenne ou en grande série
-624d	Monteurs qualifiés en structures métalliques
-624e	Ouvriers qualifiés de contrôle et d'essais en mécanique
-624f	Ouvriers qualifiés des traitements thermiques et de surface sur métaux
-624g	Autres mécaniciens ou ajusteurs qualifiés (ou spécialité non reconnue)
-625a	Pilotes d'installation lourde des industries de transformation : agroalimentaire, chimie, plasturgie, énergie
-625b	Ouvriers qualifiés et agents qualifiés de laboratoire : agroalimentaire, chimie, biologie, pharmacie
-625c	Autres opérateurs et ouvriers qualifiés de la chimie (y.c. pharmacie) et de la plasturgie
-625d	Opérateurs de la transformation des viandes
-625f	Autres opérateurs travaillant sur installations ou machines : industrie agroalimentaire (hors transformation des viandes)
-625g	Autres ouvriers de production qualifiés ne travaillant pas sur machine : industrie agroalimentaire (hors transformation des viandes)
-625h	Ouvriers qualifiés des autres industries (eau, gaz, énergie, chauffage)
-626a	Pilotes d'installation lourde des industries de transformation : métallurgie, production verrière, matériaux de construction
-626b	Autres opérateurs et ouvriers qualifiés : métallurgie, production verrière, matériaux de construction
-626c	Opérateurs et ouvriers qualifiés des industries lourdes du bois et de la fabrication du papier-carton
-627a	Opérateurs qualifiés du textile et de la mégisserie
-627b	Ouvriers qualifiés de la coupe des vêtements et de l'habillement, autres opérateurs de confection qualifiés
-627c	Ouvriers qualifiés du travail industriel du cuir
-627d	Ouvriers qualifiés de scierie, de la menuiserie industrielle et de l'ameublement
-627e	Ouvriers de la photogravure et des laboratoires photographiques et cinématographiques
-627f	Ouvriers de la composition et de l'impression, ouvriers qualifiés de la brochure, de la reliure et du façonnage du papier-carton
-628a	Mécaniciens qualifiés de maintenance, entretien : équipements industriels
-628b	Electromécaniciens, électriciens qualifiés d'entretien : équipements industriels
-628c	Régleurs qualifiés d'équipements de fabrication (travail des métaux, mécanique)
-628d	Régleurs qualifiés d'équipements de fabrication (hors travail des métaux et mécanique)
-628e	Ouvriers qualifiés de l'assainissement et du traitement des déchets
-628f	Agents qualifiés de laboratoire (sauf chimie, santé)
-628g	Ouvriers qualifiés divers de type industriel
-63	Ouvriers qualifiés de type artisanal
-631a	Jardiniers
-632a	Maçons qualifiés
-632b	Ouvriers qualifiés du travail de la pierre
-632c	Charpentiers en bois qualifiés
-632d	Menuisiers qualifiés du bâtiment
-632e	Couvreurs qualifiés
-632f	Plombiers et chauffagistes qualifiés
-632g	Peintres et ouvriers qualifiés de pose de revêtements sur supports verticaux
-632h	Soliers moquetteurs et ouvriers qualifiés de pose de revêtements souples sur supports horizontaux
-632j	Monteurs qualifiés en agencement, isolation
-632k	Ouvriers qualifiés d'entretien général des bâtiments
-633a	Electriciens qualifiés de type artisanal (y.c. bâtiment)
-633b	Dépanneurs qualifiés en radiotélévision, électroménager, matériel électronique (salariés)
-633c	Electriciens, électroniciens qualifiés en maintenance entretien, réparation : automobile
-633d	Electriciens, électroniciens qualifiés en maintenance, entretien : équipements non industriels
-634a	Carrossiers d'automobiles qualifiés
-634b	Métalliers, serruriers qualifiés
-634c	Mécaniciens qualifiés en maintenance, entretien, réparation : automobile
-634d	Mécaniciens qualifiés de maintenance, entretien : équipements non industriels
-635a	Tailleurs et couturières qualifiés, ouvriers qualifiés du travail des étoffes (sauf fabrication de vêtements), ouvriers qualifiés de type artisanal du travail du cuir
-636a	Bouchers (sauf industrie de la viande)
-636b	Charcutiers (sauf industrie de la viande)
-636c	Boulangers, pâtissiers (sauf activité industrielle)
-636d	Cuisiniers et commis de cuisine
-637a	Modeleurs (sauf modeleurs de métal), mouleurs-noyauteurs à la main, ouvriers qualifiés du travail du verre ou de la céramique à la main
-637b	Ouvriers d'art
-637c	Ouvriers et techniciens des spectacles vivants et audiovisuels
-637d	Ouvriers qualifiés divers de type artisanal
-64	Chauffeurs
-641a	Conducteurs routiers et grands routiers
-641b	Conducteurs de véhicule routier de transport en commun
-642a	Conducteurs de taxi
-642b	Conducteurs de voiture particulière
-643a	Conducteurs livreurs, coursiers
-644a	Conducteurs de véhicule de ramassage des ordures ménagères
-65	Ouvriers qualifiés de la manutention, du magasinage et du transport
-651a	Conducteurs d'engin lourd de levage
-651b	Conducteurs d'engin lourd de manoeuvre
-652a	Ouvriers qualifiés de la manutention, conducteurs de chariots élévateurs, caristes
-652b	Dockers
-653a	Magasiniers qualifiés
-654b	Conducteurs qualifiés d'engins de transport guidés (sauf remontées mécaniques)
-654c	Conducteurs qualifiés de systèmes de remontées mécaniques
-655a	Autres agents et ouvriers qualifiés (sédentaires) des services d'exploitation des transports
-656b	Matelots de la marine marchande
-656c	Capitaines et matelots timoniers de la navigation fluviale
-67	Ouvriers non qualifiés de type industriel
-671a	Ouvriers non qualifiés des travaux publics de l'Etat et des collectivités locales
-671c	Ouvriers non qualifiés des travaux publics et du travail du béton
-671d	Aides-mineurs, ouvriers non qualifiés de l'extraction
-672a	Ouvriers non qualifiés de l'électricité et de l'électronique
-673a	Ouvriers de production non qualifiés travaillant par enlèvement de métal
-673b	Ouvriers de production non qualifiés travaillant par formage de métal
-673c	Ouvriers non qualifiés de montage, contrôle en mécanique et travail des métaux
-674a	Ouvriers de production non qualifiés : chimie, pharmacie, plasturgie
-674b	Ouvriers de production non qualifiés de la transformation des viandes
-674c	Autres ouvriers de production non qualifiés : industrie agroalimentaire
-674d	Ouvriers de production non qualifiés : métallurgie, production verrière, céramique, matériaux de construction
-674e	Ouvriers de production non qualifiés : industrie lourde du bois, fabrication des papiers et cartons
-675a	Ouvriers de production non qualifiés du textile et de la confection, de la tannerie-mégisserie et du travail du cuir
-675b	Ouvriers de production non qualifiés du travail du bois et de l'ameublement
-675c	Ouvriers de production non qualifiés de l'imprimerie, presse, édition
-676a	Manutentionnaires non qualifiés
-676b	Déménageurs (hors chauffeurs-déménageurs), non qualifiés
-676c	Ouvriers du tri, de l'emballage, de l'expédition, non qualifiés
-676d	Agents non qualifiés des services d'exploitation des transports
-676e	Ouvriers non qualifiés divers de type industriel
-68	Ouvriers non qualifiés de type artisanal
-681a	Ouvriers non qualifiés du gros oeuvre du bâtiment
-681b	Ouvriers non qualifiés du second oeuvre du bâtiment
-682a	Métalliers, serruriers, réparateurs en mécanique non qualifiés
-683a	Apprentis boulangers, bouchers, charcutiers
-684a	Nettoyeurs
-684b	Ouvriers non qualifiés de l'assainissement et du traitement des déchets
-685a	Ouvriers non qualifiés divers de type artisanal
-69	Ouvriers agricoles et assimilés
-691a	Conducteurs d'engin agricole ou forestier
-691b	Ouvriers de l'élevage
-691c	Ouvriers du maraîchage ou de l'horticulture
-691d	Ouvriers de la viticulture ou de l'arboriculture fruitière
-691e	Ouvriers agricoles sans spécialisation particulière
-691f	Ouvriers de l'exploitation forestière ou de la sylviculture
-692a	Marins-pêcheurs et ouvriers de l'aquaculture
+  {"code_categorie":"3",
+    "categorie":"Cadre et profession intellectuelle supérieures"
+  ,
+    "list_emploi":
+    [
+      {"code":"31",
+        "libelle":"Profession libérale (exercée sou statut de salarié)"}
+    ,{"code":"311c",
+      "libelle":"Chirurgien dentistes"}
+    ,{"code":"311d",
+      "libelle":"Psychologues, psychanalystes, psychothérapeute (non médecins)"}
+    ,{"code":"311e",
+      "libelle":"Vétérinaires"}
+    ,{"code":"312a",
+      "libelle":"Avocats"}
+    ,{"code":"331a",
+      "libelle":"Personnel de direction de la fonction publique (Etat, collectivité locales, hôpitaux)"}
+    ,{"code":"33"
+    ,"libelle":"Cadre de la fonction publique"}
+    ,{"code":"332a",
+      "libelle":"Ingénieur de l'Etat (y.c. ingénieur militaires) et assimilés"}
+    ,{"code":"332b",
+      "libelle":"Ingénieur de collectivité locale et de hôpitaux"}
+    ,{"code":"333a",
+      "libelle":"Magistrats*"}
+    ,{"code":"333b",
+      "libelle":"Inspecteur et autre personnel de catégorie A de Impôts, du Trésor et de Douanes"}
+    ,{"code":"333c",
+      "libelle":"Cadre de la Poste*"}
+    ,{"code":"333d",
+      "libelle":"Cadre administratif de France Télécom (statut public)"}
+    ,{"code":"333e",
+      "libelle":"Autre personnel administratif de catégorie A de l'Etat (hor Enseignement, Patrimoine, Impôts, Trésor, Douanes)"}
+    ,{"code":"333f",
+      "libelle":"Personnel administratif de catégorie A de collectivité locale et hôpitaux public (hor Enseignement, Patrimoine)"}
+    ,{"code":"334a",
+      "libelle":"Officier de Armée et de la Gendarmerie (sauf officier généraux)*"}
+    ,{"code":"335a",
+      "libelle":"Personne exerçant un mandat politique ou syndical*"}
+    ,{"code":"34"
+    ,"libelle":"Professeurs, profession scientifiques"}
+    ,{"code":"341a",
+      "libelle":"Professeur agrégé et certifié de l'enseignement secondaire"}
+    ,{"code":"341b",
+      "libelle":"Chef d'établissement de l'enseignement secondaire et inspecteurs"}
+    ,{"code":"342b",
+      "libelle":"Professeur et maître de conférences"}
+    ,{"code":"342c",
+      "libelle":"Professeur agrégé et certifié en fonction dan l'enseignement supérieur"}
+    ,{"code":"342d",
+      "libelle":"Personnel enseignant temporaire de l'enseignement supérieur"}
+    ,{"code":"342f",
+      "libelle":"Directeur et chargé de recherche de la recherche publique"}
+    ,{"code":"342g",
+      "libelle":"Ingénieur d'étude et de recherche de la recherche publique"}
+    ,{"code":"342h",
+      "libelle":"Allocataire de la recherche publique"}
+    ,{"code":"343a",
+      "libelle":"Psychologue spécialiste de l'orientation scolaire et professionnelle"}
+    ,{"code":"344a",
+      "libelle":"Médecin hospitalier san activité libérale"}
+    ,{"code":"344b",
+      "libelle":"Médecin salarié non hospitaliers"}
+    ,{"code":"344c",
+      "libelle":"Interne en médecine, odontologie et pharmacie"}
+    ,{"code":"344d",
+      "libelle":"Pharmacien salariés"}
+    ,{"code":"35"
+    ,"libelle":"Profession de l'information, de art et de spectacles"}
+    ,{"code":"351a",
+      "libelle":"Bibliothécaires, archivistes, conservateur et autre cadre du patrimoine"}
+    ,{"code":"352a",
+      "libelle":"Journaliste (y c. rédacteur en chef)"}
+    ,{"code":"352b",
+      "libelle":"Auteur littéraires, scénaristes, dialoguistes"}
+    ,{"code":"353a",
+      "libelle":"Directeur de journaux, administrateur de presse, directeur d'édition (littéraire, musicale, audiovisuelle et multimédia)"}
+    ,{"code":"353b",
+      "libelle":"Directeurs, responsable de programmation et de production de l'audiovisuel et de spectacles"}
+    ,{"code":"353c",
+      "libelle":"Cadre artistique et technico-artistique de la réalisation de l'audiovisuel et de spectacles"}
+    ,{"code":"354a",
+      "libelle":"Artiste plasticiens"}
+    ,{"code":"354b",
+      "libelle":"Artiste de la musique et du chant"}
+    ,{"code":"354c",
+      "libelle":"Artiste dramatiques"}
+    ,{"code":"354e",
+      "libelle":"Artiste de la danse"}
+    ,{"code":"354f",
+      "libelle":"Artiste du cirque et de spectacle divers"}
+    ,{"code":"354g",
+      "libelle":"Professeur d'art (hor établissement scolaires)"}
+    ,{"code":"37"
+    ,"libelle":"Cadre administratif et commerciaux d'entreprises"}
+    ,{"code":"371a",
+      "libelle":"Cadre d'état-major administratifs, financiers, commerciaux de grande entreprises"}
+    ,{"code":"372a",
+      "libelle":"Cadre chargé d'étude économiques, financières, commerciales"}
+    ,{"code":"372b",
+      "libelle":"Cadre de l'organisation ou du contrôle de service administratif et financiers"}
+    ,{"code":"372c",
+      "libelle":"Cadre spécialiste de ressource humaine et du recrutement"}
+    ,{"code":"372d",
+      "libelle":"Cadre spécialiste de la formation"}
+    ,{"code":"372e",
+      "libelle":"Juristes"}
+    ,{"code":"372f",
+      "libelle":"Cadre de la documentation, de l'archivage (hor fonction publique)"}
+    ,{"code":"373a",
+      "libelle":"Cadre de service financier ou comptable de grande entreprises"}
+    ,{"code":"373b",
+      "libelle":"Cadre de autre service administratif de grande entreprises"}
+    ,{"code":"373c",
+      "libelle":"Cadre de service financier ou comptable de petite et moyenne entreprises"}
+    ,{"code":"373d",
+      "libelle":"Cadre de autre service administratif de petite et moyenne entreprises"}
+    ,{"code":"374a",
+      "libelle":"Cadre de l'exploitation de magasin de vente du commerce de détail"}
+    ,{"code":"374b",
+      "libelle":"Chef de produits, acheteur du commerce et autre cadre de la mercatique"}
+    ,{"code":"374c",
+      "libelle":"Cadre commerciaux de grande entreprise (hor commerce de détail)"}
+    ,{"code":"374d",
+      "libelle":"Cadre commerciaux de petite et moyenne entreprise (hor commerce de détail)"}
+    ,{"code":"375a",
+      "libelle":"Cadre de la publicité"}
+    ,{"code":"375b",
+      "libelle":"Cadre de relation publique et de la communication"}
+    ,{"code":"376a",
+      "libelle":"Cadre de marché financiers"}
+    ,{"code":"376b",
+      "libelle":"Cadre de opération bancaires"}
+    ,{"code":"376c",
+      "libelle":"Cadre commerciaux de la banque"}
+    ,{"code":"376d",
+      "libelle":"Chef d'établissement et responsable de l'exploitation bancaire"}
+    ,{"code":"376e",
+      "libelle":"Cadre de service technique de assurances"}
+    ,{"code":"376f",
+      "libelle":"Cadre de service technique de organisme de sécurité sociale et assimilés"}
+    ,{"code":"376g",
+      "libelle":"Cadre de l'immobilier"}
+    ,{"code":"377a",
+      "libelle":"Cadre de l'hôtellerie et de la restauration"}
+    ,{"code":"38"
+    ,"libelle":"Ingénieur et cadre technique d'entreprises"}
+    ,{"code":"380a",
+      "libelle":"Directeur technique de grande entreprises"}
+    ,{"code":"381b",
+      "libelle":"Ingénieur et cadre d'étude et développement de l'agriculture, la pêche, le eaux et forêts"}
+    ,{"code":"381c",
+      "libelle":"Ingénieur et cadre de production et d'exploitation de l'agriculture, la pêche, le eaux et forêts"}
+    ,{"code":"382a",
+      "libelle":"Ingénieur et cadre d'étude du bâtiment et de travaux publics"}
+    ,{"code":"382b",
+      "libelle":"Architecte salariés"}
+    ,{"code":"382c",
+      "libelle":"Ingénieurs, cadre de chantier et conducteur de travaux (cadres) du bâtiment et de travaux publics"}
+    ,{"code":"382d",
+      "libelle":"Ingénieur et cadre technico-commerciaux en bâtiment, travaux publics"}
+    ,{"code":"383a",
+      "libelle":"Ingénieur et cadre d'étude, recherche et développement en électricité, électronique"}
+    ,{"code":"383b",
+      "libelle":"Ingénieur et cadre de fabrication en matériel électrique, électronique"}
+    ,{"code":"383c",
+      "libelle":"Ingénieur et cadre technico-commerciaux en matériel électrique ou électronique professionnel"}
+    ,{"code":"384a",
+      "libelle":"Ingénieur et cadre d'étude, recherche et développement en mécanique et travail de métaux"}
+    ,{"code":"384b",
+      "libelle":"Ingénieur et cadre de fabrication en mécanique et travail de métaux"}
+    ,{"code":"384c",
+      "libelle":"Ingénieur et cadre technico-commerciaux en matériel mécanique professionnel"}
+    ,{"code":"385a",
+      "libelle":"Ingénieur et cadre d'étude, recherche et développement de industrie de transformation (agroalimentaire, chimie, métallurgie, matériaux lourds)"}
+    ,{"code":"385b",
+      "libelle":"Ingénieur et cadre de fabrication de industrie de transformation (agroalimentaire, chimie, métallurgie, matériaux lourds)"}
+    ,{"code":"385c",
+      "libelle":"Ingénieur et cadre technico-commerciaux de industrie de transformation (bien intermédiaires)"}
+    ,{"code":"386b",
+      "libelle":"Ingénieur et cadre d'étude, recherche et développement de la distribution d'énergie, eau"}
+    ,{"code":"386c",
+      "libelle":"Ingénieur et cadre d'étude, recherche et développement de autre industrie (imprimerie, matériaux souples, ameublement et bois)"}
+    ,{"code":"386d",
+      "libelle":"Ingénieur et cadre de la production et de la distribution d'énergie, eau"}
+    ,{"code":"386e",
+      "libelle":"Ingénieur et cadre de fabrication de autre industrie (imprimerie, matériaux souples, ameublement et bois)"}
+    ,{"code":"387a",
+      "libelle":"Ingénieur et cadre de achat et approvisionnement industriels"}
+    ,{"code":"387b",
+      "libelle":"Ingénieur et cadre de la logistique, du planning et de l'ordonnancement"}
+    ,{"code":"387c",
+      "libelle":"Ingénieur et cadre de méthode de production"}
+    ,{"code":"387d",
+      "libelle":"Ingénieur et cadre du contrôle-qualité"}
+    ,{"code":"387e",
+      "libelle":"Ingénieur et cadre de la maintenance, de l'entretien et de travaux neufs"}
+    ,{"code":"387f",
+      "libelle":"Ingénieur et cadre technique de l'environnement"}
+    ,{"code":"388a",
+      "libelle":"Ingénieur et cadre d'étude, recherche et développement en informatique"}
+    ,{"code":"388b",
+      "libelle":"Ingénieur et cadre d'administration, maintenance, support et service aux utilisateur en informatique"}
+    ,{"code":"388c",
+      "libelle":"Chef de projet informatiques, responsable informatiques"}
+    ,{"code":"388d",
+      "libelle":"Ingénieur et cadre technico-commerciaux en informatique et télécommunications"}
+    ,{"code":"388e",
+      "libelle":"Ingénieur et cadre spécialiste de télécommunications"}
+    ,{"code":"389a",
+      "libelle":"Ingénieur et cadre technique de l'exploitation de transports"}
+    ,{"code":"389b",
+      "libelle":"Officier et cadre navigant technique et commerciaux de l'aviation civile"}
+    ,{"code":"389c",
+      "libelle":"Officier et cadre navigant technique de la marine marchande"}
+    ]},
+  {"code_categorie":"4",
+    "categorie":"Profession intermédiaires"
+  ,
+    "list_emploi":
+    [
+      {"code":"42"
+      ,"libelle":"Professeur de écoles, instituteur et profession assimilées"}
+    ,{"code":"421a",
+      "libelle":"Instituteurs"}
+    ,{"code":"421b",
+      "libelle":"Professeur de écoles"}
+    ,{"code":"422a",
+      "libelle":"Professeur d'enseignement général de collèges"}
+    ,{"code":"422b",
+      "libelle":"Professeur de lycée professionnel"}
+    ,{"code":"422c",
+      "libelle":"Maître auxiliaire et professeur contractuel de l'enseignement secondaire"}
+    ,{"code":"422d",
+      "libelle":"Conseiller principaux d'éducation"}
+    ,{"code":"422e",
+      "libelle":"Surveillant et aides-éducateur de établissement d'enseignement"}
+    ,{"code":"423a",
+      "libelle":"Moniteur d'école de conduite"}
+    ,{"code":"423b",
+      "libelle":"Formateur et animateur de formation continue"}
+    ,{"code":"424a",
+      "libelle":"Moniteur et éducateur sportifs, sportif professionnels"}
+    ,{"code":"425a",
+      "libelle":"Sous-bibliothécaires, cadre intermédiaire du patrimoine"}
+    ,{"code":"43"
+    ,"libelle":"Profession intermédiaire de la santé et du travail social"}
+    ,{"code":"431a",
+      "libelle":"Cadre infirmier et assimilés"}
+    ,{"code":"431b",
+      "libelle":"Infirmier psychiatriques"}
+    ,{"code":"431c",
+      "libelle":"Puéricultrices"}
+    ,{"code":"431d",
+      "libelle":"Infirmier spécialisé (autre qu'infirmier psychiatrique et puéricultrices)"}
+    ,{"code":"431e",
+      "libelle":"Sages-femme salariées"}
+    ,{"code":"431f",
+      "libelle":"Infirmier en soin généraux, salariés"}
+    ,{"code":"432b",
+      "libelle":"Masseurs-kinésithérapeute rééducateurs, salariés"}
+    ,{"code":"432d",
+      "libelle":"Autre spécialiste de la rééducation, salariés"}
+    ,{"code":"433a",
+      "libelle":"Technicien médicaux"}
+    ,{"code":"433b",
+      "libelle":"Opticien lunetier et audioprothésiste salariés"}
+    ,{"code":"433c",
+      "libelle":"Autre spécialiste de l'appareillage médical salariés"}
+    ,{"code":"433d",
+      "libelle":"Préparateur en pharmacie"}
+    ,{"code":"434a",
+      "libelle":"Cadre de l'intervention socio-éducative"}
+    ,{"code":"434b",
+      "libelle":"Assistant de service social"}
+    ,{"code":"434c",
+      "libelle":"Conseiller en économie sociale familiale"}
+    ,{"code":"434d",
+      "libelle":"Educateur spécialisés"}
+    ,{"code":"434e",
+      "libelle":"Moniteur éducateurs"}
+    ,{"code":"434f",
+      "libelle":"Educateur technique spécialisés, moniteur d'atelier"}
+    ,{"code":"434g",
+      "libelle":"Educateur de jeune enfants"}
+    ,{"code":"435a",
+      "libelle":"Directeur de centre socioculturel et de loisirs"}
+    ,{"code":"435b",
+      "libelle":"Animateur socioculturel et de loisirs"}
+    ,{"code":"44"
+    ,"libelle":"Clergé, religieux"}
+    ,{"code":"441a",
+      "libelle":"Clergé séculier"}
+    ,{"code":"441b",
+      "libelle":"Clergé régulier"}
+    ,{"code":"45"
+    ,"libelle":"Profession intermédiaire administrative de la fonction publique"}
+    ,{"code":"451a",
+      "libelle":"Profession intermédiaire de la Poste"}
+    ,{"code":"451b",
+      "libelle":"Profession intermédiaire administrative de France Télécom (statut public)"}
+    ,{"code":"451c",
+      "libelle":"Contrôleur de Impôts, du Trésor, de Douane et assimilés*"}
+    ,{"code":"451d",
+      "libelle":"Ingénieur du contrôle de la navigation aérienne*"}
+    ,{"code":"451e",
+      "libelle":"Autre personnel administratif de catégorie B de l'Etat (hor Enseignement, Patrimoine, Impôts, Trésor, Douanes)"}
+    ,{"code":"451g",
+      "libelle":"Profession intermédiaire administrative de collectivité locales"}
+    ,{"code":"451h",
+      "libelle":"Profession intermédiaire administrative de hôpitaux"}
+    ,{"code":"452a",
+      "libelle":"Inspecteur et officier de police*"}
+    ,{"code":"452b",
+      "libelle":"Adjudants-chefs, adjudant et sous-officier de rang supérieur de l'Armée et de la Gendarmerie*"}
+    ,{"code":"46"
+    ,"libelle":"Profession intermédiaire administrative et commerciale de entreprises"}
+    ,{"code":"461b",
+      "libelle":"Secrétaire de direction, assistant de direction (non cadres)"}
+    ,{"code":"461c",
+      "libelle":"Secrétaire de niveau supérieur (non cadres, hor secrétaire de direction)"}
+    ,{"code":"461d",
+      "libelle":"Maîtrise et technicien de service financier ou comptables"}
+    ,{"code":"461e",
+      "libelle":"Maîtrise et technicien administratif de service juridique ou du personnel"}
+    ,{"code":"461f",
+      "libelle":"Maîtrise et technicien administratif de autre service administratifs"}
+    ,{"code":"462a",
+      "libelle":"Chef de petite surface de vente"}
+    ,{"code":"462b",
+      "libelle":"Maîtrise de l'exploitation de magasin de vente"}
+    ,{"code":"462c",
+      "libelle":"Acheteur non classé cadres, aides-acheteurs"}
+    ,{"code":"462d",
+      "libelle":"Animateur commerciaux de magasin de vente, marchandiseur (non cadres)"}
+    ,{"code":"462e",
+      "libelle":"Autre profession intermédiaire commerciale (sauf technicien de force de vente)"}
+    ,{"code":"463a",
+      "libelle":"Technicien commerciaux et technico-commerciaux, représentant en informatique"}
+    ,{"code":"463b",
+      "libelle":"Technicien commerciaux et technico-commerciaux, représentant en bien d'équipement, en bien intermédiaires, commerce interindustriel (hor informatique)"}
+    ,{"code":"463c",
+      "libelle":"Technicien commerciaux et technico-commerciaux, représentant en bien de consommation auprè d'entreprises"}
+    ,{"code":"463d",
+      "libelle":"Technicien commerciaux et technico-commerciaux, représentant en service auprè d'entreprise ou de professionnel (hor banque, assurance, informatique)"}
+    ,{"code":"463e",
+      "libelle":"Technicien commerciaux et technico-commerciaux, représentant auprè de particulier (hor banque, assurance, informatique)"}
+    ,{"code":"464a",
+      "libelle":"Assistant de la publicité, de relation publiques"}
+    ,{"code":"464b",
+      "libelle":"Interprètes, traducteurs"}
+    ,{"code":"465a",
+      "libelle":"Concepteur et assistant technique de art graphiques, de la mode et de la décoration salariés"}
+    ,{"code":"465b",
+      "libelle":"Assistant technique de la réalisation de spectacle vivant et audiovisuel salariés"}
+    ,{"code":"465c",
+      "libelle":"Photographes"}
+    ,{"code":"466a",
+      "libelle":"Responsable commerciaux et administratif de transport de voyageur et du tourisme (non cadres)"}
+    ,{"code":"466b",
+      "libelle":"Responsable commerciaux et administratif de transport de marchandise (non cadres)"}
+    ,{"code":"466c",
+      "libelle":"Responsable d'exploitation de transport de voyageur et de marchandise (non cadres)"}
+    ,{"code":"467a",
+      "libelle":"Chargé de clientèle bancaire"}
+    ,{"code":"467b",
+      "libelle":"Technicien de opération bancaires"}
+    ,{"code":"467c",
+      "libelle":"Profession intermédiaire technique et commerciale de assurances"}
+    ,{"code":"467d",
+      "libelle":"Profession intermédiaire technique de organisme de sécurité sociale"}
+    ,{"code":"468a",
+      "libelle":"Maîtrise de restauration : salle et service"}
+    ,{"code":"468b",
+      "libelle":"Maîtrise de l'hébergement : hall et étages"}
+    ,{"code":"47"
+    ,"libelle":"Technicien (sauf technicien tertiaires)"}
+    ,{"code":"471a",
+      "libelle":"Technicien d'étude et de conseil en agriculture, eaux et forêt"}
+    ,{"code":"471b",
+      "libelle":"Technicien d'exploitation et de contrôle de la production en agriculture, eaux et forêt"}
+    ,{"code":"472a",
+      "libelle":"Dessinateur en bâtiment, travaux publics"}
+    ,{"code":"472b",
+      "libelle":"Géomètres, topographes"}
+    ,{"code":"472c",
+      "libelle":"Métreur et technicien diver du bâtiment et de travaux publics"}
+    ,{"code":"472d",
+      "libelle":"Technicien de travaux public de l'Etat et de collectivité locales"}
+    ,{"code":"473a",
+      "libelle":"Dessinateur en électricité, électromécanique et électronique"}
+    ,{"code":"473b",
+      "libelle":"Technicien de recherche-développement et de méthode de fabrication en électricité, électromécanique et électronique"}
+    ,{"code":"473c",
+      "libelle":"Technicien de fabrication et de contrôle-qualité en électricité, électromécanique et électronique"}
+    ,{"code":"474a",
+      "libelle":"Dessinateur en construction mécanique et travail de métaux"}
+    ,{"code":"474b",
+      "libelle":"Technicien de recherche-développement et de méthode de fabrication en construction mécanique et travail de métaux"}
+    ,{"code":"474c",
+      "libelle":"Technicien de fabrication et de contrôle-qualité en construction mécanique et travail de métaux"}
+    ,{"code":"475a",
+      "libelle":"Technicien de recherche-développement et de méthode de production de industrie de transformation"}
+    ,{"code":"475b",
+      "libelle":"Technicien de production et de contrôle-qualité de industrie de transformation"}
+    ,{"code":"476a",
+      "libelle":"Assistant techniques, technicien de l'imprimerie et de l'édition"}
+    ,{"code":"476b",
+      "libelle":"Technicien de l'industrie de matériaux souples, de l'ameublement et du bois"}
+    ,{"code":"477a",
+      "libelle":"Technicien de la logistique, du planning et de l'ordonnancement"}
+    ,{"code":"477b",
+      "libelle":"Technicien d'installation et de maintenance de équipement industriel (électriques, électromécaniques, mécaniques, hor informatique)"}
+    ,{"code":"477c",
+      "libelle":"Technicien d'installation et de maintenance de équipement non industriel (hor informatique et télécommunications)"}
+    ,{"code":"477d",
+      "libelle":"Technicien de l'environnement et du traitement de pollutions"}
+    ,{"code":"478a",
+      "libelle":"Technicien d'étude et de développement en informatique"}
+    ,{"code":"478b",
+      "libelle":"Technicien de production, d'exploitation en informatique"}
+    ,{"code":"478c",
+      "libelle":"Technicien d'installation, de maintenance, support et service aux utilisateur en informatique"}
+    ,{"code":"478d",
+      "libelle":"Technicien de télécommunication et de l'informatique de réseaux"}
+    ,{"code":"479a",
+      "libelle":"Technicien de laboratoire de recherche publique ou de l'enseignement"}
+    ,{"code":"479b",
+      "libelle":"Expert salarié de niveau technicien, technicien divers"}
+    ,{"code":"48",
+      "libelle":" Contremaîtres, agent de maîtrise (maîtrise administrative exclue)"}
+    ,{"code":"480a",
+      "libelle":"Contremaître et agent d'encadrement (non cadres) en agriculture, sylviculture"}
+    ,{"code":"480b",
+      "libelle":"Maître d'équipage de la marine marchande et de la pêche"}
+    ,{"code":"481a",
+      "libelle":"Conducteur de travaux (non cadres)"}
+    ,{"code":"481b",
+      "libelle":"Chef de chantier (non cadres)"}
+    ,{"code":"482a",
+      "libelle":"Agent de maîtrise en fabrication de matériel électrique, électronique"}
+    ,{"code":"483a",
+      "libelle":"Agent de maîtrise en construction mécanique, travail de métaux"}
+    ,{"code":"484a",
+      "libelle":"Agent de maîtrise en fabrication : agroalimentaire, chimie, plasturgie, pharmacie."}
+    ,{"code":"484b",
+      "libelle":"Agent de maîtrise en fabrication : métallurgie, matériaux lourd et autre industrie de transformation"}
+    ,{"code":"485a",
+      "libelle":"Agent de maîtrise et technicien en production et distribution d'énergie, eau, chauffage"}
+    ,{"code":"485b",
+      "libelle":"Agent de maîtrise en fabrication de autre industrie (imprimerie, matériaux souples, ameublement et bois)"}
+    ,{"code":"486b",
+      "libelle":"Agent de maîtrise en maintenance, installation en électricité et électronique"}
+    ,{"code":"486c",
+      "libelle":"Agent de maîtrise en maintenance, installation en électromécanique"}
+    ,{"code":"486d",
+      "libelle":"Agent de maîtrise en maintenance, installation en mécanique"}
+    ,{"code":"486e",
+      "libelle":"Agent de maîtrise en entretien général, installation, travaux neuf (hor mécanique, électromécanique, électronique)"}
+    ,{"code":"487a",
+      "libelle":"Responsable d'entrepôt, de magasinage"}
+    ,{"code":"487b",
+      "libelle":"Responsable du tri, de l'emballage, de l'expédition et autre responsable de la manutention"}
+    ,{"code":"488a",
+      "libelle":"Maîtrise de restauration  : cuisine/production"}
+    ,{"code":"488b",
+      "libelle":"Maîtrise de restauration  : gestion d'établissement"}
+    ]},
+  {"code_categorie":"5",
+    "categorie":"Employés"
+  ,
+    "list_emploi":
+    [
+      {"code":"52",
+        "libelle":"Employé civil et agent de service de la fonction publique"}
+    ,{"code":"521a",
+      "libelle":"Employé de la Poste"}
+    ,{"code":"521b",
+      "libelle":"Employé de France Télécom (statut public)"}
+    ,{"code":"522a",
+      "libelle":"Agent de constatation ou de recouvrement de Impôts, du Trésor, de Douanes*"}
+    ,{"code":"523a",
+      "libelle":"Adjoint administratif de la fonction publique (y c. enseignement)*"}
+    ,{"code":"523b",
+      "libelle":"Adjoint administratif de l'Etat et assimilé (sauf Poste, France Télécom)"}
+    ,{"code":"523c",
+      "libelle":"Adjoint administratif de collectivité locales"}
+    ,{"code":"523d",
+      "libelle":"Adjoint administratif de hôpitaux publics"}
+    ,{"code":"524a",
+      "libelle":"Agent administratif de la fonction publique (y c. enseignement)*"}
+    ,{"code":"524b",
+      "libelle":"Agent administratif de l'Etat et assimilé (sauf Poste, France Télécom)"}
+    ,{"code":"524c",
+      "libelle":"Agent administratif de collectivité locales"}
+    ,{"code":"524d",
+      "libelle":"Agent administratif de hôpitaux publics"}
+    ,{"code":"525a",
+      "libelle":"Agent de service de établissement primaires"}
+    ,{"code":"525b",
+      "libelle":"Agent de service de autre établissement d'enseignement"}
+    ,{"code":"525c",
+      "libelle":"Agent de service de la fonction publique (sauf écoles, hôpitaux)"}
+    ,{"code":"525d",
+      "libelle":"Agent de service hospitaliers"}
+    ,{"code":"526a",
+      "libelle":"Aides-soignants"}
+    ,{"code":"526b",
+      "libelle":"Assistant dentaires, médicaux et vétérinaires, aide de technicien médicaux"}
+    ,{"code":"526c",
+      "libelle":"Auxiliaire de puériculture"}
+    ,{"code":"526d",
+      "libelle":"Aide médico-psychologiques"}
+    ,{"code":"526e",
+      "libelle":"Ambulancier salariés"}
+    ,{"code":"53",
+      "libelle": "Policiers, militaire et agent de surveillance"}
+    ,{"code":"531a",
+      "libelle":"Agent de police de l'Etat*"}
+    ,{"code":"531b",
+      "libelle":"Agent de police municipales*"}
+    ,{"code":"531c",
+      "libelle":"Surveillant de l'administration pénitentiaire*"}
+    ,{"code":"532a",
+      "libelle":"Gendarme (de grade inférieur à adjudant)*"}
+    ,{"code":"532b",
+      "libelle":"Sergent et sous-officier de grade équivalent de Armée (sauf pompier militaires)*"}
+    ,{"code":"532c",
+      "libelle":"Homme du rang (sauf pompier militaires)*"}
+    ,{"code":"533a",
+      "libelle":"Pompier (y.c. pompier militaires)"}
+    ,{"code":"533b",
+      "libelle":"Agent technique forestiers, garde de espace naturels"}
+    ,{"code":"533c",
+      "libelle":"Agent de surveillance du patrimoine et de administrations"}
+    ,{"code":"534a",
+      "libelle":"Agent civil de sécurité et de surveillance"}
+    ,{"code":"534b",
+      "libelle":"Convoyeur de fonds, garde du corps, enquêteur privé et métier assimilé (salariés)"}
+    ,{"code":"54",
+      "libelle":"Employé administratif d'entreprise"}
+    ,{"code":"541b",
+      "libelle":"Agent d'accueil qualifiés, hôtesse d'accueil et d'information"}
+    ,{"code":"541c",
+      "libelle":"Agent d'accueil non qualifiés"}
+    ,{"code":"541d",
+      "libelle":"Standardistes, téléphonistes"}
+    ,{"code":"542a",
+      "libelle":"Secrétaires"}
+    ,{"code":"542b",
+      "libelle":"Dactylos, sténodactylo (san secrétariat), opérateur de traitement de texte"}
+    ,{"code":"543b",
+      "libelle":"Employé qualifié de service comptable ou financiers"}
+    ,{"code":"543c",
+      "libelle":"Employé non qualifié de service comptable ou financiers"}
+    ,{"code":"543e",
+      "libelle":"Employé qualifié de service du personnel et de service juridiques"}
+    ,{"code":"543f",
+      "libelle":"Employé qualifié de service commerciaux de entreprise (hor vente)"}
+    ,{"code":"543g",
+      "libelle":"Employé administratif qualifié de autre service de entreprises"}
+    ,{"code":"543h",
+      "libelle":"Employé administratif non qualifiés"}
+    ,{"code":"544a",
+      "libelle":"Employé et opérateur d'exploitation en informatique"}
+    ,{"code":"545a",
+      "libelle":"Employé administratif de service technique de la banque"}
+    ,{"code":"545b",
+      "libelle":"Employé de service commerciaux de la banque"}
+    ,{"code":"545c",
+      "libelle":"Employé de service technique de assurances"}
+    ,{"code":"545d",
+      "libelle":"Employé de service technique de organisme de sécurité sociale et assimilés"}
+    ,{"code":"546a",
+      "libelle":"Contrôleur de transport (personnel roulants)"}
+    ,{"code":"546b",
+      "libelle":"Agent de service commerciaux de transport de voyageur et du tourisme"}
+    ,{"code":"546c",
+      "libelle":"Employé administratif d'exploitation de transport de marchandises"}
+    ,{"code":"546d",
+      "libelle":"Hôtesse de l'air et stewards"}
+    ,{"code":"546e",
+      "libelle":"Autre agent et hôtesse d'accompagnement (transports, tourisme)"}
+    ,{"code":"55",
+      "libelle":"Employé de commerce"}
+    ,{"code":"551a",
+      "libelle":"Employé de libre service du commerce et magasiniers"}
+    ,{"code":"552a",
+      "libelle":"Caissier de magasin"}
+    ,{"code":"553b",
+      "libelle":"Vendeur polyvalent de grand magasins"}
+    ,{"code":"553c",
+      "libelle":" Autre vendeur non spécialisés"}
+    ,{"code":"554a",
+      "libelle":"Vendeur en alimentation"}
+    ,{"code":"554b",
+      "libelle":"Vendeur en ameublement, décor, équipement du foyer"}
+    ,{"code":"554c",
+      "libelle":"Vendeur en droguerie, bazar, quincaillerie, bricolage"}
+    ,{"code":"554d",
+      "libelle":"Vendeur du commerce de fleurs"}
+    ,{"code":"554e",
+      "libelle":"Vendeur en habillement et article de sport"}
+    ,{"code":"554f",
+      "libelle":"Vendeur en produit de beauté, de luxe (hor bien culturels) et optique"}
+    ,{"code":"554g",
+      "libelle":"Vendeur de bien culturel (livres, disques, multimédia, objet d'art)"}
+    ,{"code":"554h",
+      "libelle":"Vendeur de tabac, presse et article divers"}
+    ,{"code":"554j",
+      "libelle":"Pompiste et gérant de station-service (salarié ou mandataires)"}
+    ,{"code":"555a",
+      "libelle":"Vendeur par correspondance, télévendeurs"}
+    ,{"code":"56",
+      "libelle":"Personnel de service direct aux particuliers"}
+    ,{"code":"556a",
+      "libelle":"Vendeur en gro de bien d'équipement, bien intermédiaires"}
+    ,{"code":"561b",
+      "libelle":"Serveurs, commi de restaurant, garçon qualifiés"}
+    ,{"code":"561c",
+      "libelle":"Serveurs, commi de restaurant, garçon non qualifiés"}
+    ,{"code":"561d",
+      "libelle":"Aide de cuisine, apprenti de cuisine et employé polyvalent de la restauration"}
+    ,{"code":"561e",
+      "libelle":"Employé de l'hôtellerie : réception et hall"}
+    ,{"code":"561f",
+      "libelle":"Employé d'étage et employé polyvalent de l'hôtellerie"}
+    ,{"code":"562a",
+      "libelle":"Manucures, esthéticiens"}
+    ,{"code":"562b",
+      "libelle":"Coiffeur salariés"}
+    ,{"code":"563a",
+      "libelle":"Assistante maternelles, gardienne d'enfants, famille d'accueil"}
+    ,{"code":"563b",
+      "libelle":"Aide à domicile, aide ménagères, travailleuse familiales"}
+    ,{"code":"563c",
+      "libelle":"Employé de maison et personnel de ménage chez de particuliers"}
+    ,{"code":"564a",
+      "libelle":"Concierges, gardien d'immeubles"}
+    ,{"code":"564b",
+      "libelle":"Employé de service divers"}
+    ]},
+  {"code_categorie":"6",
+    "categorie":"Ouvriers"
+  ,
+    "list_emploi":
+    [
+      {"code":"62",
+        "libelle":"Ouvrier qualifié de type industriel"}
+    ,{"code":"621a",
+      "libelle":"Chef d'équipe du gro oeuvre et de travaux publics"}
+    ,{"code":"621b",
+      "libelle":"Ouvrier qualifié du travail du béton"}
+    ,{"code":"621c",
+      "libelle":"Conducteur qualifié d'engin de chantier du bâtiment et de travaux publics"}
+    ,{"code":"621d",
+      "libelle":"Ouvrier de travaux public en installation électrique et de télécommunications"}
+    ,{"code":"621e",
+      "libelle":"Autre ouvrier qualifié de travaux publics"}
+    ,{"code":"621f",
+      "libelle":"Ouvrier qualifié de travaux public (salarié de l'Etat et de collectivité locales)"}
+    ,{"code":"621g",
+      "libelle":"Mineur de fond qualifié et autre ouvrier qualifié de industrie d'extraction (carrières, pétrole, gaz...)"}
+    ,{"code":"622a",
+      "libelle":"Opérateur qualifié sur machine automatique en production électrique ou électronique"}
+    ,{"code":"622c",
+      "libelle":"Monteur câbleur qualifié en électricité"}
+    ,{"code":"622d",
+      "libelle":"Câbleur qualifié en électronique (prototype, unité, petite série)"}
+    ,{"code":"622e",
+      "libelle":"Autre monteur câbleur en électronique"}
+    ,{"code":"622f",
+      "libelle":"Bobinier qualifiés"}
+    ,{"code":"622g",
+      "libelle":"Plateformistes, contrôleur qualifié de matériel électrique ou électronique"}
+    ,{"code":"623a",
+      "libelle":"Chaudronniers-tôlier industriels, opérateur qualifié du travail en forge, conducteur qualifié d'équipement de formage, traceur qualifiés"}
+    ,{"code":"623b",
+      "libelle":"Tuyauteur industriel qualifiés"}
+    ,{"code":"623d",
+      "libelle":"Opérateur qualifié sur machine de soudage"}
+    ,{"code":"623e",
+      "libelle":"Soudeur manuels"}
+    ,{"code":"623f",
+      "libelle":"Opérateur qualifié d'usinage de métaux travaillant à l'unité ou en petite série, mouliste qualifiés"}
+    ,{"code":"623g",
+      "libelle":"Opérateur qualifié d'usinage de métaux sur autre machine (sauf moulistes)"}
+    ,{"code":"624b",
+      "libelle":"Monteurs, metteur au point trè qualifié d'ensemble mécanique travaillant à l'unité ou en petite série"}
+    ,{"code":"624c",
+      "libelle":"Monteur qualifié d'ensemble mécanique travaillant en moyenne ou en grande série"}
+    ,{"code":"624d",
+      "libelle":"Monteur qualifié en structure métalliques"}
+    ,{"code":"624e",
+      "libelle":"Ouvrier qualifié de contrôle et d'essai en mécanique"}
+    ,{"code":"624f",
+      "libelle":"Ouvrier qualifié de traitement thermique et de surface sur métaux"}
+    ,{"code":"624g",
+      "libelle":"Autre mécanicien ou ajusteur qualifié (ou spécialité non reconnue)"}
+    ,{"code":"625a",
+      "libelle":"Pilote d'installation lourde de industrie de transformation : agroalimentaire, chimie, plasturgie, énergie"}
+    ,{"code":"625b",
+      "libelle":"Ouvrier qualifié et agent qualifié de laboratoire : agroalimentaire, chimie, biologie, pharmacie"}
+    ,{"code":"625c",
+      "libelle":"Autre opérateur et ouvrier qualifié de la chimie (y.c. pharmacie) et de la plasturgie"}
+    ,{"code":"625d",
+      "libelle":"Opérateur de la transformation de viandes"}
+    ,{"code":"625f",
+      "libelle":"Autre opérateur travaillant sur installation ou machine : industrie agroalimentaire (hor transformation de viandes)"}
+    ,{"code":"625g",
+      "libelle":"Autre ouvrier de production qualifié ne travaillant pa sur machine : industrie agroalimentaire (hor transformation de viandes)"}
+    ,{"code":"625h",
+      "libelle":"Ouvrier qualifié de autre industrie (eau, gaz, énergie, chauffage)"}
+    ,{"code":"626a",
+      "libelle":"Pilote d'installation lourde de industrie de transformation : métallurgie, production verrière, matériaux de construction"}
+    ,{"code":"626b",
+      "libelle":"Autre opérateur et ouvrier qualifié : métallurgie, production verrière, matériaux de construction"}
+    ,{"code":"626c",
+      "libelle":"Opérateur et ouvrier qualifié de industrie lourde du boi et de la fabrication du papier-carton"}
+    ,{"code":"627a",
+      "libelle":"Opérateur qualifié du textile et de la mégisserie"}
+    ,{"code":"627b",
+      "libelle":"Ouvrier qualifié de la coupe de vêtement et de l'habillement, autre opérateur de confection qualifiés"}
+    ,{"code":"627c",
+      "libelle":"Ouvrier qualifié du travail industriel du cuir"}
+    ,{"code":"627d",
+      "libelle":"Ouvrier qualifié de scierie, de la menuiserie industrielle et de l'ameublement"}
+    ,{"code":"627e",
+      "libelle":"Ouvrier de la photogravure et de laboratoire photographique et cinématographiques"}
+    ,{"code":"627f",
+      "libelle":"Ouvrier de la composition et de l'impression, ouvrier qualifié de la brochure, de la reliure et du façonnage du papier-carton"}
+    ,{"code":"628a",
+      "libelle":"Mécanicien qualifié de maintenance, entretien : équipement industriels"}
+    ,{"code":"628b",
+      "libelle":"Electromécaniciens, électricien qualifié d'entretien : équipement industriels"}
+    ,{"code":"628c",
+      "libelle":"Régleur qualifié d'équipement de fabrication (travail de métaux, mécanique)"}
+    ,{"code":"628d",
+      "libelle":"Régleur qualifié d'équipement de fabrication (hor travail de métaux et mécanique)"}
+    ,{"code":"628e",
+      "libelle":"Ouvrier qualifié de l'assainissement et du traitement de déchets"}
+    ,{"code":"628f",
+      "libelle":"Agent qualifié de laboratoire (sauf chimie, santé)"}
+    ,{"code":"628g",
+      "libelle":"Ouvrier qualifié diver de type industriel"}
+    ,{"code":"63",
+      "libelle":"Ouvrier qualifié de type artisanal"}
+    ,{"code":"631a",
+      "libelle":"Jardiniers"}
+    ,{"code":"632a",
+      "libelle":"Maçon qualifiés"}
+    ,{"code":"632b",
+      "libelle":"Ouvrier qualifié du travail de la pierre"}
+    ,{"code":"632c",
+      "libelle":"Charpentier en boi qualifiés"}
+    ,{"code":"632d",
+      "libelle":"Menuisier qualifié du bâtiment"}
+    ,{"code":"632e",
+      "libelle":"Couvreur qualifiés"}
+    ,{"code":"632f",
+      "libelle":"Plombier et chauffagiste qualifiés"}
+    ,{"code":"632g",
+      "libelle":"Peintre et ouvrier qualifié de pose de revêtement sur support verticaux"}
+    ,{"code":"632h",
+      "libelle":"Solier moquetteur et ouvrier qualifié de pose de revêtement souple sur support horizontaux"}
+    ,{"code":"632j",
+      "libelle":"Monteur qualifié en agencement, isolation"}
+    ,{"code":"632k",
+      "libelle":"Ouvrier qualifié d'entretien général de bâtiments"}
+    ,{"code":"633a",
+      "libelle":"Electricien qualifié de type artisanal (y.c. bâtiment)"}
+    ,{"code":"633b",
+      "libelle":"Dépanneur qualifié en radiotélévision, électroménager, matériel électronique (salariés)"}
+    ,{"code":"633c",
+      "libelle":"Electriciens, électronicien qualifié en maintenance entretien, réparation : automobile"}
+    ,{"code":"633d",
+      "libelle":"Electriciens, électronicien qualifié en maintenance, entretien : équipement non industriels"}
+    ,{"code":"634a",
+      "libelle":"Carrossier d'automobile qualifiés"}
+    ,{"code":"634b",
+      "libelle":"Métalliers, serrurier qualifiés"}
+    ,{"code":"634c",
+      "libelle":"Mécanicien qualifié en maintenance, entretien, réparation : automobile"}
+    ,{"code":"634d",
+      "libelle":"Mécanicien qualifié de maintenance, entretien : équipement non industriels"}
+    ,{"code":"635a",
+      "libelle":"Tailleur et couturière qualifiés, ouvrier qualifié du travail de étoffe (sauf fabrication de vêtements), ouvrier qualifié de type artisanal du travail du cuir"}
+    ,{"code":"636a",
+      "libelle":"Boucher (sauf industrie de la viande)"}
+    ,{"code":"636b",
+      "libelle":"Charcutier (sauf industrie de la viande)"}
+    ,{"code":"636c",
+      "libelle":"Boulangers, pâtissier (sauf activité industrielle)"}
+    ,{"code":"636d",
+      "libelle":"Cuisinier et commi de cuisine"}
+    ,{"code":"637a",
+      "libelle":"Modeleur (sauf modeleur de métal), mouleurs-noyauteur à la main, ouvrier qualifié du travail du verre ou de la céramique à la main"}
+    ,{"code":"637b",
+      "libelle":"Ouvrier d'art"}
+    ,{"code":"637c",
+      "libelle":"Ouvrier et technicien de spectacle vivant et audiovisuels"}
+    ,{"code":"637d",
+      "libelle":"Ouvrier qualifié diver de type artisanal"}
+    ,{"code":"64",
+      "libelle":"Chauffeurs"}
+    ,{"code":"641a",
+      "libelle":"Conducteur routier et grand routiers"}
+    ,{"code":"641b",
+      "libelle":"Conducteur de véhicule routier de transport en commun"}
+    ,{"code":"642a",
+      "libelle":"Conducteur de taxi"}
+    ,{"code":"642b",
+      "libelle":"Conducteur de voiture particulière"}
+    ,{"code":"643a",
+      "libelle":"Conducteur livreurs, coursiers"}
+    ,{"code":"644a",
+      "libelle":"Conducteur de véhicule de ramassage de ordure ménagères"}
+    ,{"code":"65",
+      "libelle":"Ouvrier qualifié de la manutention, du magasinage et du transport"}
+    ,{"code":"651a",
+      "libelle":"Conducteur d'engin lourd de levage"}
+    ,{"code":"651b",
+      "libelle":"Conducteur d'engin lourd de manoeuvre"}
+    ,{"code":"652a",
+      "libelle":"Ouvrier qualifié de la manutention, conducteur de chariot élévateurs, caristes"}
+    ,{"code":"652b",
+      "libelle":"Dockers"}
+    ,{"code":"653a",
+      "libelle":"Magasinier qualifiés"}
+    ,{"code":"654b",
+      "libelle":"Conducteur qualifié d'engin de transport guidé (sauf remontée mécaniques)"}
+    ,{"code":"654c",
+      "libelle":"Conducteur qualifié de système de remontée mécaniques"}
+    ,{"code":"655a",
+      "libelle":"Autre agent et ouvrier qualifié (sédentaires) de service d'exploitation de transports"}
+    ,{"code":"656b",
+      "libelle":"Matelot de la marine marchande"}
+    ,{"code":"656c",
+      "libelle":"Capitaine et matelot timonier de la navigation fluviale"}
+    ,{"code":"67",
+      "libelle":"Ouvrier non qualifié de type industriel"}
+    ,{"code":"671a",
+      "libelle":"Ouvrier non qualifié de travaux public de l'Etat et de collectivité locales"}
+    ,{"code":"671c",
+      "libelle":"Ouvrier non qualifié de travaux public et du travail du béton"}
+    ,{"code":"671d",
+      "libelle":"Aides-mineurs, ouvrier non qualifié de l'extraction"}
+    ,{"code":"672a",
+      "libelle":"Ouvrier non qualifié de l'électricité et de l'électronique"}
+    ,{"code":"673a",
+      "libelle":"Ouvrier de production non qualifié travaillant par enlèvement de métal"}
+    ,{"code":"673b",
+      "libelle":"Ouvrier de production non qualifié travaillant par formage de métal"}
+    ,{"code":"673c",
+      "libelle":"Ouvrier non qualifié de montage, contrôle en mécanique et travail de métaux"}
+    ,{"code":"674a",
+      "libelle":"Ouvrier de production non qualifié : chimie, pharmacie, plasturgie"}
+    ,{"code":"674b",
+      "libelle":"Ouvrier de production non qualifié de la transformation de viandes"}
+    ,{"code":"674c",
+      "libelle":"Autre ouvrier de production non qualifié : industrie agroalimentaire"}
+    ,{"code":"674d",
+      "libelle":"Ouvrier de production non qualifié : métallurgie, production verrière, céramique, matériaux de construction"}
+    ,{"code":"674e",
+      "libelle":"Ouvrier de production non qualifié : industrie lourde du bois, fabrication de papier et cartons"}
+    ,{"code":"675a",
+      "libelle":"Ouvrier de production non qualifié du textile et de la confection, de la tannerie-mégisserie et du travail du cuir"}
+    ,{"code":"675b",
+      "libelle":"Ouvrier de production non qualifié du travail du boi et de l'ameublement"}
+    ,{"code":"675c",
+      "libelle":"Ouvrier de production non qualifié de l'imprimerie, presse, édition"}
+    ,{"code":"676a",
+      "libelle":"Manutentionnaire non qualifiés"}
+    ,{"code":"676b",
+      "libelle":"Déménageur (hor chauffeurs-déménageurs), non qualifiés"}
+    ,{"code":"676c",
+      "libelle":"Ouvrier du tri, de l'emballage, de l'expédition, non qualifiés"}
+    ,{"code":"676d",
+      "libelle":"Agent non qualifié de service d'exploitation de transports"}
+    ,{"code":"676e",
+      "libelle":"Ouvrier non qualifié diver de type industriel"}
+    ,{"code":"68",
+      "libelle":"Ouvrier non qualifié de type artisanal"}
+    ,{"code":"681a",
+      "libelle":"Ouvrier non qualifié du gro oeuvre du bâtiment"}
+    ,{"code":"681b",
+      "libelle":"Ouvrier non qualifié du second oeuvre du bâtiment"}
+    ,{"code":"682a",
+      "libelle":"Métalliers, serruriers, réparateur en mécanique non qualifiés"}
+    ,{"code":"683a",
+      "libelle":"Apprenti boulangers, bouchers, charcutiers"}
+    ,{"code":"684a",
+      "libelle":"Nettoyeurs"}
+    ,{"code":"684b",
+      "libelle":"Ouvrier non qualifié de l'assainissement et du traitement de déchets"}
+    ,{"code":"685a",
+      "libelle":"Ouvrier non qualifié diver de type artisanal"}
+    ,{"code":"69",
+      "libelle":"Ouvrier agricole et assimilés"}
+    ,{"code":"691a",
+      "libelle":"Conducteur d'engin agricole ou forestier"}
+    ,{"code":"691b",
+      "libelle":"Ouvrier de l'élevage"}
+    ,{"code":"691c",
+      "libelle":"Ouvrier du maraîchage ou de l'horticulture"}
+    ,{"code":"691d",
+      "libelle":"Ouvrier de la viticulture ou de l'arboriculture fruitière"}
+    ,{"code":"691e",
+      "libelle":"Ouvrier agricole san spécialisation particulière"}
+    ,{"code":"691f",
+      "libelle":"Ouvrier de l'exploitation forestière ou de la sylviculture"}
+    ,{"code":"692a",
+      "libelle":"Marins-pêcheur et ouvrier de l'aquaculture"}
+    ]}
+]

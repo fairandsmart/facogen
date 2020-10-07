@@ -1,0 +1,46 @@
+
+[{ "niveau":"I",
+  "libelle": "emplois d'exécutant (pas de diplôme)",
+  "echelon":[
+    {"number" :1
+    },{
+      "number" :2
+    }
+  ]
+},
+  { "niveau":"II",
+    "libelle": "emplois spécialisés (CAP)",
+    "echelon":[
+      {"number" :1
+      },{
+        "number" :2
+      }
+    ]
+  },
+  { "niveau":"III" ,
+    "libelle": "emplois qualifiés (BEP)",
+    "echelon":[
+      {"number" :1
+      },{
+        "number" :2
+      }
+    ]
+  },
+  { "niveau":"IV",
+    "libelle": "emplois hautement qualifiés (BAC/BTS/DUT)",
+    "echelon":[
+      {"number" :1
+      },{
+        "number" :2
+      }
+    ]
+  },
+  { "niveau":"V",
+    "libelle": "cadres/ingénieurs/manager",
+    "echelon":[
+      {"number" :1
+      },{
+        "number" :2
+      }
+    ]
+  }]
