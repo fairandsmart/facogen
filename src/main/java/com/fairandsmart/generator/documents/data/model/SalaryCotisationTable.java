@@ -286,7 +286,7 @@ public class SalaryCotisationTable {
 
         // cotisations santé
         private List<List<SalaryLine>> santeCotisations;// products;
-        private static final String cotisationFileSante = "payslips/cotisations_santé.json";
+        private static final String cotisationFileSante = "payslips/salary/cotisations_santé.json";
         {
             Reader jsonReader = new InputStreamReader(SalaryCotisationTable.class.getClassLoader().getResourceAsStream(cotisationFileSante));
             Gson gson = new Gson();
@@ -295,7 +295,7 @@ public class SalaryCotisationTable {
         }
         // cotisations accidents de travail
         private List<List<SalaryLine>> accidentCotisation;// products;
-        private static final String cotisationFileAccident = "payslips/cotisations_accidents.json";
+        private static final String cotisationFileAccident = "payslips/salary/cotisations_accidents.json";
         {
             Reader jsonReader = new InputStreamReader(SalaryCotisationTable.class.getClassLoader().getResourceAsStream(cotisationFileAccident));
             Gson gson = new Gson();
@@ -304,7 +304,7 @@ public class SalaryCotisationTable {
         }
         // cotisation retraite
         private List<List<SalaryLine>> retaraiteCotisation;// products;
-        private static final String cotisationFileRetraite = "payslips/cotisations_retraite.json";
+        private static final String cotisationFileRetraite = "payslips/salary/cotisations_retraite.json";
         {
             Reader jsonReader = new InputStreamReader(SalaryCotisationTable.class.getClassLoader().getResourceAsStream(cotisationFileRetraite));
             Gson gson = new Gson();
@@ -313,7 +313,7 @@ public class SalaryCotisationTable {
         }
         // cotisations prestations familiales
         private List<List<SalaryLine>> prestationsCotisation;// products;
-        private static final String cotisationFilePrest = "payslips/cotisations_prestation_fam.json";
+        private static final String cotisationFilePrest = "payslips/salary/cotisations_prestation_fam.json";
         {
             Reader jsonReader = new InputStreamReader(SalaryCotisationTable.class.getClassLoader().getResourceAsStream(cotisationFilePrest));
             Gson gson = new Gson();
@@ -322,7 +322,7 @@ public class SalaryCotisationTable {
         }
         // cotisations chomage
         private List<List<SalaryLine>> chomageCotisation;// products;
-        private static final String cotisationFileChomage = "payslips/cotisations_chomage.json";
+        private static final String cotisationFileChomage = "payslips/salary/cotisations_chomage.json";
         {
             Reader jsonReader = new InputStreamReader(SalaryCotisationTable.class.getClassLoader().getResourceAsStream(cotisationFileChomage));
             Gson gson = new Gson();
@@ -332,7 +332,7 @@ public class SalaryCotisationTable {
 
         // autres cotisations
         private List<List<SalaryLine>> othercotisations;// products;
-        private static final String othercotisationsFile = "payslips/cotisations_autres.json";
+        private static final String othercotisationsFile = "payslips/salary/cotisations_autres.json";
         {
             Reader jsonReader = new InputStreamReader(SalaryCotisationTable.class.getClassLoader().getResourceAsStream(othercotisationsFile));
             Gson gson = new Gson();
@@ -342,7 +342,7 @@ public class SalaryCotisationTable {
 
         // csg deductible
         private List<List<SalaryLine>> csgcotisations;// products;
-        private static final String csgcotisationsFile = "payslips/cotisations_csg_nondeduct.json";
+        private static final String csgcotisationsFile = "payslips/salary/cotisations_csg_nondeduct.json";
         {
             Reader jsonReader = new InputStreamReader(SalaryCotisationTable.class.getClassLoader().getResourceAsStream(csgcotisationsFile));
             Gson gson = new Gson();
@@ -352,7 +352,7 @@ public class SalaryCotisationTable {
 
         // composantes remuneration
         private List<List<SalaryLine>> composantesRenum;// products;
-        private static final String composantesRenumFile = "payslips/composantes_remunération.json";
+        private static final String composantesRenumFile = "payslips/salary/composantes_remunération.json";
         {
             Reader jsonReader = new InputStreamReader(SalaryCotisationTable.class.getClassLoader().getResourceAsStream(composantesRenumFile));
             Gson gson = new Gson();

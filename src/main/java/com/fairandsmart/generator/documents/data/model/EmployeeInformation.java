@@ -43,6 +43,8 @@ import com.google.gson.reflect.TypeToken;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.lang.reflect.Type;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.logging.Logger;
 
@@ -53,6 +55,7 @@ public class EmployeeInformation {
     private String employeCode;
     private String registrationNumber; // Matricule
     private String socialSecurityNumber;
+
     private String assignment ; //affectation
     private String employment;
     private String classification;
@@ -438,14 +441,21 @@ public class EmployeeInformation {
             DepartsComm = gson.fromJson(jsonReader, collectionType);
         }
 
+        private List<CategoryEmployee> CategoriesEmp;
+        private static final String CategoriesEmpFile = "payslips/employee/employeeCode.json";
+        {
+            Reader jsonReader = new InputStreamReader(EmployeeInformation.class.getClassLoader().getResourceAsStream(CategoriesEmpFile));
+            Gson gson = new Gson();
+            Type collectionType = new TypeToken<Collection<CategoryEmployee>>(){}.getType();
+            DepartsComm = gson.fromJson(jsonReader, collectionType);
+        }
+
         @Override
         public EmployeeInformation generate(GenerationContext ctx) {
             Faker faker = Faker.instance(Locale.forLanguageTag(ctx.getLanguage()));
             Random rand =new Random();
             EmployeeInformation employeeInformation = new EmployeeInformation();
 
-
-                    String employeCode = faker.regexify("[1-9]{3}[a-z]{1}");
             String registrationNumber = String.format("%03d", rand.nextInt(100)+1);
 
             String gender = ""+(rand.nextInt(2)+1);
@@ -460,22 +470,47 @@ public class EmployeeInformation {
             String orderBirth = String.format("%03d", rand.nextInt(999)+1);
             String keySS = String.format("%02d", rand.nextInt(99)+1);
 
-
             String socialSecurityNumber = gender + yearBirth + monthBirth+ departmentCode +commonBirth+orderBirth + keySS;
-            String assignment = null;
-            String employment = null;
-            String classification = null;
-            String echelon = null;
-            String contratType = null;
+
+            String assignment = String.format("%03d", rand.nextInt(999)+1);
+
+            CategoryEmployee categorieEmp = CategoriesEmp.get(ctx.getRandom().nextInt(CategoriesEmp.size()));
+            List<Emploi> listEmp = categorieEmp.getList_emploi();
+            Emploi emp = listEmp.get(ctx.getRandom().nextInt(listEmp.size()));
+            String categoryLabel = categorieEmp.getCategorie();
+            String employeCode = emp.getCode();
+            String employment = emp.getLibelle();
+
+            String classification ;
+            if(categoryLabel.toLowerCase().contains("cadre")) classification ="CADRE";
+            else classification ="NON CADRE";
+
+
+            String echelon = String.format("%01d", rand.nextInt(9)+1);
+
+            int cntrType= rand.nextInt(2);
+            String contratType= "";
+            switch (cntrType){
+                case 0:
+                    contratType = "CDI";
+                    break;
+                case 1:
+                    contratType = "CDD";
+                    break;
+            }
+
             Date d1 = new Date();
-            String arrivalDate = null;
-            String socialSecurityCeiling = null;
+            String pattern = "MM/yyyy";
+            DateFormat df = new SimpleDateFormat(pattern);
+            String arrivalDate = df.format(d1);
+
+            String socialSecurityCeiling = "2435";
             String timetable = null;
             String hourlyRate = null;
-            String mincoef = null;
+            String mincoef = "120";
             String monthlyPay = null;
             String monthlyPayRef = null;
-            String categoryLabel = null;
+
             String dateSeniority = null;
             String localisation = null;
             String releaseDate = null;
