@@ -1,0 +1,1314 @@
+[
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "ACORES, MADERE",
+    "code_comm": 319
+
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "AFGHANISTAN",
+    "code_comm": 212
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "AFRIQUE DU SUD",
+    "code_comm": 303
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "ALASKA",
+    "code_comm": 404
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "ALBANIE",
+    "code_comm": 125
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "ALGERIE",
+    "code_comm": 352
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "ALLEMAGNE",
+    "code_comm": 109
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "ANDORRE",
+    "code_comm": 130
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "ANGOLA",
+    "code_comm": 395
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "ANGUILLA",
+    "code_comm": 425
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "ANTIGUA-ET-BARBUDA",
+    "code_comm": 441
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "ANTILLES NEERLANDAISES",
+    "code_comm": 431
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "ARABIE SAOUDITE",
+    "code_comm": 201
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "ARGENTINE",
+    "code_comm": 415
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "ARMENIE",
+    "code_comm": 252
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "ARUBA",
+    "code_comm": 431
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "AUSTRALIE",
+    "code_comm": 501
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "AUTRICHE",
+    "code_comm": 110
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "AZERBAIDJAN",
+    "code_comm": 253
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "BAHAMAS",
+    "code_comm": 436
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "BAHREIN",
+    "code_comm": 249
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "BANGLADESH",
+    "code_comm": 246
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "BARBADE",
+    "code_comm": 434
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "BELGIQUE",
+    "code_comm": 131
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "BELIZE",
+    "code_comm": 429
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "BENIN",
+    "code_comm": 327
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "BERMUDES",
+    "code_comm": 425
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "BHOUTAN",
+    "code_comm": 214
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "BIELORUSSIE",
+    "code_comm": 148
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "BIRMANIE",
+    "code_comm": 224
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "BOLIVIE",
+    "code_comm": 418
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "BOSNIE-HERZEGOVINE",
+    "code_comm": 118
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "BOTSWANA",
+    "code_comm": 347
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "BOUVET (ILE)",
+    "code_comm": 103
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "BRESIL",
+    "code_comm": 416
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "BRUNEI",
+    "code_comm": 225
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "BULGARIE",
+    "code_comm": 111
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "BURKINA",
+    "code_comm": 331
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "BURUNDI",
+    "code_comm": 321
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "CAIMANES (ILES)",
+    "code_comm": 425
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "CAMBODGE",
+    "code_comm": 234
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "CAMEROUN",
+    "code_comm": 322
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "CAMEROUN ET TOGO",
+    "code_comm": 305
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "CANADA",
+    "code_comm": 401
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "CANARIES (ILES)",
+    "code_comm": 313
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "CAP-VERT",
+    "code_comm": 396
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "CENTRAFRICAINE (REPUBLIQUE)",
+    "code_comm": 323
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "CHILI",
+    "code_comm": 417
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "CHINE",
+    "code_comm": 216
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "CHRISTMAS (ILE)",
+    "code_comm": 501
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "CHYPRE",
+    "code_comm": 254
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "COCOS ou KEELING (ILES)",
+    "code_comm": 501
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "COLOMBIE",
+    "code_comm": 419
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "COMORES",
+    "code_comm": 397
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "CONGO",
+    "code_comm": 324
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "CONGO (REPUBLIQUE DEMOCRATIQUE)",
+    "code_comm": 312
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "COOK (ILES)",
+    "code_comm": 502
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "COREE",
+    "code_comm": 237
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "COREE (REPUBLIQUE DE)",
+    "code_comm": 239
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "COREE (REPUBLIQUE POPULAIRE DEMOCRATIQUE DE)",
+    "code_comm": 238
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "COSTA RICA",
+    "code_comm": 406
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "COTE D'IVOIRE",
+    "code_comm": 326
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "CROATIE",
+    "code_comm": 119
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "CUBA",
+    "code_comm": 407
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "DANEMARK",
+    "code_comm": 101
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "DJIBOUTI",
+    "code_comm": 3},
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "DOMINICAINE (REPUBLIQUE)",
+    "code_comm": 408
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "DOMINIQUE",
+    "code_comm": 438
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "EGYPTE",
+    "code_comm": 301
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "EL SALVADOR",
+    "code_comm": 414
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "EMIRATS ARABES UNIS",
+    "code_comm": 247
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "EQUATEUR",
+    "code_comm": 420
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "ERYTHREE",
+    "code_comm": 317
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "ESPAGNE",
+    "code_comm": 134
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "ESTONIE",
+    "code_comm": 106
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "ETATS MALAIS NON FEDERES",
+    "code_comm": 228
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "ETATS-UNIS",
+    "code_comm": 404
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "ETHIOPIE",
+    "code_comm": 315
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "EX-REPUBLIQUE YOUGOSLAVE DE MACEDOINE",
+    "code_comm": 156
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "FEROE (ILES)",
+    "code_comm": 101
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "FIDJI",
+    "code_comm": 508
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "FINLANDE",
+    "code_comm": 105
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "GABON",
+    "code_comm": 328
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "GAMBIE",
+    "code_comm": 304
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "GEORGIE",
+    "code_comm": 255
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "GEORGIE DU SUD ET LES ILES SANDWICH DU SUD",
+    "code_comm": 427
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "GHANA",
+    "code_comm": 329
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "GIBRALTAR",
+    "code_comm": 133
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "GOA",
+    "code_comm": 223
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "GRECE",
+    "code_comm": 126
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "GRENADE",
+    "code_comm": 435
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "GROENLAND",
+    "code_comm": 430
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "GUAM",
+    "code_comm": 505
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "GUATEMALA",
+    "code_comm": 409
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "GUINEE",
+    "code_comm": 330
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "GUINEE EQUATORIALE",
+    "code_comm": 314
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "GUINEE-BISSAU",
+    "code_comm": 392
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "GUYANA",
+    "code_comm": 428
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "HAITI",
+    "code_comm": 410
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "HAWAII (ILES)",
+    "code_comm": 504
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "HEARD ET MACDONALD (ILES)",
+    "code_comm": 501
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "HONDURAS",
+    "code_comm": 411
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "HONG-KONG",
+    "code_comm": 230
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "HONGRIE",
+    "code_comm": 112
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "ILES PORTUGAISES DE L'OCEAN INDIEN",
+    "code_comm": 320
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "INDE",
+    "code_comm": 223
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "INDONESIE",
+    "code_comm": 231
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "IRAN",
+    "code_comm": 204
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "IRAQ",
+    "code_comm": 203
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "IRLANDE, ou EIRE",
+    "code_comm": 136
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "ISLANDE",
+    "code_comm": 102
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "ISRAEL",
+    "code_comm": 207
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "ITALIE",
+    "code_comm": 127
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "JAMAIQUE",
+    "code_comm": 426
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "JAPON",
+    "code_comm": 217
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "JORDANIE",
+    "code_comm": 222
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "KAMTCHATKA",
+    "code_comm": 211
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "KAZAKHSTAN",
+    "code_comm": 256
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "KENYA",
+    "code_comm": 332
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "KIRGHIZISTAN",
+    "code_comm": 257
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "KIRIBATI",
+    "code_comm": 513
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "KOWEIT",
+    "code_comm": 240
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "LABRADOR",
+    "code_comm": 403
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "LAOS",
+    "code_comm": 241
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "LESOTHO",
+    "code_comm": 348
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "LETTONIE",
+    "code_comm": 107
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "LIBAN",
+    "code_comm": 205
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "LIBERIA",
+    "code_comm": 302
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "LIBYE",
+    "code_comm": 316
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "LIECHTENSTEIN",
+    "code_comm": 113
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "LITUANIE",
+    "code_comm": 108
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "LUXEMBOURG",
+    "code_comm": 137
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "MACAO",
+    "code_comm": 232
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "MADAGASCAR",
+    "code_comm": 333
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "MALAISIE",
+    "code_comm": 227
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "MALAWI",
+    "code_comm": 334
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "MALDIVES",
+    "code_comm": 229
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "MALI",
+    "code_comm": 335
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "MALOUINES, OU FALKLAND (ILES)",
+    "code_comm": 427
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "MALTE",
+    "code_comm": 144
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "MANDCHOURIE",
+    "code_comm": 218
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "MARIANNES DU NORD (ILES)",
+    "code_comm": 505
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "MAROC",
+    "code_comm": 350
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "MARSHALL (ILES)",
+    "code_comm": 515
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "MAURICE",
+    "code_comm": 390
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "MAURITANIE",
+    "code_comm": 336
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "MEXIQUE",
+    "code_comm": 405
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "MICRONESIE (ETATS FEDERES DE)",
+    "code_comm": 516
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "MOLDAVIE",
+    "code_comm": 151
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "MONACO",
+    "code_comm": 138
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "MONGOLIE",
+    "code_comm": 242
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "MONTENEGRO",
+    "code_comm": 120
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "MONTSERRAT",
+    "code_comm": 425
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "MOZAMBIQUE",
+    "code_comm": 393
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "NAMIBIE",
+    "code_comm": 311
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "NAURU",
+    "code_comm": 507
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "NEPAL",
+    "code_comm": 215
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "NICARAGUA",
+    "code_comm": 412
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "NIGER",
+    "code_comm": 337
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "NIGERIA",
+    "code_comm": 338
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "NIUE",
+    "code_comm": 502
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "NORFOLK (ILE)",
+    "code_comm": 501
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "NORVEGE",
+    "code_comm": 103
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "NOUVELLE-ZELANDE",
+    "code_comm": 502
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "OCEAN INDIEN (TERRITOIRE BRITANNIQUE DE L')",
+    "code_comm": 308
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "OMAN",
+    "code_comm": 250
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "OUGANDA",
+    "code_comm": 339
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "OUZBEKISTAN",
+    "code_comm": 258
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "PAKISTAN",
+    "code_comm": 213
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "PALAOS (ILES)",
+    "code_comm": 517
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "PALESTINE",
+    "code_comm": 261
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "PANAMA",
+    "code_comm": 413
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "PAPOUASIE-NOUVELLE-GUINEE",
+    "code_comm": 510
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "PARAGUAY",
+    "code_comm": 421
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "nom_comm-BAS",
+    "code_comm": 135
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "PEROU",
+    "code_comm": 422
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "PHILIPPINES",
+    "code_comm": 220
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "PITCAIRN (ILE)",
+    "code_comm": 503
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "POLOGNE",
+    "code_comm": 122
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "PORTO RICO",
+    "code_comm": 432
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "PORTUGAL",
+    "code_comm": 139
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "POSSESSIONS BRITANNIQUES AU PROCHE-ORIENT",
+    "code_comm": 221
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "PRESIDES",
+    "code_comm": 313
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "PROVINCES ESPAGNOLES D'AFRIQUE",
+    "code_comm": 313
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "QATAR",
+    "code_comm": 248
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "REPUBLIQUE DEMOCRATIQUE ALLEMANDE",
+    "code_comm": 141
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "REPUBLIQUE FEDERALE D'ALLEMAGNE",
+    "code_comm": 142
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "ROUMANIE",
+    "code_comm": 114
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "ROYAUME-UNI",
+    "code_comm": 132
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "RUSSIE",
+    "code_comm": 123
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "RWANDA",
+    "code_comm": 340
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "SAHARA OCCIDENTAL",
+    "code_comm": 389
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "SAINT-CHRISTOPHE-ET-NIEVES",
+    "code_comm": 442
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "SAINT-MARIN",
+    "code_comm": 128
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "SAINT-VINCENT-ET-LES GRENADINES",
+    "code_comm": 440
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "SAINTE-HELENE",
+    "code_comm": 306
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "SAINTE-LUCIE",
+    "code_comm": 439
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "SALOMON (ILES)",
+    "code_comm": 512
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "SAMOA AMERICAINES",
+    "code_comm": 505
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "SAMOA OCCIDENTALES",
+    "code_comm": 506
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "SAO TOME-ET-PRINCIPE",
+    "code_comm": 394
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "SENEGAL",
+    "code_comm": 341
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "SERBIE-ET-MONTÉNÉGRO",
+    "code_comm": 121
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "SEYCHELLES",
+    "code_comm": 398
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "SIBERIE",
+    "code_comm": 209
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "SIERRA LEONE",
+    "code_comm": 342
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "SINGAPOUR",
+    "code_comm": 226
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "SLOVAQUIE",
+    "code_comm": 117
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "SLOVENIE",
+    "code_comm": 145
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "SOMALIE",
+    "code_comm": 318
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "SOUDAN",
+    "code_comm": 343
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "SOUDAN ANGLO-EGYPTIEN, KENYA, OUGANDA",
+    "code_comm": 307
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "SRI LANKA",
+    "code_comm": 235
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "SUEDE",
+    "code_comm": 104
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "SUISSE",
+    "code_comm": 140
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "SURINAME",
+    "code_comm": 437
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "SVALBARD et ILE JAN MAYEN",
+    "code_comm": 103
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "SWAZILAND",
+    "code_comm": 391
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "SYRIE",
+    "code_comm": 206
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "TADJIKISTAN",
+    "code_comm": 259
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "TAIWAN",
+    "code_comm": 236
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "TANGER",
+    "code_comm": 325
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "TANZANIE",
+    "code_comm": 309
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "TCHAD",
+    "code_comm": 344
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "TCHECOSLOVAQUIE",
+    "code_comm": 115
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "TCHEQUE (REPUBLIQUE)",
+    "code_comm": 116
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "TERR. DES ETATS-UNIS D'AMERIQUE EN AMERIQUE",
+    "code_comm": 432
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "TERR. DES ETATS-UNIS D'AMERIQUE EN OCEANIE",
+    "code_comm": 505
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "TERR. DU ROYAUME-UNI DANS L'ATLANTIQUE SUD",
+    "code_comm": 427
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "TERRE-NEUVE",
+    "code_comm": 402
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "TERRITOIRE DES nom_comm-BAS",
+    "code_comm": 431
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "TERRITOIRES DU ROYAUME-UNI AUX ANTILLES",
+    "code_comm": 425
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "THAILANDE",
+    "code_comm": 219
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "TIMOR ORIENTAL",
+    "code_comm": 262
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "TOGO",
+    "code_comm": 345
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "TOKELAU",
+    "code_comm": 502
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "TONGA",
+    "code_comm": 509
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "TRINITE-ET-TOBAGO",
+    "code_comm": 433
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "TUNISIE",
+    "code_comm": 351
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "TURKESTAN RUSSE",
+    "code_comm": 210
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "TURKMENISTAN",
+    "code_comm": 260
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "TURKS ET CAIQUES (ILES)",
+    "code_comm": 425
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "TURQUIE",
+    "code_comm": 208
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "TURQUIE D'EUROPE",
+    "code_comm": 124
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "TUVALU",
+    "code_comm": 511
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "UKRAINE",
+    "code_comm": 155
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "URUGUAY",
+    "code_comm": 423
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "VANUATU",
+    "code_comm": 514
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "VATICAN, ou SAINT-SIEGE",
+    "code_comm": 129
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "VENEZUELA",
+    "code_comm": 424
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "VIERGES BRITANNIQUES (ILES)",
+    "code_comm": 425
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "VIERGES DES ETATS-UNIS (ILES)",
+    "code_comm": 432
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "VIET NAM",
+    "code_comm": 243
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "VIET NAM DU NORD",
+    "code_comm": 244
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "VIET NAM DU SUD",
+    "code_comm": 245
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "YEMEN",
+    "code_comm": 251
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "YEMEN (REPUBLIQUE ARABE DU)",
+    "code_comm": 202
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "YEMEN DEMOCRATIQUE",
+    "code_comm": 233
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "ZAMBIE",
+    "code_comm": 346
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "ZANZIBAR",
+    "code_comm": 308
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":99,
+    "nom_comm": "ZIMBABWE",
+    "code_comm": 310}
+]
+
+
+
+
+
