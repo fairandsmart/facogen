@@ -163,7 +163,7 @@ public class GenericPayslipLayout0 {
                String img = this.getClass().getClassLoader().getResource("common/logo/" + model.getCompany().getLogo().getFullPath()).getFile();
                PDImageXObject imgLogo =  PDImageXObject.createFromFile(img, document);
                float ratioImage = (float)imgLogo.getWidth() / (float)imgLogo.getHeight();
-                contentStream.drawImage(imgLogo,55,page.getMediaBox().getHeight()-50,42,ratioImage*42);
+                contentStream.drawImage(imgLogo,35,page.getMediaBox().getHeight()-100,42,ratioImage*42);
                 companyLogo.build(contentStream,writer);
             }
             secondPart.addElement(companyAddress);

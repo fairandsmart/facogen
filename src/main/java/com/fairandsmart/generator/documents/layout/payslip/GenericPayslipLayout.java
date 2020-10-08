@@ -75,13 +75,14 @@ public class GenericPayslipLayout implements PayslipLayout {
     // 1 available, 0 not available, -1 used
     private int LeaveInfosAvailable;
     // TODO
-    private int invoiceNumAvailable;
+    private int employeeInfoAvailable;
     private int ciDAvailable;
     private int compContactAvailable;
     private int shipAddAvailable;
     private int clNumAvailable;
     private int oNumAvailable;
     private int pInfoAvailable;
+    private TableRowBox firstPart;
 
     @Override
     public String name() {
@@ -97,7 +98,6 @@ public class GenericPayslipLayout implements PayslipLayout {
     @Override
     public void builtPayslip(PayslipModel model, PDDocument document, XMLStreamWriter writer) throws Exception {
         this.model = model;
-
         this.LeaveInfosAvailable = model.getRandom().nextInt(2);
 
         // sets of table row possible sizes
@@ -113,9 +113,11 @@ public class GenericPayslipLayout implements PayslipLayout {
         writer.writeAttribute("gedi_type", "DL_PAGE");
         writer.writeAttribute("pageID", "1");
         writer.writeAttribute("width", "2480");
-        writer.writeAttribute("height", "3508");
+        writer.writeAttribute("height", "3508"); // 3508
         writer.writeCharacters(System.getProperty("line.separator"));
         PDPageContentStream contentStream = new PDPageContentStream(document, page);
+
+
 
         float ratioPage = page.getMediaBox().getWidth()/2480;
 
@@ -124,30 +126,24 @@ public class GenericPayslipLayout implements PayslipLayout {
 
         VerticalContainer payslipPage = new VerticalContainer(0,0,0);
         //payslip parts
-        TableRowBox firstPart = null,secondPart = null, thirdPart = null, fourthPart= null, fifthPart= null, sixthPart= null;
+        TableRowBox firstPart = null,firstPart2 = null, secondPart = null, thirdPart = null, fourthPart= null, fifthPart= null, sixthPart= null;
 
         //generation des booleens de placement
-        boolean titleCenter = model.getRandom().nextBoolean();
-        boolean titleDate = model.getRandom().nextBoolean();
-        boolean periodMonth = model.getRandom().nextBoolean();
         boolean logo = model.getRandom().nextBoolean();
+        boolean titleSeparate = model.getRandom().nextBoolean();
+        boolean conventionWithComp = model.getRandom().nextBoolean();
+        boolean employeUnderCmp = model.getRandom().nextBoolean();
 
         //companyInfo
         CompanyInfoBoxPayslip companyInfoBox = new CompanyInfoBoxPayslip(fonts[2], fonts[1], fontSize, model, document);
 
-        CompanyInfoBox companyAddress = new CompanyInfoBox(companyInfoBox.getCompanyAddressBlock());
-        CompanyInfoBox companyContact = new CompanyInfoBox(companyInfoBox.getCompanyContactBlock());
-        //CompanyInfoBox companyId = new CompanyInfoBox(companyInfoBox.getCompanyIdBlock());
 
         EmployeeInfoBox employeeInfoBox = new EmployeeInfoBox(fonts[2], fonts[1], fontSize, model, document);
         EmployeeInfoBox employeeAddress = new EmployeeInfoBox(employeeInfoBox.getEmployeeAddressBlock());
-        ImageBox companyLogo =  companyInfoBox.getLogoBox(32, Color.WHITE); // 42
+        ImageBox companyLogo =  companyInfoBox.getLogoBox(12, Color.WHITE); // 42
 
         // Employee Information Payslip
         EmployeeInfoPayslipBox employeeInfoPayslipBox = new EmployeeInfoPayslipBox(fonts[2],fonts[1], fontSize, model, document);
-        EmployeeInfoPayslipBox employeeCode = new EmployeeInfoPayslipBox(employeeInfoPayslipBox.getEmployeeCodeBlock());
-        EmployeeInfoPayslipBox employeeMat = new EmployeeInfoPayslipBox(employeeInfoPayslipBox.getEmployeeRegNumberBlock());
-        EmployeeInfoPayslipBox employeeSSN = new EmployeeInfoPayslipBox(employeeInfoPayslipBox.getEmployeeSucurityNumberBlock());
 
         // Leave Information
         LeaveInfoPayslipBox leaveInfoPayslipBox = new LeaveInfoPayslipBox(fonts[2],fonts[1], fontSize, model, document);
@@ -157,8 +153,6 @@ public class GenericPayslipLayout implements PayslipLayout {
         // SumUp Information
         SumUpSalaryPayslipBox sumUpSalaryPayslipBox = new SumUpSalaryPayslipBox(fonts[2],fonts[1], fontSize, model, document);
 
-        Boolean logoIndependent = true ; // model.getRandom().nextBoolean();
-        Boolean headElementsInBlock = false; //model.getRandom().nextBoolean();
         Boolean leaveInformationInTop = model.getRandom().nextBoolean();
 
         // Title and date
@@ -166,6 +160,7 @@ public class GenericPayslipLayout implements PayslipLayout {
         SimpleTextBox emptyBox= new SimpleTextBox(fonts[0], fontSize, 0, 0, "", Color.BLACK, null, HAlign.CENTER);
        // VerticalContainer period = new VerticalContainer(0, 0,170);
         SimpleTextBox period = new SimpleTextBox(fonts[0], fontSize, 0, 0, model.getDate().getLabel() + ": " + model.getDate().getValue(), "SA");
+        VerticalContainer title_period = new VerticalContainer(0,0,0);
 
 
 
@@ -176,18 +171,57 @@ public class GenericPayslipLayout implements PayslipLayout {
             titleElements.put(3, emptyBox);
         }
         firstPart = new TableRowBox(configRow3, 0, 0);
+        if(titleSeparate){
+            firstPart.addElement(emptyBox,true);
+            firstPart.addElement(title,true);
+            firstPart.addElement(emptyBox,true);
+            payslipPage.addElement(firstPart);
+        }else
+            title_period.addElement(title);
 
-        CompanyInfoBoxPayslip companyAddIDCont = new CompanyInfoBoxPayslip(companyInfoBox.concatContainersVertically
-                (new ElementBox[]{companyLogo, companyInfoBox.getCompanyAddressBlock(), companyInfoBox.getCompanyIdBlock() }));
 
-        EmployeeInfoPayslipBox employeeInfo = new EmployeeInfoPayslipBox(employeeInfoPayslipBox.getEmployeeInformationTable6());
+        CompanyInfoBoxPayslip companyAddIDCont;
 
-        CompanyInfoBoxPayslip employeeInfoFinal = new CompanyInfoBoxPayslip(companyInfoBox.concatContainersVertically
-                (new ElementBox[]{companyAddIDCont, emptyBox, employeeInfo }));
+        if(logo){
+            companyAddIDCont = new CompanyInfoBoxPayslip(companyInfoBox.concatContainersVertically
+                    (new ElementBox[]{companyLogo, companyInfoBox.getCompanyAddressBlock(), companyInfoBox.getCompanyIdBlock() }));
+        }else {
+            companyAddIDCont = new CompanyInfoBoxPayslip(companyInfoBox.concatContainersVertically
+                    (new ElementBox[]{companyInfoBox.getCompanyAddressBlock(), companyInfoBox.getCompanyIdBlock() }));
+        }
 
-        VerticalContainer title_period = new VerticalContainer(0,0,0);
+        CompanyInfoBoxPayslip companyInfoFinal;
 
-        title_period.addElement(title);
+        if(conventionWithComp){
+            companyInfoFinal = new CompanyInfoBoxPayslip(companyInfoBox.concatContainersVertically
+                    (new ElementBox[]{companyAddIDCont, employeeInfoPayslipBox.getConvCollectBlock() }));//emptyBox
+        }else {
+            companyInfoFinal = new CompanyInfoBoxPayslip(companyInfoBox.concatContainersVertically
+                    (new ElementBox[]{companyAddIDCont }));//emptyBox
+
+        }
+
+        EmployeeInfoPayslipBox employeeInfo;
+        int ran= model.getRandom().nextInt(2);
+        switch (ran){
+            case 1:
+                employeeInfo  = new EmployeeInfoPayslipBox(employeeInfoPayslipBox.getEmployeeInformationTable1());
+                break;
+            default:
+                employeeInfo  = new EmployeeInfoPayslipBox(employeeInfoPayslipBox.getEmployeeInformationTable2());
+                break;
+        }
+        CompanyInfoBoxPayslip companyInfoEmplFinal;
+        if(employeUnderCmp){
+            companyInfoEmplFinal = new CompanyInfoBoxPayslip(companyInfoBox.concatContainersVertically
+                    (new ElementBox[]{companyInfoFinal,emptyBox, employeeInfo }));//emptyBox
+                    employeeInfoAvailable=1;
+        }else {
+            companyInfoEmplFinal = new CompanyInfoBoxPayslip(companyInfoBox.concatContainersVertically
+                    (new ElementBox[]{companyInfoFinal}));//emptyBox
+            employeeInfoAvailable=-1;
+        }
+
         title_period.addElement(period);
         title_period.addElement(emptyBox);
         title_period.addElement(employeeAddress);
@@ -213,7 +247,7 @@ public class GenericPayslipLayout implements PayslipLayout {
 
         Map<Integer, ElementBox> compElements = new HashMap<>();
         {
-            compElements.put(1, employeeInfoFinal); //companyAddIDCont);
+            compElements.put(1, companyInfoEmplFinal); //companyAddIDCont);
             compElements.put(2, iInfor); // title
         }
         int list[] = getRandomList(compElements.size());
@@ -223,7 +257,35 @@ public class GenericPayslipLayout implements PayslipLayout {
         secondPart = new TableRowBox(configRow2v2, 0, 0);
         for(int i =0; i < compElements.size(); i++)
             secondPart.addElement(compElements.get(i+1), false);
-        this.compContactAvailable = -1;
+        payslipPage.addElement(secondPart);
+
+        if (employeeInfoAvailable==-1){
+            EmployeeInfoPayslipBox employeeInfo2;
+            int ran2= model.getRandom().nextInt(5);
+            switch (ran2){
+                case 1:
+                    employeeInfo2  = new EmployeeInfoPayslipBox(employeeInfoPayslipBox.getEmployeeInformationTable3());
+                    break;
+                case 2:
+                    employeeInfo2  = new EmployeeInfoPayslipBox(employeeInfoPayslipBox.getEmployeeInformationTable4());
+                    break;
+                case 3:
+                    employeeInfo2  = new EmployeeInfoPayslipBox(employeeInfoPayslipBox.getEmployeeInformationTable5());
+                    break;
+                case 4:
+                    employeeInfo2  = new EmployeeInfoPayslipBox(employeeInfoPayslipBox.getEmployeeInformationTable6());
+                    break;
+                default:
+                    employeeInfo2  = new EmployeeInfoPayslipBox(employeeInfoPayslipBox.getEmployeeInformationTable7());
+                    break;
+            }
+            firstPart2 = new TableRowBox(configRow1v1, 0, 0);
+            firstPart2.addElement(employeeInfo2, false);
+            payslipPage.addElement(firstPart2);
+        }
+
+        ///////////***********
+            this.compContactAvailable = -1;
         this.ciDAvailable = -1;
 
         // table Third part
@@ -236,8 +298,7 @@ public class GenericPayslipLayout implements PayslipLayout {
 
         thirdPart.addElement(employeeInfotry,false);
 
-        payslipPage.addElement(firstPart);
-        payslipPage.addElement(secondPart);
+
         payslipPage.addElement(thirdPart);
 
 
@@ -314,6 +375,8 @@ public class GenericPayslipLayout implements PayslipLayout {
 
         ///
         payslipPage.translate(30,785);
+        //contentStream.moveTextPositionByAmount(page.getMediaBox().getLowerLeftX() + 10,
+         //       page.getMediaBox().getUpperRightY() - 10);
         payslipPage.build(contentStream, writer);
 
         contentStream.close();
