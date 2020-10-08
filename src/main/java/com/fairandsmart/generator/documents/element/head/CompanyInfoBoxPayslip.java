@@ -66,14 +66,13 @@ public class CompanyInfoBoxPayslip extends ElementBox {
     private String idNames[];
     private static final List<String[]> idNumbersOrder = new ArrayList<>();
     {
-       // idNumbersOrder.add(new String[] {"Siret", "Toa", "Vat"} );
-
-        idNumbersOrder.add(new String[] {"Cid", "Vat"} );
-        idNumbersOrder.add(new String[] {"Vat"} );
-        idNumbersOrder.add(new String[] {"Rcs","Vat"} );
-        idNumbersOrder.add(new String[] {"Rcs", "Siret", "Vat"} );
+        idNumbersOrder.add(new String[] { "Siret","Toa"} );
+        idNumbersOrder.add(new String[] {"Toa","Cid", "Siret", "Vat"} );
+        idNumbersOrder.add(new String[] { "Siret","Toa","Vat"} );
+        idNumbersOrder.add(new String[] {"Toa","Rcs", "Siret","Vat"} );
+        idNumbersOrder.add(new String[] {"Toa","Rcs", "Siret", "Vat"} );
         idNumbersOrder.add(new String[] {"Toa", "Siret", "Vat"} );
-        idNumbersOrder.add(new String[] {"Toa", "Cid", "Vat"} );
+        idNumbersOrder.add(new String[] { "Siret","Toa", "Cid", "Vat"} );
         idNumbersOrder.add(new String[] {"Toa", "Rcs", "Siret", "Vat"} );
     }
 
@@ -338,8 +337,8 @@ public class CompanyInfoBoxPayslip extends ElementBox {
                 SimpleTextBox Label = new SimpleTextBox(font, fontSize, 0, 0, model.callviaName(idnumObj, labelName).toString());
                 Label.setPadding(0, 0, 2, 0);
                 companyIDContainer.addElement(Label);
-                SimpleTextBox Value = new SimpleTextBox(font, fontSize, 0, 0, model.callviaName(idnumObj, labelName).toString());
-               // Value.setEntityName("S" + idName.toUpperCase());
+                SimpleTextBox Value = new SimpleTextBox(font, fontSize, 0, 0, model.callviaName(idnumObj, valueName).toString(),"S" + idName.toUpperCase());
+                // Value.setEntityName("S" + idName.toUpperCase());
                 Value.setPadding(0, 0, 3, 0);
                 companyIDContainer.addElement(Value);
             }
@@ -349,6 +348,8 @@ public class CompanyInfoBoxPayslip extends ElementBox {
 
         return idContainer;
     }
+
+
 
     public HorizontalContainer getCompanyIdLine(int size) throws Exception
     {

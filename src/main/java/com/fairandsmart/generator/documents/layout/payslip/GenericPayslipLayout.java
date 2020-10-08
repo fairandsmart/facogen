@@ -180,7 +180,7 @@ public class GenericPayslipLayout implements PayslipLayout {
         CompanyInfoBoxPayslip companyAddIDCont = new CompanyInfoBoxPayslip(companyInfoBox.concatContainersVertically
                 (new ElementBox[]{companyLogo, companyInfoBox.getCompanyAddressBlock(), companyInfoBox.getCompanyIdBlock() }));
 
-        EmployeeInfoPayslipBox employeeInfo = new EmployeeInfoPayslipBox(employeeInfoPayslipBox.getEmployeeInformationTable1());
+        EmployeeInfoPayslipBox employeeInfo = new EmployeeInfoPayslipBox(employeeInfoPayslipBox.getEmployeeInformationTable6());
 
         CompanyInfoBoxPayslip employeeInfoFinal = new CompanyInfoBoxPayslip(companyInfoBox.concatContainersVertically
                 (new ElementBox[]{companyAddIDCont, emptyBox, employeeInfo }));

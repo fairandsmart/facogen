@@ -42,6 +42,7 @@ import com.fairandsmart.generator.documents.element.HAlign;
 import com.fairandsmart.generator.documents.element.container.HorizontalContainer;
 import com.fairandsmart.generator.documents.element.container.VerticalContainer;
 import com.fairandsmart.generator.documents.element.image.ImageBox;
+import com.fairandsmart.generator.documents.element.table.TableRowBox;
 import com.fairandsmart.generator.documents.element.textbox.SimpleTextBox;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
@@ -72,12 +73,12 @@ public class EmployeeInfoPayslipBox extends ElementBox {
     {
        // idNumbersOrder.add(new String[] {"Siret", "Toa", "Vat"} );
 
-        idNumbersOrder.add(new String[] {"Cid", "Vat"} );
-        idNumbersOrder.add(new String[] {"Vat"} );
-        idNumbersOrder.add(new String[] {"Rcs","Vat"} );
-        idNumbersOrder.add(new String[] {"Rcs", "Siret", "Vat"} );
+        idNumbersOrder.add(new String[] {"Toa","Cid", "Siret", "Vat"} );
+        idNumbersOrder.add(new String[] { "Siret","Toa","Vat"} );
+        idNumbersOrder.add(new String[] {"Toa","Rcs", "Siret","Vat"} );
+        idNumbersOrder.add(new String[] {"Toa","Rcs", "Siret", "Vat"} );
         idNumbersOrder.add(new String[] {"Toa", "Siret", "Vat"} );
-        idNumbersOrder.add(new String[] {"Toa", "Cid", "Vat"} );
+        idNumbersOrder.add(new String[] { "Siret","Toa", "Cid", "Vat"} );
         idNumbersOrder.add(new String[] {"Toa", "Rcs", "Siret", "Vat"} );
     }
 
@@ -546,7 +547,6 @@ public class EmployeeInfoPayslipBox extends ElementBox {
         SimpleTextBox emptyBox= new SimpleTextBox(font, fontSize, 0, 0, "", Color.BLACK, null, HAlign.CENTER);
 
         VerticalContainer idContainer = new VerticalContainer(0,0,0);
-        HorizontalContainer titleContainer = new HorizontalContainer(0, 0);
         HorizontalContainer ligne1 = new HorizontalContainer(0, 0);
         HorizontalContainer ligne2 = new HorizontalContainer(0, 0);
         HorizontalContainer ligne3 = new HorizontalContainer(0, 0);
@@ -579,6 +579,212 @@ public class EmployeeInfoPayslipBox extends ElementBox {
         return idContainer;
     }
 
+    public VerticalContainer getEmployeeInformationTable2() throws  Exception
+    {
+        float[] configRow = {70f };
+        SimpleTextBox emptyBox= new SimpleTextBox(font, fontSize, 0, 0, "", Color.BLACK, null, HAlign.CENTER);
+
+        VerticalContainer idContainer = new VerticalContainer(0,0,0);
+        HorizontalContainer ligne1 = new HorizontalContainer(0, 0);
+        HorizontalContainer ligne2 = new HorizontalContainer(0, 0);
+        HorizontalContainer ligne3 = new HorizontalContainer(0, 0);
+        HorizontalContainer ligne4 = new HorizontalContainer(0, 0);
+        HorizontalContainer ligne5 = new HorizontalContainer(0, 0);
+        HorizontalContainer ligne6 = new HorizontalContainer(0, 0);
+        HorizontalContainer ligne7 = new HorizontalContainer(0, 0);
+        HorizontalContainer ligne8 = new HorizontalContainer(0, 0);
+        ligne1.addElement(getEmployeeRegNumberBlock());
+        idContainer.addElement(ligne1);
+
+        ligne2.addElement(getSocialSecurityCeilingBlock());
+        idContainer.addElement(ligne2);
+
+        ligne3.addElement(getEmployeeDateStartBlock());
+        idContainer.addElement(ligne3);
+
+        ligne4.addElement(getEmploiBlock());
+        idContainer.addElement(ligne4);
+
+        ligne5.addElement(getQualifBlock());
+        idContainer.addElement(ligne5);
+
+        ligne6.addElement(getCoeffBlock());
+        idContainer.addElement(ligne6);
+
+        ligne7.addElement(getSocialSecurityCeilingBlock());
+        idContainer.addElement(ligne7);
+
+        ligne8.addElement(getContratBlock());
+        idContainer.addElement(ligne8);
+
+        return idContainer;
+    }
+
+    public VerticalContainer getEmployeeInformationTable3() throws  Exception
+    {
+        float[] configRow = {70f, 70f,70f};
+        SimpleTextBox emptyBox= new SimpleTextBox(font, fontSize, 0, 0, "", Color.BLACK, null, HAlign.CENTER);
+
+        VerticalContainer idContainer = new VerticalContainer(0,0,0);
+        HorizontalContainer ligne1 = new HorizontalContainer(0, 0);
+        HorizontalContainer ligne2 = new HorizontalContainer(0, 0);
+        HorizontalContainer ligne3 = new HorizontalContainer(0, 0);
+        HorizontalContainer ligne4 = new HorizontalContainer(0, 0);
+
+        ligne1.addElement(getEmployeeRegNumberBlock());
+        emptyBox.setWidth(configRow[0]);
+        ligne1.addElement(emptyBox);
+        ligne1.addElement(getSocialSecurityCeilingBlock());
+        idContainer.addElement(ligne1);
+
+        ligne2.addElement(getEmployeeDateStartBlock());
+        idContainer.addElement(ligne2);
+
+        ligne3.addElement(getEmploiBlock());
+        emptyBox.setWidth(configRow[0]);
+        ligne3.addElement(emptyBox);
+        ligne3.addElement(getDateSeniorityBlock());
+        idContainer.addElement(ligne3);
+
+        ligne4.addElement(getQualifBlock());
+        emptyBox.setWidth(configRow[0]);
+        ligne4.addElement(getClassificationBlock());
+        ligne4.addElement(getCoeffBlock());
+        idContainer.addElement(ligne4);
+
+        return idContainer;
+    }
+
+    public VerticalContainer getEmployeeInformationTable4() throws  Exception
+    {
+        float[] configRow = {70f, 70f,70f,70f};
+        TableRowBox Part1 = new TableRowBox(configRow, 0, 0);
+
+        SimpleTextBox emptyBox= new SimpleTextBox(font, fontSize, 0, 0, "", Color.BLACK, null, HAlign.CENTER);
+
+        VerticalContainer idContainer = new VerticalContainer(0,0,0);
+        HorizontalContainer ligne1 = new HorizontalContainer(0, 0);
+        HorizontalContainer ligne2 = new HorizontalContainer(0, 0);
+        HorizontalContainer ligne3 = new HorizontalContainer(0, 0);
+        HorizontalContainer ligne4 = new HorizontalContainer(0, 0);
+
+        ligne1.addElement(getEmployeeDateStartBlock());
+        ligne1.addElement(getReleaseDateBlock());
+        idContainer.addElement(ligne1);
+
+        ligne2.addElement(getEmploiBlock());
+        ligne2.addElement(getHourlyRateBlock());
+        idContainer.addElement(ligne2);
+
+        ligne3.addElement(getQualifBlock());
+        ligne3.addElement(getClassificationBlock());
+        ligne3.addElement(getCoeffBlock());
+        ligne3.addElement(getSocialSecurityCeilingBlock());
+
+        idContainer.addElement(ligne3);
+
+
+        return idContainer;
+    }
+
+    public VerticalContainer getEmployeeInformationTable5() throws  Exception
+    {
+        float[] configRow = {70f, 70f,70f};
+        TableRowBox Part1 = new TableRowBox(configRow, 0, 0);
+
+        SimpleTextBox emptyBox= new SimpleTextBox(font, fontSize, 0, 0, "", Color.BLACK, null, HAlign.CENTER);
+
+        VerticalContainer idContainer = new VerticalContainer(0,0,0);
+        HorizontalContainer ligne1 = new HorizontalContainer(0, 0);
+        HorizontalContainer ligne2 = new HorizontalContainer(0, 0);
+        HorizontalContainer ligne3 = new HorizontalContainer(0, 0);
+        HorizontalContainer ligne4 = new HorizontalContainer(0, 0);
+
+        ligne1.addElement(getEmployeeRegNumberBlock());
+        ligne1.addElement(getEmployeeSucurityNumberBlock());
+        idContainer.addElement(ligne1);
+
+        ligne2.addElement(getEmployeeDateStartBlock());
+        idContainer.addElement(ligne2);
+
+        ligne3.addElement(getEmploiBlock());
+        ligne3.addElement(getDateSeniorityBlock());
+        idContainer.addElement(ligne3);
+
+        ligne4.addElement(getQualifBlock());
+        ligne4.addElement(getClassificationBlock());
+        ligne4.addElement(getCoeffBlock());
+        idContainer.addElement(ligne4);
+        return idContainer;
+    }
+
+    public VerticalContainer getEmployeeInformationTable6() throws  Exception
+    {
+        float[] configRow = {70f, 70f,70f};
+        TableRowBox Part1 = new TableRowBox(configRow, 0, 0);
+
+        SimpleTextBox emptyBox= new SimpleTextBox(font, fontSize, 0, 0, "", Color.BLACK, null, HAlign.CENTER);
+
+        VerticalContainer idContainer = new VerticalContainer(0,0,0);
+        HorizontalContainer ligne1 = new HorizontalContainer(0, 0);
+        HorizontalContainer ligne2 = new HorizontalContainer(0, 0);
+        HorizontalContainer ligne3 = new HorizontalContainer(0, 0);
+        HorizontalContainer ligne4 = new HorizontalContainer(0, 0);
+
+        ligne1.addElement(getAssignementBlock());
+        ligne1.addElement(getCoefMinBlock());
+        ligne1.addElement(getTimeTableBlock());
+        idContainer.addElement(ligne1);
+
+        ligne2.addElement(getEmploiBlock());
+        ligne2.addElement(getMonthlyPayBlock());
+        ligne2.addElement(getHourlyRateBlock());
+        idContainer.addElement(ligne2);
+
+        ligne3.addElement(getCoeffBlock());
+        emptyBox.setWidth(configRow[0]);
+        ligne3.addElement(emptyBox);
+        ligne3.addElement(getMonthlyPayRefBlock());
+        idContainer.addElement(ligne3);
+
+        ligne4.addElement(getClassificationBlock());
+        idContainer.addElement(ligne4);
+        return idContainer;
+    }
+
+    public VerticalContainer getEmployeeInformationTable7() throws  Exception
+    {
+        float[] configRow = {70f, 70f,70f};
+        TableRowBox Part1 = new TableRowBox(configRow, 0, 0);
+
+        SimpleTextBox emptyBox= new SimpleTextBox(font, fontSize, 0, 0, "", Color.BLACK, null, HAlign.CENTER);
+
+        VerticalContainer idContainer = new VerticalContainer(0,0,0);
+        HorizontalContainer ligne1 = new HorizontalContainer(0, 0);
+        HorizontalContainer ligne2 = new HorizontalContainer(0, 0);
+        HorizontalContainer ligne3 = new HorizontalContainer(0, 0);
+        HorizontalContainer ligne4 = new HorizontalContainer(0, 0);
+
+        ligne1.addElement(getAssignementBlock());
+        ligne1.addElement(getCoefMinBlock());
+        ligne1.addElement(getTimeTableBlock());
+        idContainer.addElement(ligne1);
+
+        ligne2.addElement(getEmploiBlock());
+        ligne2.addElement(getMonthlyPayBlock());
+        ligne2.addElement(getHourlyRateBlock());
+        idContainer.addElement(ligne2);
+
+        ligne3.addElement(getCoeffBlock());
+        emptyBox.setWidth(configRow[0]);
+        ligne3.addElement(emptyBox);
+        ligne3.addElement(getMonthlyPayRefBlock());
+        idContainer.addElement(ligne3);
+
+        ligne4.addElement(getClassificationBlock());
+        idContainer.addElement(ligne4);
+        return idContainer;
+    }
 
     public VerticalContainer concatContainersVertically(ElementBox parts[]) throws  Exception
     {   int x = 1;
