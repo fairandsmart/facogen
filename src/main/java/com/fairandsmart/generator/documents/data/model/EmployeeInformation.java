@@ -45,6 +45,8 @@ import java.io.Reader;
 import java.lang.reflect.Type;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.*;
 import java.util.logging.Logger;
 
@@ -76,12 +78,13 @@ public class EmployeeInformation {
     private String meansOfPayment; //moyenPaiement
     private String PaymentDate;
     private Date periode;
+    private String conv;
 
     public EmployeeInformation(String employeCode, String registrationNumber, String socialSecurityNumber, String assignment,
                                String employment, String classification, String echelon, String contratType,
                                String arrivalDate, String socialSecurityCeiling, String timetable, String hourlyRate,
-                               String mincoef, String monthlyPay, String monthlyPayRef,String categoryLabel,
-                               String dateSeniority, String localisation, String releaseDate, String meansOfPayment, String PaymentDate)
+                               String mincoef, String coef, String monthlyPay, String monthlyPayRef,String categoryLabel,
+                               String dateSeniority, String localisation, String releaseDate, String meansOfPayment, String PaymentDate,Date periode, String conv)
     {
         this.employeCode= employeCode;
         this.registrationNumber = registrationNumber;
@@ -96,6 +99,7 @@ public class EmployeeInformation {
         this.timetable = timetable;
         this.hourlyRate = hourlyRate;
         this.mincoef = mincoef;
+        this.coef =coef;
         this.monthlyPay = monthlyPay;
         this.monthlyPayRef =  monthlyPayRef;
         this.categoryLabel = categoryLabel;
@@ -104,6 +108,8 @@ public class EmployeeInformation {
         this.releaseDate = releaseDate;
         this.meansOfPayment = meansOfPayment;
         this.PaymentDate = PaymentDate;
+        this.periode = periode;
+        this.conv =conv;
 
     }
 
@@ -294,6 +300,14 @@ public class EmployeeInformation {
         this.periode = periode;
     }
 
+    public String getConv() {
+        return conv;
+    }
+
+    public void setConv(String conv) {
+        this.conv = conv;
+    }
+
     public String getEmployeCodeLabel() {
         List<String> labels = new ArrayList<String>(Arrays.asList("Code","Code Salarié"));
         return labels.get(this.random.nextInt(labels.size()));
@@ -447,7 +461,34 @@ public class EmployeeInformation {
             Reader jsonReader = new InputStreamReader(EmployeeInformation.class.getClassLoader().getResourceAsStream(CategoriesEmpFile));
             Gson gson = new Gson();
             Type collectionType = new TypeToken<Collection<CategoryEmployee>>(){}.getType();
-            DepartsComm = gson.fromJson(jsonReader, collectionType);
+            CategoriesEmp = gson.fromJson(jsonReader, collectionType);
+        }
+
+        private List<CategorieCoef> CategorieCoef;
+        private static final String CategoriesCoefFile = "payslips/employee/categorie_coeff.json";
+        {
+            Reader jsonReader = new InputStreamReader(EmployeeInformation.class.getClassLoader().getResourceAsStream(CategoriesCoefFile));
+            Gson gson = new Gson();
+            Type collectionType = new TypeToken<Collection<CategorieCoef>>(){}.getType();
+            CategorieCoef = gson.fromJson(jsonReader, collectionType);
+        }
+
+        private List<ConventionCollec> ConvColl;
+        private static final String ConvCollFile = "payslips/employee/conventions_list.json";
+        {
+            Reader jsonReader = new InputStreamReader(EmployeeInformation.class.getClassLoader().getResourceAsStream(ConvCollFile));
+            Gson gson = new Gson();
+            Type collectionType = new TypeToken<Collection<ConventionCollec>>(){}.getType();
+            ConvColl = gson.fromJson(jsonReader, collectionType);
+        }
+
+        private List<CoeffSalary> CoefSalary;
+        private static final String CoefSalaryFile = "payslips/employee/coeff_salary_min.json";
+        {
+            Reader jsonReader = new InputStreamReader(EmployeeInformation.class.getClassLoader().getResourceAsStream(CoefSalaryFile));
+            Gson gson = new Gson();
+            Type collectionType = new TypeToken<Collection<CoeffSalary>>(){}.getType();
+            CoefSalary = gson.fromJson(jsonReader, collectionType);
         }
 
         @Override
@@ -500,27 +541,81 @@ public class EmployeeInformation {
             }
 
             Date d1 = new Date();
-            String pattern = "MM/yyyy";
+            String pattern = "DD/MM/yyyy";
             DateFormat df = new SimpleDateFormat(pattern);
             String arrivalDate = df.format(d1);
+            String mincoef = "120";
+            String coef = " ";
+            int coefInt=0;
+            boolean stop = false;
+            int i=0;
+            while (!stop){
+                if (categoryLabel.toLowerCase().contains(CategorieCoef.get(i).getCategorie())){
+                    int low = CategorieCoef.get(i).getCoeffMin();
+                    int high =CategorieCoef.get(i).getCoeffMax();
+                    coefInt = rand.nextInt(high-low) + low;
+                    stop = true;
+                }else {
+                    i++;
+                }
+                if(i==(CategorieCoef.size()-1) && !stop){
+                    stop=true;
+                    coefInt=200;
 
+                }
+            }
+            coef =Integer.toString(coefInt);
             String socialSecurityCeiling = "2435";
+            String dateSeniority = arrivalDate;
+            String releaseDate = " ";
+
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(d1);
+            cal.add(Calendar.DATE, 30*rand.nextInt(24));
+            LocalDate l = LocalDate.now();
+            Date  periode = cal.getTime();
+            if (periode.after(Date.from(l.atStartOfDay(ZoneId.systemDefault()).toInstant()))){
+                periode = Date.from(l.atStartOfDay(ZoneId.systemDefault()).toInstant());
+            }
+
+            cal.setTime(periode);
+            cal.set(Calendar.DAY_OF_MONTH, cal.getActualMaximum(Calendar.DAY_OF_MONTH));
+            String PaymentDate = df.format(cal.getTime());
+
+            String meansOfPayment = null;
+            int randPay= rand.nextInt(2);
+            switch (randPay){
+                case 0:
+                    meansOfPayment = "Par chèque";
+                    break;
+                case 1:
+                    meansOfPayment = "Par virement";
+                    break;
+            }
+
             String timetable = null;
             String hourlyRate = null;
-            String mincoef = "120";
-            String monthlyPay = null;
-            String monthlyPayRef = null;
 
-            String dateSeniority = null;
-            String localisation = null;
-            String releaseDate = null;
-            String meansOfPayment = null;
-            String PaymentDate = null;
+            int diff = Math.abs(CoefSalary.get(0).getCoefficient()-coefInt);
+            int indexCloser=0;
+            for(int j=1;j<CoefSalary.size();j++){
+                if( diff > Math.abs(CoefSalary.get(j).getCoefficient()-coefInt)){
+                    diff = Math.abs(CoefSalary.get(j).getCoefficient()-coefInt);
+                    indexCloser = j;
+                }
+            }
+
+            String monthlyPay = Double.toString(CoefSalary.get(indexCloser).getBaseMin()+(rand.nextDouble()*200));
+            String monthlyPayRef = " ";
+
+            String localisation = " ";
+            ConventionCollec conv = ConvColl.get(rand.nextInt(ConvColl.size()));
+            String convColl=conv.getName();
 
             return new EmployeeInformation( employeCode,  registrationNumber,  socialSecurityNumber,  assignment,
                      employment,  classification,  echelon,  contratType, arrivalDate,  socialSecurityCeiling,
-                     timetable,  hourlyRate, mincoef,  monthlyPay,  monthlyPayRef, categoryLabel,
-                     dateSeniority, localisation, releaseDate, meansOfPayment, PaymentDate);
+                     timetable,  hourlyRate, mincoef, coef, monthlyPay,  monthlyPayRef, categoryLabel,
+                     dateSeniority, localisation, releaseDate, meansOfPayment, PaymentDate, periode,convColl);
         }
     }
 }

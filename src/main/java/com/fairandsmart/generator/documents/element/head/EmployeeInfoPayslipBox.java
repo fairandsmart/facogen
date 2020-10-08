@@ -38,6 +38,7 @@ import com.fairandsmart.generator.documents.data.model.Model;
 import com.fairandsmart.generator.documents.data.model.PayslipModel;
 import com.fairandsmart.generator.documents.element.BoundingBox;
 import com.fairandsmart.generator.documents.element.ElementBox;
+import com.fairandsmart.generator.documents.element.HAlign;
 import com.fairandsmart.generator.documents.element.container.HorizontalContainer;
 import com.fairandsmart.generator.documents.element.container.VerticalContainer;
 import com.fairandsmart.generator.documents.element.image.ImageBox;
@@ -526,6 +527,59 @@ public class EmployeeInfoPayslipBox extends ElementBox {
         return idContainer;
     }
 
+    public VerticalContainer getConvCollectBlock() throws Exception
+    {
+        VerticalContainer idContainer = new VerticalContainer(0,0,0);
+        HorizontalContainer companyIDContainer = new HorizontalContainer(0, 0);
+
+        SimpleTextBox Label = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getConv());
+        Label.setPadding(0, 0, 2, 0);
+        companyIDContainer.addElement(Label);
+        idContainer.addElement(companyIDContainer);
+
+        return idContainer;
+    }
+
+    public VerticalContainer getEmployeeInformationTable1() throws  Exception
+    {
+        float[] configRow = {70f, 70f,70f};
+        SimpleTextBox emptyBox= new SimpleTextBox(font, fontSize, 0, 0, "", Color.BLACK, null, HAlign.CENTER);
+
+        VerticalContainer idContainer = new VerticalContainer(0,0,0);
+        HorizontalContainer titleContainer = new HorizontalContainer(0, 0);
+        HorizontalContainer ligne1 = new HorizontalContainer(0, 0);
+        HorizontalContainer ligne2 = new HorizontalContainer(0, 0);
+        HorizontalContainer ligne3 = new HorizontalContainer(0, 0);
+        HorizontalContainer ligne4 = new HorizontalContainer(0, 0);
+
+        ligne1.addElement(getEmployeeCodeBlock());
+        emptyBox.setWidth(configRow[0]);
+        ligne1.addElement(emptyBox);
+        ligne1.addElement(getSocialSecurityCeilingBlock());
+        idContainer.addElement(ligne1);
+
+        ligne2.addElement(getEmploiBlock());
+        emptyBox.setWidth(configRow[0]);
+        ligne2.addElement(emptyBox);
+        ligne2.addElement(getTimeTableBlock());
+        idContainer.addElement(ligne2);
+
+        ligne3.addElement(getQualifBlock());
+        emptyBox.setWidth(configRow[0]);
+        ligne3.addElement(emptyBox);
+        ligne3.addElement(getHourlyRateBlock());
+        idContainer.addElement(ligne3);
+
+        ligne4.addElement(getEchelonBlock());
+        emptyBox.setWidth(configRow[0]);
+        ligne4.addElement(emptyBox);
+        ligne4.addElement(getCoeffBlock());
+        idContainer.addElement(ligne4);
+
+        return idContainer;
+    }
+
+
     public VerticalContainer concatContainersVertically(ElementBox parts[]) throws  Exception
     {   int x = 1;
         VerticalContainer result = new VerticalContainer(0,0,0);;
@@ -535,9 +589,6 @@ public class EmployeeInfoPayslipBox extends ElementBox {
         }
         return result;
     }
-
-
-
 
     @Override
     public BoundingBox getBoundingBox() {
