@@ -170,7 +170,7 @@ public class PayslipModel extends Model {
             model.setCompany(new Company.Generator().generate(ctx));
             model.setEmployee(new Employee.Generator().generate(ctx));
             model.setEmployeeInformation(new EmployeeInformation.Generator().generate(ctx));
-            model.setSalaryTable(new SalaryCotisationTable.Generator().generate(ctx));
+            model.setSalaryTable(new SalaryCotisationTable.Generator().generate(ctx,model.getEmployeeInformation().getMonthlyPay()));
             model.setLeaveInformation(new LeaveInformation.Generator().generate(ctx));
             model.setSumUpSalary(new SumUpSalary.Generator().generate(ctx));
 

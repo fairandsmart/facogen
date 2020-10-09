@@ -223,7 +223,7 @@ public class SalaryCotisationTable {
                 '}';
     }
 
-    public static class Generator implements ModelGenerator<SalaryCotisationTable> {
+    public static class Generator {//implements ModelGenerator<SalaryCotisationTable> {
 
         private static final Map<String, String> codeElementHeads = new LinkedHashMap<>();
         private static final Map<String, String> headingHeads = new LinkedHashMap<>();
@@ -361,8 +361,8 @@ public class SalaryCotisationTable {
         }
 
 
-        @Override
-        public SalaryCotisationTable generate(GenerationContext ctx) {
+        //@Override
+        public SalaryCotisationTable generate(GenerationContext ctx, String brutSal) {
 
             float brut;
             float tauxHorr;
@@ -389,7 +389,10 @@ public class SalaryCotisationTable {
             List<SalaryLine> composantesRemunLines = composantesRenum.get(ctx.getRandom().nextInt(composantesRenum.size()));
 
             if(composantesRemunLines.size() == 1){
-                brut= (float)(salaryTableContainer.getBrutSalary()+salaryTableContainer.random.nextDouble()*100);
+
+               // **
+                brut= Float.parseFloat(brutSal.replace(',','.'));
+                //brut= (float)(salaryTableContainer.getBrutSalary()+salaryTableContainer.random.nextDouble()*100);
                 salaryTableContainer.setBrutSalary(brut);
                 SalaryLine s = composantesRemunLines.get(0);
                 s.setEmployeeContributions(brut);
@@ -399,12 +402,14 @@ public class SalaryCotisationTable {
                 salaryTableContainer.setTauxHorr(tauxHorr);
 
                 // la base
+                brut= Float.parseFloat(brutSal.replace(',','.'));
                 SalaryLine s = composantesRemunLines.get(0);
+                s.setBase(brut/tauxHorr);
                 s.setSalaryRate(tauxHorr);
-                base = s.getBase()*tauxHorr;
+                base = brut;//s.getBase()*tauxHorr;
                 s.setEmployeeContributions(base);
                 salaryTableContainer.addLineSalary(s);
-                brut = base;
+
 
                 for (int i = 1; i < composantesRemunLines.size()-1; i++) {
                     SalaryLine s1 = composantesRemunLines.get(i);
