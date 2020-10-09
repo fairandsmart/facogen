@@ -42,6 +42,8 @@ import com.fairandsmart.generator.documents.element.HAlign;
 import com.fairandsmart.generator.documents.element.container.HorizontalContainer;
 import com.fairandsmart.generator.documents.element.container.VerticalContainer;
 import com.fairandsmart.generator.documents.element.image.ImageBox;
+import com.fairandsmart.generator.documents.element.line.HorizontalLineBoxV2;
+import com.fairandsmart.generator.documents.element.line.VerticalLineBox;
 import com.fairandsmart.generator.documents.element.table.TableRowBox;
 import com.fairandsmart.generator.documents.element.textbox.SimpleTextBox;
 import org.apache.pdfbox.pdmodel.PDDocument;
@@ -189,6 +191,7 @@ public class EmployeeInfoPayslipBox extends ElementBox {
         companyIDContainer.addElement(Label);
         SimpleTextBox Value = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getEmployment());
         // Value.setEntityName("S" + idName.toUpperCase());
+        Value.setWidth(90-Label.getBoundingBox().getWidth());
         Value.setPadding(0, 0, 3, 0);
         companyIDContainer.addElement(Value);
 
@@ -621,170 +624,96 @@ public class EmployeeInfoPayslipBox extends ElementBox {
         return idContainer;
     }
 
-    public VerticalContainer getEmployeeInformationTable3() throws  Exception
+    public TableRowBox getEmployeeInformationTable3() throws  Exception
     {
-        float[] configRow = {70f, 70f,70f};
+        float[] configRow = {150f, 150f,150f};
+        TableRowBox firstPart2 = new TableRowBox(configRow, 0, 0);
         SimpleTextBox emptyBox= new SimpleTextBox(font, fontSize, 0, 0, "", Color.BLACK, null, HAlign.CENTER);
 
-        VerticalContainer idContainer = new VerticalContainer(0,0,0);
-        HorizontalContainer ligne1 = new HorizontalContainer(0, 0);
-        HorizontalContainer ligne2 = new HorizontalContainer(0, 0);
-        HorizontalContainer ligne3 = new HorizontalContainer(0, 0);
-        HorizontalContainer ligne4 = new HorizontalContainer(0, 0);
+        firstPart2.addElement( new EmployeeInfoPayslipBox(concatContainersVertically(new ElementBox[]{
+                getEmployeeRegNumberBlock(),getEmployeeDateStartBlock(),getEmploiBlock(),getQualifBlock()})), false);
 
-        ligne1.addElement(getEmployeeRegNumberBlock());
-        emptyBox.setWidth(configRow[0]);
-        ligne1.addElement(emptyBox);
-        ligne1.addElement(getSocialSecurityCeilingBlock());
-        idContainer.addElement(ligne1);
+        firstPart2.addElement( new EmployeeInfoPayslipBox(concatContainersVertically(new ElementBox[]{
+                emptyBox ,emptyBox,emptyBox,getClassificationBlock()})), false);
 
-        ligne2.addElement(getEmployeeDateStartBlock());
-        idContainer.addElement(ligne2);
+        firstPart2.addElement( new EmployeeInfoPayslipBox(concatContainersVertically(new ElementBox[]{
+                getSocialSecurityCeilingBlock() ,emptyBox,getDateSeniorityBlock(),getCoeffBlock()})), false);
 
-        ligne3.addElement(getEmploiBlock());
-        emptyBox.setWidth(configRow[0]);
-        ligne3.addElement(emptyBox);
-        ligne3.addElement(getDateSeniorityBlock());
-        idContainer.addElement(ligne3);
-
-        ligne4.addElement(getQualifBlock());
-        emptyBox.setWidth(configRow[0]);
-        ligne4.addElement(getClassificationBlock());
-        ligne4.addElement(getCoeffBlock());
-        idContainer.addElement(ligne4);
-
-        return idContainer;
+        return firstPart2;
     }
 
-    public VerticalContainer getEmployeeInformationTable4() throws  Exception
+    public TableRowBox getEmployeeInformationTable4() throws  Exception
     {
-        float[] configRow = {70f, 70f,70f,70f};
-        TableRowBox Part1 = new TableRowBox(configRow, 0, 0);
-
+        float[] configRow = {120f, 120f,120f,120f};
+        TableRowBox firstPart2 = new TableRowBox(configRow, 0, 0);
         SimpleTextBox emptyBox= new SimpleTextBox(font, fontSize, 0, 0, "", Color.BLACK, null, HAlign.CENTER);
 
-        VerticalContainer idContainer = new VerticalContainer(0,0,0);
-        HorizontalContainer ligne1 = new HorizontalContainer(0, 0);
-        HorizontalContainer ligne2 = new HorizontalContainer(0, 0);
-        HorizontalContainer ligne3 = new HorizontalContainer(0, 0);
-        HorizontalContainer ligne4 = new HorizontalContainer(0, 0);
+        firstPart2.addElement( new EmployeeInfoPayslipBox(concatContainersVertically(new ElementBox[]{
+                getEmployeeDateStartBlock(),getEmploiBlock(),getQualifBlock()})), false);
 
-        ligne1.addElement(getEmployeeDateStartBlock());
-        ligne1.addElement(getReleaseDateBlock());
-        idContainer.addElement(ligne1);
+        firstPart2.addElement( new EmployeeInfoPayslipBox(concatContainersVertically(new ElementBox[]{
+                getReleaseDateBlock() ,getHourlyRateBlock(),getClassificationBlock()})), false);
 
-        ligne2.addElement(getEmploiBlock());
-        ligne2.addElement(getHourlyRateBlock());
-        idContainer.addElement(ligne2);
-
-        ligne3.addElement(getQualifBlock());
-        ligne3.addElement(getClassificationBlock());
-        ligne3.addElement(getCoeffBlock());
-        ligne3.addElement(getSocialSecurityCeilingBlock());
-
-        idContainer.addElement(ligne3);
-
-
-        return idContainer;
+        firstPart2.addElement( new EmployeeInfoPayslipBox(concatContainersVertically(new ElementBox[]{
+                emptyBox ,emptyBox,getCoeffBlock()})), false);
+        firstPart2.addElement( new EmployeeInfoPayslipBox(concatContainersVertically(new ElementBox[]{
+                emptyBox ,emptyBox,getSocialSecurityCeilingBlock()})), false);
+        return firstPart2;
     }
 
-    public VerticalContainer getEmployeeInformationTable5() throws  Exception
-    {
-        float[] configRow = {70f, 70f,70f};
-        TableRowBox Part1 = new TableRowBox(configRow, 0, 0);
 
+    public TableRowBox getEmployeeInformationTable5() throws  Exception
+    {
+        float[] configRow = {150f, 150f,150f};
+        TableRowBox firstPart2 = new TableRowBox(configRow, 0, 0);
         SimpleTextBox emptyBox= new SimpleTextBox(font, fontSize, 0, 0, "", Color.BLACK, null, HAlign.CENTER);
 
-        VerticalContainer idContainer = new VerticalContainer(0,0,0);
-        HorizontalContainer ligne1 = new HorizontalContainer(0, 0);
-        HorizontalContainer ligne2 = new HorizontalContainer(0, 0);
-        HorizontalContainer ligne3 = new HorizontalContainer(0, 0);
-        HorizontalContainer ligne4 = new HorizontalContainer(0, 0);
+        firstPart2.addElement( new EmployeeInfoPayslipBox(concatContainersVertically(new ElementBox[]{
+                getEmployeeRegNumberBlock(),getEmployeeDateStartBlock(),getEmploiBlock(),getQualifBlock()})), false);
 
-        ligne1.addElement(getEmployeeRegNumberBlock());
-        ligne1.addElement(getEmployeeSucurityNumberBlock());
-        idContainer.addElement(ligne1);
+        firstPart2.addElement( new EmployeeInfoPayslipBox(concatContainersVertically(new ElementBox[]{
+                getEmployeeSucurityNumberBlock() ,emptyBox,getDateSeniorityBlock(),getClassificationBlock()})), false);
 
-        ligne2.addElement(getEmployeeDateStartBlock());
-        idContainer.addElement(ligne2);
+        firstPart2.addElement( new EmployeeInfoPayslipBox(concatContainersVertically(new ElementBox[]{
+                emptyBox ,emptyBox,getCoeffBlock()})), false);
 
-        ligne3.addElement(getEmploiBlock());
-        ligne3.addElement(getDateSeniorityBlock());
-        idContainer.addElement(ligne3);
-
-        ligne4.addElement(getQualifBlock());
-        ligne4.addElement(getClassificationBlock());
-        ligne4.addElement(getCoeffBlock());
-        idContainer.addElement(ligne4);
-        return idContainer;
+        return firstPart2;
     }
 
-    public VerticalContainer getEmployeeInformationTable6() throws  Exception
+    public TableRowBox getEmployeeInformationTable6() throws  Exception
     {
-        float[] configRow = {70f, 70f,70f};
-        TableRowBox Part1 = new TableRowBox(configRow, 0, 0);
-
+        float[] configRow = {150f, 150f,150f};
+        TableRowBox firstPart2 = new TableRowBox(configRow, 0, 0);
         SimpleTextBox emptyBox= new SimpleTextBox(font, fontSize, 0, 0, "", Color.BLACK, null, HAlign.CENTER);
 
-        VerticalContainer idContainer = new VerticalContainer(0,0,0);
-        HorizontalContainer ligne1 = new HorizontalContainer(0, 0);
-        HorizontalContainer ligne2 = new HorizontalContainer(0, 0);
-        HorizontalContainer ligne3 = new HorizontalContainer(0, 0);
-        HorizontalContainer ligne4 = new HorizontalContainer(0, 0);
+        firstPart2.addElement( new EmployeeInfoPayslipBox(concatContainersVertically(new ElementBox[]{
+                getAssignementBlock(),getEmploiBlock(),getCoeffBlock(),getClassificationBlock()})), false);
 
-        ligne1.addElement(getAssignementBlock());
-        ligne1.addElement(getCoefMinBlock());
-        ligne1.addElement(getTimeTableBlock());
-        idContainer.addElement(ligne1);
+        firstPart2.addElement( new EmployeeInfoPayslipBox(concatContainersVertically(new ElementBox[]{
+                getCoefMinBlock() ,getMonthlyPayBlock(),emptyBox,emptyBox})), false);
 
-        ligne2.addElement(getEmploiBlock());
-        ligne2.addElement(getMonthlyPayBlock());
-        ligne2.addElement(getHourlyRateBlock());
-        idContainer.addElement(ligne2);
+        firstPart2.addElement( new EmployeeInfoPayslipBox(concatContainersVertically(new ElementBox[]{
+                getTimeTableBlock() ,getHourlyRateBlock(),getMonthlyPayRefBlock()})), false);
 
-        ligne3.addElement(getCoeffBlock());
-        emptyBox.setWidth(configRow[0]);
-        ligne3.addElement(emptyBox);
-        ligne3.addElement(getMonthlyPayRefBlock());
-        idContainer.addElement(ligne3);
-
-        ligne4.addElement(getClassificationBlock());
-        idContainer.addElement(ligne4);
-        return idContainer;
+        return firstPart2;
     }
 
-    public VerticalContainer getEmployeeInformationTable7() throws  Exception
+    public TableRowBox getEmployeeInformationTable7() throws  Exception
     {
-        float[] configRow = {70f, 70f,70f};
-        TableRowBox Part1 = new TableRowBox(configRow, 0, 0);
-
+        float[] configRow = {200f, 200f,200f};
+        TableRowBox firstPart2 = new TableRowBox(configRow, 0, 0);
         SimpleTextBox emptyBox= new SimpleTextBox(font, fontSize, 0, 0, "", Color.BLACK, null, HAlign.CENTER);
 
-        VerticalContainer idContainer = new VerticalContainer(0,0,0);
-        HorizontalContainer ligne1 = new HorizontalContainer(0, 0);
-        HorizontalContainer ligne2 = new HorizontalContainer(0, 0);
-        HorizontalContainer ligne3 = new HorizontalContainer(0, 0);
-        HorizontalContainer ligne4 = new HorizontalContainer(0, 0);
+        firstPart2.addElement( new EmployeeInfoPayslipBox(concatContainersVertically(new ElementBox[]{new HorizontalLineBoxV2(0,0, 550f, 0),
+                getAssignementBlock(),getEmploiBlock(),getCoeffBlock(),getClassificationBlock(),new HorizontalLineBoxV2(0,0, 550f, 0),})), false);
 
-        ligne1.addElement(getAssignementBlock());
-        ligne1.addElement(getCoefMinBlock());
-        ligne1.addElement(getTimeTableBlock());
-        idContainer.addElement(ligne1);
+        firstPart2.addElement( new EmployeeInfoPayslipBox(concatContainersVertically(new ElementBox[]{
+                getCoefMinBlock() ,getMonthlyPayBlock(),emptyBox,emptyBox})), false);
 
-        ligne2.addElement(getEmploiBlock());
-        ligne2.addElement(getMonthlyPayBlock());
-        ligne2.addElement(getHourlyRateBlock());
-        idContainer.addElement(ligne2);
+        firstPart2.addElement( new EmployeeInfoPayslipBox(concatContainersVertically(new ElementBox[]{
+                getTimeTableBlock() ,getHourlyRateBlock(),getMonthlyPayRefBlock()})), false);
 
-        ligne3.addElement(getCoeffBlock());
-        emptyBox.setWidth(configRow[0]);
-        ligne3.addElement(emptyBox);
-        ligne3.addElement(getMonthlyPayRefBlock());
-        idContainer.addElement(ligne3);
-
-        ligne4.addElement(getClassificationBlock());
-        idContainer.addElement(ligne4);
-        return idContainer;
+        return firstPart2;
     }
 
     public VerticalContainer concatContainersVertically(ElementBox parts[]) throws  Exception

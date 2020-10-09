@@ -523,7 +523,10 @@ public class EmployeeInformation {
             String categoryLabel = categorieEmp.getCategorie();
             String employeCode = emp.getCode();
             String employment = emp.getLibelle();
-
+            String arr[] = employment.split(" ", 4);
+            if (arr.length>=3) employment = arr[0]+ " "+ arr[1] +" "+arr[2];
+            else if (arr.length>=2 ) employment = arr[0]+ " "+ arr[1] ;
+                    else employment = arr[0];
             String classification ;
             if(categoryLabel.toLowerCase().contains("cadre")) classification ="CADRE";
             else classification ="NON CADRE";
@@ -578,7 +581,7 @@ public class EmployeeInformation {
             String socialSecurityCeiling = "2435";
             String dateSeniority = arrivalDate;
             String releaseDate = " ";
-            
+
             ///////////////
             long from1 = 1483228800;
             long to1 = System.currentTimeMillis() / 1000;

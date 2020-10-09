@@ -219,7 +219,7 @@ public class GenericPayslipLayout implements PayslipLayout {
         }else {
             companyInfoEmplFinal = new CompanyInfoBoxPayslip(companyInfoBox.concatContainersVertically
                     (new ElementBox[]{companyInfoFinal}));//emptyBox
-            employeeInfoAvailable=-1;
+            employeeInfoAvailable=2;
         }
 
         title_period.addElement(employeeInfoPayslipBox.getPeriodBlock()); //period
@@ -259,32 +259,27 @@ public class GenericPayslipLayout implements PayslipLayout {
             secondPart.addElement(compElements.get(i+1), false);
         payslipPage.addElement(secondPart);
 
-        if (employeeInfoAvailable==-1){
-            EmployeeInfoPayslipBox employeeInfo2;
+        if (employeeInfoAvailable==2){
             int ran2= model.getRandom().nextInt(5);
             switch (ran2){
                 case 1:
-                    employeeInfo2  = new EmployeeInfoPayslipBox(employeeInfoPayslipBox.getEmployeeInformationTable3());
+                    payslipPage.addElement(employeeInfoPayslipBox.getEmployeeInformationTable3());
                     break;
                 case 2:
-                    employeeInfo2  = new EmployeeInfoPayslipBox(employeeInfoPayslipBox.getEmployeeInformationTable4());
+                    payslipPage.addElement(employeeInfoPayslipBox.getEmployeeInformationTable4());
                     break;
                 case 3:
-                    employeeInfo2  = new EmployeeInfoPayslipBox(employeeInfoPayslipBox.getEmployeeInformationTable5());
+                    payslipPage.addElement(employeeInfoPayslipBox.getEmployeeInformationTable5());
                     break;
                 case 4:
-                    employeeInfo2  = new EmployeeInfoPayslipBox(employeeInfoPayslipBox.getEmployeeInformationTable6());
+                    payslipPage.addElement(employeeInfoPayslipBox.getEmployeeInformationTable6());
                     break;
                 default:
-                    employeeInfo2  = new EmployeeInfoPayslipBox(employeeInfoPayslipBox.getEmployeeInformationTable7());
+                    payslipPage.addElement(employeeInfoPayslipBox.getEmployeeInformationTable7());
                     break;
             }
-            firstPart2 = new TableRowBox(configRow1v1, 0, 0);
-            firstPart2.addElement(employeeInfo2, false);
-            payslipPage.addElement(firstPart2);
         }
 
-        ///////////***********
             this.compContactAvailable = -1;
         this.ciDAvailable = -1;
 
