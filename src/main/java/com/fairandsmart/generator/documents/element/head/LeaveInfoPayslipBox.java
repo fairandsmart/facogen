@@ -144,7 +144,7 @@ public class LeaveInfoPayslipBox extends ElementBox {
         SimpleTextBox Label = new SimpleTextBox(font, fontSize, 0, 0, "Congés payés");
         Label.setPadding(0, 0, 2, 0);
         titleContainer.addElement(Label);
-        Label.setWidth(configRow[0]);
+        //Label.setWidth(configRow[0]);
         idContainer.addElement(titleContainer);
 
         // encours

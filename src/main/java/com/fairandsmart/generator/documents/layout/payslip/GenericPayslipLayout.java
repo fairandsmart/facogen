@@ -222,12 +222,12 @@ public class GenericPayslipLayout implements PayslipLayout {
             employeeInfoAvailable=-1;
         }
 
-        title_period.addElement(period);
+        title_period.addElement(employeeInfoPayslipBox.getPeriodBlock()); //period
+        title_period.addElement(employeeInfoPayslipBox.getPaymentDateBlock());
+        title_period.addElement(employeeInfoPayslipBox.getPaymentPeriodeDatesBlock());
         title_period.addElement(emptyBox);
         title_period.addElement(employeeAddress);
         title_period.addElement(emptyBox);
-        title_period.addElement(emptyBox);
-        //title_period.addElement(new SimpleTextBox(fonts[1], fontSize+2, 0, 0," Congé " ));
 
         if (leaveInformationInTop) {
             int rand= model.getRandom().nextInt(2);
@@ -337,48 +337,16 @@ public class GenericPayslipLayout implements PayslipLayout {
                 fourthPart.addElement(sumUpElements.get(i+1), false);
         }
 
-
-       /*SumUpSalaryPayslipBox iSumUpr = new SumUpSalaryPayslipBox(sumUpSalaryPayslipBox.concatContainersVertically(
-               new ElementBox[]{new SumUpSalaryPayslipBox(sumUpSalaryPayslipBox.getNetImposabelBlock()),
-                       new SumUpSalaryPayslipBox(sumUpSalaryPayslipBox.getNetAPayerBlock(0))}));
-        */
-
-
-      /*  Map<Integer, ElementBox> sumUpElements = new HashMap<>();
-        {
-            sumUpElements.put(1, new SumUpSalaryPayslipBox(sumUpSalaryPayslipBox.getSumUpSalaryTable1())); //companyAddIDCont); iSumUpr
-        }
-        if (LeaveInfosAvailable != -1){
-            int rnd = model.getRandom().nextInt(4);
-            switch (rnd){
-                case 0 :
-                    sumUpElements.put(2,new LeaveInfoPayslipBox (leaveInfoPayslipBox.getLeaveInformationTable1()));
-                    break;
-                case 1 :
-                    sumUpElements.put(2,new LeaveInfoPayslipBox (leaveInfoPayslipBox.getLeaveInformationTable2()));
-                    break;
-                case 2 :
-                    sumUpElements.put(2,new LeaveInfoPayslipBox (leaveInfoPayslipBox.getLeaveInformationTable3()));
-                    break;
-                case 3 :
-                    sumUpElements.put(2,new LeaveInfoPayslipBox (leaveInfoPayslipBox.getLeaveInformationTable4()));
-                    break;
-            }
-        }else {
-            sumUpElements.put(2, emptyBox);
-        }
-        //fourthPart.addElement(emptyBox,false);*/
-
         payslipPage.addElement(fourthPart);
 
-       /* payslipPage.addElement(fifthPart);*/
-
-        ///
-        payslipPage.translate(30,785);
-        //contentStream.moveTextPositionByAmount(page.getMediaBox().getLowerLeftX() + 10,
-         //       page.getMediaBox().getUpperRightY() - 10);
+        if(!conventionWithComp){
+            fifthPart =  new TableRowBox(configRow1v1,0,0);
+            fifthPart.addElement(new EmployeeInfoPayslipBox(employeeInfoPayslipBox.concatContainersVertically
+                    (new ElementBox[]{emptyBox,employeeInfoPayslipBox.getConvCollectBlock()})),false);
+            payslipPage.addElement(fifthPart);
+        }
+        payslipPage.translate(30,830);
         payslipPage.build(contentStream, writer);
-
         contentStream.close();
         writer.writeEndElement();
 

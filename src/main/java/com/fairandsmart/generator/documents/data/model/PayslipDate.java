@@ -140,8 +140,9 @@ public class PayslipDate {
 
     public static class Generator implements ModelGenerator<PayslipDate> {
 
-        private static final long from = 252493200;
+        private static final long from = 1483228800; //   252493200
         private static final long to = System.currentTimeMillis() / 1000;
+
         private static final SimpleDateFormat formatsPeriod = new SimpleDateFormat("MMM YYYY");
         private static final Map<SimpleDateFormat,String> formatsDate = new LinkedHashMap<>();
         private static final Map<String, String> labels = new LinkedHashMap<>();

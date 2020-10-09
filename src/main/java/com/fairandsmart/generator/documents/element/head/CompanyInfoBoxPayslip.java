@@ -66,6 +66,7 @@ public class CompanyInfoBoxPayslip extends ElementBox {
     private String idNames[];
     private static final List<String[]> idNumbersOrder = new ArrayList<>();
     {
+        // idNumbersOrder.add(new String[] {"Siret", "Toa", "Vat"} );
         idNumbersOrder.add(new String[] { "Siret","Toa"} );
         idNumbersOrder.add(new String[] {"Toa","Cid", "Siret", "Vat"} );
         idNumbersOrder.add(new String[] { "Siret","Toa","Vat"} );

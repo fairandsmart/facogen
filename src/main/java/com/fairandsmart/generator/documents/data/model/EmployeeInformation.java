@@ -44,6 +44,7 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.lang.reflect.Type;
 import java.text.DateFormat;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -53,6 +54,7 @@ import java.util.logging.Logger;
 public class EmployeeInformation {
 
     private static final Logger LOGGER = Logger.getLogger(EmployeeInformation.class.getName());
+    private static DecimalFormat dfd = new DecimalFormat("0.00");
     private Random random= new Random();
     private String employeCode;
     private String registrationNumber; // Matricule
@@ -540,8 +542,16 @@ public class EmployeeInformation {
                     break;
             }
 
-            Date d1 = new Date();
-            String pattern = "DD/MM/yyyy";
+            /////////////////
+            long from = 946684800;
+            long to = 1483228800 ;
+            long date = (ctx.getRandom().nextInt((int)(to-from)) + from) * 1000;
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTimeInMillis(date);
+            Date d1 = calendar.getTime();
+            ////////////////
+            //Date d1 = new Date();
+            String pattern = "d MMM YYYY"; // "D/MM/yyyy";
             DateFormat df = new SimpleDateFormat(pattern);
             String arrivalDate = df.format(d1);
             String mincoef = "120";
@@ -568,16 +578,16 @@ public class EmployeeInformation {
             String socialSecurityCeiling = "2435";
             String dateSeniority = arrivalDate;
             String releaseDate = " ";
-
+            
+            ///////////////
+            long from1 = 1483228800;
+            long to1 = System.currentTimeMillis() / 1000;
+            long date1 = (ctx.getRandom().nextInt((int)(to1-from1)) + from1) * 1000;
+            Calendar calendar1 = Calendar.getInstance();
+            calendar1.setTimeInMillis(date1);
+            Date periode = calendar1.getTime();
+            //////////////
             Calendar cal = Calendar.getInstance();
-            cal.setTime(d1);
-            cal.add(Calendar.DATE, 30*rand.nextInt(24));
-            LocalDate l = LocalDate.now();
-            Date  periode = cal.getTime();
-            if (periode.after(Date.from(l.atStartOfDay(ZoneId.systemDefault()).toInstant()))){
-                periode = Date.from(l.atStartOfDay(ZoneId.systemDefault()).toInstant());
-            }
-
             cal.setTime(periode);
             cal.set(Calendar.DAY_OF_MONTH, cal.getActualMaximum(Calendar.DAY_OF_MONTH));
             String PaymentDate = df.format(cal.getTime());
@@ -605,7 +615,8 @@ public class EmployeeInformation {
                 }
             }
 
-            String monthlyPay = Double.toString(CoefSalary.get(indexCloser).getBaseMin()+(rand.nextDouble()*200));
+
+            String monthlyPay = dfd.format(CoefSalary.get(indexCloser).getBaseMin()+(rand.nextDouble()*200));
             String monthlyPayRef = " ";
 
             String localisation = " ";

@@ -457,7 +457,7 @@ public class EmployeeInfoPayslipBox extends ElementBox {
         SimpleTextBox Label = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getPaymentPeriodLabel());
         Label.setPadding(0, 0, 2, 0);
         companyIDContainer.addElement(Label);
-        String pattern = "MM/yyyy";
+        String pattern =  "MMM YYYY"; //"MM/yyyy";
         DateFormat df = new SimpleDateFormat(pattern);
         String dateAsString = df.format(model.getEmployeeInformation().getPeriode());
         SimpleTextBox Value = new SimpleTextBox(font, fontSize, 0, 0, dateAsString);
@@ -499,7 +499,7 @@ public class EmployeeInfoPayslipBox extends ElementBox {
         Calendar cal = Calendar.getInstance();
         cal.setTime(model.getEmployeeInformation().getPeriode());
         cal.set(Calendar.DAY_OF_MONTH, cal.getActualMinimum(Calendar.DAY_OF_MONTH));
-        String pattern = "MM/yyyy";
+        String pattern = "d MMM YYYY";
         DateFormat df = new SimpleDateFormat(pattern);
         String date1AsString = df.format(cal.getTime());
 
@@ -511,7 +511,7 @@ public class EmployeeInfoPayslipBox extends ElementBox {
         Value.setPadding(0, 0, 3, 0);
         companyIDContainer.addElement(Value);
 
-        SimpleTextBox Label2 = new SimpleTextBox(font, fontSize, 0, 0, "à" );
+        SimpleTextBox Label2 = new SimpleTextBox(font, fontSize, 0, 0, "au" );
         Label2.setPadding(0, 0, 2, 0);
         companyIDContainer.addElement(Label2);
 
@@ -535,6 +535,7 @@ public class EmployeeInfoPayslipBox extends ElementBox {
 
         SimpleTextBox Label = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getConv());
         Label.setPadding(0, 0, 2, 0);
+        Label.setWidth(300);
         companyIDContainer.addElement(Label);
         idContainer.addElement(companyIDContainer);
 
