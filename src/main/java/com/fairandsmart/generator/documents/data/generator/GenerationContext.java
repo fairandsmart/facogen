@@ -51,7 +51,7 @@ public class GenerationContext {
     }
     {
         languages.add("fr");
-        //languages.add("en");
+        languages.add("en");
     }
     {
         currencies.add("EUR");
@@ -65,6 +65,7 @@ public class GenerationContext {
 
     private String country;
     private String language;
+    private String languagePayslip;
     private String brandName;
     private String currency;
     private long date;
@@ -117,6 +118,14 @@ public class GenerationContext {
         this.date = date;
     }
 
+    public String getLanguagePayslip() {
+        return languagePayslip;
+    }
+
+    public void setLanguagePayslip(String languagePayslip) {
+        this.languagePayslip = languagePayslip;
+    }
+
     @Override
     public String toString() {
         return "GenerationContext{" +
@@ -132,6 +141,7 @@ public class GenerationContext {
         GenerationContext ctx = new GenerationContext();
         ctx.setCountry(countries.get(rnd.nextInt(countries.size())));
         ctx.setLanguage(languages.get(rnd.nextInt(languages.size())));
+        ctx.setLanguagePayslip("fr");
         ctx.setCurrency(currencies.get(rnd.nextInt(currencies.size())));
         return ctx;
     }

@@ -126,7 +126,7 @@ public class LeaveInformation {
 
         @Override
         public LeaveInformation generate(GenerationContext ctx) {
-            Faker faker = Faker.instance(Locale.forLanguageTag(ctx.getLanguage()));
+            Faker faker = Faker.instance(Locale.forLanguageTag(ctx.getLanguagePayslip()));
             Random rand =new Random();
             Date date1 = new Date();
             double mnt = rand.nextDouble();

@@ -369,13 +369,13 @@ public class SalaryCotisationTable {
             float base;
             List<SalaryLine> listCotisations = new ArrayList<SalaryLine>();
 
-            List<String> localcodeElementHead = codeElementHeads.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguage())).map(Map.Entry::getKey).collect(Collectors.toList());
-            List<String> localheadingHead = headingHeads.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguage())).map(Map.Entry::getKey).collect(Collectors.toList());
-            List<String> localbaseHead = baseHeads.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguage())).map(Map.Entry::getKey).collect(Collectors.toList());
-            List<String> localsalaryRateHead = salaryRateHeads.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguage())).map(Map.Entry::getKey).collect(Collectors.toList());
-            List<String> localemployeeContrHead = employeeContrHeads.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguage())).map(Map.Entry::getKey).collect(Collectors.toList());
-            List<String> localemployerRateHead = employerRateHeads.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguage())).map(Map.Entry::getKey).collect(Collectors.toList());
-            List<String> localemployerContrHead = employerContrHeads.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguage())).map(Map.Entry::getKey).collect(Collectors.toList());
+            List<String> localcodeElementHead = codeElementHeads.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguagePayslip())).map(Map.Entry::getKey).collect(Collectors.toList());
+            List<String> localheadingHead = headingHeads.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguagePayslip())).map(Map.Entry::getKey).collect(Collectors.toList());
+            List<String> localbaseHead = baseHeads.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguagePayslip())).map(Map.Entry::getKey).collect(Collectors.toList());
+            List<String> localsalaryRateHead = salaryRateHeads.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguagePayslip())).map(Map.Entry::getKey).collect(Collectors.toList());
+            List<String> localemployeeContrHead = employeeContrHeads.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguagePayslip())).map(Map.Entry::getKey).collect(Collectors.toList());
+            List<String> localemployerRateHead = employerRateHeads.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguagePayslip())).map(Map.Entry::getKey).collect(Collectors.toList());
+            List<String> localemployerContrHead = employerContrHeads.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguagePayslip())).map(Map.Entry::getKey).collect(Collectors.toList());
 
             SalaryCotisationTable salaryTableContainer = new SalaryCotisationTable(localcodeElementHead.get(ctx.getRandom().nextInt(localcodeElementHead.size())),
                     localheadingHead.get(ctx.getRandom().nextInt(localheadingHead.size())),

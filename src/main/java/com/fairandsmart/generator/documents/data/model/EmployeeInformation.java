@@ -495,7 +495,7 @@ public class EmployeeInformation {
 
         @Override
         public EmployeeInformation generate(GenerationContext ctx) {
-            Faker faker = Faker.instance(Locale.forLanguageTag(ctx.getLanguage()));
+            Faker faker = Faker.instance(Locale.forLanguageTag(ctx.getLanguagePayslip()));
             Random rand =new Random();
             EmployeeInformation employeeInformation = new EmployeeInformation();
 
@@ -554,7 +554,16 @@ public class EmployeeInformation {
             Date d1 = calendar.getTime();
             ////////////////
             //Date d1 = new Date();
-            String pattern = "d MMM YYYY"; // "D/MM/yyyy";
+            String pattern = "";//""d MMM YYYY"; // "D/MM/yyyy";
+            int rnd= ctx.getRandom().nextInt(2);
+            switch (rnd){
+                case 0:
+                    pattern = "d MMM YYYY";
+                    break;
+                case 1:
+                    pattern = "d/MM/yyyy";
+                    break;
+            }
             DateFormat df = new SimpleDateFormat(pattern);
             String arrivalDate = df.format(d1);
             String mincoef = "120";

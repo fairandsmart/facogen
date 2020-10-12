@@ -4,16 +4,16 @@
   ,
     "list_emploi":
     [{"code":"10",
-      "libelle":"Agriculteur (salarié de leur exploitation)"}
+      "libelle":"Agriculteur "}
     ,{"code":"100x"
-    ,"libelle":"Agriculteur et éleveurs, salarié de leur exploitation"}
+    ,"libelle":"Agriculteur et éleveur , salarié de leur exploitation"}
     ]},
   {"code_categorie":"2",
     "categorie":"Artisans, commerçant et chef d'entreprises"
   ,
     "list_emploi":
     [{"code":"21"
-    ,"libelle":"Artisan (salarié de leur entreprise)"}
+    ,"libelle":"Artisan "}
     ,{"code":"210x"
     ,"libelle":"Artisan salarié de leur entreprise"}
     ,{"code":"22"

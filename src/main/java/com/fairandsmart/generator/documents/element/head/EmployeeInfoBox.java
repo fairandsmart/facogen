@@ -78,37 +78,37 @@ public class EmployeeInfoBox extends ElementBox{
     public VerticalContainer getEmployeeAddressBlock() throws Exception
     {
         VerticalContainer addContainer = new VerticalContainer(0,0,0);
-        SimpleTextBox name = new SimpleTextBox(fontBold, fontSize, 0, 0, model.getEmployee().getName(), "SN");
+        SimpleTextBox name = new SimpleTextBox(fontBold, fontSize, 0, 0, model.getEmployee().getName(), "EN");
         //name.setEntityName("SN");
         addContainer.addElement(name);
-        SimpleTextBox adresse1 = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployee().getAddress().getLine1(), "SA");
+        SimpleTextBox adresse1 = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployee().getAddress().getLine1(), "EA");
         //adresse1.setEntityName("SA");
         addContainer.addElement(adresse1);
 
         if (model.getEmployee().getAddress().getLine2() != null && model.getEmployee().getAddress().getLine2().length() > 0) {
-            SimpleTextBox adresse2 = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployee().getAddress().getLine2(),"SA");
+            SimpleTextBox adresse2 = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployee().getAddress().getLine2(),"EA");
             //adresse2.setEntityName("SA");
             addContainer.addElement(adresse2);
         }
 
         if (model.getEmployee().getAddress().getLine3() != null && model.getEmployee().getAddress().getLine3().length() > 0) {
-            SimpleTextBox adresse3 = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployee().getAddress().getLine3(),"SA");
+            SimpleTextBox adresse3 = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployee().getAddress().getLine3(),"EA");
             //adresse3.setEntityName("SA");
             addContainer.addElement(adresse3);
         }
 
         HorizontalContainer cityContainer = new HorizontalContainer(0, 0);
-        SimpleTextBox zip = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployee().getAddress().getZip(),"SA");
+        SimpleTextBox zip = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployee().getAddress().getZip(),"EA");
         zip.setPadding(0, 0, 5, 0);
         //zip.setEntityName("SA");
         cityContainer.addElement(zip);
-        SimpleTextBox city = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployee().getAddress().getCity(),"SA");
+        SimpleTextBox city = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployee().getAddress().getCity(),"EA");
         //city.setEntityName("SA");
         cityContainer.addElement(city);
         addContainer.addElement(cityContainer);
 
         if (model.getEmployee().getAddress().getCountry() != null && model.getEmployee().getAddress().getCountry().length() > 0) {
-            SimpleTextBox country = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployee().getAddress().getCountry(),"SA");
+            SimpleTextBox country = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployee().getAddress().getCountry(),"EA");
             //country.setEntityName("SA");
             addContainer.addElement(country);
         }

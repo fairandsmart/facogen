@@ -227,13 +227,9 @@ public class Employee{
 
         @Override
         public Employee generate(GenerationContext ctx) {
-            Faker faker = Faker.instance(Locale.forLanguageTag(ctx.getLanguage()));
+            Faker faker = Faker.instance(Locale.forLanguageTag(ctx.getLanguagePayslip()));
             String name = faker.name().fullName();
             Address address = new Address.Generator().generate(ctx);
-
-            // For Address Heads
-            //List<String> localizedBillHeads = billingHeads.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguage())).map(Map.Entry::getKey).collect(Collectors.toList());
-           //int idxA = ctx.getRandom().nextInt(localizedBillHeads.size()); // Note: Only one index for both shipping & billing, to retrieve similar format heads!
 
 
             String arrivalDate = null;

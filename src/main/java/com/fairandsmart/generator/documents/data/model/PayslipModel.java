@@ -165,7 +165,7 @@ public class PayslipModel extends Model {
         public PayslipModel generate(GenerationContext ctx) {
             PayslipModel model = new PayslipModel();
             model.setDate(new PayslipDate.Generator().generate(ctx));
-            model.setLang(ctx.getLanguage());
+            model.setLang(ctx.getLanguagePayslip());
             model.setPaymentInfo(new PaymentInfo.Generator().generate(ctx));
             model.setCompany(new Company.Generator().generate(ctx));
             model.setEmployee(new Employee.Generator().generate(ctx));

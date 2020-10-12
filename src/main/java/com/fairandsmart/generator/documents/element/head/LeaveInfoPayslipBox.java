@@ -165,7 +165,7 @@ public class LeaveInfoPayslipBox extends ElementBox {
         Label1.setWidth(configRow[0]);
         acquis.addElement(Label1);
         SimpleTextBox Value = new SimpleTextBox(font, fontSize, 0, 0, Integer.toString(model.getLeaveInformation().getCpNMinus1()[0]));
-        // Value.setEntityName("S" + idName.toUpperCase());
+        Value.setEntityName("LD");
         Value.setPadding(0, 0, 3, 0);
         Value.setWidth(configRow[1]);
         acquis.addElement(Value);
@@ -234,7 +234,7 @@ public class LeaveInfoPayslipBox extends ElementBox {
         acquis.addElement(Label3);
 
         SimpleTextBox Value = new SimpleTextBox(font, fontSize, 0, 0, Integer.toString(model.getLeaveInformation().getCpNMinus1()[0]));
-        // Value.setEntityName("S" + idName.toUpperCase());
+        Value.setEntityName("LD");
         Value.setPadding(0, 0, 3, 0);
         Value.setWidth(configRow[1]);
         acquis.addElement(Value);
@@ -329,7 +329,7 @@ public class LeaveInfoPayslipBox extends ElementBox {
         acquis.addElement(Label4);
 
         SimpleTextBox Value = new SimpleTextBox(font, fontSize, 0, 0, Integer.toString(model.getLeaveInformation().getCpNMinus1()[0]));
-        // Value.setEntityName("S" + idName.toUpperCase());
+        Value.setEntityName("LD");
         Value.setPadding(0, 0, 3, 0);
         Value.setWidth(configRow[1]);
         acquis.addElement(Value);
@@ -418,7 +418,7 @@ public class LeaveInfoPayslipBox extends ElementBox {
         acquis.addElement(Label4);
 
         SimpleTextBox Value = new SimpleTextBox(font, fontSize, 0, 0, Integer.toString(model.getLeaveInformation().getCpNMinus1()[0]));
-        // Value.setEntityName("S" + idName.toUpperCase());
+        Value.setEntityName("LD");
         Value.setPadding(0, 0, 3, 0);
         Value.setWidth(configRow[1]);
         acquis.addElement(Value);

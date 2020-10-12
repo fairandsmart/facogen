@@ -101,7 +101,7 @@ public class SumUpSalaryPayslipBox extends ElementBox {
         Label.setWidth(configRow[0]);
         container.addElement(Label);
         SimpleTextBox Value = new SimpleTextBox(font, fontSize, 0, 0, df.format(model.getSalaryTable().getNetImposabel()));
-        // Value.setEntityName("S" + idName.toUpperCase());
+        Value.setEntityName("NSI");
         Value.setPadding(0, 0, 3, 0);
         Value.setWidth(configRow[1]);
         container.addElement(Value);
@@ -130,7 +130,7 @@ public class SumUpSalaryPayslipBox extends ElementBox {
         Label.setWidth(configRow[0]);
         container.addElement(Label);
         SimpleTextBox Value = new SimpleTextBox(font, fontSize, 0, 0, df.format(model.getSalaryTable().getNetSalary()));
-        // Value.setEntityName("S" + idName.toUpperCase());
+        Value.setEntityName("NSB");
         Value.setPadding(0, 0, 3, 0);
         Value.setWidth(configRow[1]);
         container.addElement(Value);
@@ -159,7 +159,7 @@ public class SumUpSalaryPayslipBox extends ElementBox {
         Label.setWidth(configRow[0]);
         container.addElement(Label);
         SimpleTextBox Value = new SimpleTextBox(font, fontSize, 0, 0, df.format(model.getSalaryTable().getNetSalary()-impot));
-        // Value.setEntityName("S" + idName.toUpperCase());
+        Value.setEntityName("NS");
         Value.setPadding(0, 0, 3, 0);
         Value.setWidth(configRow[1]);
         container.addElement(Value);
@@ -179,8 +179,6 @@ public class SumUpSalaryPayslipBox extends ElementBox {
         float[] configRow = {90f, 80f, 80f, 80f};
         VerticalContainer idContainer = new VerticalContainer(0,0,0);
         HorizontalContainer titleContainer = new HorizontalContainer(0, 0);
-        HorizontalContainer encours = new HorizontalContainer(0, 0);
-        HorizontalContainer encours1 = new HorizontalContainer(0, 0);
         HorizontalContainer acquis = new HorizontalContainer(0, 0);
 
         idContainer.addElement(new HorizontalLineBoxV2(0,0, getNetAvantImpotBlock().getBoundingBox().getWidth()+10, 0));
@@ -220,7 +218,7 @@ public class SumUpSalaryPayslipBox extends ElementBox {
         acquis.addElement(Label4);
 
         SimpleTextBox Value = new SimpleTextBox(font, fontSize, 0, 0, df.format(model.getSalaryTable().getNetImposabel()));
-        // Value.setEntityName("S" + idName.toUpperCase());
+        Value.setEntityName("NSI");
         Value.setPadding(0, 0, 3, 0);
         Value.setWidth(configRow[1]);
         acquis.addElement(Value);
@@ -299,7 +297,7 @@ public class SumUpSalaryPayslipBox extends ElementBox {
         acquis.addElement(Label4);
 
         SimpleTextBox Value = new SimpleTextBox(font, fontSize, 0, 0, df.format(model.getSalaryTable().getNetImposabel()));
-        // Value.setEntityName("S" + idName.toUpperCase());
+        Value.setEntityName("NSI");
         Value.setPadding(0, 0, 3, 0);
         Value.setWidth(configRow[1]);
         acquis.addElement(Value);
