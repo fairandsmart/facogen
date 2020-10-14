@@ -20,7 +20,7 @@
         <quarkus.platform.group-id>io.quarkus</quarkus.platform.group-id>
         <quarkus.platform.version>1.6.1.Final</quarkus.platform.version>
 
-        <version.junit>4.12</version.junit>
+        <version.junit>4.13.1</version.junit>
         <version.pdfbox>2.0.20</version.pdfbox>
         <version.jempbox>1.8.13</version.jempbox>
         <version.boxable>1.4</version.boxable>
