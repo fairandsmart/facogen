@@ -191,7 +191,7 @@ public class EmployeeInfoPayslipBox extends ElementBox {
         companyIDContainer.addElement(Label);
         SimpleTextBox Value = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getEmployment());
         Value.setEntityName("EEM");
-        Value.setWidth(90-Label.getBoundingBox().getWidth());
+        Value.setWidth(100-Label.getBoundingBox().getWidth());
         Value.setPadding(0, 0, 3, 0);
         companyIDContainer.addElement(Value);
 
@@ -502,11 +502,13 @@ public class EmployeeInfoPayslipBox extends ElementBox {
     public VerticalContainer getPaymentPeriodeDatesBlock() throws Exception
     {
         VerticalContainer idContainer = new VerticalContainer(0,0,0);
+        HorizontalContainer companyIDContainer0 = new HorizontalContainer(0, 0);
         HorizontalContainer companyIDContainer = new HorizontalContainer(0, 0);
 
         SimpleTextBox Label = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getPaymentPeriodDatesLabel());
         Label.setPadding(0, 0, 2, 0);
-        companyIDContainer.addElement(Label);
+        companyIDContainer0.addElement(Label);
+        idContainer.addElement(companyIDContainer0);
 
         Calendar cal = Calendar.getInstance();
         cal.setTime(model.getEmployeeInformation().getPeriode());
@@ -726,6 +728,124 @@ public class EmployeeInfoPayslipBox extends ElementBox {
         return firstPart2;
     }
 
+    public TableRowBox getEmployeeInformationTable8() throws  Exception
+    {
+        float[] configRowT = {510f};
+        TableRowBox firstPart2 = new TableRowBox(configRowT, 0, 0);
+
+        float[] configRow = {50f,90f,90f,70f, 90f, 70f, 70f};
+
+        VerticalContainer idContainer = new VerticalContainer(0,0,0);
+        HorizontalContainer ligne2 = new HorizontalContainer(0, 0);
+        HorizontalContainer ligne1 = new HorizontalContainer(0, 0);
+
+
+        idContainer.addElement(new HorizontalLineBoxV2(0,0, (configRow[0]+configRow[1]+configRow[2]+configRow[3]+configRow[4]+configRow[5]+configRow[6]), 0));
+
+        // Ecquis
+        SimpleTextBox Label4 = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getMinCoeffLabel() );
+        Label4.setPadding(0, 0, 2, 0);
+        Label4.setWidth(configRow[0]);
+        ligne1.addElement(Label4);
+
+        SimpleTextBox Value = new SimpleTextBox(font, fontSize, 0, 0,  model.getEmployeeInformation().getSecurityNumberLabel());
+        Value.setPadding(0, 0, 3, 0);
+        Value.setWidth(configRow[1]);
+        ligne1.addElement(Value);
+
+        SimpleTextBox Value1 = new SimpleTextBox(font, fontSize, 0, 0,  model.getEmployeeInformation().getCategoryLabel());
+        // Value.setEntityName("S" + idName.toUpperCase());
+        Value1.setPadding(0, 0, 3, 0);
+        Value1.setWidth(configRow[2]);
+        ligne1.addElement(Value1);
+
+        SimpleTextBox Value2 = new SimpleTextBox(font, fontSize, 0, 0,  model.getEmployeeInformation().getEchelonLabel());
+        // Value.setEntityName("S" + idName.toUpperCase());
+        Value2.setPadding(0, 0, 3, 0);
+        Value2.setWidth(configRow[3]);
+        ligne1.addElement(Value2);
+
+        SimpleTextBox Value3 = new SimpleTextBox(font, fontSize, 0, 0,  model.getEmployeeInformation().getTimeTableLabel());
+        // Value.setEntityName("S" + idName.toUpperCase());
+        Value3.setPadding(0, 0, 3, 0);
+        Value3.setWidth(configRow[4]);
+        ligne1.addElement(Value3);
+
+        SimpleTextBox Value4 = new SimpleTextBox(font, fontSize, 0, 0,  model.getEmployeeInformation().getHourlyRateLabel());
+        // Value.setEntityName("S" + idName.toUpperCase());
+        Value4.setPadding(0, 0, 3, 0);
+        Value4.setWidth(configRow[5]);
+        ligne1.addElement(Value4);
+
+        SimpleTextBox Value5 = new SimpleTextBox(font, fontSize, 0, 0,  "temps partiel");
+        // Value.setEntityName("S" + idName.toUpperCase());
+        Value5.setPadding(0, 0, 3, 0);
+        Value4.setWidth(configRow[6]);
+        ligne1.addElement(Value5);
+
+        idContainer.addElement(ligne1);
+        idContainer.addElement(new HorizontalLineBoxV2(0,0, (configRow[0]+configRow[1]+configRow[2]+configRow[3]+configRow[4]+configRow[5]+configRow[6]), 0));
+
+        // Encours
+        SimpleTextBox Label5 = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getMincoef());
+        Label5.setPadding(0, 0, 2, 0);
+        Label5.setWidth(configRow[0]);
+        ligne2.addElement(Label5);
+
+        SimpleTextBox Value6 = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getSocialSecurityNumber());
+        Value6.setEntityName("SSN");
+        Value6.setPadding(0, 0, 3, 0);
+        Value6.setWidth(configRow[1]);
+        ligne2.addElement(Value6);
+
+        SimpleTextBox Value7 = new SimpleTextBox(font, fontSize, 0, 0,model.getEmployeeInformation().getEmployment());
+        Value7.setEntityName("EEM");
+        Value7.setPadding(0, 0, 3, 0);
+        Value7.setWidth(configRow[2]);
+        ligne2.addElement(Value7);
+
+        SimpleTextBox Value8 = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getEchelon());
+        //Value8.setEntityName("S" + idName.toUpperCase());
+        Value8.setPadding(0, 0, 3, 0);
+        Value8.setWidth(configRow[3]);
+        ligne2.addElement(Value8);
+
+        SimpleTextBox Value9 = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getTimetable());
+        //Value8.setEntityName("S" + idName.toUpperCase());
+        Value9.setPadding(0, 0, 3, 0);
+        Value9.setWidth(configRow[4]);
+        ligne2.addElement(Value9);
+
+        SimpleTextBox Value10 = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getHourlyRate());
+        Value10.setEntityName("HR");
+        Value10.setPadding(0, 0, 3, 0);
+        Value10.setWidth(configRow[5]);
+        ligne2.addElement(Value10);
+
+        SimpleTextBox Value11 = new SimpleTextBox(font, fontSize, 0, 0, Integer.toString(model.getRandom().nextInt(35)));
+        //Value8.setEntityName("S" + idName.toUpperCase());
+        Value11.setPadding(0, 0, 3, 0);
+        Value11.setWidth(configRow[6]);
+        ligne2.addElement(Value11);
+
+        idContainer.addElement(ligne2);
+        idContainer.addElement(new HorizontalLineBoxV2(0,0, (configRow[0]+configRow[1]+configRow[2]+configRow[3]+configRow[4]+configRow[5]+configRow[6]), 0));
+        idContainer.addElement(new VerticalLineBox(0,0, 0, idContainer.getBoundingBox().getHeight())); //  sumUp.getBoundingBox().getPosY()
+        idContainer.addElement(new VerticalLineBox(0,0, configRow[0], idContainer.getBoundingBox().getHeight())); //  sumUp.getBoundingBox().getPosY()
+        idContainer.addElement(new VerticalLineBox(0,0, (configRow[0]+configRow[1]), idContainer.getBoundingBox().getHeight())); //  sumUp.getBoundingBox().getPosY()
+        idContainer.addElement(new VerticalLineBox(0,0, (configRow[0]+configRow[1]+configRow[2]), idContainer.getBoundingBox().getHeight())); //  sumUp.getBoundingBox().getPosY()
+        idContainer.addElement(new VerticalLineBox(0,0, (configRow[0]+configRow[1]+configRow[2]+configRow[3]), idContainer.getBoundingBox().getHeight())); //  sumUp.getBoundingBox().getPosY()
+        idContainer.addElement(new VerticalLineBox(0,0, (configRow[0]+configRow[1]+configRow[2]+configRow[3]+configRow[4]), idContainer.getBoundingBox().getHeight())); //  sumUp.getBoundingBox().getPosY()
+        idContainer.addElement(new VerticalLineBox(0,0, (configRow[0]+configRow[1]+configRow[2]+configRow[3]+configRow[4]+configRow[5]), idContainer.getBoundingBox().getHeight())); //  sumUp.getBoundingBox().getPosY()
+        idContainer.addElement(new VerticalLineBox(0,0, (configRow[0]+configRow[1]+configRow[2]+configRow[3]+configRow[4]+configRow[5]+configRow[6]), idContainer.getBoundingBox().getHeight())); //  sumUp.getBoundingBox().getPosY()
+
+     //   idContainer.addElement(new VerticalLineBox(0,0,  510f, idContainer.getBoundingBox().getHeight())); //  sumUp.getBoundingBox().getPosY()
+
+        firstPart2.addElement( new EmployeeInfoPayslipBox(concatContainersVertically(new ElementBox[]{
+                idContainer})),false);
+
+        return firstPart2;
+    }
     public VerticalContainer concatContainersVertically(ElementBox parts[]) throws  Exception
     {   int x = 1;
         VerticalContainer result = new VerticalContainer(0,0,0);;

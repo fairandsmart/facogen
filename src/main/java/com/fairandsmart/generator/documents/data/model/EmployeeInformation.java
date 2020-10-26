@@ -396,12 +396,12 @@ public class EmployeeInformation {
     }
 
     public String getAssignementLabel() {
-        List<String> labels = new ArrayList<String>(Arrays.asList("Affectation :"));
+        List<String> labels = new ArrayList<String>(Arrays.asList("Affectation :", "Aff"));
         return labels.get(this.random.nextInt(labels.size()));
     }
 
     public String getMinCoeffLabel() {
-        List<String> labels = new ArrayList<String>(Arrays.asList("Coef. min :"));
+        List<String> labels = new ArrayList<String>(Arrays.asList("Coef.min :", "min"));
         return labels.get(this.random.nextInt(labels.size()));
     }
 
@@ -523,10 +523,10 @@ public class EmployeeInformation {
             String categoryLabel = categorieEmp.getCategorie();
             String employeCode = emp.getCode();
             String employment = emp.getLibelle();
-            String arr[] = employment.split(" ", 4);
+            /*  String arr[] = employment.split(" ", 4);
             if (arr.length>=3) employment = arr[0]+ " "+ arr[1] +" "+arr[2];
             else if (arr.length>=2 ) employment = arr[0]+ " "+ arr[1] ;
-                    else employment = arr[0];
+                    else employment = arr[0];*/
             String classification ;
             if(categoryLabel.toLowerCase().contains("cadre")) classification ="CADRE";
             else classification ="NON CADRE";

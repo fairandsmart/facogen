@@ -101,7 +101,11 @@ public class SalaryBox extends ElementBox {
     private String getProductElement(SalaryLine salaryLine, String colName){
         String salaryElement;
         switch (colName){
-            case "Element":  salaryElement = ""+salaryLine.getCodeElement();
+            case "Element":
+                if (salaryLine.getCodeElement()==0) salaryElement ="";
+                else {
+                    salaryElement = ""+salaryLine.getCodeElement();
+                }
                 break;
             case "Rubrique":  salaryElement = salaryLine.getHeading();
                 break;

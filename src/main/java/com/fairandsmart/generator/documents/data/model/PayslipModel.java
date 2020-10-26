@@ -174,7 +174,7 @@ public class PayslipModel extends Model {
             model.setLeaveInformation(new LeaveInformation.Generator().generate(ctx));
             model.setSumUpSalary(new SumUpSalary.Generator().generate(ctx));
 
-            List<String> localizedHeaderLabel = headerLabels.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguage())).map(Map.Entry::getKey).collect(Collectors.toList());
+            List<String> localizedHeaderLabel = headerLabels.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguagePayslip())).map(Map.Entry::getKey).collect(Collectors.toList());
             int idxvL = new Random().nextInt(localizedHeaderLabel.size());
             Generex generex = new Generex(localizedHeaderLabel.get(idxvL));
             model.setHeadTitle(generex.random());

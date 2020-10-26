@@ -6,7 +6,7 @@
     [{"code":"10",
       "libelle":"Agriculteur "}
     ,{"code":"100x"
-    ,"libelle":"Agriculteur et éleveur , salarié de leur exploitation"}
+    ,"libelle":"Agriculteur et éleveur "}
     ]},
   {"code_categorie":"2",
     "categorie":"Artisans, commerçant et chef d'entreprises"
@@ -22,10 +22,6 @@
     ,"libelle":"Commerçant et assimilés"}
     ,{"code":"23"
     ,"libelle":"Chef d'entreprise "}
-    ,{"code":"231a",
-      "libelle":"Chef de grande entreprise "}
-    ,{"code":"232a",
-      "libelle":"Chef de moyenne entreprise"}
     ,{"code":"233a",
       "libelle":"Chef d'entreprise du bâtiment et de travaux publics"}
     ,{"code":"233b",
@@ -88,27 +84,31 @@
     ,{"code":"341a",
       "libelle":"Professeur agrégé et certifié de l'enseignement secondaire"}
     ,{"code":"341b",
-      "libelle":"Chef d'établissement de l'enseignement secondaire et inspecteurs"}
+      "libelle":"Chef d'établissement de l'enseignement secondaire "}
+    ,{"code":"341b",
+      "libelle":"inspecteur"}
     ,{"code":"342b",
       "libelle":"Professeur et maître de conférences"}
     ,{"code":"342c",
       "libelle":"Professeur agrégé et certifié "}
     ,{"code":"342d",
-      "libelle":"Enseignant temporaire de l'enseignement supérieur"}
+      "libelle":"Enseignant temporaire "}
     ,{"code":"342f",
-      "libelle":"Directeur et chargé de recherche de la recherche publique"}
+      "libelle":"Directeur et chargé de recherche "}
     ,{"code":"342g",
-      "libelle":"Ingénieur d'étude et de recherche de la recherche publique"}
+      "libelle":"Ingénieur d'étude et de recherche"}
     ,{"code":"342h",
       "libelle":"Allocataire de la recherche publique"}
     ,{"code":"343a",
-      "libelle":"Psychologue spécialiste de l'orientation scolaire et professionnelle"}
+      "libelle":"Psychologue spécialiste "}
     ,{"code":"344a",
       "libelle":"Médecin hospitalier sans activité libérale"}
     ,{"code":"344b",
       "libelle":"Médecin salarié non hospitalier"}
     ,{"code":"344c",
-      "libelle":"Interne en médecine, odontologie et pharmacie"}
+      "libelle":"Interne en médecine"}
+    ,{"code":"344c",
+      "libelle":"Interne en pharmacie"}
     ,{"code":"344d",
       "libelle":"Pharmacien salarié"}
    ,{"code":"351a",
@@ -136,9 +136,9 @@
       "libelle":"Directeur d'édition "}
 
     ,{"code":"353b",
-      "libelle":"Responsable de programmation et de production de l'audiovisuel"}
+      "libelle":"Responsable de production de l'audiovisuel"}
     ,{"code":"353c",
-      "libelle":"Cadre artistique de la réalisation de l'audiovisuel et des spectacles"}
+      "libelle":"Cadre artistique de la réalisation de l'audiovisuel"}
     ,{"code":"354a",
       "libelle":"Artiste plasticien"}
     ,{"code":"354b",
@@ -167,7 +167,7 @@
     ,{"code":"372a",
       "libelle":"Cadre chargé d'études commerciales"}
     ,{"code":"372b",
-      "libelle":"Cadre du contrôle de service administratif et financiers"}
+      "libelle":"Cadre du contrôle des services administratifs et financiers"}
     ,{"code":"372c",
       "libelle":"Cadre spécialiste de ressource humaine et du recrutement"}
     ,{"code":"372d",
@@ -205,7 +205,7 @@
     ,{"code":"376c",
       "libelle":"Cadre commercial de la banque"}
     ,{"code":"376d",
-      "libelle":"Chef d'établissement et responsable de l'exploitation bancaire"}
+      "libelle":"Responsable de l'exploitation bancaire"}
     ,{"code":"376e",
       "libelle":"Cadre de service technique des assurances"}
     ,{"code":"376f",
@@ -234,29 +234,29 @@
     ,{"code":"382d",
       "libelle":"Ingénieur et cadre technico-commerciaux en travaux publics"}
     ,{"code":"383a",
-      "libelle":"Ingénieur et cadre d'étude, recherche et développement en électricité"}
+      "libelle":"Ingénieur recherche et développement en électricité"}
     ,{"code":"383a",
-      "libelle":"Ingénieur et cadre d'étude, recherche et développement en électronique"}
+      "libelle":"Ingénieur recherche et développement en électronique"}
     ,{"code":"383b",
-      "libelle":"Ingénieur et cadre de fabrication en matériel électrique"}
+      "libelle":"Ingénieur de fabrication en matériel électrique"}
     ,{"code":"383b",
-      "libelle":"Ingénieur et cadre de fabrication en matériel électronique"}
+      "libelle":"Ingénieur de fabrication en matériel électronique"}
     ,{"code":"383c",
-      "libelle":"Ingénieur et cadre technico-commerciaux en matériel électrique "}
+      "libelle":"Ingénieur technico-commerciaux en matériel électrique "}
     ,{"code":"383c",
-      "libelle":"Ingénieur et cadre technico-commerciaux en matériel électronique professionnel"}
+      "libelle":"Ingénieur technico-commerciaux en matériel électronique professionnel"}
     ,{"code":"384a",
-      "libelle":"Ingénieur et cadre d'étude, recherche et développement en mécanique et travail des métaux"}
+      "libelle":"Ingénieur recherche et développement en mécanique et travail des métaux"}
     ,{"code":"384b",
-      "libelle":"Ingénieur et cadre de fabrication en mécanique et travail des métaux"}
+      "libelle":"Ingénieur de fabrication en mécanique et travail des métaux"}
     ,{"code":"384c",
-      "libelle":"Ingénieur et cadre technico-commerciaux en matériel mécanique professionnel"}
+      "libelle":"Ingénieur en matériel mécanique professionnel"}
     ,{"code":"385a",
-      "libelle":"Ingénieur et cadre d'étude, recherche et développement de industrie de transformation"}
+      "libelle":"Ingénieur recherche et développement de industrie de transformation"}
     ,{"code":"385b",
-      "libelle":"Ingénieur et cadre de fabrication de industrie de transformation "}
+      "libelle":"Ingénieur de fabrication des industries de transformation "}
     ,{"code":"385c",
-      "libelle":"Ingénieur et cadre technico-commerciaux de industrie de transformation"}
+      "libelle":"Ingénieur et cadre technico-commercial des industries de transformation"}
     ,{"code":"386b",
       "libelle":"Ingénieur et cadre d'étude, recherche et développement de la distribution d'énergie"}
     ,{"code":"386c",

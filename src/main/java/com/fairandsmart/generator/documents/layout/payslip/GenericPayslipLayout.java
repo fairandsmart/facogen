@@ -233,8 +233,10 @@ public class GenericPayslipLayout implements PayslipLayout {
             int rand= model.getRandom().nextInt(2);
             switch (rand){
                 case 0:
-                    title_period.addElement(leaveDatePayslipBox);
-                    title_period.addElement(leaveAmountPayslipBox);
+                    /*title_period.addElement(leaveDatePayslipBox);
+                    title_period.addElement(leaveAmountPayslipBox);*/
+                    title_period.addElement(new LeaveInfoPayslipBox (leaveInfoPayslipBox.getLeaveInformationTable2()));
+
                     break;
                 case 1:
                     title_period.addElement(new LeaveInfoPayslipBox (leaveInfoPayslipBox.getLeaveInformationTable1()));
@@ -260,7 +262,7 @@ public class GenericPayslipLayout implements PayslipLayout {
         payslipPage.addElement(secondPart);
 
         if (employeeInfoAvailable==2){
-            int ran2= model.getRandom().nextInt(5);
+            int ran2= model.getRandom().nextInt(6);
             switch (ran2){
                 case 1:
                     payslipPage.addElement(employeeInfoPayslipBox.getEmployeeInformationTable3());
@@ -273,6 +275,9 @@ public class GenericPayslipLayout implements PayslipLayout {
                     break;
                 case 4:
                     payslipPage.addElement(employeeInfoPayslipBox.getEmployeeInformationTable6());
+                    break;
+                case 5:
+                    payslipPage.addElement(employeeInfoPayslipBox.getEmployeeInformationTable8());
                     break;
                 default:
                     payslipPage.addElement(employeeInfoPayslipBox.getEmployeeInformationTable7());
