@@ -9,4 +9,4 @@ Frederic Pierre <frederic.pierre@fairansmart.com> / FairAndSmart
 Victor Guillaume <victor.guillaume@fairandsmart.com> / FairAndSmart
 Jérôme Blanchard <jerome.blanchard@fairandsmart.com> / FairAndSmart
 Aurore Hubert <aurore.hubert@fairandsmart.com> / FairAndSmart
-Kevin Meszczynski <kevin.meszczynski@fairandsmart.com> / FairAndSmart
+Kevin Meszczynski <kevin.meszczynski@fairandsmart.com> / FairAndSmart 
