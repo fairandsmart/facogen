@@ -168,10 +168,10 @@ public class MaterielnetLayout implements InvoiceLayout {
             Product randomProduct = model.getProductContainer().getProducts().get(w);
 
             TableRowBox productLine = new TableRowBox(configRow, 0, 0);
-            productLine.addElement(new SimpleTextBox(font, 8, 2, 0, Float.toString(randomProduct.getQuantity()), "TBL"), true);
-            productLine.addElement(new SimpleTextBox(font, 8, 2, 0, randomProduct.getName(), "TBL"), false);
-            productLine.addElement(new SimpleTextBox(font, 8, 2, 0, randomProduct.getFormatedPriceWithoutTax(), "TBL"), true);
-            productLine.addElement(new SimpleTextBox(font, 8, 2, 0, randomProduct.getFormatedTotalPriceWithoutTax(), "TBL"), true);
+            productLine.addElement(new SimpleTextBox(font, 8, 2, 0, Float.toString(randomProduct.getQuantity()), "QTY"), true);
+            productLine.addElement(new SimpleTextBox(font, 8, 2, 0, randomProduct.getName(), "PD"), false);
+            productLine.addElement(new SimpleTextBox(font, 8, 2, 0, randomProduct.getFormatedPriceWithoutTax(), "PU"), true);
+            productLine.addElement(new SimpleTextBox(font, 8, 2, 0, randomProduct.getFormatedTotalPriceWithoutTax(), "PTWTX"), true);
 
 
             verticalInvoiceItems.addElement(productLine);
@@ -191,18 +191,18 @@ public class MaterielnetLayout implements InvoiceLayout {
         HorizontalContainer baseHT = new HorizontalContainer(0,0);
         baseHT.addElement(new SimpleTextBox(fontBold,9,0,0,model.getProductContainer().getTotalWithoutTaxHead()));
         baseHT.addElement(new BorderBox(Color.WHITE,Color.WHITE,0,0,0,50,0));
-        baseHT.addElement(new SimpleTextBox(font,9,0,0,model.getProductContainer().getFormatedTotalWithoutTax(),"TBL"));
+        baseHT.addElement(new SimpleTextBox(font,9,0,0,model.getProductContainer().getFormatedTotalWithoutTax(),"TWTX"));
 
         HorizontalContainer taxeTVA = new HorizontalContainer(0,0);
         taxeTVA.addElement(new SimpleTextBox(fontBold,9,0,0,model.getProductContainer().getTotalTaxHead()));
         taxeTVA.addElement(new SimpleTextBox(fontBold,9,0,0," 20%"));
         taxeTVA.addElement(new BorderBox(Color.WHITE,Color.WHITE,0,0,0,50,0));
-        taxeTVA.addElement(new SimpleTextBox(font,9,0,0,model.getProductContainer().getFormatedTotalTax(),"TBL"));
+        taxeTVA.addElement(new SimpleTextBox(font,9,0,0,model.getProductContainer().getFormatedTotalTax(),"TTX"));
 
         HorizontalContainer totalTTC = new HorizontalContainer(0,0);
         totalTTC.addElement(new SimpleTextBox(fontBold,9,0,0,model.getProductContainer().getTotalAmountHead()));
         totalTTC.addElement(new BorderBox(Color.WHITE,Color.WHITE,0,0,0,50,0));
-        totalTTC.addElement(new SimpleTextBox(font,9,0,0,model.getProductContainer().getFormatedTotalWithTax(),"TBL"));
+        totalTTC.addElement(new SimpleTextBox(font,9,0,0,model.getProductContainer().getFormatedTotalWithTax(),"TA"));
 
         totalContainer.addElement(baseHT);
         totalContainer.addElement(new BorderBox(Color.WHITE,Color.WHITE,0,0,0,0,4));

@@ -165,14 +165,14 @@ public class BDmobilierLayout implements InvoiceLayout {
             Product randomProduct = model.getProductContainer().getProducts().get(w);
 
             TableRowBox productLine = new TableRowBox(configRow, 0, 0);
-            productLine.addElement(new SimpleTextBox(font, 9, 2, 0, randomProduct.getName(), "TBL"), false);
-            productLine.addElement(new SimpleTextBox(font, 9, 2, 0, randomProduct.getFormatedPriceWithoutTax(), "TBL"), false);
+            productLine.addElement(new SimpleTextBox(font, 9, 2, 0, randomProduct.getName(), "PD"), false);
+            productLine.addElement(new SimpleTextBox(font, 9, 2, 0, randomProduct.getFormatedPriceWithoutTax(), "PU"), false);
             if(randomProduct.getDiscount() == 0.0){
                 discount = "--";
             }
             productLine.addElement(new SimpleTextBox(font, 9, 2, 0, discount, "TBL"), false);
-            productLine.addElement(new SimpleTextBox(font, 9, 2, 0, (int)(randomProduct.getQuantity())+"", "TBL"), false);
-            productLine.addElement(new SimpleTextBox(font, 9, 2, 0, randomProduct.getFormatedTotalPriceWithoutTax(), "TBL"), false);
+            productLine.addElement(new SimpleTextBox(font, 9, 2, 0, (int)(randomProduct.getQuantity())+"", "QTY"), false);
+            productLine.addElement(new SimpleTextBox(font, 9, 2, 0, randomProduct.getFormatedTotalPriceWithoutTax(), "PTWTX"), false);
 
 
             verticalInvoiceItems.addElement(productLine);
@@ -196,11 +196,11 @@ public class BDmobilierLayout implements InvoiceLayout {
         new BorderBox(Color.BLACK,Color.BLACK,1,405,posYTotal-28,158,13).build(contentStream,writer);
 
         new SimpleTextBox(font, 9, 447, posYTotal+11, pc.getTotalWithoutTaxHead(),Color.WHITE,Color.BLACK).build(contentStream,writer);
-        new SimpleTextBox(font, 9, 508, posYTotal+11, pc.getFormatedTotalWithoutTax(),Color.WHITE,Color.BLACK,"TBL").build(contentStream,writer);
+        new SimpleTextBox(font, 9, 508, posYTotal+11, pc.getFormatedTotalWithoutTax(),Color.WHITE,Color.BLACK,"TWTX").build(contentStream,writer);
         new SimpleTextBox(font, 9, 447, posYTotal-2, pc.getTotalTaxHead(),Color.BLACK,Color.WHITE).build(contentStream,writer);
-        new SimpleTextBox(font, 9, 508, posYTotal-2, pc.getFormatedTotalTax(),Color.BLACK,Color.WHITE,"TBL").build(contentStream,writer);
+        new SimpleTextBox(font, 9, 508, posYTotal-2, pc.getFormatedTotalTax(),Color.BLACK,Color.WHITE,"TTX").build(contentStream,writer);
         new SimpleTextBox(font, 9, 447, posYTotal-16, pc.getTotalAmountHead(),Color.WHITE,Color.BLACK).build(contentStream,writer);
-        new SimpleTextBox(font, 9, 508, posYTotal-16, pc.getFormatedTotalWithTax(),Color.WHITE,Color.BLACK,"TBL").build(contentStream,writer);
+        new SimpleTextBox(font, 9, 508, posYTotal-16, pc.getFormatedTotalWithTax(),Color.WHITE,Color.BLACK,"TA").build(contentStream,writer);
 
 
         HorizontalContainer infoEntreprise = new HorizontalContainer(0,0);

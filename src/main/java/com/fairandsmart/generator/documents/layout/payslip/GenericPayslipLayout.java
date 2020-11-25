@@ -163,7 +163,6 @@ public class GenericPayslipLayout implements PayslipLayout {
         VerticalContainer title_period = new VerticalContainer(0,0,0);
 
 
-
         Map<Integer, ElementBox> titleElements = new HashMap<>();
         {
             titleElements.put(1, title);

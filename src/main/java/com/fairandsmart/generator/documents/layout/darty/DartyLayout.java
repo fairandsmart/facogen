@@ -199,9 +199,9 @@ public class DartyLayout implements InvoiceLayout {
             Product randomProduct = model.getProductContainer().getProducts().get(w);
 
             TableRowBox productLine = new TableRowBox(configRow, 0, 0);
-            productLine.addElement(new SimpleTextBox(font, 8, 2, 0, randomProduct.getEan(), "TBL"), true);
-            productLine.addElement(new SimpleTextBox(font, 8, 2, 0, Float.toString(randomProduct.getQuantity()), "TBL"), true);
-            productLine.addElement(new SimpleTextBox(font, 8, 2, 0, randomProduct.getName(), "TBL"), false);
+            productLine.addElement(new SimpleTextBox(font, 8, 2, 0, randomProduct.getEan(), "EAN"), true);
+            productLine.addElement(new SimpleTextBox(font, 8, 2, 0, Float.toString(randomProduct.getQuantity()), "QTY"), true);
+            productLine.addElement(new SimpleTextBox(font, 8, 2, 0, randomProduct.getName(), "PD"), false);
 
             String anneeGarantie = model.getDate().getValue().substring(model.getDate().getValue().length()-4,model.getDate().getValue().length());
             int nouvAnnee;
@@ -218,9 +218,9 @@ public class DartyLayout implements InvoiceLayout {
             }
 
             productLine.addElement(new SimpleTextBox(font, 8, 2, 0,dateGarantie ), true);
-            productLine.addElement(new SimpleTextBox(font, 8, 2, 0, randomProduct.getFormatedTotalPriceWithoutTax(), "TBL"), true);
-            productLine.addElement(new SimpleTextBox(font, 8, 2, 0, randomProduct.getFormatedTotalTax(),"TBL"),true);
-            productLine.addElement(new SimpleTextBox(font, 8, 2, 0, randomProduct.getFormatedTotalPriceWithTax()+"","TBL"),true);
+            productLine.addElement(new SimpleTextBox(font, 8, 2, 0, randomProduct.getFormatedTotalPriceWithoutTax(), "PTWTX"), true);
+            productLine.addElement(new SimpleTextBox(font, 8, 2, 0, randomProduct.getFormatedTotalTax(),"TXR"),true);
+            productLine.addElement(new SimpleTextBox(font, 8, 2, 0, randomProduct.getFormatedTotalPriceWithTax()+"","undefined"),true);
 
             TableRowBox productLine2 = new TableRowBox(configRow, 0, 0);
             productLine2.addElement(new SimpleTextBox(font, 8, 2, 0, ""), true);
@@ -269,19 +269,19 @@ public class DartyLayout implements InvoiceLayout {
         HorizontalContainer totaux = new HorizontalContainer(250,posMsgY+39-3);
         totaux.addElement(new SimpleTextBox(fontBold,9,0,0,"Total facturé : "));
         totaux.addElement(new BorderBox(Color.WHITE,Color.WHITE,0,0,0,50,0));
-        SimpleTextBox stb = new SimpleTextBox(font,9,0,0,model.getProductContainer().getFormatedTotalWithoutTax()+"","TBL");
+        SimpleTextBox stb = new SimpleTextBox(font,9,0,0,model.getProductContainer().getFormatedTotalWithoutTax()+"","TWTX");
         totaux.addElement(stb);
         totaux.addElement(new BorderBox(Color.WHITE,Color.WHITE,0,0,0,70-stb.getBoundingBox().getWidth(),0));
-        SimpleTextBox stb2 = new SimpleTextBox(font,9,0,0,model.getProductContainer().getFormatedTotalTax()+"","TBL");
+        SimpleTextBox stb2 = new SimpleTextBox(font,9,0,0,model.getProductContainer().getFormatedTotalTax()+"","TTX");
         totaux.addElement(stb2);
         totaux.addElement(new BorderBox(Color.WHITE,Color.WHITE,0,0,0,73-stb2.getBoundingBox().getWidth(),0));
-        totaux.addElement(new SimpleTextBox(font,9,0,0,model.getProductContainer().getFormatedTotalWithTax()+"","TBL"));
+        totaux.addElement(new SimpleTextBox(font,9,0,0,model.getProductContainer().getFormatedTotalWithTax()+"","TA"));
         totaux.build(contentStream,writer);
 
         new SimpleTextBox(fontBold,9,226,posMsgY-33,"Montant réglé par : ").build(contentStream,writer);
         new SimpleTextBox(fontBold,9,340,posMsgY-33,model.getPaymentInfo().getValueType(),"PMODE").build(contentStream,writer);
         new SimpleTextBox(fontBold,9,411,posMsgY-66,"Soldes à régler : ").build(contentStream,writer);
-        new SimpleTextBox(fontBold,9,page.getMediaBox().getWidth()-90,posMsgY-33,model.getProductContainer().getFormatedTotalWithTax(),"TBL").build(contentStream,writer);
+        new SimpleTextBox(fontBold,9,page.getMediaBox().getWidth()-90,posMsgY-33,model.getProductContainer().getFormatedTotalWithTax(),"TA").build(contentStream,writer);
         new SimpleTextBox(fontBold,9,page.getMediaBox().getWidth()-90,posMsgY-66,"0,00 €").build(contentStream,writer);
 
 
