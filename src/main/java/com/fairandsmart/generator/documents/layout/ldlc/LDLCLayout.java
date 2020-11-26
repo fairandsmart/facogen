@@ -104,7 +104,7 @@ public class LDLCLayout implements InvoiceLayout {
         infoEntreprise1.addElement(new SimpleTextBox(font,6,0,0, address.getZip() + " - " +address.getCity(),"SA"));
 
         HorizontalContainer infoEntreprise2 = new HorizontalContainer(0,0);
-        infoEntreprise2.addElement(new SimpleTextBox(font,6,0,0, "Numéro non surtaxé du Service Client : "));
+        infoEntreprise2.addElement(new SimpleTextBox(font,6,0,0, "Numéro non surtaxé du Service Client : ","SCNH"));
         infoEntreprise2.addElement(new SimpleTextBox(font,6,0,0, model.getCompany().getContact().getphoneValue(),"SCN"));
 
         HorizontalContainer infoEntreprise3 = new HorizontalContainer(0,0);
@@ -138,7 +138,7 @@ public class LDLCLayout implements InvoiceLayout {
         float posBHY = (posBarcodeY-hBH-10);
         new BorderBox(Color.BLACK, Color.WHITE, 1,posBHX, posBHY, posBarcodeX-20,hBH).build(contentStream, writer);
         VerticalContainer verticalAddressContainer = new VerticalContainer(28, posBarcodeY-12, 250 );
-        verticalAddressContainer.addElement(new SimpleTextBox(fontBold, 9, 0, 0, "Client livré :"));
+        verticalAddressContainer.addElement(new SimpleTextBox(fontBold, 9, 0, 0, "Client livré :","BAH"));
         verticalAddressContainer.addElement(new SimpleTextBox(fontItalic, 9, 0, 0, model.getClient().getBillingName().toUpperCase(), "BN" ));
         verticalAddressContainer.addElement(new SimpleTextBox(fontItalic, 9, 0, 0, model.getClient().getBillingAddress().getLine1().toUpperCase(), "BA" ));
         verticalAddressContainer.addElement(new SimpleTextBox(fontItalic, 9, 0, 0, model.getClient().getBillingAddress().getZip().toUpperCase() + " "+model.getClient().getBillingAddress().getCity().toUpperCase(), "BA" ));
@@ -152,7 +152,7 @@ public class LDLCLayout implements InvoiceLayout {
         float posSHY = posBarcodeY-hSH-10;
         new BorderBox(Color.BLACK, Color.WHITE, 1,posSHX, posSHY, wSH,hSH).build(contentStream, writer);
         VerticalContainer verticalAddressContainer2 = new VerticalContainer(posBarcodeX+tailleBarcode+2, posBarcodeY-12, 250 );
-        verticalAddressContainer2.addElement(new SimpleTextBox(fontBold, 9, 0, 0, "Client Facturé :"));
+        verticalAddressContainer2.addElement(new SimpleTextBox(fontBold, 9, 0, 0, "Client Facturé :","SHAH"));
         verticalAddressContainer2.addElement(new SimpleTextBox(fontItalic, 9, 0, 0, model.getClient().getShippingName().toUpperCase(),"SHN" ));
         verticalAddressContainer2.addElement(new SimpleTextBox(fontItalic, 9, 0, 0, model.getClient().getShippingAddress().getLine1().toUpperCase(),"SHA" ));
         verticalAddressContainer2.addElement(new SimpleTextBox(fontItalic, 9, 0, 0, model.getClient().getShippingAddress().getZip().toUpperCase() + " "+model.getClient().getShippingAddress().getCity().toUpperCase(),"SHA" ));
@@ -165,9 +165,9 @@ public class LDLCLayout implements InvoiceLayout {
         new BorderBox(Color.BLACK, Color.WHITE, 1,posRefX, posRefY, page.getMediaBox().getWidth()-page.getMediaBox().getWidth()/3,50).build(contentStream, writer);
         new SimpleTextBox(font, 9, posRefX+5, posRefY+48, "Référence à rappeler lors du réglement").build(contentStream, writer);
         VerticalContainer verticalREF1 = new VerticalContainer(posRefX+5, posRefY+38, 250 );
-        verticalREF1.addElement(new SimpleTextBox(font, 9, 0, 0, model.getReference().getLabelClient()));
-        verticalREF1.addElement(new SimpleTextBox(font, 9, 0, 0, model.getReference().getLabel()));
-        verticalREF1.addElement(new SimpleTextBox(font, 9, 0, 0, model.getDate().getLabel()));
+        verticalREF1.addElement(new SimpleTextBox(font, 9, 0, 0, model.getReference().getLabelClient(),"CNUMH"));
+        verticalREF1.addElement(new SimpleTextBox(font, 9, 0, 0, model.getReference().getLabel(),"INH"));
+        verticalREF1.addElement(new SimpleTextBox(font, 9, 0, 0, model.getDate().getLabel(),"IDATEH"));
         verticalREF1.build(contentStream, writer);
 
         VerticalContainer verticalREF2 = new VerticalContainer(posRefX+100, posRefY+38, 250 );
@@ -183,13 +183,13 @@ public class LDLCLayout implements InvoiceLayout {
         BorderBox bdNumRef = new BorderBox(Color.BLACK, Color.WHITE, 1,posNumRefX, posNumRefY, wSH-10,hNumRef);
         bdNumRef.build(contentStream, writer);
         VerticalContainer verticalNumREF = new VerticalContainer(posNumRefX+5, posRefY-10, 250 );
-        verticalNumREF.addElement(new SimpleTextBox(font, 9, 0, 0, model.getReference().getLabel()));
+        verticalNumREF.addElement(new SimpleTextBox(font, 9, 0, 0, model.getReference().getLabel(),"INH"));
         verticalNumREF.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 0, 5));
-        verticalNumREF.addElement(new SimpleTextBox(font, 9, 0, 0, model.getDate().getLabel()));
+        verticalNumREF.addElement(new SimpleTextBox(font, 9, 0, 0, model.getDate().getLabel(),"IDATEH"));
         verticalNumREF.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 0, 5));
-        verticalNumREF.addElement(new SimpleTextBox(font, 9, 0, 0, model.getReference().getLabelClient()));
+        verticalNumREF.addElement(new SimpleTextBox(font, 9, 0, 0, model.getReference().getLabelClient(),"CNUMH"));
         verticalNumREF.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 0, 5));
-        verticalNumREF.addElement(new SimpleTextBox(font, 9, 0, 0, model.getReference().getLabelCommand()));
+        verticalNumREF.addElement(new SimpleTextBox(font, 9, 0, 0, model.getReference().getLabelCommand(),"ONUMH"));
         verticalNumREF.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 0, 5));
         verticalNumREF.addElement(new SimpleTextBox(font, 9, 0, 0, "Ref Client : "));
         verticalNumREF.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 0, 5));
@@ -224,12 +224,12 @@ public class LDLCLayout implements InvoiceLayout {
 
         float[] configRow = {70f, 210f, 28f, 45f, 35f, 50f, 40f, 40f, 20f};
         TableRowBox firstLine = new TableRowBox(configRow, 0, 0);
-        firstLine.addElement(new SimpleTextBox(fontBold, 8, 2, 0, "Code", Color.BLACK, Color.WHITE), false);
-        firstLine.addElement(new SimpleTextBox(fontBold, 8, 2, 0, "Designation", Color.BLACK, Color.WHITE), false);
-        firstLine.addElement(new SimpleTextBox(fontBold, 8, 2, 0, "Qté", Color.BLACK, Color.WHITE), false);
-        firstLine.addElement(new SimpleTextBox(fontBold, 8, 2, 0, "Px Unit. €", Color.BLACK, Color.WHITE), false);
+        firstLine.addElement(new SimpleTextBox(fontBold, 8, 2, 0, "Code", Color.BLACK, Color.WHITE,"EANH"), false);
+        firstLine.addElement(new SimpleTextBox(fontBold, 8, 2, 0, "Designation", Color.BLACK, Color.WHITE,"PDH"), false);
+        firstLine.addElement(new SimpleTextBox(fontBold, 8, 2, 0, "Qté", Color.BLACK, Color.WHITE,"QTYH"), false);
+        firstLine.addElement(new SimpleTextBox(fontBold, 8, 2, 0, "Px Unit. €", Color.BLACK, Color.WHITE,"PUH"), false);
         firstLine.addElement(new SimpleTextBox(fontBold, 8, 2, 0, "Rem %", Color.BLACK, Color.WHITE), false);
-        firstLine.addElement(new SimpleTextBox(fontBold, 8, 2, 0, "Mtt base. €", Color.BLACK, Color.WHITE), false);
+        firstLine.addElement(new SimpleTextBox(fontBold, 8, 2, 0, "Mtt base. €", Color.BLACK, Color.WHITE,"PTWTXH"), false);
         firstLine.addElement(new SimpleTextBox(fontBold, 8, 2, 0, "Eco-P. HT", Color.BLACK, Color.WHITE), false);
         firstLine.addElement(new SimpleTextBox(fontBold, 8, 2, 0, "Uni. Vte", Color.BLACK, Color.WHITE), false);
         firstLine.addElement(new SimpleTextBox(fontBold, 8, 2, 0, "T", Color.BLACK, Color.WHITE), false);
@@ -266,7 +266,7 @@ public class LDLCLayout implements InvoiceLayout {
             productLine.addElement(new SimpleTextBox(font, 8, 2, 0, randomProduct.getEan(), "EAN"), false);
             productLine.addElement(new SimpleTextBox(font, 8, 2, 0, (randomProduct.getName()!=null)?randomProduct.getName().toUpperCase():"", "PD"), false);
             productLine.addElement(new SimpleTextBox(font, 8, 2, 0, Float.toString(randomProduct.getQuantity()), "QTY"), false);
-            productLine.addElement(new SimpleTextBox(font, 8, 2, 0, Float.toString(randomProduct.getPriceWithoutTax()), "UP"), false);
+            productLine.addElement(new SimpleTextBox(font, 8, 2, 0, Float.toString(randomProduct.getPriceWithoutTax()), "PU"), false);
             reduc = randomProduct.getDiscount();
             productLine.addElement(new SimpleTextBox(font, 8, 2, 0, Float.toString(reduc)), false);
             productLine.addElement(new SimpleTextBox(font, 8, 2, 0, Float.toString(randomProduct.getTotalPriceWithoutTax()), "PTWTX" ), false);
@@ -311,8 +311,8 @@ public class LDLCLayout implements InvoiceLayout {
         float[] configRowTVA = {30f, 42f, 90f, 90f};
         TableRowBox firstLineTVA = new TableRowBox(configRowTVA, 0, 0);
         firstLineTVA.addElement(new SimpleTextBox(fontBold, 8, 2, 0, "T", Color.BLACK, Color.WHITE), true);
-        firstLineTVA.addElement(new SimpleTextBox(fontBold, 8, 2, 0, "% TVA", Color.BLACK, Color.WHITE), true);
-        firstLineTVA.addElement(new SimpleTextBox(fontBold, 8, 2, 0, "BASE DE CALCUL", Color.BLACK, Color.WHITE), true);
+        firstLineTVA.addElement(new SimpleTextBox(fontBold, 8, 2, 0, "% TVA", Color.BLACK, Color.WHITE,"TXRH"), true);
+        firstLineTVA.addElement(new SimpleTextBox(fontBold, 8, 2, 0, "BASE DE CALCUL", Color.BLACK, Color.WHITE,"TTXH"), true);
         firstLineTVA.addElement(new SimpleTextBox(fontBold, 8, 2, 0, "TOTAL", Color.BLACK, Color.WHITE), true);
 
         VerticalContainer verticalInvoiceTVA = new VerticalContainer(25, 250, 600 );
@@ -352,25 +352,25 @@ public class LDLCLayout implements InvoiceLayout {
             TVALine.addElement(new SimpleTextBox(font, 8, 2, 0, "4"), true);
             TVALine.addElement(new SimpleTextBox(font, 8, 2, 0, "20", "TXR"), true);
             TVALine.addElement(new SimpleTextBox(font, 8, 2, 0, totalTVA4+"","TTX"), true);
-            TVALine.addElement(new SimpleTextBox(font, 8, 2, 0, (float)((int)(totalTVA4*0.2*1000))/1000 +"", ""), true);
+            TVALine.addElement(new SimpleTextBox(font, 8, 2, 0, (float)((int)(totalTVA4*0.2*1000))/1000 +""), true);
         }
         if(totalTVA3 != 0){
             TVALine.addElement(new SimpleTextBox(font, 8, 2, 0, "3"), true);
             TVALine.addElement(new SimpleTextBox(font, 8, 2, 0, "10", "TXR"), true);
             TVALine.addElement(new SimpleTextBox(font, 8, 2, 0, totalTVA3+"", "TTX"), true);
-            TVALine.addElement(new SimpleTextBox(font, 8, 2, 0, (float)((int)(totalTVA3*0.1*1000))/1000 +"", ""), true);
+            TVALine.addElement(new SimpleTextBox(font, 8, 2, 0, (float)((int)(totalTVA3*0.1*1000))/1000 +""), true);
         }
         if(totalTVA2 != 0){
             TVALine.addElement(new SimpleTextBox(font, 8, 2, 0, "2"), true);
             TVALine.addElement(new SimpleTextBox(font, 8, 2, 0, "5,5", "TXR"), true);
             TVALine.addElement(new SimpleTextBox(font, 8, 2, 0, totalTVA2+"", "TTX"), true);
-            TVALine.addElement(new SimpleTextBox(font, 8, 2, 0, (float)((int)(totalTVA2*0.055*1000))/1000 +"", ""), true);
+            TVALine.addElement(new SimpleTextBox(font, 8, 2, 0, (float)((int)(totalTVA2*0.055*1000))/1000 +""), true);
         }
         if(totalTVA1 != 0){
             TVALine.addElement(new SimpleTextBox(font, 8, 2, 0, "1"), true);
             TVALine.addElement(new SimpleTextBox(font, 8, 2, 0, "2,1", "TXR"), true);
             TVALine.addElement(new SimpleTextBox(font, 8, 2, 0, totalTVA1+"", "TTX"), true);
-            TVALine.addElement(new SimpleTextBox(font, 8, 2, 0, (float)((int)(totalTVA1*0.021*1000))/1000 +"", ""), true);
+            TVALine.addElement(new SimpleTextBox(font, 8, 2, 0, (float)((int)(totalTVA1*0.021*1000))/1000 +""), true);
         }
         verticalInvoiceTVA.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 0, 5));
         verticalInvoiceTVA.addElement(TVALine);
@@ -385,11 +385,11 @@ public class LDLCLayout implements InvoiceLayout {
         VerticalContainer verticalTotaux = new VerticalContainer(posTotauxX+2, posTotauxY+85-2, 250 );
         verticalTotaux.addElement(new SimpleTextBox(fontBold, 9, 0, 0, "Montant remise"));
         verticalTotaux.addElement(new SimpleTextBox(fontBold, 9, 0, 0, "Montant port"));
-        verticalTotaux.addElement(new SimpleTextBox(fontBold, 9, 0, 0, model.getProductContainer().getTotalWithoutTaxHead()));
+        verticalTotaux.addElement(new SimpleTextBox(fontBold, 9, 0, 0, model.getProductContainer().getTotalWithoutTaxHead(),"TWTXH"));
         verticalTotaux.addElement(new SimpleTextBox(fontBold, 9, 0, 0, "Dont eco-participation"));
-        verticalTotaux.addElement(new SimpleTextBox(fontBold, 9, 0, 0, model.getProductContainer().getTaxRateHead()));
-        verticalTotaux.addElement(new SimpleTextBox(fontBold, 9, 0, 0, model.getProductContainer().getTotalAmountHead()));
-        verticalTotaux.addElement(new SimpleTextBox(fontBold, 9, 0, 0,"Votre reglèment"));
+        verticalTotaux.addElement(new SimpleTextBox(fontBold, 9, 0, 0, model.getProductContainer().getTaxRateHead(),"TTXH"));
+        verticalTotaux.addElement(new SimpleTextBox(fontBold, 9, 0, 0, model.getProductContainer().getTotalAmountHead(),"TAH"));
+        verticalTotaux.addElement(new SimpleTextBox(fontBold, 9, 0, 0,"Votre reglèment","TAH"));
         verticalTotaux.build(contentStream, writer);
 
         VerticalContainer verticalTotaux2 = new VerticalContainer(posTotauxX+190, posTotauxY+85-2, 250 );

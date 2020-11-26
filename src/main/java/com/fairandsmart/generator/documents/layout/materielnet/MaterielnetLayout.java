@@ -90,11 +90,11 @@ public class MaterielnetLayout implements InvoiceLayout {
         verticalHeaderContainer.addElement(new SimpleTextBox(font, 9, 0, 0, address.getZip() +"  "+ address.getCity(),"SA"));
 
         HorizontalContainer tel = new HorizontalContainer(0,0);
-        tel.addElement(new SimpleTextBox(font,9,0,0,model.getCompany().getContact().getphoneLabel()+" "));
+        tel.addElement(new SimpleTextBox(font,9,0,0,model.getCompany().getContact().getphoneLabel()+" ","SNCH"));
         tel.addElement(new SimpleTextBox(font,9,0,0, model.getCompany().getContact().getphoneValue(), "SCN"));
 
         HorizontalContainer fax = new HorizontalContainer(0,0);
-        fax.addElement(new SimpleTextBox(font,9,0,0,model.getCompany().getContact().getfaxLabel()+" "));
+        fax.addElement(new SimpleTextBox(font,9,0,0,model.getCompany().getContact().getfaxLabel()+" ","SFAXH"));
         fax.addElement(new SimpleTextBox(font,9,0,0, model.getCompany().getContact().getfaxValue(), "SFAX"));
 
         verticalHeaderContainer.addElement(new BorderBox(Color.white,Color.WHITE,0,0,0,0,2));
@@ -109,7 +109,7 @@ public class MaterielnetLayout implements InvoiceLayout {
         VerticalContainer numContainer = new VerticalContainer(274, page.getMediaBox().getHeight()-45, 250 );
 
         HorizontalContainer numFact = new HorizontalContainer(0,0);
-        numFact.addElement(new SimpleTextBox(font,9,0,0,model.getReference().getLabel()+" "));
+        numFact.addElement(new SimpleTextBox(font,9,0,0,model.getReference().getLabel()+" ","INH"));
         numFact.addElement(new SimpleTextBox(font,9,0,0, model.getReference().getValue(), "IN"));
         numFact.addElement(new SimpleTextBox(font,9,0,0, " - "));
         numFact.addElement(new SimpleTextBox(font,9,0,0, model.getDate().getValue(), "IDATE"));
@@ -136,7 +136,7 @@ public class MaterielnetLayout implements InvoiceLayout {
         numComContainer.build(contentStream,writer);
 
         VerticalContainer billingContainer = new VerticalContainer(311,page.getMediaBox().getHeight()-104,250);
-        billingContainer.addElement(new SimpleTextBox(fontBold,9,0,0,model.getClient().getBillingHead()));
+        billingContainer.addElement(new SimpleTextBox(fontBold,9,0,0,model.getClient().getBillingHead(),"BAH"));
         billingContainer.addElement(new SimpleTextBox(font,9,0,0,model.getClient().getBillingName(),"BN"));
         billingContainer.addElement(new SimpleTextBox(font,9,0,0,model.getClient().getBillingAddress().getLine1(),"BA"));
         billingContainer.addElement(new SimpleTextBox(font,9,0,0,model.getClient().getBillingAddress().getZip()+" "+model.getClient().getBillingAddress().getCity(),"BA"));
@@ -145,7 +145,7 @@ public class MaterielnetLayout implements InvoiceLayout {
         billingContainer.build(contentStream,writer);
 
         VerticalContainer shippingContainer = new VerticalContainer(453,page.getMediaBox().getHeight()-104,250);
-        shippingContainer.addElement(new SimpleTextBox(fontBold,9,0,0,model.getClient().getShippingHead()));
+        shippingContainer.addElement(new SimpleTextBox(fontBold,9,0,0,model.getClient().getShippingHead(),"SHAH"));
         shippingContainer.addElement(new SimpleTextBox(font,9,0,0,model.getClient().getShippingName(),"SHN"));
         shippingContainer.addElement(new SimpleTextBox(font,9,0,0,model.getClient().getShippingAddress().getLine1(),"SHA"));
         shippingContainer.addElement(new SimpleTextBox(font,9,0,0,model.getClient().getShippingAddress().getZip()+" "+model.getClient().getShippingAddress().getCity(),"SHA"));
@@ -155,10 +155,10 @@ public class MaterielnetLayout implements InvoiceLayout {
 
         float[] configRow = {48f, 283f, 121f, 121f};
         TableRowBox firstLine = new TableRowBox(configRow, 0, 0);
-        firstLine.addElement(new SimpleTextBox(fontBold, 8, 2, 0, "QTE (1)"), false);
-        firstLine.addElement(new SimpleTextBox(fontBold, 8, 2, 0, "Désigniation"), true);
-        firstLine.addElement(new SimpleTextBox(fontBold, 8, 2, 0, "Prix Unitaire H.T."), false);
-        firstLine.addElement(new SimpleTextBox(fontBold, 8, 2, 0, "Prix Total H.T"), false);
+        firstLine.addElement(new SimpleTextBox(fontBold, 8, 2, 0, "QTE (1)","QTYH"), false);
+        firstLine.addElement(new SimpleTextBox(fontBold, 8, 2, 0, "Désigniation","PDH"), true);
+        firstLine.addElement(new SimpleTextBox(fontBold, 8, 2, 0, "Prix Unitaire H.T.","PUH"), false);
+        firstLine.addElement(new SimpleTextBox(fontBold, 8, 2, 0, "Prix Total H.T","PTWTXH"), false);
 
         VerticalContainer verticalInvoiceItems = new VerticalContainer(22, page.getMediaBox().getHeight()-190, 600 );
         verticalInvoiceItems.addElement(firstLine);
@@ -189,18 +189,18 @@ public class MaterielnetLayout implements InvoiceLayout {
         VerticalContainer totalContainer = new VerticalContainer(416,269,250);
 
         HorizontalContainer baseHT = new HorizontalContainer(0,0);
-        baseHT.addElement(new SimpleTextBox(fontBold,9,0,0,model.getProductContainer().getTotalWithoutTaxHead()));
+        baseHT.addElement(new SimpleTextBox(fontBold,9,0,0,model.getProductContainer().getTotalWithoutTaxHead(),"TWTXH"));
         baseHT.addElement(new BorderBox(Color.WHITE,Color.WHITE,0,0,0,50,0));
         baseHT.addElement(new SimpleTextBox(font,9,0,0,model.getProductContainer().getFormatedTotalWithoutTax(),"TWTX"));
 
         HorizontalContainer taxeTVA = new HorizontalContainer(0,0);
-        taxeTVA.addElement(new SimpleTextBox(fontBold,9,0,0,model.getProductContainer().getTotalTaxHead()));
+        taxeTVA.addElement(new SimpleTextBox(fontBold,9,0,0,model.getProductContainer().getTotalTaxHead(),"TTXH"));
         taxeTVA.addElement(new SimpleTextBox(fontBold,9,0,0," 20%"));
         taxeTVA.addElement(new BorderBox(Color.WHITE,Color.WHITE,0,0,0,50,0));
         taxeTVA.addElement(new SimpleTextBox(font,9,0,0,model.getProductContainer().getFormatedTotalTax(),"TTX"));
 
         HorizontalContainer totalTTC = new HorizontalContainer(0,0);
-        totalTTC.addElement(new SimpleTextBox(fontBold,9,0,0,model.getProductContainer().getTotalAmountHead()));
+        totalTTC.addElement(new SimpleTextBox(fontBold,9,0,0,model.getProductContainer().getTotalAmountHead(),"TAH"));
         totalTTC.addElement(new BorderBox(Color.WHITE,Color.WHITE,0,0,0,50,0));
         totalTTC.addElement(new SimpleTextBox(font,9,0,0,model.getProductContainer().getFormatedTotalWithTax(),"TA"));
 
@@ -215,7 +215,7 @@ public class MaterielnetLayout implements InvoiceLayout {
         new SimpleTextBox(fontBold,9,209,204,"Modalité et conditions de règlement").build(contentStream,writer);
 
         VerticalContainer paiementLabel = new VerticalContainer(22,190,250);
-        paiementLabel.addElement(new SimpleTextBox(font, 9,0,0,model.getPaymentInfo().getLabelType()+" : "));
+        paiementLabel.addElement(new SimpleTextBox(font, 9,0,0,model.getPaymentInfo().getLabelType()+" : ","PMODEH"));
         paiementLabel.addElement(new SimpleTextBox(font, 9,0,0,"Echéance : "));
 
         VerticalContainer paiementValeur = new VerticalContainer(317,190,250);
@@ -239,20 +239,20 @@ public class MaterielnetLayout implements InvoiceLayout {
         infoEntreprise.addElement(new SimpleTextBox(font,7,0,0, " - "+address.getZip()+ " "+address.getCity()));
 
         HorizontalContainer infoEntreprise2 = new HorizontalContainer(0,0);
-        infoEntreprise2.addElement(new SimpleTextBox(font,7,0,0, model.getCompany().getContact().getphoneLabel()+" "));
+        infoEntreprise2.addElement(new SimpleTextBox(font,7,0,0, model.getCompany().getContact().getphoneLabel()+" ","SCNH"));
         infoEntreprise2.addElement(new SimpleTextBox(font,7,0,0, model.getCompany().getContact().getphoneValue(),"SCN"));
-        infoEntreprise2.addElement(new SimpleTextBox(font,7,0,0, " - "+model.getCompany().getContact().getfaxLabel()+" "));
+        infoEntreprise2.addElement(new SimpleTextBox(font,7,0,0, " - "+model.getCompany().getContact().getfaxLabel()+" ","SFAXH"));
         infoEntreprise2.addElement(new SimpleTextBox(font,7,0,0, model.getCompany().getContact().getfaxValue(),"SFAX"));
         infoEntreprise2.addElement(new SimpleTextBox(font,7,0,0, " - Internet. "));
         infoEntreprise2.addElement(new SimpleTextBox(font,7,0,0, model.getCompany().getWebsite()));
 
         HorizontalContainer infoEntreprise3 = new HorizontalContainer(0,0);
         infoEntreprise3.addElement(new SimpleTextBox(font,7,0,0, "SAS au capital de "+(int)(100000+(Math.random()*(9999999 - 100000)))+" Eur - "));
-        infoEntreprise3.addElement(new SimpleTextBox(font,7,0,0, idNumbers.getSiretLabel()+" "));
+        infoEntreprise3.addElement(new SimpleTextBox(font,7,0,0, idNumbers.getSiretLabel()+" ","SSIRETH"));
         infoEntreprise3.addElement(new SimpleTextBox(font,7,0,0, idNumbers.getSiretValue(),"SSIRET"));
-        infoEntreprise3.addElement(new SimpleTextBox(font,7,0,0, " - "+ idNumbers.getToaLabel()));
+        infoEntreprise3.addElement(new SimpleTextBox(font,7,0,0, " - "+ idNumbers.getToaLabel(),"STOAH"));
         infoEntreprise3.addElement(new SimpleTextBox(font,7,0,0, idNumbers.getToaValue(),"STOA"));
-        infoEntreprise3.addElement(new SimpleTextBox(font,7,0,0, " - "+ idNumbers.getVatLabel() +" : "));
+        infoEntreprise3.addElement(new SimpleTextBox(font,7,0,0, " - "+ idNumbers.getVatLabel() +" : ","SVATH"));
         infoEntreprise3.addElement(new SimpleTextBox(font,7,0,0, idNumbers.getVatValue(),"SVAT"));
 
         float millieuPageX = page.getMediaBox().getWidth()/2;

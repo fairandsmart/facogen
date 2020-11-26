@@ -103,20 +103,20 @@ public class CdiscountLayout implements InvoiceLayout {
         verticalHeaderContainer.addElement(new BorderBox(Color.white,Color.WHITE,0,0,0,0,3));
 
         HorizontalContainer rcs = new HorizontalContainer(0,0);
-        rcs.addElement(new SimpleTextBox(font,9,0,0,"N°RCS "));
+        rcs.addElement(new SimpleTextBox(font,9,0,0,"N°RCS ","SCIDH"));
         rcs.addElement(new SimpleTextBox(font,9,0,0, idnumObj.getCidValue(), "SCID"));
         rcs.addElement(new SimpleTextBox(font,9,0,0, " " +model.getCompany().getAddress().getCity(), "SA"));
 
         HorizontalContainer siret = new HorizontalContainer(0,0);
-        siret.addElement(new SimpleTextBox(font,9,0,0,"Siret "));
+        siret.addElement(new SimpleTextBox(font,9,0,0,"Siret ","SSIRETH"));
         siret.addElement(new SimpleTextBox(font,9,0,0, idnumObj.getSiretValue(), "SSIRET"));
 
         HorizontalContainer vat = new HorizontalContainer(0,0);
-        vat.addElement(new SimpleTextBox(font,9,0,0, idnumObj.getVatLabel()+" : "));
+        vat.addElement(new SimpleTextBox(font,9,0,0, idnumObj.getVatLabel()+" : ","SVATH"));
         vat.addElement(new SimpleTextBox(font,9,0,0, idnumObj.getVatValue(), "SVAT"));
 
         HorizontalContainer naf = new HorizontalContainer(0,0);
-        naf.addElement(new SimpleTextBox(font,9,0,0, idnumObj.getToaLabel()+" : "));
+        naf.addElement(new SimpleTextBox(font,9,0,0, idnumObj.getToaLabel()+" : ","STOAH"));
         naf.addElement(new SimpleTextBox(font,9,0,0, idnumObj.getToaValue(), "STOA"));
 
         verticalHeaderContainer.addElement(rcs);
@@ -133,11 +133,11 @@ public class CdiscountLayout implements InvoiceLayout {
         new BorderBox(gris,gris,1,posHeaderX,posHeaderY-14-2,252,14).build(contentStream,writer);
 
         HorizontalContainer numFac = new HorizontalContainer(posHeaderX+68,posHeaderY+12);
-        numFac.addElement(new SimpleTextBox(fontBold,9,0,0, model.getReference().getLabel()+" "));
+        numFac.addElement(new SimpleTextBox(fontBold,9,0,0, model.getReference().getLabel()+" ","INH"));
         numFac.addElement(new SimpleTextBox(fontBold,9,0,0, model.getReference().getValue(), "IN"));
 
         HorizontalContainer containerDate = new HorizontalContainer(posHeaderX+252/3,posHeaderY-4);
-        containerDate.addElement(new SimpleTextBox(fontBold,9,0,0, "du "));
+        containerDate.addElement(new SimpleTextBox(fontBold,9,0,0, "du ","IDATEH"));
         containerDate.addElement(new SimpleTextBox(fontBold,9,0,0, model.getDate().getValue(), "IDATE"));
 
         numFac.build(contentStream,writer);
@@ -145,8 +145,8 @@ public class CdiscountLayout implements InvoiceLayout {
 
         new BorderBox(Color.BLACK,Color.WHITE,1,34,42,530,652).build(contentStream,writer);
 
-        new SimpleTextBox(fontBold,9,87,page.getMediaBox().getHeight()-158,"FACTURATION",Color.RED,Color.WHITE).build(contentStream,writer);
-        new SimpleTextBox(fontBold,9,87+229,page.getMediaBox().getHeight()-158,"LIVRAISON",Color.RED,Color.WHITE).build(contentStream,writer);
+        new SimpleTextBox(fontBold,9,87,page.getMediaBox().getHeight()-158,"FACTURATION",Color.RED,Color.WHITE,"BAH").build(contentStream,writer);
+        new SimpleTextBox(fontBold,9,87+229,page.getMediaBox().getHeight()-158,"LIVRAISON",Color.RED,Color.WHITE,"SHAH").build(contentStream,writer);
 
         new BorderBox(Color.RED,Color.WHITE,1,87,page.getMediaBox().getHeight()-170-51,229,51).build(contentStream,writer);
         new BorderBox(Color.RED,Color.WHITE,1,87+230,page.getMediaBox().getHeight()-170-51,189,51).build(contentStream,writer);
@@ -185,11 +185,11 @@ public class CdiscountLayout implements InvoiceLayout {
         VerticalContainer labelInfoClient = new VerticalContainer(88,page.getMediaBox().getHeight()-227,250);
         labelInfoClient.addElement(new SimpleTextBox(font,8,0,0,"Adresse e-mail"));
         labelInfoClient.addElement(new BorderBox(Color.white,Color.WHITE,0,0,0,0,2.5f));
-        labelInfoClient.addElement(new SimpleTextBox(font,8,0,0,model.getReference().getLabelCommand()));
+        labelInfoClient.addElement(new SimpleTextBox(font,8,0,0,model.getReference().getLabelCommand(),"ONUMH"));
         labelInfoClient.addElement(new BorderBox(Color.white,Color.WHITE,0,0,0,0,2.5f));
-        labelInfoClient.addElement(new SimpleTextBox(font,8,0,0,model.getPaymentInfo().getLabelType()+""));
+        labelInfoClient.addElement(new SimpleTextBox(font,8,0,0,model.getPaymentInfo().getLabelType()+"","PMODEH"));
         labelInfoClient.addElement(new BorderBox(Color.white,Color.WHITE,0,0,0,0,2.5f));
-        labelInfoClient.addElement(new SimpleTextBox(font,8,0,0,model.getDate().getLabelPayment()));
+        labelInfoClient.addElement(new SimpleTextBox(font,8,0,0,model.getDate().getLabelPayment(),"PDATEH"));
 
         labelInfoClient.build(contentStream,writer);
 
@@ -216,9 +216,9 @@ public class CdiscountLayout implements InvoiceLayout {
         boxInfoClient2.build(contentStream,writer);
 
         VerticalContainer labelInfoClient2 = new VerticalContainer(321,page.getMediaBox().getHeight()-227,250);
-        labelInfoClient2.addElement(new SimpleTextBox(font,8,0,0,"ID Client"));
+        labelInfoClient2.addElement(new SimpleTextBox(font,8,0,0,"ID Client","CNUMH"));
         labelInfoClient2.addElement(new BorderBox(Color.white,Color.WHITE,0,0,0,0,2.5f));
-        labelInfoClient2.addElement(new SimpleTextBox(font,8,0,0,model.getDate().getLabelCommand()));
+        labelInfoClient2.addElement(new SimpleTextBox(font,8,0,0,model.getDate().getLabelCommand(),"IDATEH"));
         labelInfoClient2.addElement(new BorderBox(Color.white,Color.WHITE,0,0,0,0,2.5f));
         labelInfoClient2.addElement(new SimpleTextBox(font,8,0,0,"Date de validation"));
         labelInfoClient2.addElement(new BorderBox(Color.white,Color.WHITE,0,0,0,0,2.5f));
@@ -248,13 +248,13 @@ public class CdiscountLayout implements InvoiceLayout {
 
         float[] configRow = {82f, 189f, 28f, 62f, 62f, 62f,39f};
         TableRowBox firstLine = new TableRowBox(configRow, 0, 0);
-        firstLine.addElement(new SimpleTextBox(fontBold, 8, 2, 0, "Réf.", Color.BLACK, gris), true);
-        firstLine.addElement(new SimpleTextBox(fontBold, 8, 2, 0, "Libellé", Color.BLACK, gris), false);
-        firstLine.addElement(new SimpleTextBox(fontBold, 8, 2, 0, "Qté", Color.BLACK, gris), false);
-        firstLine.addElement(new SimpleTextBox(fontBold, 8, 2, 0, "PUHT", Color.BLACK, gris), false);
+        firstLine.addElement(new SimpleTextBox(fontBold, 8, 2, 0, "Réf.", Color.BLACK, gris,"EANH"), true);
+        firstLine.addElement(new SimpleTextBox(fontBold, 8, 2, 0, "Libellé", Color.BLACK, gris,"PDH"), false);
+        firstLine.addElement(new SimpleTextBox(fontBold, 8, 2, 0, "Qté", Color.BLACK, gris,"QTYH"), false);
+        firstLine.addElement(new SimpleTextBox(fontBold, 8, 2, 0, "PUHT", Color.BLACK, gris,"PUH"), false);
         firstLine.addElement(new SimpleTextBox(fontBold, 8, 2, 0, "PUTTC", Color.BLACK, gris), false);
         firstLine.addElement(new SimpleTextBox(fontBold, 8, 2, 0, "PVTTC",Color.BLACK, gris), false);
-        firstLine.addElement(new SimpleTextBox(fontBold, 8, 2, 0, "TVA", Color.BLACK, gris), false);
+        firstLine.addElement(new SimpleTextBox(fontBold, 8, 2, 0, "TVA", Color.BLACK, gris,"TXRH"), false);
 
         VerticalContainer verticalInvoiceItems = new VerticalContainer(36, 510, 600 );
         verticalInvoiceItems.addElement(new BorderBox(Color.LIGHT_GRAY,Color.LIGHT_GRAY,0,0,0,page.getMediaBox().getWidth()-(72),0.3f));
@@ -312,7 +312,7 @@ public class CdiscountLayout implements InvoiceLayout {
 
 
         VerticalContainer labelTotal = new VerticalContainer(380,posTab-2,250);
-        labelTotal.addElement(new SimpleTextBox(font,8,0,0,model.getProductContainer().getTotalAmountHead().toUpperCase()));
+        labelTotal.addElement(new SimpleTextBox(font,8,0,0,model.getProductContainer().getTotalAmountHead().toUpperCase(),"TAH"));
         labelTotal.addElement(new BorderBox(gris,gris,0,5,0,0,4));
         labelTotal.addElement(new SimpleTextBox(font,8,0,0,"AVOIR/CARTE CADEAU"));
         labelTotal.addElement(new BorderBox(gris,gris,0,0,0,0,4));
@@ -320,11 +320,11 @@ public class CdiscountLayout implements InvoiceLayout {
         labelTotal.addElement(new BorderBox(gris,gris,0,0,0,0,4));
         labelTotal.addElement(new SimpleTextBox(font,8,0,0,"FRAIS PREPA* "));
         labelTotal.addElement(new BorderBox(gris,gris,0,0,0,0,4));
-        labelTotal.addElement(new SimpleTextBox(font,8,0,0,"TOTAL NET TTC"));
+        labelTotal.addElement(new SimpleTextBox(font,8,0,0,"TOTAL NET TTC","TAH"));
         labelTotal.addElement(new BorderBox(gris,gris,0,0,0,0,4));
-        labelTotal.addElement(new SimpleTextBox(font,8,0,0,model.getProductContainer().getTotalTaxHead().toUpperCase()));
+        labelTotal.addElement(new SimpleTextBox(font,8,0,0,model.getProductContainer().getTotalTaxHead().toUpperCase(),"TTXH"));
         labelTotal.addElement(new BorderBox(gris,gris,0,0,0,0,4));
-        labelTotal.addElement(new SimpleTextBox(font,8,0,0,model.getProductContainer().getTotalWithoutTaxHead().toUpperCase()));
+        labelTotal.addElement(new SimpleTextBox(font,8,0,0,model.getProductContainer().getTotalWithoutTaxHead().toUpperCase(),"TWTXH"));
         labelTotal.build(contentStream,writer);
 
         VerticalContainer valeurTotal = new VerticalContainer(480,posTab-2,250);
