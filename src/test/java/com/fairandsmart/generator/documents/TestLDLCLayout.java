@@ -54,9 +54,9 @@ public class TestLDLCLayout {
         }
 
         for ( int i=1; i<=nb; i++) {
-            Path pdf = Paths.get("target/ldlc/ldlc" + i + " .pdf");
-            Path xml = Paths.get("target/ldlc/ldlc" + i + ".xml");
-            Path img = Paths.get("target/ldlc/ldlc" + i + ".tiff");
+            Path pdf = Paths.get("target/ldlc/pdf/ldlc" + i + " .pdf");
+            Path xml = Paths.get("target/ldlc/xml/ldlc" + i + ".xml");
+            Path img = Paths.get("target/ldlc/tiff/ldlc" + i + ".tiff");
 
             GenerationContext ctx = GenerationContext.generate();
             InvoiceModel model = new InvoiceModel.Generator().generate(ctx);

@@ -141,14 +141,14 @@ public class DartyLayout implements InvoiceLayout {
         new SimpleTextBox(fontBold, 9, 136, posRectGris-3,"FACTURE" ).build(contentStream,writer);
 
         HorizontalContainer HorizontalNumDateContainer = new HorizontalContainer(42+240/4, posRectGris-25 );
-        HorizontalNumDateContainer.addElement(new SimpleTextBox(fontBold, 9, 0, 0, "N°","INH"));
+        HorizontalNumDateContainer.addElement(new SimpleTextBox(fontBold, 9, 0, 0, "N°"));
         HorizontalNumDateContainer.addElement(new SimpleTextBox(fontBold, 9, 0, 0, model.getReference().getValue(), "IN" ));
-        HorizontalNumDateContainer.addElement(new SimpleTextBox(fontBold, 9, 0, 0, " du " ,"IDATEH"));
+        HorizontalNumDateContainer.addElement(new SimpleTextBox(fontBold, 9, 0, 0, " du " ));
         HorizontalNumDateContainer.addElement(new SimpleTextBox(fontBold, 9, 0, 0, model.getDate().getValue(), "IDATE" ));
         HorizontalNumDateContainer.build(contentStream,writer);
 
         HorizontalContainer HorizontalComDateContainer = new HorizontalContainer(42, 595 );
-        HorizontalComDateContainer.addElement(new SimpleTextBox(fontBold, 9, 0, 0, model.getReference().getLabelCommand()+" ","ONUMH"));
+        HorizontalComDateContainer.addElement(new SimpleTextBox(fontBold, 9, 0, 0, model.getReference().getLabelCommand()+" "));
         HorizontalComDateContainer.addElement(new SimpleTextBox(fontBold, 9, 0, 0, model.getReference().getValueCommand(),"ONUM" ));
         HorizontalComDateContainer.addElement(new SimpleTextBox(fontBold, 9, 0, 0, " du " ));
         HorizontalComDateContainer.addElement(new SimpleTextBox(fontBold, 9, 0, 0, model.getDate().getValue(), "IDATE" ));
@@ -156,12 +156,12 @@ public class DartyLayout implements InvoiceLayout {
 
         float[] configRow = {56f, 22f, 141f, 80f, 62f, 90f, 51f};
         TableRowBox firstLine = new TableRowBox(configRow, 0, 0);
-        firstLine.addElement(new SimpleTextBox(fontBold, 8, 2, 0, "Référence", Color.BLACK, Color.WHITE,"EANH"), true);
-        firstLine.addElement(new SimpleTextBox(fontBold, 8, 2, 0, "Qté", Color.BLACK, Color.WHITE,"QTYH"), true);
-        firstLine.addElement(new SimpleTextBox(fontBold, 8, 2, 0, "Libellé", Color.BLACK, Color.WHITE,"PDH"), false);
+        firstLine.addElement(new SimpleTextBox(fontBold, 8, 2, 0, "Référence", Color.BLACK, Color.WHITE), true);
+        firstLine.addElement(new SimpleTextBox(fontBold, 8, 2, 0, "Qté", Color.BLACK, Color.WHITE), true);
+        firstLine.addElement(new SimpleTextBox(fontBold, 8, 2, 0, "Libellé", Color.BLACK, Color.WHITE), false);
         firstLine.addElement(new SimpleTextBox(fontBold, 8, 2, 0, "Garantie", Color.BLACK, Color.WHITE), true);
-        firstLine.addElement(new SimpleTextBox(fontBold, 8, 2, 0, "Total HT", Color.BLACK, Color.WHITE,"PTWTXH"), true);
-        firstLine.addElement(new SimpleTextBox(fontBold, 8, 2, 0, "Base/Taux",Color.BLACK, Color.WHITE,"TXRH"), true);
+        firstLine.addElement(new SimpleTextBox(fontBold, 8, 2, 0, "Total HT", Color.BLACK, Color.WHITE), true);
+        firstLine.addElement(new SimpleTextBox(fontBold, 8, 2, 0, "Base/Taux",Color.BLACK, Color.WHITE), true);
         firstLine.addElement(new SimpleTextBox(fontBold, 8, 2, 0, "Total TTC", Color.BLACK, Color.WHITE), true);
 
         TableRowBox line2 = new TableRowBox(configRow, 0, 0);
@@ -235,8 +235,7 @@ public class DartyLayout implements InvoiceLayout {
             verticalInvoiceItems.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 0, 5));
             verticalInvoiceItems.addElement(productLine);
             verticalInvoiceItems.addElement(productLine2);
-            verticalInvoiceItems.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 0, 5));
-        }
+            verticalInvoiceItems.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 0, 5));   }
 
         TableRowBox productLine3 = new TableRowBox(configRow, 0, 0);
         productLine3.addElement(new SimpleTextBox(font, 8, 2, 0, ""), true);
@@ -267,7 +266,7 @@ public class DartyLayout implements InvoiceLayout {
         new BorderBox(Color.BLACK,Color.WHITE,1,195,posMsgY,360,39).build(contentStream,writer);
 
         HorizontalContainer totaux = new HorizontalContainer(250,posMsgY+39-3);
-        totaux.addElement(new SimpleTextBox(fontBold,9,0,0,"Total facturé : ","TAH"));
+        totaux.addElement(new SimpleTextBox(fontBold,9,0,0,"Total facturé : "));
         totaux.addElement(new BorderBox(Color.WHITE,Color.WHITE,0,0,0,50,0));
         SimpleTextBox stb = new SimpleTextBox(font,9,0,0,model.getProductContainer().getFormatedTotalWithoutTax()+"","TWTX");
         totaux.addElement(stb);
@@ -278,7 +277,7 @@ public class DartyLayout implements InvoiceLayout {
         totaux.addElement(new SimpleTextBox(font,9,0,0,model.getProductContainer().getFormatedTotalWithTax()+"","TA"));
         totaux.build(contentStream,writer);
 
-        new SimpleTextBox(fontBold,9,226,posMsgY-33,"Montant réglé par : ","PMODEH").build(contentStream,writer);
+        new SimpleTextBox(fontBold,9,226,posMsgY-33,"Montant réglé par : ").build(contentStream,writer);
         new SimpleTextBox(fontBold,9,340,posMsgY-33,model.getPaymentInfo().getValueType(),"PMODE").build(contentStream,writer);
         new SimpleTextBox(fontBold,9,411,posMsgY-66,"Soldes à régler : ").build(contentStream,writer);
         new SimpleTextBox(fontBold,9,page.getMediaBox().getWidth()-90,posMsgY-33,model.getProductContainer().getFormatedTotalWithTax(),"TA").build(contentStream,writer);

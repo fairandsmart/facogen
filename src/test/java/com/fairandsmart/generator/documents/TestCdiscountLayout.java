@@ -55,9 +55,9 @@ public class TestCdiscountLayout {
 
         for ( int i=1; i<=nb; i++) {
 
-            Path pdf = Paths.get("target/cdiscount/cdiscount" + i + ".pdf");
-            Path xml = Paths.get("target/cdiscount/cdiscount" + i + ".xml");
-            Path img = Paths.get("target/cdiscount/cdiscount" + i + ".tiff");
+            Path pdf = Paths.get("target/cdiscount/pdf/cdiscount" + i + ".pdf");
+            Path xml = Paths.get("target/cdiscount/xml/cdiscount" + i + ".xml");
+            Path img = Paths.get("target/cdiscount/tiff/cdiscount" + i + ".tiff");
 
             GenerationContext ctx = GenerationContext.generate();
             ctx.setCountry("FR");

@@ -55,9 +55,9 @@ public class TestBDmobilierLayout {
 
         for ( int i=1; i<=nb; i++) {
 
-            Path pdf = Paths.get("target/bdmobilier/bdmobilier" + i + ".pdf");
-            Path xml = Paths.get("target/bdmobilier/bdmobilier" + i + ".xml");
-            Path img = Paths.get("target/bdmobilier/bdmobilier" + i + ".tiff");
+            Path pdf = Paths.get("target/bdmobilier/pdf/bdmobilier" + i + ".pdf");
+            Path xml = Paths.get("target/bdmobilier/xml/bdmobilier" + i + ".xml");
+            Path img = Paths.get("target/bdmobilier/tiff/bdmobilier" + i + ".tiff");
 
             GenerationContext ctx = GenerationContext.generate();
             ctx.setCountry("FR");

@@ -54,9 +54,9 @@ public class TestMaterielnetLayout {
         }
 
         for ( int i=1; i<=nb; i++) {
-            Path pdf = Paths.get("target/materielnet/materielnet-" + i + ".pdf");
-            Path xml = Paths.get("target/materielnet/materielnet" + i + ".xml");
-            Path img = Paths.get("target/materielnet/materielnet" +i + ".tiff");
+            Path pdf = Paths.get("target/materielnet/pdf/materielnet-" + i + ".pdf");
+            Path xml = Paths.get("target/materielnet/xml/materielnet" + i + ".xml");
+            Path img = Paths.get("target/materielnet/tiff/materielnet" +i + ".tiff");
 
             GenerationContext ctx = GenerationContext.generate();
             ctx.setCountry("FR");
