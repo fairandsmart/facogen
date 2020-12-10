@@ -200,7 +200,7 @@ public class CdiscountLayout implements InvoiceLayout {
         valueInfoClient.addElement(new BorderBox(Color.white,Color.WHITE,0,0,0,0,2.5f));
         valueInfoClient.addElement(new SimpleTextBox(font,8,0,0,model.getPaymentInfo().getValueType(),"PMODE"));
         valueInfoClient.addElement(new BorderBox(Color.white,Color.WHITE,0,0,0,0,2.5f));
-        valueInfoClient.addElement(new SimpleTextBox(font,8,0,0,model.getDate().getValuePayment(),"PDATE"));
+        valueInfoClient.addElement(new SimpleTextBox(font,8,0,0,model.getDate().getValuePayment(),"IDATE"));
 
         valueInfoClient.build(contentStream,writer);
 
@@ -269,10 +269,10 @@ public class CdiscountLayout implements InvoiceLayout {
             Product randomProduct = model.getProductContainer().getProducts().get(w);
 
             TableRowBox productLine = new TableRowBox(configRow, 0, 0);
-            productLine.addElement(new SimpleTextBox(font, 8, 2, 0, randomProduct.getEan(), "EAN"), true);
+            productLine.addElement(new SimpleTextBox(font, 8, 2, 0, randomProduct.getEan(), "SNO"), true);
             productLine.addElement(new SimpleTextBox(font, 8, 2, 0, randomProduct.getName(), "PD"), false);
             productLine.addElement(new SimpleTextBox(font, 8, 2, 0, Float.toString(randomProduct.getQuantity()), "QTY"), false);
-            productLine.addElement(new SimpleTextBox(font, 8, 2, 0, randomProduct.getFormatedPriceWithoutTax(), "PU"), false);
+            productLine.addElement(new SimpleTextBox(font, 8, 2, 0, randomProduct.getFormatedPriceWithoutTax(), "UP"), false);
             float puttcR = (float)(int)((randomProduct.getPriceWithoutTax() + randomProduct.getPriceWithoutTax() * randomProduct.getTaxRate())*100)/100;
             productLine.addElement(new SimpleTextBox(font, 8, 2, 0, puttcR + "", "undefined"), false);
             productLine.addElement(new SimpleTextBox(font, 8, 2, 0, randomProduct.getFormatedTotalPriceWithTax(), "undefined"), false);
@@ -388,7 +388,7 @@ public class CdiscountLayout implements InvoiceLayout {
 
             Product randomProduct = model.getProductContainer().getProducts().get(tailleTab2);
 
-            new SimpleTextBox(font, 8, 155, posMsgY-123-13*tailleTab2, randomProduct.getEan(), "EAN").build(contentStream,writer);
+            new SimpleTextBox(font, 8, 155, posMsgY-123-13*tailleTab2, randomProduct.getEan(), "SNO").build(contentStream,writer);
             new SimpleTextBox(font, 8, 283, posMsgY-123-13*tailleTab2, randomProduct.getEcoParticipationWithoutTax()+"").build(contentStream,writer);
         }
 

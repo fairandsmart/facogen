@@ -263,10 +263,10 @@ public class LDLCLayout implements InvoiceLayout {
             Product randomProduct = model.getProductContainer().getProducts().get(w);
 
             TableRowBox productLine = new TableRowBox(configRow, 0, 0);
-            productLine.addElement(new SimpleTextBox(font, 8, 2, 0, randomProduct.getEan(), "EAN"), false);
+            productLine.addElement(new SimpleTextBox(font, 8, 2, 0, randomProduct.getEan(), "SNO"), false);
             productLine.addElement(new SimpleTextBox(font, 8, 2, 0, (randomProduct.getName()!=null)?randomProduct.getName().toUpperCase():"", "PD"), false);
             productLine.addElement(new SimpleTextBox(font, 8, 2, 0, Float.toString(randomProduct.getQuantity()), "QTY"), false);
-            productLine.addElement(new SimpleTextBox(font, 8, 2, 0, Float.toString(randomProduct.getPriceWithoutTax()), "PU"), false);
+            productLine.addElement(new SimpleTextBox(font, 8, 2, 0, Float.toString(randomProduct.getPriceWithoutTax()), "UP"), false);
             reduc = randomProduct.getDiscount();
             productLine.addElement(new SimpleTextBox(font, 8, 2, 0, Float.toString(reduc)), false);
             productLine.addElement(new SimpleTextBox(font, 8, 2, 0, Float.toString(randomProduct.getTotalPriceWithoutTax()), "PTWTX" ), false);

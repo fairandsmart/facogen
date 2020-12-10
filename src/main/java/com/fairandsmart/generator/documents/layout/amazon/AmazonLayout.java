@@ -116,7 +116,7 @@ public class AmazonLayout implements InvoiceLayout {
         verticalAddressContainer2.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 0, 5));
         verticalAddressContainer2.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, model.getClient().getShippingName(),"SHN" ));
         verticalAddressContainer2.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, model.getClient().getShippingAddress().getLine1(),"SHA" ));
-        verticalAddressContainer2.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, model.getClient().getShippingAddress().getZip() + " "+model.getClient().getShippingAddress().getCity(),"SHSA" ));
+        verticalAddressContainer2.addElement(new SimpleTextBox(PDType1Font.HELVETICA, 9, 0, 0, model.getClient().getShippingAddress().getZip() + " "+model.getClient().getShippingAddress().getCity(),"SHA" ));
 
         verticalAddressContainer2.build(contentStream, writer);
 

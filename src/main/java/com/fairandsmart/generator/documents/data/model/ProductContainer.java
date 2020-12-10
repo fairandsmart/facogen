@@ -225,7 +225,7 @@ public class ProductContainer {
         }
 
         {
-            unitPriceHeads.put("PU", "fr");
+            unitPriceHeads.put("UP", "fr");
             unitPriceHeads.put("Prix Unitaire", "fr");
             unitPriceHeads.put("P.U. HT", "fr");
             unitPriceHeads.put("P.U.", "fr");

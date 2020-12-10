@@ -192,7 +192,7 @@ public class NatureDecouvertesLayout implements InvoiceLayout {
             Product randomProduct = model.getProductContainer().getProducts().get(w);
 
             TableRowBox productLine = new TableRowBox(configRow, 0, -10);
-            productLine.addElement(new SimpleTextBox(font, 7, 2, 0, randomProduct.getEan(), "EAN"), true);
+            productLine.addElement(new SimpleTextBox(font, 7, 2, 0, randomProduct.getEan(), "SNO"), true);
             productLine.addElement(new SimpleTextBox(font, 8, 2, 0, randomProduct.getName(), "PD"), false);
             productLine.addElement(new SimpleTextBox(font, 8, 2, 0, Float.toString(randomProduct.getQuantity()), "QTY"), false);
             productLine.addElement(new SimpleTextBox(font, 8, 2, 0, randomProduct.getTaxRate() * 100 + "%", "TXR"), false);

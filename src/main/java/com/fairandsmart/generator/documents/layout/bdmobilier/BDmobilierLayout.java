@@ -166,7 +166,7 @@ public class BDmobilierLayout implements InvoiceLayout {
 
             TableRowBox productLine = new TableRowBox(configRow, 0, 0);
             productLine.addElement(new SimpleTextBox(font, 9, 2, 0, randomProduct.getName(), "PD"), false);
-            productLine.addElement(new SimpleTextBox(font, 9, 2, 0, randomProduct.getFormatedPriceWithoutTax(), "PU"), false);
+            productLine.addElement(new SimpleTextBox(font, 9, 2, 0, randomProduct.getFormatedPriceWithoutTax(), "UP"), false);
             if(randomProduct.getDiscount() == 0.0){
                 discount = "--";
             }

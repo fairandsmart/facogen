@@ -324,7 +324,7 @@ public class CompanyInfoBox extends ElementBox {
                 SimpleTextBox RCSLabel = new SimpleTextBox(font, fontSize, 0, 0, "RCS ");
                 RCSLabel.setPadding(0, 0, 2, 0);
                 companyIDContainer.addElement(RCSLabel);
-                SimpleTextBox RCSValue1 = new SimpleTextBox(font, fontSize, 0, 0, model.getCompany().getAddress().getCity() ,"SCPOR");
+                SimpleTextBox RCSValue1 = new SimpleTextBox(font, fontSize, 0, 0, model.getCompany().getAddress().getCity() ,"SA");
                 RCSValue1.setPadding(0, 0, 2, 0);
                 companyIDContainer.addElement(RCSValue1);
                 SimpleTextBox RCSValue2 = new SimpleTextBox(font, fontSize, 0, 0, idnumObj.getCidValue() ,"SCID");
@@ -364,7 +364,7 @@ public class CompanyInfoBox extends ElementBox {
                 SimpleTextBox RCSLabel = new SimpleTextBox(font, fontSize, 0, 0, "RCS ");
                 RCSLabel.setPadding(0, 0, 2, 0);
                 companyIDContainer.addElement(RCSLabel);
-                SimpleTextBox RCSValue1 = new SimpleTextBox(font, fontSize, 0, 0, model.getCompany().getAddress().getCity(), "SCPOR");
+                SimpleTextBox RCSValue1 = new SimpleTextBox(font, fontSize, 0, 0, model.getCompany().getAddress().getCity(), "SA");
                 RCSValue1.setPadding(0, 0, 2, 0);
                 companyIDContainer.addElement(RCSValue1);
                 SimpleTextBox RCSValue = new SimpleTextBox(font, fontSize, 0, 0, idnumObj.getCidValue(),"SCID");
