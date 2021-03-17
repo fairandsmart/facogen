@@ -3,9 +3,9 @@ package com.fairandsmart.generator.documents;
 /*-
  * #%L
  * FacoGen / A tool for annotated GEDI based invoice generation.
- * 
+ *
  * Authors:
- * 
+ *
  * Xavier Lefevre <xavier.lefevre@fairandsmart.com> / FairAndSmart
  * Nicolas Rueff <nicolas.rueff@fairandsmart.com> / FairAndSmart
  * Alan Balbo <alan.balbo@fairandsmart.com> / FairAndSmart
@@ -21,12 +21,12 @@ package com.fairandsmart.generator.documents;
  * it under the terms of the GNU General Public License as
  * published by the Free Software Foundation, either version 3 of the
  * License, or (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public
  * License along with this program.  If not, see
  * <http://www.gnu.org/licenses/gpl-3.0.html>.
@@ -34,31 +34,48 @@ package com.fairandsmart.generator.documents;
  */
 
 import com.fairandsmart.generator.documents.data.generator.GenerationContext;
-import com.fairandsmart.generator.documents.data.model.PayslipModel;
-import com.fairandsmart.generator.documents.layout.payslip.GenericPayslipLayout;
+import com.fairandsmart.generator.documents.data.model.ReceiptModel;
+import com.fairandsmart.generator.documents.layout.receipt.GenericReceiptLayout;
 import org.junit.Test;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class TestGenericPayslipLayout {
+public class TestReceipts {
     @Test
     public static void test(int nb) throws Exception {
-        Path paslip = Paths.get("target/payslip");
+        Path paslip = Paths.get("target/receipts");
         if ( !Files.exists(paslip) ) {
             Files.createDirectory(paslip);
         }
+
+
+        Path directoryPdf = Paths.get("target/receipts/pdf");
+        if ( !Files.exists(directoryPdf) ) {
+            Files.createDirectory(directoryPdf);
+        }
+
+        Path directoryXml = Paths.get("target/receipts/xml");
+        if ( !Files.exists(directoryXml) ) {
+            Files.createDirectory(directoryXml);
+        }
+
+        Path directoryTiff = Paths.get("target/receipts/tiff");
+        if ( !Files.exists(directoryTiff) ) {
+            Files.createDirectory(directoryTiff);
+        }
+
         for(int i=1; i<=nb; i++){
-            Path pdf = Paths.get("target/payslip/pdf/payslip-"+ i + ".pdf");
-            Path xml = Paths.get("target/payslip/xml/payslip-"+ i + ".xml");
-            Path img = Paths.get("target/payslip/tiff/payslip-"+ i + ".tiff");
+            Path pdf = Paths.get("target/receipts/pdf/receipt-"+ i + ".pdf");
+            Path xml = Paths.get("target/receipts/xml/receipt-"+ i + ".xml");
+            Path img = Paths.get("target/receipts/tiff/receipt-"+ i + ".tiff");
 
             GenerationContext ctx = GenerationContext.generate();
-            PayslipModel model = new PayslipModel.Generator().generate(ctx);
+            ReceiptModel model = new ReceiptModel.Generator().generate(ctx);
             System.out.println(model);
-            GenericPayslipLayout layout = new GenericPayslipLayout();
-            PayslipGenerator.getInstance().generatePayslip(layout, model, pdf, xml, img);
+            GenericReceiptLayout layout = new GenericReceiptLayout();
+            ReceiptGenerator.getInstance().generateReceipt(layout, model, pdf, xml, img);
         }
     }
 }

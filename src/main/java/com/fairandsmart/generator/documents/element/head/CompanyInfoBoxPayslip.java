@@ -322,6 +322,7 @@ public class CompanyInfoBoxPayslip extends ElementBox {
             if (idName.equals("Rcs")) // Special because not available in IDNumbers
             {
                 SimpleTextBox RCSLabel = new SimpleTextBox(font, fontSize, 0, 0, "RCS ");
+                //RCSLabel.setEntityName("RCSH");
                 RCSLabel.setPadding(0, 0, 2, 0);
                 companyIDContainer.addElement(RCSLabel);
                 SimpleTextBox RCSValue1 = new SimpleTextBox(font, fontSize, 0, 0, model.getCompany().getAddress().getCity() ,"SA");
@@ -337,6 +338,7 @@ public class CompanyInfoBoxPayslip extends ElementBox {
                 String valueName = "get" + idName + "Value";
                 SimpleTextBox Label = new SimpleTextBox(font, fontSize, 0, 0, model.callviaName(idnumObj, labelName).toString());
                 Label.setPadding(0, 0, 2, 0);
+                //Label.setEntityName("S" + idName.toUpperCase()+"H");
                 companyIDContainer.addElement(Label);
                 SimpleTextBox Value = new SimpleTextBox(font, fontSize, 0, 0, model.callviaName(idnumObj, valueName).toString(),"S" + idName.toUpperCase());
                 // Value.setEntityName("S" + idName.toUpperCase());

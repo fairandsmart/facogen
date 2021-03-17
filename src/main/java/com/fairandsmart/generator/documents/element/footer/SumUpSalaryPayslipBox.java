@@ -97,6 +97,7 @@ public class SumUpSalaryPayslipBox extends ElementBox {
 
         idContainer.addElement(new HorizontalLineBoxV2(0,0, configRow[0]+configRow[1]+15, 0));
         SimpleTextBox Label = new SimpleTextBox(font, fontSize, 0, 0, model.getSumUpSalary().getNetImposabletLabel());
+        //Label.setEntityName("NSIH");
         Label.setPadding(0, 0, 2, 0);
         Label.setWidth(configRow[0]);
         container.addElement(Label);
@@ -126,6 +127,7 @@ public class SumUpSalaryPayslipBox extends ElementBox {
 
         idContainer.addElement(new HorizontalLineBoxV2(0,0, configRow[0]+configRow[1]+15, 0));
         SimpleTextBox Label = new SimpleTextBox(font, fontSize, 0, 0, model.getSumUpSalary().getNetAvantImpotLabel());
+        //Label.setEntityName("NSBH");
         Label.setPadding(0, 0, 2, 0);
         Label.setWidth(configRow[0]);
         container.addElement(Label);
@@ -155,6 +157,7 @@ public class SumUpSalaryPayslipBox extends ElementBox {
         idContainer.addElement(new HorizontalLineBoxV2(0,0, configRow[0]+configRow[1]+15, 0));
 
         SimpleTextBox Label = new SimpleTextBox(font, fontSize, 0, 0, model.getSumUpSalary().getNetApayerLabel());
+        //Label.setEntityName("NSH");
         Label.setPadding(0, 0, 2, 0);
         Label.setWidth(configRow[0]);
         container.addElement(Label);

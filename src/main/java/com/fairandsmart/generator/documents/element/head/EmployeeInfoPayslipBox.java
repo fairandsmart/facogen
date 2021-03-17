@@ -115,10 +115,11 @@ public class EmployeeInfoPayslipBox extends ElementBox {
         HorizontalContainer companyIDContainer = new HorizontalContainer(0, 0);
 
         SimpleTextBox Label = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getEmployeCodeLabel());
+        //Label.setEntityName("ECH");
         Label.setPadding(0, 0, 2, 0);
         companyIDContainer.addElement(Label);
         SimpleTextBox Value = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getEmployeCode());
-        Value.setEntityName("EEM");
+        Value.setEntityName("EC");
         Value.setPadding(0, 0, 3, 0);
         companyIDContainer.addElement(Value);
 
@@ -133,6 +134,7 @@ public class EmployeeInfoPayslipBox extends ElementBox {
         HorizontalContainer companyIDContainer = new HorizontalContainer(0, 0);
 
         SimpleTextBox Label = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getRegistartionNumberLabel());
+        //Label.setEntityName("ERNH");
         Label.setPadding(0, 0, 2, 0);
         companyIDContainer.addElement(Label);
         SimpleTextBox Value = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getRegistrationNumber());
@@ -151,6 +153,7 @@ public class EmployeeInfoPayslipBox extends ElementBox {
         HorizontalContainer companyIDContainer = new HorizontalContainer(0, 0);
 
         SimpleTextBox Label = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getSecurityNumberLabel());
+        //Label.setEntityName("SSNH");
         Label.setPadding(0, 0, 2, 0);
         companyIDContainer.addElement(Label);
         SimpleTextBox Value = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getSocialSecurityNumber());
@@ -169,6 +172,7 @@ public class EmployeeInfoPayslipBox extends ElementBox {
         HorizontalContainer companyIDContainer = new HorizontalContainer(0, 0);
 
         SimpleTextBox Label = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getDateStartLabel());
+        //Label.setEntityName("DSH");
         Label.setPadding(0, 0, 2, 0);
         companyIDContainer.addElement(Label);
         SimpleTextBox Value = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getArrivalDate());
@@ -187,6 +191,7 @@ public class EmployeeInfoPayslipBox extends ElementBox {
         HorizontalContainer companyIDContainer = new HorizontalContainer(0, 0);
 
         SimpleTextBox Label = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getEmploymentLabel());
+        //Label.setEntityName("EEMH");
         Label.setPadding(0, 0, 2, 0);
         companyIDContainer.addElement(Label);
         SimpleTextBox Value = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getEmployment());
@@ -206,6 +211,7 @@ public class EmployeeInfoPayslipBox extends ElementBox {
         HorizontalContainer companyIDContainer = new HorizontalContainer(0, 0);
 
         SimpleTextBox Label = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getQualifLabel());
+        //Label.setEntityName("QEH");
         Label.setPadding(0, 0, 2, 0);
         companyIDContainer.addElement(Label);
         SimpleTextBox Value = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getAssignment());
@@ -242,10 +248,11 @@ public class EmployeeInfoPayslipBox extends ElementBox {
         HorizontalContainer companyIDContainer = new HorizontalContainer(0, 0);
 
         SimpleTextBox Label = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getClassificationLabel());
+        //Label.setEntityName("CLEH");
         Label.setPadding(0, 0, 2, 0);
         companyIDContainer.addElement(Label);
         SimpleTextBox Value = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getClassification());
-        Value.setEntityName("CE");
+        Value.setEntityName("CLE");
         Value.setPadding(0, 0, 3, 0);
         companyIDContainer.addElement(Value);
 
@@ -260,6 +267,7 @@ public class EmployeeInfoPayslipBox extends ElementBox {
         HorizontalContainer companyIDContainer = new HorizontalContainer(0, 0);
 
         SimpleTextBox Label = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getCoeffLabel());
+        //Label.setEntityName("COEH");
         Label.setPadding(0, 0, 2, 0);
         companyIDContainer.addElement(Label);
         SimpleTextBox Value = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getCoef());
@@ -296,10 +304,11 @@ public class EmployeeInfoPayslipBox extends ElementBox {
         HorizontalContainer companyIDContainer = new HorizontalContainer(0, 0);
 
         SimpleTextBox Label = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getHourlyRateLabel());
+
         Label.setPadding(0, 0, 2, 0);
         companyIDContainer.addElement(Label);
         SimpleTextBox Value = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getHourlyRate());
-        Value.setEntityName("HR");
+        //Value.setEntityName("HR");
         Value.setPadding(0, 0, 3, 0);
         companyIDContainer.addElement(Value);
 
@@ -314,6 +323,7 @@ public class EmployeeInfoPayslipBox extends ElementBox {
         HorizontalContainer companyIDContainer = new HorizontalContainer(0, 0);
 
         SimpleTextBox Label = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getDateSeniorityLabel());
+        //Label.setEntityName("SDH");
         Label.setPadding(0, 0, 2, 0);
         companyIDContainer.addElement(Label);
         SimpleTextBox Value = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getDateSeniority());
@@ -348,15 +358,14 @@ public class EmployeeInfoPayslipBox extends ElementBox {
     {
         VerticalContainer idContainer = new VerticalContainer(0,0,0);
         HorizontalContainer companyIDContainer = new HorizontalContainer(0, 0);
-
         SimpleTextBox Label = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getMonthlyPayLabel());
+        //Label.setEntityName("BSH");
         Label.setPadding(0, 0, 2, 0);
         companyIDContainer.addElement(Label);
         SimpleTextBox Value = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getMonthlyPay());
         Value.setEntityName("BS");
         Value.setPadding(0, 0, 3, 0);
         companyIDContainer.addElement(Value);
-
         idContainer.addElement(companyIDContainer);
 
         return idContainer;
@@ -458,6 +467,7 @@ public class EmployeeInfoPayslipBox extends ElementBox {
         HorizontalContainer companyIDContainer = new HorizontalContainer(0, 0);
 
         SimpleTextBox Label = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getPaymentPeriodLabel());
+        //Label.setEntityName("PPH");
         Label.setPadding(0, 0, 2, 0);
         companyIDContainer.addElement(Label);
         int rand= model.getRandom().nextInt(2);
@@ -488,6 +498,7 @@ public class EmployeeInfoPayslipBox extends ElementBox {
         HorizontalContainer companyIDContainer = new HorizontalContainer(0, 0);
 
         SimpleTextBox Label = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getPaymentDateLabel());
+        //Label.setEntityName("PDH");
         Label.setPadding(0, 0, 2, 0);
         companyIDContainer.addElement(Label);
         SimpleTextBox Value = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getPaymentDate());
@@ -548,6 +559,7 @@ public class EmployeeInfoPayslipBox extends ElementBox {
         HorizontalContainer companyIDContainer = new HorizontalContainer(0, 0);
 
         SimpleTextBox Label = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getConv());
+        //Label.setEntityName("CCNH");
         Label.setPadding(0, 0, 2, 0);
         Label.setEntityName("CCN");
         Label.setWidth(300);
@@ -750,11 +762,12 @@ public class EmployeeInfoPayslipBox extends ElementBox {
 
         SimpleTextBox Value = new SimpleTextBox(font, fontSize, 0, 0,  model.getEmployeeInformation().getSecurityNumberLabel());
         Value.setPadding(0, 0, 3, 0);
+        //Value.setEntityName("SSNH");
         Value.setWidth(configRow[1]);
         ligne1.addElement(Value);
 
         SimpleTextBox Value1 = new SimpleTextBox(font, fontSize, 0, 0,  model.getEmployeeInformation().getCategoryLabel());
-        // Value.setEntityName("S" + idName.toUpperCase());
+        //Value1.setEntityName("EEMH");
         Value1.setPadding(0, 0, 3, 0);
         Value1.setWidth(configRow[2]);
         ligne1.addElement(Value1);
@@ -817,7 +830,7 @@ public class EmployeeInfoPayslipBox extends ElementBox {
         ligne2.addElement(Value9);
 
         SimpleTextBox Value10 = new SimpleTextBox(font, fontSize, 0, 0, model.getEmployeeInformation().getHourlyRate());
-        Value10.setEntityName("HR");
+        //Value10.setEntityName("HR");
         Value10.setPadding(0, 0, 3, 0);
         Value10.setWidth(configRow[5]);
         ligne2.addElement(Value10);

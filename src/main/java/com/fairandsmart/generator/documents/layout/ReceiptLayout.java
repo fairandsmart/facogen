@@ -1,4 +1,4 @@
-package com.fairandsmart.generator.documents;
+package com.fairandsmart.generator.documents.layout;
 
 /*-
  * #%L
@@ -33,32 +33,14 @@ package com.fairandsmart.generator.documents;
  * #L%
  */
 
-import com.fairandsmart.generator.documents.data.generator.GenerationContext;
-import com.fairandsmart.generator.documents.data.model.PayslipModel;
-import com.fairandsmart.generator.documents.layout.payslip.GenericPayslipLayout;
-import org.junit.Test;
+import com.fairandsmart.generator.documents.data.model.ReceiptModel;
+import org.apache.pdfbox.pdmodel.PDDocument;
 
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import javax.xml.stream.XMLStreamWriter;
 
-public class TestGenericPayslipLayout {
-    @Test
-    public static void test(int nb) throws Exception {
-        Path paslip = Paths.get("target/payslip");
-        if ( !Files.exists(paslip) ) {
-            Files.createDirectory(paslip);
-        }
-        for(int i=1; i<=nb; i++){
-            Path pdf = Paths.get("target/payslip/pdf/payslip-"+ i + ".pdf");
-            Path xml = Paths.get("target/payslip/xml/payslip-"+ i + ".xml");
-            Path img = Paths.get("target/payslip/tiff/payslip-"+ i + ".tiff");
+public interface ReceiptLayout {
+    String name();
 
-            GenerationContext ctx = GenerationContext.generate();
-            PayslipModel model = new PayslipModel.Generator().generate(ctx);
-            System.out.println(model);
-            GenericPayslipLayout layout = new GenericPayslipLayout();
-            PayslipGenerator.getInstance().generatePayslip(layout, model, pdf, xml, img);
-        }
-    }
+    void builtReceipt(ReceiptModel model, PDDocument document, XMLStreamWriter writer) throws Exception;
+
 }

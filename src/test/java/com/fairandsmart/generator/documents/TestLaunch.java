@@ -82,6 +82,9 @@ public class TestLaunch {
             case 12:
                 TestGenericPayslipLayout.test(number);
                 break;
+            case 13:
+                TestReceipts.test(number);
+                break;
             default:
                 System.out.println("Invalid data");
         }
@@ -114,7 +117,8 @@ public class TestLaunch {
                 "Materielnet",
                 "Nature&Découvertes",
                 "Random",
-                "Payslip"});
+                "Payslip",
+                "Receipt"});
         layoutChoice.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

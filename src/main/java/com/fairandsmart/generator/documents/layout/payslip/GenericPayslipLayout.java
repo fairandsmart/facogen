@@ -156,10 +156,10 @@ public class GenericPayslipLayout implements PayslipLayout {
         Boolean leaveInformationInTop = model.getRandom().nextBoolean();
 
         // Title and date
-        SimpleTextBox title = new SimpleTextBox(fonts[1], fontSize, 0, 0, model.getHeadTitle(), "SA");
+        SimpleTextBox title = new SimpleTextBox(fonts[1], fontSize, 0, 0, model.getHeadTitle());
         SimpleTextBox emptyBox= new SimpleTextBox(fonts[0], fontSize, 0, 0, "", Color.BLACK, null, HAlign.CENTER);
        // VerticalContainer period = new VerticalContainer(0, 0,170);
-        SimpleTextBox period = new SimpleTextBox(fonts[0], fontSize, 0, 0, model.getDate().getLabel() + ": " + model.getDate().getValue(), "SA");
+        SimpleTextBox period = new SimpleTextBox(fonts[0], fontSize, 0, 0, model.getDate().getLabel() + ": " + model.getDate().getValue());
         VerticalContainer title_period = new VerticalContainer(0,0,0);
 
 

@@ -161,6 +161,7 @@ public class LeaveInfoPayslipBox extends ElementBox {
 
         // Ecquis
         SimpleTextBox Label1 = new SimpleTextBox(font, fontSize, 0, 0, model.getLeaveInformation().getAquisLabel());
+        //Label1.setEntityName("LDH");
         Label1.setPadding(0, 0, 2, 0);
         Label1.setWidth(configRow[0]);
         acquis.addElement(Label1);
@@ -215,6 +216,7 @@ public class LeaveInfoPayslipBox extends ElementBox {
 
 
         SimpleTextBox Label1 = new SimpleTextBox(font, fontSize, 0, 0, "CP N-1");
+        //Label1.setEntityName("LDH");
         Label1.setPadding(0, 0, 2, 0);
         Label1.setWidth(configRow[1]);
         titleContainer.addElement(Label1);
@@ -324,6 +326,7 @@ public class LeaveInfoPayslipBox extends ElementBox {
 
         // Ecquis
         SimpleTextBox Label4 = new SimpleTextBox(font, fontSize, 0, 0, "ACQUIS");
+        //Label4.setEntityName("LDH");
         Label4.setPadding(0, 0, 2, 0);
         Label4.setWidth(configRow[0]);
         acquis.addElement(Label4);
@@ -394,6 +397,7 @@ public class LeaveInfoPayslipBox extends ElementBox {
 
 
         SimpleTextBox Label1 = new SimpleTextBox(font, fontSize, 0, 0, model.getLeaveInformation().getAquisLabel());
+        //Label1.setEntityName("LDH");
         Label1.setPadding(0, 0, 2, 0);
         Label1.setWidth(configRow[1]);
         titleContainer.addElement(Label1);
@@ -413,6 +417,7 @@ public class LeaveInfoPayslipBox extends ElementBox {
 
         // Ecquis
         SimpleTextBox Label4 = new SimpleTextBox(font, fontSize, 0, 0, "ACQUIS");
+        //Label4.setEntityName("LDH");
         Label4.setPadding(0, 0, 2, 0);
         Label4.setWidth(configRow[0]);
         acquis.addElement(Label4);

@@ -166,6 +166,7 @@ public class SalaryBox extends ElementBox {
         for(String colname: chosenFormat)
         {
             head.addElement(new SimpleTextBox(fontBold, fontSize+1, 0, 0, headLabels.get(colname), Color.black, null, HAlign.CENTER), false);
+
         }
         container.addElement(head);
 
@@ -179,7 +180,9 @@ public class SalaryBox extends ElementBox {
             {
                 salaryElement = getProductElement(salaryLine, colname);
                 halign = HAlign.LEFT;
-                productLine.addElement(new SimpleTextBox(fontBold, fontSize, 0, 0, salaryElement, Color.BLACK, null, halign, colname), false);
+               // productLine.addElement(new SimpleTextBox(fontBold, fontSize, 0, 0, salaryElement, Color.BLACK, null, halign, colname), false);
+                productLine.addElement(new SimpleTextBox(fontBold, fontSize, 0, 0, salaryElement, Color.BLACK, null, halign), false);
+
             }
            // container.addElement(new HorizontalLineBox(0,0, head.getBoundingBox().getWidth()+30, 0));
             container.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 0, 5));

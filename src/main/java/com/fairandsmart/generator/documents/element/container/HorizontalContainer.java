@@ -78,12 +78,14 @@ public class HorizontalContainer extends ElementBox {
 
     @Override
     public void setWidth(float width) throws Exception {
-        throw new Exception("Not allowed");
+        this.box.setWidth(width);
+        //throw new Exception("Not allowed");
     }
 
     @Override
     public void setHeight(float height) throws Exception {
-        throw new Exception("Not allowed");
+        this.box.setHeight(height);
+        //throw new Exception("Not allowed");
     }
 
     @Override

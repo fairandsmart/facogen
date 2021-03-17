@@ -79,7 +79,7 @@ public class VerticalContainer extends ElementBox {
     public void alignElements(String align, float width) {
         for ( ElementBox element : elements ) {
             float posX = box.getPosX();
-            System.out.println(width);
+            //System.out.println(width);
             switch ( align ) {
                 case "CENTER":
                     posX = (width - box.getPosX() - element.getBoundingBox().getWidth())/2; break;
@@ -113,7 +113,8 @@ public class VerticalContainer extends ElementBox {
 
     @Override
     public void setHeight(float height) throws Exception {
-        throw new Exception("Not allowed");
+        this.box.setHeight(height);
+        //throw new Exception("Not allowed");
     }
 
     @Override
