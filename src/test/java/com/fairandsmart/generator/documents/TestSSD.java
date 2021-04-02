@@ -45,28 +45,28 @@ import java.nio.file.Paths;
 public class TestSSD {
     @Test
     public static void test(int nb) throws Exception {
-        Path paslip = Paths.get("target/receipts");
+        Path paslip = Paths.get("target/newSSD");
         if ( !Files.exists(paslip) ) {
             Files.createDirectory(paslip);
         }
 
-        Path directoryPdf = Paths.get("target/receipts/pdf");
+        Path directoryPdf = Paths.get("target/newSSD/pdf");
         if ( !Files.exists(directoryPdf) ) {
             Files.createDirectory(directoryPdf);
         }
-        Path directoryXml = Paths.get("target/receipts/xml");
+        Path directoryXml = Paths.get("target/newSSD/xml");
         if ( !Files.exists(directoryXml) ) {
             Files.createDirectory(directoryXml);
         }
-        Path directoryTiff = Paths.get("target/receipts/tiff");
+        Path directoryTiff = Paths.get("target/newSSD/tiff");
         if ( !Files.exists(directoryTiff) ) {
             Files.createDirectory(directoryTiff);
         }
 
         for(int i=1; i<=nb; i++){
-            Path pdf = Paths.get("target/receipts/pdf/receipt-"+ i + ".pdf");
-            Path xml = Paths.get("target/receipts/xml/receipt-"+ i + ".xml");
-            Path img = Paths.get("target/receipts/tiff/receipt-"+ i + ".tiff");
+            Path pdf = Paths.get("target/newSSD/pdf/SSD-"+ i + ".pdf");
+            Path xml = Paths.get("target/newSSD/xml/SSD-"+ i + ".xml");
+            Path img = Paths.get("target/newSSD/tiff/SSD-"+ i + ".tiff");
             GenerationContext ctx = GenerationContext.generate();
             ReceiptModel model = new ReceiptModel.Generator().generate(ctx);
             System.out.println(model);

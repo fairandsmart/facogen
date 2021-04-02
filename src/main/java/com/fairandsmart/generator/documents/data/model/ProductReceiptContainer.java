@@ -52,6 +52,9 @@ public class ProductReceiptContainer {
 
     private List<Product> products = new ArrayList<Product>();
     private float totalWithTax;
+    private float totalTaxRate;
+    private int totalItems;
+    private int totalQty;
     private float totalWithoutTax;
     private String currency;
     private String descHead;
@@ -69,9 +72,15 @@ public class ProductReceiptContainer {
     private String roundingHead;
     private String cashHead;
     private String changeHead;
+    private String qtyTotalHead;
+    private String itemsTotalHead;
+    private String GSTHead;
+    private Boolean roundAvailable;
+    private Boolean discountAvailable;
+    private Boolean totaltaxAvailable;
     //Added
     private float totalEcoParticipation;
-    private float totalDiscount;
+    private String totalDiscount;
     private String totalRounded;
     private String totalRounding;
     private String cash;
@@ -80,7 +89,8 @@ public class ProductReceiptContainer {
 
     public ProductReceiptContainer(String currency, String descHead, String qtyHead, String unitPriceHead, String taxRateHead,
                                    String taxHead, String lineTotalHead, String withoutTaxTotalHead, String taxTotalHead, String withTaxTotalHead, String snHead,
-                                   String discountHead, String roundedHead, String roundingHead, String cashHead, String changeHead) {
+                                   String discountHead, String roundedHead, String roundingHead, String cashHead, String changeHead,
+                                   String qtyTotalHead,String itemsTotalHead,String GSTHead) {
         this.setCurrency(currency);
         this.descHead = descHead;
         this.qtyHead = qtyHead;
@@ -97,12 +107,18 @@ public class ProductReceiptContainer {
         this.roundingHead = roundingHead;
         this.cashHead = cashHead;
         this.changeHead = changeHead;
+        this.qtyTotalHead = qtyTotalHead;
+        this.itemsTotalHead = itemsTotalHead;
+        this.GSTHead = GSTHead;
     }
 
     public void addProduct(Product product) {
         products.add(product);
         totalWithTax = totalWithTax + ( product.getQuantity() * product.getPriceWithTax());
         totalWithoutTax = totalWithoutTax + ( product.getQuantity() * product.getPriceWithoutTax());
+        totalItems +=1;
+        totalQty += product.getQuantity();
+        totalTaxRate = (totalTaxRate+product.getTaxRate())/2;
     }
 
     public List<Product> getProducts() {
@@ -197,7 +213,7 @@ public class ProductReceiptContainer {
         return discountHead;
     }
 
-    public float getTotalDiscount() {
+    public String  getTotalDiscount() {
         return totalDiscount;
     }
 
@@ -205,7 +221,7 @@ public class ProductReceiptContainer {
         this.discountHead = discountHead;
     }
 
-    public void setTotalDiscount(float totalDiscount) {
+    public void setTotalDiscount(String totalDiscount) {
         this.totalDiscount = totalDiscount;
     }
 
@@ -271,6 +287,66 @@ public class ProductReceiptContainer {
 
     public void setChange(String change) {
         this.change = change;
+    }
+
+    public float getTotalTaxRate() {
+        return totalTaxRate;
+    }
+
+    public int getTotalItems() {
+        return totalItems;
+    }
+
+    public int getTotalQty() {
+        return totalQty;
+    }
+
+    public void setTotalTaxRate(float totalTaxRate) {
+        this.totalTaxRate = totalTaxRate;
+    }
+
+    public void setTotalItems(int totalItems) {
+        this.totalItems = totalItems;
+    }
+
+    public void setTotalQty(int totalQty) {
+        this.totalQty = totalQty;
+    }
+
+    public String getQtyTotalHead() {
+        return qtyTotalHead;
+    }
+
+    public String getItemsTotalHead() {
+        return itemsTotalHead;
+    }
+
+    public String getGSTHead() {
+        return GSTHead;
+    }
+
+    public void setRoundAvailable(Boolean roundAvailable) {
+        this.roundAvailable = roundAvailable;
+    }
+
+    public void setDiscountAvailable(Boolean discountAvailable) {
+        this.discountAvailable = discountAvailable;
+    }
+
+    public void setTotaltaxAvailable(Boolean totaltaxAvailable) {
+        this.totaltaxAvailable = totaltaxAvailable;
+    }
+
+    public Boolean getRoundAvailable() {
+        return roundAvailable;
+    }
+
+    public Boolean getDiscountAvailable() {
+        return discountAvailable;
+    }
+
+    public Boolean getTotaltaxAvailable() {
+        return totaltaxAvailable;
     }
 
     @Override
@@ -342,9 +418,11 @@ public class ProductReceiptContainer {
         }
 
         {
-            taxRateHeads.put("TVA", "fr");
+            taxRateHeads.put("Taux", "fr");
+            taxRateHeads.put("%", "fr");
             taxRateHeads.put("Taux de TVA", "fr");
             taxRateHeads.put("VAT/TVA", "en");
+            taxRateHeads.put("%", "en");
             taxRateHeads.put("TVA Rate", "en");
         }
 
@@ -403,7 +481,7 @@ public class ProductReceiptContainer {
             roundingHeads.put("Rounding adj", "en");
             roundingHeads.put("Rounding Adjustment", "en");
             roundingHeads.put("Rounding", "en");
-            roundingHeads.put("Rounding", "fr");
+            roundingHeads.put("Arrondi", "fr");
         }
 
         {
@@ -458,8 +536,10 @@ public class ProductReceiptContainer {
 
         {
             GSTHeads.put("Total GST", "en");
+            GSTHeads.put("GST Summary", "en");
             GSTHeads.put("GST", "en");
-            GSTHeads.put("GST", "fr");
+            GSTHeads.put("Code TVA", "fr");
+            GSTHeads.put("TVA", "fr");
         }
 
         private List<Product> products;
@@ -490,6 +570,11 @@ public class ProductReceiptContainer {
             List<String> localCashHeads = cashHeads.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguage())).map(Map.Entry::getKey).collect(Collectors.toList());
             List<String> localChangeHeads = changeHeads.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguage())).map(Map.Entry::getKey).collect(Collectors.toList());
 
+            List<String> localqtyTotalHeads = qtyTotalHeads.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguage())).map(Map.Entry::getKey).collect(Collectors.toList());
+            List<String> localitemsTotalHeads = itemsTotalHeads.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguage())).map(Map.Entry::getKey).collect(Collectors.toList());
+            List<String> localGSTHeads = GSTHeads.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguage())).map(Map.Entry::getKey).collect(Collectors.toList());
+
+
             int idxL = ctx.getRandom().nextInt(localqtyHeads.size());
             int idxD = ctx.getRandom().nextInt(localdiscountHeads.size());
             int idxRed = ctx.getRandom().nextInt(localroundedHeads.size());
@@ -497,11 +582,17 @@ public class ProductReceiptContainer {
             int idxCsh = ctx.getRandom().nextInt(localCashHeads.size());
             int idxCh = ctx.getRandom().nextInt(localChangeHeads.size());
 
+            int idxTQty = ctx.getRandom().nextInt(localqtyTotalHeads.size());
+            int idxTItm = ctx.getRandom().nextInt(localitemsTotalHeads.size());
+            int idxGST = ctx.getRandom().nextInt(localGSTHeads.size());
+
+
             int maxProduct = 6;
             ProductReceiptContainer productContainer = new ProductReceiptContainer(ctx.getCurrency(), localdescHeads.get(idxL), localqtyHeads.get(idxL),
                                                 localUPHeads.get(idxL), localtaxRateHeads.get(idxL), localtaxHeads.get(idxL), locallineTotalHeads.get(idxL),
                                                 localwithoutTaxTotalHeads.get(idxL), localTaxTotalHeads.get(idxL), localwithTaxTotalHeads.get(idxL), localSNHeads.get(idxL), localdiscountHeads.get(idxD),
-                                                localroundedHeads.get(idxRed),localroundingHeads.get(idxRing),localCashHeads.get(idxCsh), localChangeHeads.get(idxCh));
+                                                localroundedHeads.get(idxRed),localroundingHeads.get(idxRing),localCashHeads.get(idxCsh), localChangeHeads.get(idxCh),
+                                                localqtyTotalHeads.get(idxTQty),localitemsTotalHeads.get(idxTItm),localGSTHeads.get(idxGST));
             for (int i = 0; i < ctx.getRandom().nextInt(maxProduct -1)+1; i++) {
                 int maxQuantity = 5;
                 Product electibleProduct = products.get(ctx.getRandom().nextInt(products.size()));
@@ -510,28 +601,53 @@ public class ProductReceiptContainer {
 
                 productContainer.addProduct(electibleProduct);
             }
-            productContainer.setTotalDiscount(ctx.getRandom().nextFloat());
+            /// Bollans Availables
+            Boolean discountAvailable = ctx.getRandom().nextBoolean();
+            Boolean roundAvailable = ctx.getRandom().nextBoolean();
+            Boolean totalTaxAvailable = ctx.getRandom().nextBoolean();
+            productContainer.setDiscountAvailable(discountAvailable);
+            productContainer.setRoundAvailable(roundAvailable);
+            productContainer.setTotaltaxAvailable(totalTaxAvailable);
+
+            /// get Total
+            Float total = productContainer.getTotalWithTax();
+            Float totalCp = total;
+            /// Rounded
+            if(discountAvailable){
+                /// discount
+                Float discout =0.0f;
+                if(ctx.getRandom().nextBoolean()){
+                    discout = ctx.getRandom().nextFloat()*0.4f*total;
+                }
+                String discountS = String.format("%.2f", discout);
+                productContainer.setTotalDiscount(discountS);
+                total = total - discout;
+            }
 
             /// Rounded
-            Float total = productContainer.getTotalWithTax();
-            BigDecimal bigDecimal = new BigDecimal(Float.toString(total));
-            bigDecimal = bigDecimal.setScale(1, RoundingMode.DOWN);
-            float roundedF = bigDecimal.floatValue();
-            String roundedS = String.format("%.2f", roundedF);
-            productContainer.setTotalRounded(roundedS);
-            // Rounding
-            Float roundingF = roundedF - total;
-            String roundingS = String.format("%.2f", roundingF);
-            productContainer.setTotalRounding(roundingS);
+            if(roundAvailable) {
+                if(ctx.getRandom().nextBoolean()) {
+                    BigDecimal bigDecimal = new BigDecimal(Float.toString(total));
+                    bigDecimal = bigDecimal.setScale(1, RoundingMode.DOWN);
+                    total = bigDecimal.floatValue();
+                }
+                String roundedS = String.format("%.2f", total);
+                productContainer.setTotalRounded(roundedS);
+
+                // Rounding
+                Float roundingF = totalCp - total;
+                String roundingS = String.format("%.2f", roundingF);
+                productContainer.setTotalRounding(roundingS);
+            }
             // Cash
-            BigDecimal bigDecimal1 = new BigDecimal(roundedF);
+            BigDecimal bigDecimal1 = new BigDecimal(total);
             bigDecimal1 = bigDecimal1.setScale(0, RoundingMode.UP);
             float cashF = bigDecimal1.floatValue();
             String cashS = String.format("%.2f", cashF);
             productContainer.setCash(cashS);
 
             // Change
-            Float changeF = cashF - roundedF;
+            Float changeF = cashF - total;
             String changeS = String.format("%.2f", changeF);
             productContainer.setChange(changeS);
 

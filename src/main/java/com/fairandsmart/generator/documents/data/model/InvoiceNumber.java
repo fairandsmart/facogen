@@ -199,6 +199,8 @@ public class InvoiceNumber {
             labelsClient.put("Client No.", "en");
             labelsClient.put("Client ID", "en");
             labelsClient.put("Client Reference", "en");
+            labelsClient.put("Reference", "en");
+            labelsClient.put("Ref", "en");
             labelsClient.put("Numéro de client", "fr");
             labelsClient.put("N° client", "fr");
             labelsClient.put("N° de client", "fr");
@@ -206,7 +208,7 @@ public class InvoiceNumber {
             labelsClient.put("Client n°", "fr");
             labelsClient.put("Client-n°", "fr");
             labelsClient.put("CLIENT No", "fr");
-            labelsClient.put("Référence de la client", "fr");
+            labelsClient.put("Référence de client", "fr");
         }
 
         @Override

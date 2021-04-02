@@ -45,12 +45,15 @@ public class ReceiptDate {
     private String label;
     private String value;
     private String time;
+    private String timeLabel;
+    private String printedDateLabel;
 
-
-    public ReceiptDate(String label, String value, String time ) {
+    public ReceiptDate(String label,String timeLabel, String printedDateLabel, String value, String time ) {
         this.label = label;
         this.value = value;
         this.time = time;
+        this.timeLabel = timeLabel;
+        this.printedDateLabel = printedDateLabel;
     }
 
     public String getValue() {
@@ -77,6 +80,14 @@ public class ReceiptDate {
         this.time = time;
     }
 
+    public String getTimeLabel() {
+        return timeLabel;
+    }
+
+    public String getprintedDateLabel() {
+        return printedDateLabel;
+    }
+
     @Override
     public String toString() {
         return "ReceiptDate{" +
@@ -95,6 +106,8 @@ public class ReceiptDate {
         private static final Map<String, String> labelsCommand = new LinkedHashMap<>();
         private static final Map<String, String> labelsExpedition = new LinkedHashMap<>();
         private static final Map<String, String> labelsPayment = new LinkedHashMap<>();
+        private static final Map<String, String> labelsTime = new LinkedHashMap<>();
+        private static final Map<String, String> labelsPrintedDate = new LinkedHashMap<>();
         {
             formatsDate.put(new SimpleDateFormat("MMM d, YYYY "), "en");
             formatsDate.put(new SimpleDateFormat("YYYY-MM-dd"), "en");
@@ -130,7 +143,16 @@ public class ReceiptDate {
             labelsPayment.put("Payé le", "fr");
             labelsPayment.put("Date de paiement", "fr");
         }
-
+        {
+            labelsTime.put("Time", "en");
+            labelsTime.put("Heure", "fr");
+        }
+        {
+            labelsPrintedDate.put("Printed Date", "en");
+            labelsPrintedDate.put("PRN ON", "en");
+            labelsPrintedDate.put("Imprimé le", "fr");
+            labelsPrintedDate.put("Printed on", "en");
+        }
 
         @Override
         public ReceiptDate generate(GenerationContext ctx) {
@@ -147,17 +169,21 @@ public class ReceiptDate {
             List<String> localizedLabelsCommand = labelsCommand.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguage())).map(Map.Entry::getKey).collect(Collectors.toList());
             List<String> localizedLabelsExpedition = labelsExpedition.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguage())).map(Map.Entry::getKey).collect(Collectors.toList());
             List<String> localizedLabelsPayment = labelsPayment.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguage())).map(Map.Entry::getKey).collect(Collectors.toList());
+            List<String> localizedLabelsTime = labelsTime.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguage())).map(Map.Entry::getKey).collect(Collectors.toList());
+            List<String> localizedLabelPrintedDate = labelsPrintedDate.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguage())).map(Map.Entry::getKey).collect(Collectors.toList());
+
             int idxL = ctx.getRandom().nextInt(localizedLabels.size());
             int idxLC = ctx.getRandom().nextInt(localizedLabelsCommand.size());
             int idxLE = ctx.getRandom().nextInt(localizedLabelsExpedition.size());
             int idxLP = ctx.getRandom().nextInt(localizedLabelsPayment.size());
-
+            int idxLT = ctx.getRandom().nextInt(localizedLabelsTime.size());
+            int idxLPR = ctx.getRandom().nextInt(localizedLabelPrintedDate.size());
             Calendar calendar = Calendar.getInstance();
             calendar.setTimeInMillis(date);
             Date invoiceDate = calendar.getTime();
 
             calendar.add(Calendar.DAY_OF_WEEK, -4);
-            return new ReceiptDate(localizedLabels.get(idxL), localizedFormats.get(idxF).format(invoiceDate),localizedFormatsTime.get(idxT).format(invoiceDate)
+            return new ReceiptDate(localizedLabels.get(idxL),localizedLabelsTime.get(idxLT),localizedLabelPrintedDate.get(idxLPR), localizedFormats.get(idxF).format(invoiceDate),localizedFormatsTime.get(idxT).format(invoiceDate)
             );
         }
 

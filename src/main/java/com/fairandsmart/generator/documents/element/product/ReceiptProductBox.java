@@ -65,24 +65,24 @@ public class ReceiptProductBox extends ElementBox {
     private VerticalContainer container;
     private ProductReceiptContainer productContainer;
     private static Random rnd = new Random();
+    private boolean qtyTotalAvailabel;
+    private boolean headersAvailable;
+    private boolean itemsTotalAvailable;
+    private boolean QtyBefItems;
 
     private static final List<String[]> tableFormat = new ArrayList<>();
     {
         tableFormat.add(new String[] {"PD", "QTY", "UP",  "PTWTX"} );
         tableFormat.add(new String[] {"QTY", "PD", "UP",  "PTWTX"} );
-        tableFormat.add(new String[] { "PD", "QTY", "UP",  "PTWTX"} );
-        tableFormat.add(new String[] { "QTY", "PD", "UP",  "PTWTX"} ); // "SNO",
         tableFormat.add(new String[] { "QTY", "PD", "PTWTX"} );
 
     }
 
     private static final List<float[]> tableConfig = new ArrayList<>();
     {
-        tableConfig.add(new float[] {120f, 60f, 80f,  80f} );
-        tableConfig.add(new float[] {60f, 120f, 80f,  80f} );
-        tableConfig.add(new float[] {120f, 60f, 70f, 80f} );
-        tableConfig.add(new float[] {60f, 120f, 90f, 80f} );
-        tableConfig.add(new float[] {60f, 120f, 80f} );
+        tableConfig.add(new float[] {100f, 60f, 70f,  70f} );
+        tableConfig.add(new float[] {60f, 100f, 70f,  70f} );
+        tableConfig.add(new float[] {40f, 180f, 80f} );
     }
 
     public Random getRandom() {
@@ -107,12 +107,8 @@ public class ReceiptProductBox extends ElementBox {
                 break;
             case "UP":  productElement = product.getFormatedPriceWithoutTax();
                 break;
-            //case "TXR":  productElement = Float.toString(product.getTaxRate() * 100)+"%";
-            //    break;
             case "PTWTX":  productElement = product.getFormatedTotalPriceWithoutTax();
                 break;
-//            case "sn":  productElement = product.getFormatedTotalPriceWithoutTax();
-//                break;
 
             default: return "Invalid Product Name";
         }
@@ -128,7 +124,7 @@ public class ReceiptProductBox extends ElementBox {
             headLabels.put("UP", productContainer.getUPHead());
             //headLabels.put("TXR", productContainer.getTaxRateHead());
             headLabels.put("PTWTX", productContainer.getLineTotalHead());
-            headLabels.put("SNO", productContainer.getsnHead());
+            //headLabels.put("SNO", productContainer.getsnHead());
         }
 
 
@@ -138,11 +134,14 @@ public class ReceiptProductBox extends ElementBox {
         TableRowBox head = new TableRowBox(configRow, 0, 0, VAlign.BOTTOM);
         head.setBackgroundColor(Color.WHITE);
 
-        for(String colname: chosenFormat)
-        {
-            head.addElement(new SimpleTextBox(fontBold, fontSize+1, 0, 0, headLabels.get(colname), Color.BLACK, null, HAlign.CENTER), false);
+        headersAvailable= getRandom().nextBoolean();
+
+        if (headersAvailable) {
+            for (String colname : chosenFormat) {
+                head.addElement(new SimpleTextBox(fontBold, fontSize + 1, 0, 0, headLabels.get(colname), Color.BLACK, null, HAlign.CENTER), false);
+            }
+            container.addElement(head);
         }
-        container.addElement(head);
 
         int productNum= 0;
         for(Product product : productContainer.getProducts() ) {
@@ -153,8 +152,8 @@ public class ReceiptProductBox extends ElementBox {
             for(String colname: chosenFormat)
             {
                 productElement = getProductElement(product, colname);
-                if(colname.equals("SNO"))
-                    productElement = Integer.toString(productNum);
+                /*if(colname.equals("SNO"))
+                    productElement = Integer.toString(productNum);*/
                 halign = HAlign.CENTER;
                 if(colname.equals("PD"))
                     halign = HAlign.LEFT;
@@ -169,16 +168,41 @@ public class ReceiptProductBox extends ElementBox {
         container.addElement(new HorizontalLineBox(0,0, head.getBoundingBox().getWidth()+30, 0));
         container.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 0, 15));
 
-       /* TableRowBox totalHT = new TableRowBox(configRow, 0, 0);
-        if (configRow.length == 4){
-            totalHT.addElement(new SimpleTextBox(font, fontSize, 0, 0, "", Color.BLACK, null, HAlign.CENTER), false);
-        }
-        //totalHT.addElement(new SimpleTextBox(font, fontSize, 0, 0, "", Color.BLACK, null, HAlign.CENTER), false);
-        totalHT.addElement(new SimpleTextBox(font, fontSize, 0, 0, "", Color.BLACK, null, HAlign.CENTER), false);
-        totalHT.addElement(new SimpleTextBox(fontBold, fontSize+1, 0, 0, productContainer.getTotalWithoutTaxHead(), Color.BLACK, null, HAlign.LEFT), false);
-        totalHT.addElement(new SimpleTextBox(font, fontSize, 0, 0, productContainer.getFormatedTotalWithoutTax(), Color.BLACK, null, HAlign.CENTER , "TWTX"), false);
+        qtyTotalAvailabel = rnd.nextBoolean();
+        itemsTotalAvailable = rnd.nextBoolean();
 
-        container.addElement(totalHT);*/
+        if(qtyTotalAvailabel || itemsTotalAvailable) {
+            TableRowBox totalQtyItems = new TableRowBox(configRow, 0, 0);
+            if (qtyTotalAvailabel && itemsTotalAvailable){
+                QtyBefItems = rnd.nextBoolean();
+                if (QtyBefItems)
+                    totalQtyItems.addElement(new SimpleTextBox(font, fontSize, 0, 0, productContainer.getQtyTotalHead()+" : "+productContainer.getTotalQty(), Color.BLACK, null, HAlign.CENTER), false);
+                else
+                    totalQtyItems.addElement(new SimpleTextBox(font, fontSize, 0, 0, productContainer.getItemsTotalHead() +" : "+productContainer.getTotalItems(), Color.BLACK, null, HAlign.CENTER), false);
+                totalQtyItems.addElement(new SimpleTextBox(fontBold, fontSize + 1, 0, 0, " ", Color.BLACK, null, HAlign.LEFT), false);
+                 if (configRow.length == 4) {
+                    totalQtyItems.addElement(new SimpleTextBox(font, fontSize, 0, 0, "", Color.BLACK, null, HAlign.CENTER), false);
+                }
+                if (QtyBefItems)
+                    totalQtyItems.addElement(new SimpleTextBox(font, fontSize, 0, 0, productContainer.getItemsTotalHead() +" : "+productContainer.getTotalItems(), Color.BLACK, null, HAlign.CENTER), false);
+                else
+                    totalQtyItems.addElement(new SimpleTextBox(font, fontSize, 0, 0, productContainer.getQtyTotalHead()+" : "+productContainer.getTotalQty(), Color.BLACK, null, HAlign.CENTER), false);
+            }else {
+                if (qtyTotalAvailabel)
+                    totalQtyItems.addElement(new SimpleTextBox(font, fontSize, 0, 0, productContainer.getQtyTotalHead()+" : "+productContainer.getTotalQty(), Color.BLACK, null, HAlign.CENTER), false);
+                else
+                    totalQtyItems.addElement(new SimpleTextBox(font, fontSize, 0, 0, productContainer.getItemsTotalHead() +" : "+productContainer.getTotalItems(), Color.BLACK, null, HAlign.CENTER), false);
+
+                totalQtyItems.addElement(new SimpleTextBox(fontBold, fontSize + 1, 0, 0, " ", Color.BLACK, null, HAlign.LEFT), false);
+                totalQtyItems.addElement(new SimpleTextBox(fontBold, fontSize + 1, 0, 0, " ", Color.BLACK, null, HAlign.LEFT), false);
+                if (configRow.length == 4) {
+                    totalQtyItems.addElement(new SimpleTextBox(font, fontSize, 0, 0, "", Color.BLACK, null, HAlign.CENTER), false);
+                }
+            }
+
+
+            container.addElement(totalQtyItems);
+        }
 
        /* TableRowBox totalTax = new TableRowBox(configRow, 0, 0);
         totalTax.addElement(new SimpleTextBox(font, fontSize, 0, 0, "", Color.BLACK, null, HAlign.CENTER), false);

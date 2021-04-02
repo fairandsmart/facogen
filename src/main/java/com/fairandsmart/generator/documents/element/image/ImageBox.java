@@ -56,6 +56,7 @@ public class ImageBox extends ElementBox {
         this.image = image;
         this.text = text;
         this.box = new BoundingBox(posX, posY - height, width, height);
+        //this.box = new BoundingBox(posX, posY + height, width, height);
     }
 
     public void setBackgroundColor(Color color) {
