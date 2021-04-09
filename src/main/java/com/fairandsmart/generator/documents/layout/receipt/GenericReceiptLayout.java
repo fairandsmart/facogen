@@ -163,7 +163,7 @@ public class GenericReceiptLayout implements ReceiptLayout {
         b03.addElement(new SimpleTextBox(fonts[0], 9, 0, 0, model.getDate().getValue(),Color.BLACK, null, HAlign.CENTER, "IDATE" ));
         if(this.timeAvailable){
             b03.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 5, 0));
-            b03.addElement(new SimpleTextBox(fonts[0], 9, 0, 0, model.getDate().getTime(),Color.BLACK, null, HAlign.CENTER, "IDATE" ));
+            b03.addElement(new SimpleTextBox(fonts[0], 9, 0, 0, model.getDate().getTime(),Color.BLACK, null, HAlign.CENTER ));
         }
 
         // Title and date
@@ -179,9 +179,9 @@ public class GenericReceiptLayout implements ReceiptLayout {
         SimpleTextBox companyAddressline2 = new SimpleTextBox(fonts[0], fontSize, 0, 0, model.getCompany().getAddress().getZip() + " " +model.getCompany().getAddress().getCity(), Color.BLACK, null, HAlign.CENTER, "SA");
         SimpleTextBox companyAddressline3 = new SimpleTextBox(fonts[0], fontSize, 0, 0, model.getCompany().getAddress().getCountry(), Color.BLACK, null, HAlign.CENTER, "SA");
 
-        SimpleTextBox phone = new SimpleTextBox(fonts[0], 9, 0, 0, model.getCompany().getContact().getphoneLabel()+" "+model.getCompany().getContact().getphoneValue(), Color.BLACK, null, HAlign.CENTER, "SCN");
-        SimpleTextBox fax = new SimpleTextBox(fonts[0], 9, 0, 0, model.getCompany().getContact().getfaxLabel()+"  "+model.getCompany().getContact().getfaxValue(),"SFAX");
-        SimpleTextBox reference = new SimpleTextBox(fonts[0], 9, 0, 0, "(" +model.getReference().getValueCommand() +")",Color.BLACK, null, HAlign.CENTER,"ONUM");
+        SimpleTextBox phone = new SimpleTextBox(fonts[0], 9, 0, 0, model.getCompany().getContact().getphoneLabel()+" "+model.getCompany().getContact().getphoneValue(), Color.BLACK, null, HAlign.CENTER);//, "SCN");
+        SimpleTextBox fax = new SimpleTextBox(fonts[0], 9, 0, 0, model.getCompany().getContact().getfaxLabel()+"  "+model.getCompany().getContact().getfaxValue());//,"SFAX");
+        SimpleTextBox reference = new SimpleTextBox(fonts[0], 9, 0, 0, "(" +model.getReference().getValueCommand() +")",Color.BLACK, null, HAlign.CENTER);//,"ONUM");
 
 
         firstPart = new TableRowBox(configRow1v1, 0, 0);
@@ -260,24 +260,24 @@ public class GenericReceiptLayout implements ReceiptLayout {
 
             if(receiptInfoOneColumn){
                 HorizontalContainer dateH= new HorizontalContainer(0,0);
-                dateH.addElement(new SimpleTextBox(fonts[0], 9, 0, 0, model.getDate().getLabel() + " : ",Color.BLACK, null, HAlign.CENTER, "IDATE" ));
+                dateH.addElement(new SimpleTextBox(fonts[0], 9, 0, 0, model.getDate().getLabel() + " : ",Color.BLACK, null, HAlign.CENTER ));
                 dateH.addElement(new SimpleTextBox(fonts[0], 9, 0, 0, model.getDate().getValue(),Color.BLACK, null, HAlign.CENTER, "IDATE" ));
                 if(this.timeAvailable){
                     dateH.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 5, 0));
-                    dateH.addElement(new SimpleTextBox(fonts[0], 9, 0, 0, model.getDate().getTime(),Color.BLACK, null, HAlign.CENTER, "IDATE" ));
+                    dateH.addElement(new SimpleTextBox(fonts[0], 9, 0, 0, model.getDate().getTime(),Color.BLACK, null, HAlign.CENTER));
                 }
                 infolist.add(dateH);
             }else {
                 HorizontalContainer dateH= new HorizontalContainer(0,0);
-                dateH.addElement(new SimpleTextBox(fonts[0], 9, 0, 0, model.getDate().getLabel() + " : ",Color.BLACK, null, HAlign.CENTER, "IDATE" ));
+                dateH.addElement(new SimpleTextBox(fonts[0], 9, 0, 0, model.getDate().getLabel() + " : ",Color.BLACK, null, HAlign.CENTER ));
                 dateH.addElement(new SimpleTextBox(fonts[0], 9, 0, 0, model.getDate().getValue(),Color.BLACK, null, HAlign.CENTER, "IDATE" ));
 
                 infolist.add(dateH);
 
                 if(this.timeAvailable){
                     HorizontalContainer timeH= new HorizontalContainer(0,0);
-                    timeH.addElement(new SimpleTextBox(font, 9, 0, 0, model.getDate().getTimeLabel() + " : ",Color.BLACK, null, HAlign.CENTER, "IDATE" ));
-                    timeH.addElement(new SimpleTextBox(font, 9, 0, 0, model.getDate().getTime(),Color.BLACK, null, HAlign.CENTER, "IDATE" ));
+                    timeH.addElement(new SimpleTextBox(font, 9, 0, 0, model.getDate().getTimeLabel() + " : ",Color.BLACK, null, HAlign.CENTER));
+                    timeH.addElement(new SimpleTextBox(font, 9, 0, 0, model.getDate().getTime(),Color.BLACK, null, HAlign.CENTER ));
                     infolist.add(timeH);
                 }
             }
@@ -301,20 +301,18 @@ public class GenericReceiptLayout implements ReceiptLayout {
             }
             if(printedDateAvailable){
                 HorizontalContainer dateH= new HorizontalContainer(0,0);
-                dateH.addElement(new SimpleTextBox(fonts[0], 9, 0, 0, model.getDate().getprintedDateLabel()+" : ",Color.BLACK, null, HAlign.CENTER, "IDATE" ));
+                dateH.addElement(new SimpleTextBox(fonts[0], 9, 0, 0, model.getDate().getprintedDateLabel()+" : ",Color.BLACK, null, HAlign.CENTER));
                 dateH.addElement(new SimpleTextBox(fonts[0], 9, 0, 0, model.getDate().getValue(),Color.BLACK, null, HAlign.CENTER, "IDATE" ));
                 infolist.add(dateH);
             }
             if(cashierAvailable){
                 HorizontalContainer cashH= new HorizontalContainer(0,0);
-                cashH.addElement(new SimpleTextBox(fonts[0], 9, 0, 0, model.getCashierLabel() +" : ",Color.BLACK, null, HAlign.CENTER, "IDATE" ));
-                cashH.addElement(new SimpleTextBox(fonts[0], 9, 0, 0, model.getCashierLabel()+model.getRandom().nextInt(6),Color.BLACK, null, HAlign.CENTER, "IDATE" ));
+                cashH.addElement(new SimpleTextBox(fonts[0], 9, 0, 0, model.getCashierLabel() +" : ",Color.BLACK, null, HAlign.CENTER ));
+                cashH.addElement(new SimpleTextBox(fonts[0], 9, 0, 0, model.getCashierLabel()+model.getRandom().nextInt(6),Color.BLACK, null, HAlign.CENTER ));
                 infolist.add(cashH);
             }
 
             Collections.shuffle(infolist);
-            System.out.println("siiizeee " + infolist.size());
-            System.out.println("receiptInfoOneColumn " + receiptInfoOneColumn);
 
             VerticalContainer infoBlock = new VerticalContainer(0,0,300f);
             HorizontalContainer infoBlockHF = new HorizontalContainer(0,0);
@@ -359,14 +357,14 @@ public class GenericReceiptLayout implements ReceiptLayout {
             HorizontalContainer totalHT = new HorizontalContainer(0, 0);
             totalHT.addElement(new SimpleTextBox(fonts[0], fontSize, 0, 0, model.getProductReceiptContainer().getTotalWithoutTaxHead(), Color.BLACK, null, HAlign.LEFT));
             totalHT.addElement(new BorderBox(Color.WHITE, Color.WHITE, 0, 0, 0, 5, 0));
-            totalHT.addElement(new SimpleTextBox(fonts[0], fontSize, 0, 0, model.getProductReceiptContainer().getFormatedTotalWithoutTax(), Color.BLACK, null, HAlign.CENTER, "TWTX"));
+            totalHT.addElement(new SimpleTextBox(fonts[0], fontSize, 0, 0, model.getProductReceiptContainer().getFormatedTotalWithoutTax(), Color.BLACK, null, HAlign.CENTER));//, "TWTX"));
             //totalHT.setHeight(5);
             a6.addElement(totalHT);
 
             HorizontalContainer totalTax = new HorizontalContainer(0, 0);
             totalTax.addElement(new SimpleTextBox(fonts[0], fontSize, 0, 0, model.getProductReceiptContainer().getTotalTaxHead(), Color.BLACK, null, HAlign.LEFT));
             totalTax.addElement(new BorderBox(Color.WHITE, Color.WHITE, 0, 0, 0, 5, 0));
-            totalTax.addElement(new SimpleTextBox(fonts[0], fontSize, 0, 0, model.getProductReceiptContainer().getFormatedTotalTax(), Color.BLACK, null, HAlign.CENTER, "TTX"));
+            totalTax.addElement(new SimpleTextBox(fonts[0], fontSize, 0, 0, model.getProductReceiptContainer().getFormatedTotalTax(), Color.BLACK, null, HAlign.CENTER));//, "TTX"));
             //totalTax.setHeight(5);
             a6.addElement(totalTax);
         }
@@ -374,7 +372,11 @@ public class GenericReceiptLayout implements ReceiptLayout {
         HorizontalContainer totalTTC = new HorizontalContainer(0,0);
         totalTTC.addElement(new SimpleTextBox(fonts[0], fontSize+1, 0, 0, model.getProductReceiptContainer().getTotalAmountHead(), Color.BLACK, null, HAlign.LEFT));
         totalTTC.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 5, 0));
-        totalTTC.addElement(new SimpleTextBox(fonts[0], fontSize, 0, 0, model.getProductReceiptContainer().getFormatedTotalWithTax(), Color.BLACK, null, HAlign.CENTER,"TA" ));
+        if(model.getProductReceiptContainer().getRoundAvailable())
+            totalTTC.addElement(new SimpleTextBox(fonts[0], fontSize, 0, 0, model.getProductReceiptContainer().getFormatedTotalWithTax(), Color.BLACK, null, HAlign.CENTER ));
+        else
+            totalTTC.addElement(new SimpleTextBox(fonts[0], fontSize, 0, 0, model.getProductReceiptContainer().getFormatedTotalWithTax(), Color.BLACK, null, HAlign.CENTER,"TA" ));
+
         //totalTTC.setHeight(5);
         a6.addElement(totalTTC);
 
@@ -382,7 +384,7 @@ public class GenericReceiptLayout implements ReceiptLayout {
             HorizontalContainer totalDiscount = new HorizontalContainer(0, 0);
             totalDiscount.addElement(new SimpleTextBox(fonts[0], fontSize + 1, 0, 0, model.getProductReceiptContainer().getDiscountHead(), Color.BLACK, null, HAlign.LEFT));
             totalDiscount.addElement(new BorderBox(Color.WHITE, Color.WHITE, 0, 0, 0, 5, 0));
-            totalDiscount.addElement(new SimpleTextBox(fonts[0], fontSize, 0, 0, model.getProductReceiptContainer().getTotalDiscount(), Color.BLACK, null, HAlign.CENTER, "TA"));
+            totalDiscount.addElement(new SimpleTextBox(fonts[0], fontSize, 0, 0, model.getProductReceiptContainer().getTotalDiscount(), Color.BLACK, null, HAlign.CENTER));
             //totalDiscount.setHeight(5);
             a6.addElement(totalDiscount);
         }
@@ -391,7 +393,7 @@ public class GenericReceiptLayout implements ReceiptLayout {
             HorizontalContainer totalRounding = new HorizontalContainer(0, 0);
             totalRounding.addElement(new SimpleTextBox(fonts[0], fontSize + 1, 0, 0, model.getProductReceiptContainer().getRoundingHead(), Color.BLACK, null, HAlign.LEFT));
             totalRounding.addElement(new BorderBox(Color.WHITE, Color.WHITE, 0, 0, 0, 5, 0));
-            totalRounding.addElement(new SimpleTextBox(fonts[0], fontSize, 0, 0, model.getProductReceiptContainer().getTotalRounding(), Color.BLACK, null, HAlign.CENTER, "TA"));
+            totalRounding.addElement(new SimpleTextBox(fonts[0], fontSize, 0, 0, model.getProductReceiptContainer().getTotalRounding(), Color.BLACK, null, HAlign.CENTER));
             //totalRounding.setHeight(5);
             a6.addElement(totalRounding);
 
@@ -409,7 +411,7 @@ public class GenericReceiptLayout implements ReceiptLayout {
         HorizontalContainer cash = new HorizontalContainer(0,0);
         cash.addElement(new SimpleTextBox(font, fontSize+1, 0, 0, model.getProductReceiptContainer().getCashHead(), Color.BLACK, null, HAlign.LEFT));
         cash.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 5, 0));
-        cash.addElement(new SimpleTextBox(font, fontSize, 0, 0, model.getProductReceiptContainer().getCash(), Color.BLACK, null, HAlign.CENTER,"TA" ));
+        cash.addElement(new SimpleTextBox(font, fontSize, 0, 0, model.getProductReceiptContainer().getCash(), Color.BLACK, null, HAlign.CENTER ));
         //cash.setHeight(5);
         a6.addElement(cash);
 
@@ -418,7 +420,7 @@ public class GenericReceiptLayout implements ReceiptLayout {
         HorizontalContainer change = new HorizontalContainer(0,0);
         change.addElement(new SimpleTextBox(font, fontSize+1, 0, 0, model.getProductReceiptContainer().getChangeHead(), Color.BLACK, null, HAlign.LEFT));
         change.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 5, 0));
-        change.addElement(new SimpleTextBox(font, fontSize, 0, 0, model.getProductReceiptContainer().getChange(), Color.BLACK, null, HAlign.CENTER,"TA" ));
+        change.addElement(new SimpleTextBox(font, fontSize, 0, 0, model.getProductReceiptContainer().getChange(), Color.BLACK, null, HAlign.CENTER));
         //change.setHeight(5);
         a6.addElement(change);
 
@@ -444,9 +446,9 @@ public class GenericReceiptLayout implements ReceiptLayout {
             HorizontalContainer dateH= new HorizontalContainer(0,0);
             dateH.addElement(new SimpleTextBox(fonts[0], 9, 0, 0, model.getDate().getValue(),Color.BLACK, null, HAlign.CENTER, "IDATE" ));
             dateH.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 5, 0));
-            dateH.addElement(new SimpleTextBox(fonts[0], 9, 0, 0, model.getDate().getTime(),Color.BLACK, null, HAlign.CENTER, "IDATE" ));
+            dateH.addElement(new SimpleTextBox(fonts[0], 9, 0, 0, model.getDate().getTime(),Color.BLACK, null, HAlign.CENTER ));
             dateH.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 5, 0));
-            dateH.addElement(new SimpleTextBox(fonts[0], 9, 0, 0, model.getReference().getValueCommand(),Color.BLACK, null, HAlign.CENTER, "IDATE" ));
+            dateH.addElement(new SimpleTextBox(fonts[0], 9, 0, 0, model.getReference().getValueCommand(),Color.BLACK, null, HAlign.CENTER ));
             dateTime.addElement(dateH);
             dateTime.alignElements("LEFT",300);
             receiptPage.addElement(dateTime);
@@ -487,12 +489,10 @@ public class GenericReceiptLayout implements ReceiptLayout {
         foot.alignElements("CENTER",300f);
         sixthPart.addElement(foot,true);
         receiptPage.addElement(sixthPart);
-
         receiptPage.translate(20,785); //830
         receiptPage.build(contentStream, writer);
         contentStream.close();
         writer.writeEndElement();
-
     }
 
     private String getHeaderLabel(String lang){
