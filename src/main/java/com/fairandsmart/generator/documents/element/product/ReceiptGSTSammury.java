@@ -149,7 +149,7 @@ public class ReceiptGSTSammury extends ElementBox {
             halign = HAlign.CENTER;
             if(colname.equals("CODE"))
                 halign = HAlign.LEFT;
-            productLine.addElement(new SimpleTextBox(font, fontSize, 0, 0, tabelElement, Color.BLACK, null, halign, colname), false);
+            productLine.addElement(new SimpleTextBox(font, fontSize, 0, 0, tabelElement, Color.BLACK, null, halign),false);// colname), false);
         }
         container.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 0, 5));
         container.addElement(productLine);

@@ -155,7 +155,7 @@ public class ProductBox extends ElementBox {
                 if(colname.equals("PD"))
                     halign = HAlign.LEFT;
                 //System.out.println(colname + productElement);
-                productLine.addElement(new SimpleTextBox(fontBold, fontSize, 0, 0, productElement, Color.BLACK, null, halign, colname), false);
+                productLine.addElement(new SimpleTextBox(fontBold, fontSize, 0, 0, productElement, Color.BLACK, null, halign), false);//, colname), false);
             }
             container.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 0, 5));
             container.addElement(productLine);
