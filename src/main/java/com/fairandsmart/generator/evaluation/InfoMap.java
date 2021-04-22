@@ -15,12 +15,29 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class InfoMap {
 
     private Hashtable<String, CompleteInformation> InformationMap = new Hashtable<String, CompleteInformation>();
-
+    private int width;
+    private int height;
     public Map<String, CompleteInformation> getInformationMap() {
         return InformationMap;
     }
 
     public void setInformationMap(Hashtable<String, CompleteInformation> informationMap) {
         this.InformationMap = informationMap;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
     }
 }
