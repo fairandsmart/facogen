@@ -53,25 +53,30 @@ public class TestgenericLayout {
             Files.createDirectory(newDirectory);
         }
 
-        Path directoryPdf = Paths.get("target/new/pdf1");
+        Path directoryPdf = Paths.get("target/new/pdf");
         if ( !Files.exists(directoryPdf) ) {
             Files.createDirectory(directoryPdf);
         }
 
-        Path directoryXml = Paths.get("target/new/xml1");
+        Path directoryXml = Paths.get("target/new/xml");
         if ( !Files.exists(directoryXml) ) {
             Files.createDirectory(directoryXml);
         }
 
-        Path directoryTiff = Paths.get("target/new/tiff1");
+        Path directoryTiff = Paths.get("target/new/tiff");
         if ( !Files.exists(directoryTiff) ) {
             Files.createDirectory(directoryTiff);
         }
 
+        Path directoryXmlEval = Paths.get("target/new/xmlEval");
+        if ( !Files.exists(directoryXmlEval) ) {
+            Files.createDirectory(directoryXmlEval);
+        }
         for ( int i=1; i<=nb; i++) {
-        Path pdf = Paths.get("target/new/pdf1/gen-"+ i + ".pdf");
-        Path xml = Paths.get("target/new/xml1/gen-"+ i + ".xml");
-        Path img = Paths.get("target/new/tiff1/gen-"+ i + ".tiff");
+        Path pdf = Paths.get("target/new/pdf/gen-"+ i + ".pdf");
+        Path xml = Paths.get("target/new/xml/gen-"+ i + ".xml");
+        Path img = Paths.get("target/new/tiff/gen-"+ i + ".tiff");
+        Path xmlEval = Paths.get("target/new/xmlEval/gen-"+ i + ".xml");
         try {
             GenerationContext ctx = GenerationContext.generate();
             InvoiceModel model = new InvoiceModel.Generator().generate(ctx);

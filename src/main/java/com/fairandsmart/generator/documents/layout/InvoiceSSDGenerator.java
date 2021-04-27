@@ -1,4 +1,4 @@
-package com.fairandsmart.generator.documents;
+package com.fairandsmart.generator.documents.layout;
 
 /*-
  * #%L
@@ -15,7 +15,7 @@ package com.fairandsmart.generator.documents;
  * Aurore Hubert <aurore.hubert@fairandsmart.com> / FairAndSmart
  * Kevin Meszczynski <kevin.meszczynski@fairandsmart.com> / FairAndSmart
  * %%
- * Copyright (C) 2019 - 2020 Fair And Smart
+ * Copyright (C) 2019 Fair And Smart
  * %%
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as
@@ -34,42 +34,50 @@ package com.fairandsmart.generator.documents;
  */
 
 import com.fairandsmart.generator.documents.data.generator.GenerationContext;
-import com.fairandsmart.generator.documents.data.model.ReceiptModel;
+import com.fairandsmart.generator.documents.data.model.InvoiceModel;
+import com.fairandsmart.generator.documents.layout.amazon.AmazonLayout;
+import com.fairandsmart.generator.documents.layout.bdmobilier.BDmobilierLayout;
+import com.fairandsmart.generator.documents.layout.cdiscount.CdiscountLayout;
+import com.fairandsmart.generator.documents.layout.darty.DartyLayout;
+import com.fairandsmart.generator.documents.layout.invoiceSSD.InvoiceSSDLayout;
+import com.fairandsmart.generator.documents.layout.ldlc.LDLCLayout;
+import com.fairandsmart.generator.documents.layout.macomp.MACOMPLayout;
+import com.fairandsmart.generator.documents.layout.materielnet.MaterielnetLayout;
+import com.fairandsmart.generator.documents.layout.ngeneric.NGenericLayout;
 import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.pdmodel.PDPage;
-import org.apache.pdfbox.pdmodel.common.PDRectangle;
 import org.apache.pdfbox.rendering.ImageType;
 import org.apache.pdfbox.rendering.PDFRenderer;
 import org.apache.pdfbox.tools.imageio.ImageIOUtil;
 
-import javax.imageio.ImageIO;
 import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamWriter;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
-public class ReceiptGenerator {
+public class InvoiceSSDGenerator {
+
     private static final String DATE_FORMAT = "mm/dd/yyyy hh:mm";
 
-    private static class PayslipGeneratorHolder {
-        private final static ReceiptGenerator instance = new ReceiptGenerator();
+    private static class InvoiceGeneratorHolder {
+        private final static InvoiceSSDGenerator instance = new InvoiceSSDGenerator();
     }
 
-    public static ReceiptGenerator getInstance() {
-        return PayslipGeneratorHolder.instance;
+    public static InvoiceSSDGenerator getInstance() {
+        return InvoiceGeneratorHolder.instance;
     }
 
-    private ReceiptGenerator() {
+    private InvoiceSSDGenerator() {
     }
 
-    public void generateReceipt(com.fairandsmart.generator.documents.layout.receipt.GenericReceiptLayout layout, ReceiptModel model, Path pdf, Path xml, Path img, Path xmlForEvaluation) throws Exception {
+    public void generateInvoice(InvoiceSSDLayout layout, InvoiceModel model, Path pdf, Path xml, Path img, Path xmlForEvaluation) throws Exception {
 
         OutputStream xmlos = Files.newOutputStream(xml);
         XMLStreamWriter xmlout = XMLOutputFactory.newInstance().createXMLStreamWriter(new OutputStreamWriter(xmlos, "utf-8"));
@@ -87,7 +95,7 @@ public class ReceiptGenerator {
         xmlout.writeAttribute("NrOfPages", "1");
         xmlout.writeAttribute("docTag", "xml");
 
-        ///
+        ////
         OutputStream xmlosEval = Files.newOutputStream(xmlForEvaluation);
         XMLStreamWriter xmloutEval = XMLOutputFactory.newInstance().createXMLStreamWriter(new OutputStreamWriter(xmlosEval, "utf-8"));
         xmloutEval.writeStartDocument();
@@ -105,39 +113,39 @@ public class ReceiptGenerator {
         xmloutEval.writeAttribute("docTag", "xml");
 
         PDDocument document = new PDDocument();
-        layout.builtReceipt(model, document, xmlout,xmloutEval);
+        layout.builtSSD(model, document, xmlout,xmloutEval);
         document.save(pdf.toFile());
 
         //Export as TIFF
-        //PDFRenderer pdfRenderer = new PDFRenderer(document);
-        //BufferedImage bim = pdfRenderer.renderImageWithDPI(0, 300, ImageType.RGB);
-        /////
+        PDFRenderer pdfRenderer = new PDFRenderer(document);
+        BufferedImage bim = pdfRenderer.renderImageWithDPI(0, 300, ImageType.RGB);
+        ImageIOUtil.writeImage(bim, img.toString(), 300);
 
-        PDPage page = document.getPage(0);
-        page.setCropBox(new PDRectangle(0f, 100f, 400f, 1000f)); // Here you draw a rectangle around the area you want to specify
-        PDFRenderer renderer = new PDFRenderer(document);
-        BufferedImage image = renderer.renderImageWithDPI(0, 150);
-        ImageIO.write(image, "TIFF", new File(img.toString()));
         document.close();
-
-        /////
-        //ImageIOUtil.writeImage(bim, img.toString(), 300);
-        //document.close();
 
         xmlout.writeEndElement();
         xmlout.writeEndElement();
         xmlout.writeEndDocument();
         xmlout.close();
-
         //////
         xmloutEval.writeEndElement();
         xmloutEval.writeEndElement();
         xmloutEval.writeEndDocument();
         xmloutEval.close();
+
     }
 
     public static void main(String args[]) throws Exception {
-
+        List<InvoiceLayout> availablesLayout = new ArrayList<>();
+        availablesLayout.add(new AmazonLayout());
+        availablesLayout.add(new BDmobilierLayout());
+        availablesLayout.add(new CdiscountLayout());
+        availablesLayout.add(new DartyLayout());
+        //availablesLayout.add(new GenericLayout());
+        availablesLayout.add(new LDLCLayout());
+        availablesLayout.add(new MACOMPLayout());
+        availablesLayout.add(new MaterielnetLayout());
+        availablesLayout.add(new NGenericLayout());
 
         Path generated = Paths.get("target/generated/" + args[0]);
         if ( !Files.exists(generated) ) {
@@ -148,15 +156,16 @@ public class ReceiptGenerator {
         int stop = Integer.parseInt(args[2]);
         for ( int i=start; i<stop; i++) {
             //String ts = "" + System.currentTimeMillis();
-
             Path pdf = Paths.get("target/generated/" + args[0] + "/basic-"+ i + ".pdf");
             Path xml = Paths.get("target/generated/" + args[0] + "/basic-"+ i + ".xml");
-            Path xmlForEval = Paths.get("target/generated/" + args[0] + "/basic-2"+ i + ".xml");
             Path img = Paths.get("target/generated/" + args[0] + "/basic-"+ i + ".tiff");
+            Path xmlEval = Paths.get("target/generated/" + args[0] + "/basicEval-"+ i + ".tiff");
             GenerationContext ctx = GenerationContext.generate();
-            ReceiptModel model = new ReceiptModel.Generator().generate(ctx);
-            ReceiptGenerator.getInstance().generateReceipt(new com.fairandsmart.generator.documents.layout.receipt.GenericReceiptLayout(), model, pdf, xml, img,xmlForEval);
+            InvoiceModel model = new InvoiceModel.Generator().generate(ctx);
+            InvoiceSSDLayout layout = new InvoiceSSDLayout();
+            InvoiceSSDGenerator.getInstance().generateInvoice(layout, model, pdf, xml, img,xmlEval);
             System.out.println("current: " + i);
         }
     }
+
 }

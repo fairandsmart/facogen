@@ -64,6 +64,7 @@ public class CompanyInfoBox extends ElementBox {
     private PDImageXObject logo;
     private IDNumbers idnumObj;
     private String idNames[];
+    private List<String> contactOptClasses;
     private static final List<String[]> idNumbersOrder = new ArrayList<>();
     {
        // idNumbersOrder.add(new String[] {"Siret", "Toa", "Vat"} );
@@ -211,7 +212,7 @@ public class CompanyInfoBox extends ElementBox {
     public VerticalContainer getCompanyContactBlock() throws Exception
     {
         VerticalContainer contactContainer = new VerticalContainer(0, 0, 0);
-
+        contactOptClasses = new ArrayList<String>();
         if (model.getCompany().getContact().getphoneValue() != null && model.getCompany().getContact().getphoneValue().length() > 0) {
             HorizontalContainer phoneContainer = new HorizontalContainer(0, 0);
             SimpleTextBox phoneLabel = new SimpleTextBox(font, fontSize, 0, 0, model.getCompany().getContact().getphoneLabel());
@@ -223,6 +224,7 @@ public class CompanyInfoBox extends ElementBox {
             phoneContainer.addElement(phoneValue);
             //phoneContainer.setBackgroundColor(Color.PINK);
             contactContainer.addElement(phoneContainer);
+            contactOptClasses.add("phone");
         }
 
         if (model.getCompany().getContact().getfaxValue() != null && model.getCompany().getContact().getfaxValue().length() > 0) {
@@ -235,6 +237,7 @@ public class CompanyInfoBox extends ElementBox {
             //faxValue.setEntityName("SFAX");
             faxContainer.addElement(faxValue);
             contactContainer.addElement(faxContainer);
+            contactOptClasses.add("fax");
         }
 
         if (model.getCompany().getEmail() != null && model.getCompany().getEmail().length() > 0) {
@@ -247,6 +250,7 @@ public class CompanyInfoBox extends ElementBox {
             //emailValue.setEntityName("SEMAIL");
             emailContainer.addElement(emailValue);
             contactContainer.addElement(emailContainer);
+            contactOptClasses.add("Email");
         }
 
         if (model.getCompany().getWebsite() != null && model.getCompany().getWebsite().length() > 0) {
@@ -259,15 +263,20 @@ public class CompanyInfoBox extends ElementBox {
             //websiteValue.setEntityName("SWEB");
             websiteContainer.addElement(websiteValue);
             contactContainer.addElement(websiteContainer);
+            contactOptClasses.add("Website");
         }
 
         return contactContainer;
     }
 
+    public List<String> getContactOptClasses() {
+        return contactOptClasses;
+    }
+
     public HorizontalContainer getCompanyContactLine() throws Exception
     {
         HorizontalContainer contactContainer = new HorizontalContainer( 0, 0);
-
+        contactOptClasses = new ArrayList<String>();
         if (model.getCompany().getContact().getphoneValue() != null && model.getCompany().getContact().getphoneValue().length() > 0) {
             SimpleTextBox phoneLabel = new SimpleTextBox(font, fontSize, 0, 0, model.getCompany().getContact().getphoneLabel());
             phoneLabel.setPadding(0, 0, 2, 0);
@@ -276,6 +285,7 @@ public class CompanyInfoBox extends ElementBox {
             phoneValue.setPadding(2, 0, 4, 0);
             //phoneValue.setEntityName("SCN");
             contactContainer.addElement(phoneValue);
+            contactOptClasses.add("phone");
         }
 
         if (model.getCompany().getContact().getfaxValue() != null && model.getCompany().getContact().getfaxValue().length() > 0) {
@@ -286,6 +296,7 @@ public class CompanyInfoBox extends ElementBox {
             faxValue.setPadding(2, 0, 0, 0);
             //faxValue.setEntityName("SFAX");
             contactContainer.addElement(faxValue);
+            contactOptClasses.add("fax");
         }
 
         if (model.getCompany().getEmail() != null && model.getCompany().getEmail().length() > 0) {
@@ -296,6 +307,7 @@ public class CompanyInfoBox extends ElementBox {
             emailValue.setPadding(5, 0, 0, 0);
             //emailValue.setEntityName("SEMAIL");
             contactContainer.addElement(emailValue);
+            contactOptClasses.add("Email");
         }
 
         if (model.getCompany().getWebsite() != null && model.getCompany().getWebsite().length() > 0) {
@@ -306,6 +318,7 @@ public class CompanyInfoBox extends ElementBox {
             websiteValue.setPadding(5, 0, 0, 0);
             //websiteValue.setEntityName("SWEB");
             contactContainer.addElement(websiteValue);
+            contactOptClasses.add("WebSite");
         }
 
         return contactContainer;
@@ -432,5 +445,9 @@ public class CompanyInfoBox extends ElementBox {
             hcontainer.build(stream,writer);
         else
         container.build(stream, writer);
+    }
+
+    public String[] getIdNames() {
+        return idNames;
     }
 }

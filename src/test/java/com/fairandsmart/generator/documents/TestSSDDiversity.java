@@ -58,11 +58,17 @@ import javax.xml.bind.Marshaller;
 
 
 public class TestSSDDiversity {
-    public static int Dmh(int x1, int y1, int x2, int y2){
-        return (Math.abs(x2-x1)+Math.abs(y2-y1));
+    public static Double Dmh(int x1, int y1, int x2, int y2, int width, int height){
+        Double x1_norm = Double.valueOf(x1);///Double.valueOf(width);
+        Double x2_norm = Double.valueOf(x2);///Double.valueOf(width);
+        Double y1_norm = Double.valueOf(y1);///Double.valueOf(height);//3508;
+        Double y2_norm = Double.valueOf(y2);///Double.valueOf(height);
+        return ((Math.abs(x2_norm-x1_norm)+(Math.abs(y2_norm-y1_norm)))
+                /(Double.valueOf(width)+Double.valueOf(height)));
     }
-    public static int Align(CompleteInformation b1, CompleteInformation b2){
-        return (Dmh(b1.getP1x(),b1.getP1y(),b2.getP1x(),b2.getP1y())+Dmh(b1.getP2x(),b1.getP2y(),b2.getP2x(),b2.getP2y()));
+    public static Double Align(CompleteInformation b1, CompleteInformation b2, int width, int height){
+        return ((Dmh(b1.getP1x(),b1.getP1y(),b2.getP1x(),b2.getP1y(),width,height)+
+                Dmh(b1.getP2x(),b1.getP2y(),b2.getP2x(),b2.getP2y(),width,height))/2);
     }
     public static double OverlapArea(CompleteInformation b1, CompleteInformation b2){
         int areaB1 = Math.abs(b1.getP1x() - b1.getP2x()) *Math.abs(b1.getP1y() - b1.getP2y());
@@ -76,14 +82,207 @@ public class TestSSDDiversity {
         }
         return (1-((2*areaI)/(areaB1 + areaB2)) );
      }
-    public static void main(String args[]) throws JAXBException {
 
-        String dirPath = "target/receipts/xml";
-        String dirPath2 = "target/receipts/xml2/";
+     public static void prepare_classes_content_layout(String path1, String path2){
+         String dirPath = path1;// "target/receipt_sroie/xml/";//new/xml/";//"target/payslip/xml"; //target/new/xml
+         String dirPath2 = path2;//"target/receipt_sroie/xml2/";//"target/payslip/xml2/";
+         File fileName = new File(dirPath);
+         File[] fileList = fileName.listFiles();
+
+         for (File file: fileList) {
+             int xmin=0,xmax=0,ymin=0,ymax=0;
+             //System.out.println(file);
+             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+             try {
+                 dbf.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
+                 DocumentBuilder db = dbf.newDocumentBuilder();
+                 Document doc = db.parse(file);
+                 doc.getDocumentElement().normalize();
+                 System.out.println("Root Element :" + doc.getDocumentElement().getNodeName());
+                 System.out.println("------");
+                 NodeList list = doc.getElementsByTagName("DL_PAGE");
+                 Node node_DL_PAGE = list.item(0);
+
+                 ////
+                 Hashtable<String, CompleteInformation> information = new Hashtable<String, CompleteInformation>();
+
+                 if (node_DL_PAGE.getNodeType() == Node.ELEMENT_NODE) {
+                     Element eElement = (Element) node_DL_PAGE;
+                     NodeList liste = eElement.getElementsByTagName("DL_ZONE");
+                     for (int j = 0; j < liste.getLength(); j++) {
+                         Node node = liste.item(j);
+                         if (node.getNodeType() == Node.ELEMENT_NODE) {
+                             Element eElement1 = (Element) node;
+                             int x1= Integer.parseInt(eElement1.getAttribute("col"));
+                             int y1 = Integer.parseInt(eElement1.getAttribute("row"));
+                             int x2 = x1 + Integer.parseInt(eElement1.getAttribute("width"));
+                             int y2 = y1 + Integer.parseInt(eElement1.getAttribute("height"));
+
+                             if(xmin == 0 || xmin > x1) xmin =x1;
+                             if(xmax == 0 || xmax < x2) xmax =x2;
+                             if(ymin == 0 || ymin > y1) ymin =y1;
+                             if(ymax == 0 || ymax < y2) ymax =y2;
+
+                             if (!eElement1.getAttribute("correctclass").equals("undefined")) {
+                                 ElementaryInfo elInf = new ElementaryInfo(x1, y1, eElement1.getAttribute("contents"));
+                                 CompleteInformation info = information.get(eElement1.getAttribute("correctclass"));
+                                 if (info != null) {
+                                     CompleteInformation inf = information.get(eElement1.getAttribute("correctclass"));
+                                     inf.UpdateInformation(elInf,x1,y1,x2,y2);
+                                     information.replace(eElement1.getAttribute("correctclass"), inf);
+                                 } else {
+                                     information.put(eElement1.getAttribute("correctclass"), new CompleteInformation(eElement1.getAttribute("correctclass"),
+                                             elInf,x1, y1, x2, y2));
+                                 }
+                             }
+                         }
+                     }
+                 }
+                 InfoMap infoMap = new InfoMap();
+                 infoMap.setWidth(xmax-xmin);
+                 infoMap.setHeight(ymax-ymin);
+                 infoMap.setInformationMap(information);
+                 JAXBContext jaxbContext = JAXBContext.newInstance(InfoMap.class);
+                 Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+                 jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+                 //jaxbMarshaller.marshal(infoMap, System.out);
+                 jaxbMarshaller.marshal(infoMap, new File(dirPath2+file.getName()));
+
+             } catch (ParserConfigurationException | SAXException | IOException | JAXBException e) {
+                 e.printStackTrace();
+             }
+         }
+
+     }
+
+     public static void scores_from_xml (String path2)throws JAXBException{
+         String dirPath2 = path2;// "target/receipt_sroie/xml2/";//"target/payslip/xml2/";
+         File fileName2 = new File(dirPath2);
+         File[] fileList2 = fileName2.listFiles();
+
+         List<Double> scores = new ArrayList<Double>();
+         Hashtable<String, List<Double>> scoresByClasses = new Hashtable<String, List<Double>>();
+
+         List<Double> scoresOver = new ArrayList<Double>();
+         Hashtable<String, List<Double>> scoresOverByClasses = new Hashtable<String, List<Double>>();
+
+         List<Double> scoresBLEU = new ArrayList<Double>();
+
+         for (File file: fileList2) {
+             JAXBContext jaxbContext = JAXBContext.newInstance(InfoMap.class);
+             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+             InfoMap infMap = (InfoMap) jaxbUnmarshaller.unmarshal(file);
+             int width = infMap.getWidth();
+             int height = infMap.getHeight();
+             for(String infId : infMap.getInformationMap().keySet())
+             {
+                 String className =infMap.getInformationMap().get(infId).getClassName();
+                 CompleteInformation info = infMap.getInformationMap().get(infId);
+                 ArrayList<String> contents = new ArrayList<String>();
+                 contents.add(infMap.getInformationMap().get(infId).getContents());
+                 ////
+                 for (File file2: fileList2) {
+                     InfoMap infMap2 = (InfoMap) jaxbUnmarshaller.unmarshal(file2);
+                     for (String infId2 : infMap2.getInformationMap().keySet()) {
+                         CompleteInformation info2 = infMap2.getInformationMap().get(infId2);
+                         if (infMap2.getInformationMap().get(infId2).getClassName().equals(className)){
+                             contents.add(infMap2.getInformationMap().get(infId2).getContents());
+                            /*if(scoresByClasses.get(className)!= null){
+                                System.out.println("1"+className);
+                                /// score ALign
+                                scoresByClasses.put(className,
+                                Stream.concat(scoresByClasses.get(className).stream(), Stream.of(Align(info2,info)))
+                                        .collect(Collectors.toList()));
+                                /// score Overlapp
+                                scoresOverByClasses.put(className,
+                                        Stream.concat(scoresOverByClasses.get(className).stream(), Stream.of(OverlapArea(info2,info)))
+                                                .collect(Collectors.toList()));
+
+                            }else {
+                                /// score Align
+                                scoresByClasses.put(className,new ArrayList<Double>() {{
+                                    add(Align(info2,info));
+                                } });
+                                /// score Overlapp
+                                scoresOverByClasses.put(className,new ArrayList<Double>() {{
+                                    add(OverlapArea(info2,info));
+                                } });
+                            }*/
+                             scores.add(Align(info2,info,width,height));
+                             scoresOver.add(OverlapArea(info2,info));
+                         }
+                     }
+                 }
+                 ////
+                 System.out.println("contents size "+contents.size());
+                 try {
+                     String s = null;
+                     String[] cmd = new String[contents.size()+2];
+                     cmd[0] ="python3";
+                     cmd[1] = "bleu.py";
+                     for (int i=0;i<contents.size();i++){
+                         cmd[i+2]=contents.get(i);
+                     }
+                     //Runtime.getRuntime().exec(cmd);
+                     Thread.sleep(0);
+                     //Process p0 = Runtime.getRuntime().exec("conda activate bleu");
+                     Process p = Runtime.getRuntime().exec(cmd);
+
+                     BufferedReader stdInput = new BufferedReader(new
+                             InputStreamReader(p.getInputStream()));
+
+                     BufferedReader stdError = new BufferedReader(new
+                             InputStreamReader(p.getErrorStream()));
+
+                     // read the output from the command
+                     System.out.println("Here is the standard output of the command:\n");
+                     while ((s = stdInput.readLine()) != null) {
+                         System.out.println(s);
+                         Double d=Double.parseDouble(s);
+                         scoresBLEU.add(d);//d);
+                         //System.out.println("Floot "+f);
+                     }
+
+                     // read any errors from the attempted command
+                     System.out.println("Here is the standard error of the command (if any):\n");
+                     while ((s = stdError.readLine()) != null) {
+                         System.out.println(s);
+                     }
+
+                     //System.exit(0);
+                 }
+                 catch (IOException | InterruptedException e) {
+                     System.out.println("exception happened - here's what I know: ");
+                     e.printStackTrace();
+                     //System.exit(-1);
+                 }
+
+             }
+         }
+         System.out.println("size = " + scores.size());
+         DoubleSummaryStatistics averageScores = scores.stream()
+                 .mapToDouble((a) -> a)
+                 .summaryStatistics();
+         System.out.println("Average score align  = "+averageScores.getAverage());
+
+         DoubleSummaryStatistics averageOverlScores = scoresOver.stream()
+                 .mapToDouble((a) -> a)
+                 .summaryStatistics();
+         System.out.println("Average score overlap  = "+averageOverlScores.getAverage());
+
+         DoubleSummaryStatistics averageOverBLEU = scoresBLEU.stream()
+                 .mapToDouble((a) -> a)
+                 .summaryStatistics();
+         System.out.println("Average score SELF-BLEU  = "+averageOverBLEU.getAverage());
+     }
+
+    public static double SCR_ratio_layouts(String path1){
+        String dirPath = path1;// "target/receipt_sroie/xml/";//new/xml/";//"target/payslip/xml"; //target/new/xml
         File fileName = new File(dirPath);
         File[] fileList = fileName.listFiles();
-
+        ArrayList<Map<Integer, String>> listSSdComponent = new ArrayList<>();
         for (File file: fileList) {
+            int xmin=0,xmax=0,ymin=0,ymax=0;
             //System.out.println(file);
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             try {
@@ -99,6 +298,7 @@ public class TestSSDDiversity {
                 ////
                 Hashtable<String, CompleteInformation> information = new Hashtable<String, CompleteInformation>();
 
+                Map<Integer, String> SSDComponents = new HashMap<>();
                 if (node_DL_PAGE.getNodeType() == Node.ELEMENT_NODE) {
                     Element eElement = (Element) node_DL_PAGE;
                     NodeList liste = eElement.getElementsByTagName("DL_ZONE");
@@ -106,142 +306,32 @@ public class TestSSDDiversity {
                         Node node = liste.item(j);
                         if (node.getNodeType() == Node.ELEMENT_NODE) {
                             Element eElement1 = (Element) node;
-                            if (!eElement1.getAttribute("correctclass").equals("undefined")) {
-
-                                int x1= Integer.parseInt(eElement1.getAttribute("col"));
-                                int y1 = Integer.parseInt(eElement1.getAttribute("row"));
-                                int x2 = x1 + Integer.parseInt(eElement1.getAttribute("width"));
-                                int y2 = y1 + Integer.parseInt(eElement1.getAttribute("height"));
-                                ElementaryInfo elInf = new ElementaryInfo(x1, y1, eElement1.getAttribute("contents"));
-                                CompleteInformation info = information.get(eElement1.getAttribute("correctclass"));
-                                if (info != null) {
-                                    CompleteInformation inf = information.get(eElement1.getAttribute("correctclass"));
-                                    inf.UpdateInformation(elInf,x1,y1,x2,y2);
-                                    information.replace(eElement1.getAttribute("correctclass"), inf);
-                                } else {
-                                    information.put(eElement1.getAttribute("correctclass"), new CompleteInformation(eElement1.getAttribute("correctclass"),
-                                            elInf,x1, y1, x2, y2));
-                                }
-                            }
+                            SSDComponents.put(Integer.parseInt(eElement1.getAttribute("orderpos")),eElement1.getAttribute("optionalclass"));
                         }
                     }
                 }
-                InfoMap infoMap = new InfoMap();
-                infoMap.setInformationMap(information);
-                JAXBContext jaxbContext = JAXBContext.newInstance(InfoMap.class);
-                Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-                jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-                //jaxbMarshaller.marshal(infoMap, System.out);
-                jaxbMarshaller.marshal(infoMap, new File(dirPath2+file.getName()));
+                if(listSSdComponent.isEmpty() || !listSSdComponent.contains(SSDComponents)){
+                    listSSdComponent.add(SSDComponents);
+                }
 
-            } catch (ParserConfigurationException | SAXException | IOException | JAXBException e) {
+            } catch (ParserConfigurationException | SAXException | IOException  e) {
                 e.printStackTrace();
             }
         }
+        System.out.println("listSSdComponent.size()= "+listSSdComponent.size());
+        System.out.println("fileList.length = "+fileList.length);
 
-        File fileName2 = new File(dirPath2);
-        File[] fileList2 = fileName2.listFiles();
+        double SCR = Double.valueOf(listSSdComponent.size())/ Double.valueOf(fileList.length);
+        System.out.println("SCR == "+SCR);
+        return SCR;
+    }
 
-        List<Integer> scores = new ArrayList<Integer>();
-        Hashtable<String, List<Integer>> scoresByClasses = new Hashtable<String, List<Integer>>();
+    public static void main(String args[]) throws JAXBException {
 
-        List<Double> scoresOver = new ArrayList<Double>();
-        Hashtable<String, List<Double>> scoresOverByClasses = new Hashtable<String, List<Double>>();
-
-
-        for (File file: fileList2) {
-            JAXBContext jaxbContext = JAXBContext.newInstance(InfoMap.class);
-            Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-            InfoMap infMap = (InfoMap) jaxbUnmarshaller.unmarshal(file);
-            for(String infId : infMap.getInformationMap().keySet())
-            {
-                String className =infMap.getInformationMap().get(infId).getClassName();
-                CompleteInformation info = infMap.getInformationMap().get(infId);
-                ////
-                for (File file2: fileList2) {
-                    InfoMap infMap2 = (InfoMap) jaxbUnmarshaller.unmarshal(file2);
-                    for (String infId2 : infMap2.getInformationMap().keySet()) {
-                        CompleteInformation info2 = infMap2.getInformationMap().get(infId2);
-                        if (infMap2.getInformationMap().get(infId2).getClassName().equals(className)){
-                            if(scoresByClasses.get(className)!= null){
-                                System.out.println("1"+className);
-                                /// score ALign
-                                scoresByClasses.put(className,
-                                Stream.concat(scoresByClasses.get(className).stream(), Stream.of(Align(info2,info)))
-                                        .collect(Collectors.toList()));
-                                /// score Overlapp
-                                scoresOverByClasses.put(className,
-                                        Stream.concat(scoresOverByClasses.get(className).stream(), Stream.of(OverlapArea(info2,info)))
-                                                .collect(Collectors.toList()));
-
-                            }else {
-                                System.out.println("2" +className);
-                                /// score Align
-                                scoresByClasses.put(className,new ArrayList<Integer>() {{
-                                    add(Align(info2,info));
-                                } });
-                                /// score Overlapp
-                                scoresOverByClasses.put(className,new ArrayList<Double>() {{
-                                    add(OverlapArea(info2,info));
-                                } });
-                            }
-                            scores.add(Align(info2,info));
-                            scoresOver.add(OverlapArea(info2,info));
-                        }
-                    }
-                }
-                ////
-            }
-        }
-        System.out.println("size = " + scores.size());
-        IntSummaryStatistics averageScores = scores.stream()
-                .mapToInt((a) -> a)
-                .summaryStatistics();
-        System.out.println("Average score align  = "+averageScores.getAverage());
-
-        DoubleSummaryStatistics averageOverlScores = scoresOver.stream()
-                .mapToDouble((a) -> a)
-                .summaryStatistics();
-        System.out.println("Average score overlap  = "+averageOverlScores.getAverage());
-
-        ////
-        /*
-        String s = null;
-        try {
-
-            // run the Unix "ps -ef" command
-            // using the Runtime exec method:
-           // Process p = Runtime.getRuntime().exec("ps -ef");
-            Process p0 = Runtime.getRuntime().exec("conda activate bleu");
-            Process p = Runtime.getRuntime().exec("python bleu.py");
-
-            BufferedReader stdInput = new BufferedReader(new
-                    InputStreamReader(p.getInputStream()));
-
-            BufferedReader stdError = new BufferedReader(new
-                    InputStreamReader(p.getErrorStream()));
-
-            // read the output from the command
-            System.out.println("Here is the standard output of the command:\n");
-            while ((s = stdInput.readLine()) != null) {
-                System.out.println(s);
-            }
-
-            // read any errors from the attempted command
-            System.out.println("Here is the standard error of the command (if any):\n");
-            while ((s = stdError.readLine()) != null) {
-                System.out.println(s);
-            }
-
-            System.exit(0);
-        }
-        catch (IOException e) {
-            System.out.println("exception happened - here's what I know: ");
-            e.printStackTrace();
-            System.exit(-1);
-        }*/
-
-
+        //prepare_classes_content_layout("target/new/xml/","target/new/xml2/");
+        //scores_from_xml("target/new/xml2/");
+        Double SCR_score = SCR_ratio_layouts("target/SSDInvoice/xmlEval/");
+        System.out.println("SCR score is "+ SCR_score);
     }
 
 }

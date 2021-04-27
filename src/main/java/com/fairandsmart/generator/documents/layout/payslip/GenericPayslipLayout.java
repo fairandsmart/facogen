@@ -49,6 +49,7 @@ import com.fairandsmart.generator.documents.element.product.ProductBox;
 import com.fairandsmart.generator.documents.element.salary.SalaryBox;
 import com.fairandsmart.generator.documents.element.table.TableRowBox;
 import com.fairandsmart.generator.documents.element.textbox.SimpleTextBox;
+import com.fairandsmart.generator.documents.element.textbox.SimpleTextBoxForEvaluation;
 import com.fairandsmart.generator.documents.layout.PayslipLayout;
 import com.mifmif.common.regex.Generex;
 import org.apache.pdfbox.pdmodel.PDDocument;
@@ -83,6 +84,7 @@ public class GenericPayslipLayout implements PayslipLayout {
     private int oNumAvailable;
     private int pInfoAvailable;
     private TableRowBox firstPart;
+    private int pos_element;
 
     @Override
     public String name() {
@@ -96,7 +98,7 @@ public class GenericPayslipLayout implements PayslipLayout {
     }
 
     @Override
-    public void builtPayslip(PayslipModel model, PDDocument document, XMLStreamWriter writer) throws Exception {
+    public void builtPayslip(PayslipModel model, PDDocument document, XMLStreamWriter writer,XMLStreamWriter writerEval) throws Exception {
         this.model = model;
         this.LeaveInfosAvailable = model.getRandom().nextInt(2);
 
@@ -106,6 +108,7 @@ public class GenericPayslipLayout implements PayslipLayout {
         float[] configRow2v2 = {360f, 150f};
         float[] configRow1v1 = {500f};
         float[] configRow3 = {170f, 170f, 170f};
+        this.pos_element =0;
 
         PDPage page = new PDPage(PDRectangle.A4);
         document.addPage(page);
@@ -115,6 +118,12 @@ public class GenericPayslipLayout implements PayslipLayout {
         writer.writeAttribute("width", "2480");
         writer.writeAttribute("height", "3508"); // 3508
         writer.writeCharacters(System.getProperty("line.separator"));
+        ///
+        writerEval.writeStartElement("DL_PAGE");
+        writerEval.writeAttribute("gedi_type", "DL_PAGE");
+        writerEval.writeAttribute("pageID", "1");
+        writerEval.writeCharacters(System.getProperty("line.separator"));
+
         PDPageContentStream contentStream = new PDPageContentStream(document, page);
 
 
@@ -173,10 +182,13 @@ public class GenericPayslipLayout implements PayslipLayout {
         if(titleSeparate){
             firstPart.addElement(emptyBox,true);
             firstPart.addElement(title,true);
+            pos_element++;
+            new SimpleTextBoxForEvaluation("title",pos_element).build(writerEval);
             firstPart.addElement(emptyBox,true);
             payslipPage.addElement(firstPart);
-        }else
+        }else {
             title_period.addElement(title);
+        }
 
 
         CompanyInfoBoxPayslip companyAddIDCont;
@@ -184,9 +196,23 @@ public class GenericPayslipLayout implements PayslipLayout {
         if(logo){
             companyAddIDCont = new CompanyInfoBoxPayslip(companyInfoBox.concatContainersVertically
                     (new ElementBox[]{companyLogo, companyInfoBox.getCompanyAddressBlock(), companyInfoBox.getCompanyIdBlock() }));
+            pos_element++;
+            new SimpleTextBoxForEvaluation("logo",pos_element).build(writerEval);
+            pos_element++;
+            new SimpleTextBoxForEvaluation("address",pos_element).build(writerEval);
+            for(int i=0;i<companyInfoBox.getIdNames().length;i++){
+                pos_element++;
+                new SimpleTextBoxForEvaluation(companyInfoBox.getIdNames()[i],pos_element).build(writerEval);
+            }
         }else {
             companyAddIDCont = new CompanyInfoBoxPayslip(companyInfoBox.concatContainersVertically
                     (new ElementBox[]{companyInfoBox.getCompanyAddressBlock(), companyInfoBox.getCompanyIdBlock() }));
+            pos_element++;
+            new SimpleTextBoxForEvaluation("address",pos_element).build(writerEval);
+            for(int i=0;i<companyInfoBox.getIdNames().length;i++){
+                pos_element++;
+                new SimpleTextBoxForEvaluation(companyInfoBox.getIdNames()[i],pos_element).build(writerEval);
+            }
         }
 
         CompanyInfoBoxPayslip companyInfoFinal;
@@ -194,24 +220,34 @@ public class GenericPayslipLayout implements PayslipLayout {
         if(conventionWithComp){
             companyInfoFinal = new CompanyInfoBoxPayslip(companyInfoBox.concatContainersVertically
                     (new ElementBox[]{companyAddIDCont, employeeInfoPayslipBox.getConvCollectBlock() }));//emptyBox
+            pos_element++;
+            new SimpleTextBoxForEvaluation("CCN",pos_element).build(writerEval);
         }else {
             companyInfoFinal = new CompanyInfoBoxPayslip(companyInfoBox.concatContainersVertically
                     (new ElementBox[]{companyAddIDCont }));//emptyBox
 
         }
 
-        EmployeeInfoPayslipBox employeeInfo;
-        int ran= model.getRandom().nextInt(2);
-        switch (ran){
-            case 1:
-                employeeInfo  = new EmployeeInfoPayslipBox(employeeInfoPayslipBox.getEmployeeInformationTable1());
-                break;
-            default:
-                employeeInfo  = new EmployeeInfoPayslipBox(employeeInfoPayslipBox.getEmployeeInformationTable2());
-                break;
-        }
         CompanyInfoBoxPayslip companyInfoEmplFinal;
         if(employeUnderCmp){
+            EmployeeInfoPayslipBox employeeInfo;
+            int ran= model.getRandom().nextInt(2);
+            switch (ran){
+                case 1:
+                    employeeInfo  = new EmployeeInfoPayslipBox(employeeInfoPayslipBox.getEmployeeInformationTable1());
+                    for(int i=0;i<employeeInfoPayslipBox.getListOptClasses().size();i++){
+                        pos_element++;
+                        new SimpleTextBoxForEvaluation(employeeInfoPayslipBox.getListOptClasses().get(i),pos_element).build(writerEval);
+                    }
+                    break;
+                default:
+                    employeeInfo  = new EmployeeInfoPayslipBox(employeeInfoPayslipBox.getEmployeeInformationTable2());
+                    for(int i=0;i<employeeInfoPayslipBox.getListOptClasses().size();i++){
+                        pos_element++;
+                        new SimpleTextBoxForEvaluation(employeeInfoPayslipBox.getListOptClasses().get(i),pos_element).build(writerEval);
+                    }
+                    break;
+            }
             companyInfoEmplFinal = new CompanyInfoBoxPayslip(companyInfoBox.concatContainersVertically
                     (new ElementBox[]{companyInfoFinal,emptyBox, employeeInfo }));//emptyBox
                     employeeInfoAvailable=1;
@@ -221,11 +257,23 @@ public class GenericPayslipLayout implements PayslipLayout {
             employeeInfoAvailable=2;
         }
 
+        if(!titleSeparate){
+            pos_element++;
+            new SimpleTextBoxForEvaluation("title",pos_element).build(writerEval);
+        }
         title_period.addElement(employeeInfoPayslipBox.getPeriodBlock()); //period
+        pos_element++;
+        new SimpleTextBoxForEvaluation("Period",pos_element).build(writerEval);
         title_period.addElement(employeeInfoPayslipBox.getPaymentDateBlock());
+        pos_element++;
+        new SimpleTextBoxForEvaluation("PaymentDate",pos_element).build(writerEval);
         title_period.addElement(employeeInfoPayslipBox.getPaymentPeriodeDatesBlock());
+        pos_element++;
+        new SimpleTextBoxForEvaluation("PaymentPeriod",pos_element).build(writerEval);
         title_period.addElement(emptyBox);
         title_period.addElement(employeeAddress);
+        pos_element++;
+        new SimpleTextBoxForEvaluation("EmpAddress",pos_element).build(writerEval);
         title_period.addElement(emptyBox);
 
         if (leaveInformationInTop) {
@@ -235,10 +283,13 @@ public class GenericPayslipLayout implements PayslipLayout {
                     /*title_period.addElement(leaveDatePayslipBox);
                     title_period.addElement(leaveAmountPayslipBox);*/
                     title_period.addElement(new LeaveInfoPayslipBox (leaveInfoPayslipBox.getLeaveInformationTable2()));
-
+                    pos_element++;
+                    new SimpleTextBoxForEvaluation("LeaveInfoTable2",pos_element).build(writerEval);
                     break;
                 case 1:
                     title_period.addElement(new LeaveInfoPayslipBox (leaveInfoPayslipBox.getLeaveInformationTable1()));
+                    pos_element++;
+                    new SimpleTextBoxForEvaluation("LeaveInfoTable1",pos_element).build(writerEval);
                     break;
             }
             LeaveInfosAvailable = -1;
@@ -252,9 +303,7 @@ public class GenericPayslipLayout implements PayslipLayout {
             compElements.put(2, iInfor); // title
         }
         int list[] = getRandomList(compElements.size());
-        /*if(list[0]==1)
-            secondPart = new TableRowBox(configRow2v1, 0, 0);
-        else*/
+
         secondPart = new TableRowBox(configRow2v2, 0, 0);
         for(int i =0; i < compElements.size(); i++)
             secondPart.addElement(compElements.get(i+1), false);
@@ -282,24 +331,28 @@ public class GenericPayslipLayout implements PayslipLayout {
                     payslipPage.addElement(employeeInfoPayslipBox.getEmployeeInformationTable7());
                     break;
             }
+            for(int i=0;i<employeeInfoPayslipBox.getListOptClasses().size();i++){
+                pos_element++;
+                new SimpleTextBoxForEvaluation(employeeInfoPayslipBox.getListOptClasses().get(i),pos_element).build(writerEval);
+            }
         }
 
-            this.compContactAvailable = -1;
+        this.compContactAvailable = -1;
         this.ciDAvailable = -1;
 
         // table Third part
         thirdPart =  new TableRowBox(configRow1v1,0,0);
         SalaryBox salaryTable = new SalaryBox(0, 0, model.getSalaryTable(),fonts[2], fonts[1], fontSize);
 
-
         CompanyInfoBoxPayslip employeeInfotry = new CompanyInfoBoxPayslip(companyInfoBox.concatContainersVertically
                 (new ElementBox[]{emptyBox, emptyBox, salaryTable }));
 
         thirdPart.addElement(employeeInfotry,false);
-
-
         payslipPage.addElement(thirdPart);
-
+        for(int i=0;i<salaryTable.getChosenFormatForEval().length;i++){
+            pos_element++;
+            new SimpleTextBoxForEvaluation(salaryTable.getChosenFormatForEval()[i],pos_element).build(writerEval);
+        }
 
 
         if (LeaveInfosAvailable != -1){
@@ -308,20 +361,29 @@ public class GenericPayslipLayout implements PayslipLayout {
             {
                 sumUpElements.put(1, new SumUpSalaryPayslipBox(sumUpSalaryPayslipBox.getSumUpSalaryTable1())); //companyAddIDCont); iSumUpr
             }
-
+            pos_element++;
+            new SimpleTextBoxForEvaluation("SumUpTable1",pos_element).build(writerEval);
             int rnd = model.getRandom().nextInt(4);
             switch (rnd){
                 case 0 :
                     sumUpElements.put(2,new LeaveInfoPayslipBox (leaveInfoPayslipBox.getLeaveInformationTable1()));
+                    pos_element++;
+                    new SimpleTextBoxForEvaluation("LeaveInfoTable1",pos_element).build(writerEval);
                     break;
                 case 1 :
                     sumUpElements.put(2,new LeaveInfoPayslipBox (leaveInfoPayslipBox.getLeaveInformationTable2()));
+                    pos_element++;
+                    new SimpleTextBoxForEvaluation("LeaveInfoTable2",pos_element).build(writerEval);
                     break;
                 case 2 :
                     sumUpElements.put(2,new LeaveInfoPayslipBox (leaveInfoPayslipBox.getLeaveInformationTable3()));
+                    pos_element++;
+                    new SimpleTextBoxForEvaluation("LeaveInfoTable3",pos_element).build(writerEval);
                     break;
                 case 3 :
                     sumUpElements.put(2,new LeaveInfoPayslipBox (leaveInfoPayslipBox.getLeaveInformationTable4()));
+                    pos_element++;
+                    new SimpleTextBoxForEvaluation("LeaveInfoTable4",pos_element).build(writerEval);
                     break;
             }
             for(int i =0; i < sumUpElements.size(); i++)
@@ -332,6 +394,8 @@ public class GenericPayslipLayout implements PayslipLayout {
             {
                 sumUpElements.put(1, new SumUpSalaryPayslipBox(sumUpSalaryPayslipBox.getSumUpSalaryTable2())); //companyAddIDCont); iSumUpr
             }
+            pos_element++;
+            new SimpleTextBoxForEvaluation("SumUpTable2",pos_element).build(writerEval);
             for(int i =0; i < sumUpElements.size(); i++)
                 fourthPart.addElement(sumUpElements.get(i+1), false);
         }
@@ -343,11 +407,14 @@ public class GenericPayslipLayout implements PayslipLayout {
             fifthPart.addElement(new EmployeeInfoPayslipBox(employeeInfoPayslipBox.concatContainersVertically
                     (new ElementBox[]{emptyBox,employeeInfoPayslipBox.getConvCollectBlock()})),false);
             payslipPage.addElement(fifthPart);
+            pos_element++;
+            new SimpleTextBoxForEvaluation("CCN",pos_element).build(writerEval);
         }
         payslipPage.translate(30,830);
         payslipPage.build(contentStream, writer);
         contentStream.close();
         writer.writeEndElement();
+        writerEval.writeEndElement();
 
     }
 

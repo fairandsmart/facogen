@@ -352,7 +352,9 @@ public class CompanyInfoBoxPayslip extends ElementBox {
         return idContainer;
     }
 
-
+    public String[] getIdNames() {
+        return idNames;
+    }
 
     public HorizontalContainer getCompanyIdLine(int size) throws Exception
     {

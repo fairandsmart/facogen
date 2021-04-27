@@ -85,6 +85,9 @@ public class TestLaunch {
             case 13:
                 TestReceipts.test(number);
                 break;
+            case 14:
+                TestSSDInvoiceLayout.test(number);
+                break;
             default:
                 System.out.println("Invalid data");
         }
@@ -117,8 +120,9 @@ public class TestLaunch {
                 "Materielnet",
                 "Nature&Découvertes",
                 "Random",
-                "Payslip",
-                "Receipt"});
+                "SSD Payslip",
+                "SSD Receipt",
+                "SSD Invoice"});
         layoutChoice.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

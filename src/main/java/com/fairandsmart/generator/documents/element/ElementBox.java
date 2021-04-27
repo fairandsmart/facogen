@@ -52,7 +52,7 @@ public abstract class ElementBox {
         return cpt;
     }
 
-    private BoundingBox convertBox(BoundingBox box) {
+    protected BoundingBox convertBox(BoundingBox box) {
         float scale = destDpi / srcDpi;
         BoundingBox newbox = new BoundingBox(
                 box.getPosX() * scale,

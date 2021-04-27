@@ -1,4 +1,4 @@
-package com.fairandsmart.generator.documents.layout;
+package com.fairandsmart.generator.documents.element;
 
 /*-
  * #%L
@@ -15,7 +15,7 @@ package com.fairandsmart.generator.documents.layout;
  * Aurore Hubert <aurore.hubert@fairandsmart.com> / FairAndSmart
  * Kevin Meszczynski <kevin.meszczynski@fairandsmart.com> / FairAndSmart
  * %%
- * Copyright (C) 2019 - 2020 Fair And Smart
+ * Copyright (C) 2019 Fair And Smart
  * %%
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as
@@ -33,14 +33,27 @@ package com.fairandsmart.generator.documents.layout;
  * #L%
  */
 
-import com.fairandsmart.generator.documents.data.model.PayslipModel;
-import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
 
+import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
 
-public interface PayslipLayout {
-    String name();
+public abstract class ElementBoxForEvaluation extends ElementBox{
 
-    void builtPayslip(PayslipModel model, PDDocument document, XMLStreamWriter writer,XMLStreamWriter writerEval) throws Exception;
+
+    public static String writeXMLZone(XMLStreamWriter writer, String type, String optionalClass, int orderPos) throws XMLStreamException {
+
+        String id = "" ;
+        writer.writeStartElement("DL_ZONE");
+        writer.writeAttribute("gedi_type", type);
+        writer.writeAttribute("id", id);
+        writer.writeAttribute("optionalclass", optionalClass);
+        writer.writeAttribute("orderpos", ""+orderPos);
+        writer.writeEndElement();
+        writer.writeCharacters(System.getProperty("line.separator"));
+        return id;
+
+    }
+
 
 }

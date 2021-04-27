@@ -1,4 +1,4 @@
-package com.fairandsmart.generator.documents.layout;
+package com.fairandsmart.generator.documents.element.textbox;
 
 /*-
  * #%L
@@ -15,7 +15,7 @@ package com.fairandsmart.generator.documents.layout;
  * Aurore Hubert <aurore.hubert@fairandsmart.com> / FairAndSmart
  * Kevin Meszczynski <kevin.meszczynski@fairandsmart.com> / FairAndSmart
  * %%
- * Copyright (C) 2019 - 2020 Fair And Smart
+ * Copyright (C) 2019 Fair And Smart
  * %%
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as
@@ -33,14 +33,35 @@ package com.fairandsmart.generator.documents.layout;
  * #L%
  */
 
-import com.fairandsmart.generator.documents.data.model.PayslipModel;
-import org.apache.pdfbox.pdmodel.PDDocument;
+import com.fairandsmart.generator.documents.common.VerifCharEncoding;
+import com.fairandsmart.generator.documents.element.*;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.font.PDFont;
 
 import javax.xml.stream.XMLStreamWriter;
+import java.awt.*;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Logger;
 
-public interface PayslipLayout {
-    String name();
+public class SimpleTextBoxForEvaluation {
 
-    void builtPayslip(PayslipModel model, PDDocument document, XMLStreamWriter writer,XMLStreamWriter writerEval) throws Exception;
+    private static final Logger LOGGER = Logger.getLogger(SimpleTextBoxForEvaluation.class.getName());
+
+    private String optionalClass;
+    private int orderPos;
+
+
+    public  SimpleTextBoxForEvaluation( String optionalClass, int orderPos)  {
+
+        this.optionalClass = optionalClass;
+        this.orderPos = orderPos;
+
+    }
+
+    public void build( XMLStreamWriter writer) throws Exception {
+        ElementBoxForEvaluation.writeXMLZone(writer, "ocrx_word", optionalClass,orderPos);
+    }
 
 }

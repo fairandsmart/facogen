@@ -112,7 +112,6 @@ public class PayslipGenerationHandler implements JobHandler {
                 if ( !params.containsKey(PARAM_QTY) ) {
                     report.append("Missing parameters: " + PARAM_QTY);
                     manager.fail(jobId, report.toString());
-                    LOGGER.log(Level.INFO, "BEFORE RETURN hhhhh");
                     return;
                 }
                 manager.start(jobId);
@@ -137,11 +136,12 @@ public class PayslipGenerationHandler implements JobHandler {
                 for ( int i=start; i<stop; i++) {
                     Path pdf = Paths.get(root, params.getOrDefault(PARAM_OUTPUT, "payslip") + "-" + i + ".pdf");
                     Path xml = Paths.get(root, params.getOrDefault(PARAM_OUTPUT, "payslip") + "-" + i + ".xml");
+                    Path xmlEval = Paths.get(root, params.getOrDefault(PARAM_OUTPUT, "payslipEval") + "-" + i + ".xml");
                     Path img = Paths.get(root, params.getOrDefault(PARAM_OUTPUT, "payslip") + "-" + i + ".tiff");
                     //TODO configure context according to config
                     GenerationContext ctx = GenerationContext.generate();
                     PayslipModel model = new PayslipModel.Generator().generate(ctx);
-                    PayslipGenerator.getInstance().generatePayslip(new com.fairandsmart.generator.documents.layout.payslip.GenericPayslipLayout(), model, pdf, xml, img);
+                    PayslipGenerator.getInstance().generatePayslip(new com.fairandsmart.generator.documents.layout.payslip.GenericPayslipLayout(), model, pdf, xml, img,xmlEval);
                     manager.progress(jobId, (long)((i-start)*100)/qty);
                 }
                 report.append("All payslips generated");

@@ -46,6 +46,7 @@ import com.fairandsmart.generator.documents.element.line.HorizontalLineBoxV2;
 import com.fairandsmart.generator.documents.element.line.VerticalLineBox;
 import com.fairandsmart.generator.documents.element.table.TableRowBox;
 import com.fairandsmart.generator.documents.element.textbox.SimpleTextBox;
+import com.fairandsmart.generator.documents.element.textbox.SimpleTextBoxForEvaluation;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDFont;
@@ -71,6 +72,7 @@ public class EmployeeInfoPayslipBox extends ElementBox {
     private PDDocument document;
     private IDNumbers idnumObj;
     private String idNames[];
+    private List<String> listOptClasses;
     private static final List<String[]> idNumbersOrder = new ArrayList<>();
     {
        // idNumbersOrder.add(new String[] {"Siret", "Toa", "Vat"} );
@@ -108,6 +110,9 @@ public class EmployeeInfoPayslipBox extends ElementBox {
     }
 
 
+    public List<String> getListOptClasses() {
+        return listOptClasses;
+    }
 
     public VerticalContainer getEmployeeCodeBlock() throws Exception
     {
@@ -579,29 +584,37 @@ public class EmployeeInfoPayslipBox extends ElementBox {
         HorizontalContainer ligne2 = new HorizontalContainer(0, 0);
         HorizontalContainer ligne3 = new HorizontalContainer(0, 0);
         HorizontalContainer ligne4 = new HorizontalContainer(0, 0);
-
+        listOptClasses = new ArrayList<>();
         ligne1.addElement(getEmployeeCodeBlock());
+        listOptClasses.add("Code");
         emptyBox.setWidth(configRow[0]);
         ligne1.addElement(emptyBox);
         ligne1.addElement(getSocialSecurityCeilingBlock());
+        listOptClasses.add("SSCN");
         idContainer.addElement(ligne1);
 
         ligne2.addElement(getEmploiBlock());
+        listOptClasses.add("Emploi");
         emptyBox.setWidth(configRow[0]);
         ligne2.addElement(emptyBox);
         ligne2.addElement(getTimeTableBlock());
+        listOptClasses.add("TimeTable");
         idContainer.addElement(ligne2);
 
         ligne3.addElement(getQualifBlock());
+        listOptClasses.add("Qualif");
         emptyBox.setWidth(configRow[0]);
         ligne3.addElement(emptyBox);
         ligne3.addElement(getHourlyRateBlock());
+        listOptClasses.add("HourRate");
         idContainer.addElement(ligne3);
 
         ligne4.addElement(getEchelonBlock());
         emptyBox.setWidth(configRow[0]);
         ligne4.addElement(emptyBox);
+        listOptClasses.add("Echelon");
         ligne4.addElement(getCoeffBlock());
+        listOptClasses.add("Coeff");
         idContainer.addElement(ligne4);
 
         return idContainer;
@@ -621,67 +634,89 @@ public class EmployeeInfoPayslipBox extends ElementBox {
         HorizontalContainer ligne6 = new HorizontalContainer(0, 0);
         HorizontalContainer ligne7 = new HorizontalContainer(0, 0);
         HorizontalContainer ligne8 = new HorizontalContainer(0, 0);
+
+        listOptClasses = new ArrayList<String>();
+
         ligne1.addElement(getEmployeeRegNumberBlock());
         idContainer.addElement(ligne1);
+        listOptClasses.add("RegNumber");
 
-        ligne2.addElement(getSocialSecurityCeilingBlock());
+        ligne2.addElement(getEmployeeSucurityNumberBlock());
         idContainer.addElement(ligne2);
+        listOptClasses.add("ESSN");
 
         ligne3.addElement(getEmployeeDateStartBlock());
         idContainer.addElement(ligne3);
+        listOptClasses.add("DateStart");
 
         ligne4.addElement(getEmploiBlock());
         idContainer.addElement(ligne4);
+        listOptClasses.add("Emploi");
 
         ligne5.addElement(getQualifBlock());
         idContainer.addElement(ligne5);
+        listOptClasses.add("Qualif");
 
         ligne6.addElement(getCoeffBlock());
         idContainer.addElement(ligne6);
+        listOptClasses.add("Coeff");
 
         ligne7.addElement(getSocialSecurityCeilingBlock());
         idContainer.addElement(ligne7);
+        listOptClasses.add("SSCN");
 
         ligne8.addElement(getContratBlock());
         idContainer.addElement(ligne8);
-
+        listOptClasses.add("contract");
         return idContainer;
     }
 
     public TableRowBox getEmployeeInformationTable3() throws  Exception
     {
         float[] configRow = {150f, 150f,150f};
+        listOptClasses = new ArrayList<String>();
         TableRowBox firstPart2 = new TableRowBox(configRow, 0, 0);
         SimpleTextBox emptyBox= new SimpleTextBox(font, fontSize, 0, 0, "", Color.BLACK, null, HAlign.CENTER);
 
         firstPart2.addElement( new EmployeeInfoPayslipBox(concatContainersVertically(new ElementBox[]{
                 getEmployeeRegNumberBlock(),getEmployeeDateStartBlock(),getEmploiBlock(),getQualifBlock()})), false);
-
+        listOptClasses.add("DateStart");
+        listOptClasses.add("Emploi");
+        listOptClasses.add("Qualif");
         firstPart2.addElement( new EmployeeInfoPayslipBox(concatContainersVertically(new ElementBox[]{
                 emptyBox ,emptyBox,emptyBox,getClassificationBlock()})), false);
-
+        listOptClasses.add("Classification");
         firstPart2.addElement( new EmployeeInfoPayslipBox(concatContainersVertically(new ElementBox[]{
                 getSocialSecurityCeilingBlock() ,emptyBox,getDateSeniorityBlock(),getCoeffBlock()})), false);
-
+        listOptClasses.add("SSCN");
+        listOptClasses.add("DateSeniority");
+        listOptClasses.add("Coeff");
         return firstPart2;
     }
 
     public TableRowBox getEmployeeInformationTable4() throws  Exception
     {
         float[] configRow = {120f, 120f,120f,120f};
+        listOptClasses = new ArrayList<String>();
         TableRowBox firstPart2 = new TableRowBox(configRow, 0, 0);
         SimpleTextBox emptyBox= new SimpleTextBox(font, fontSize, 0, 0, "", Color.BLACK, null, HAlign.CENTER);
 
         firstPart2.addElement( new EmployeeInfoPayslipBox(concatContainersVertically(new ElementBox[]{
                 getEmployeeDateStartBlock(),getEmploiBlock(),getQualifBlock()})), false);
-
+        listOptClasses.add("DateStart");
+        listOptClasses.add("Emploi");
+        listOptClasses.add("Qualif");
         firstPart2.addElement( new EmployeeInfoPayslipBox(concatContainersVertically(new ElementBox[]{
                 getReleaseDateBlock() ,getHourlyRateBlock(),getClassificationBlock()})), false);
-
+        listOptClasses.add("ReleaseDate");
+        listOptClasses.add("HourlyRate");
+        listOptClasses.add("Classification");
         firstPart2.addElement( new EmployeeInfoPayslipBox(concatContainersVertically(new ElementBox[]{
                 emptyBox ,emptyBox,getCoeffBlock()})), false);
+        listOptClasses.add("Coeff");
         firstPart2.addElement( new EmployeeInfoPayslipBox(concatContainersVertically(new ElementBox[]{
                 emptyBox ,emptyBox,getSocialSecurityCeilingBlock()})), false);
+        listOptClasses.add("SSCN");
         return firstPart2;
     }
 
@@ -689,60 +724,81 @@ public class EmployeeInfoPayslipBox extends ElementBox {
     public TableRowBox getEmployeeInformationTable5() throws  Exception
     {
         float[] configRow = {150f, 150f,150f};
+        listOptClasses = new ArrayList<String>();
         TableRowBox firstPart2 = new TableRowBox(configRow, 0, 0);
         SimpleTextBox emptyBox= new SimpleTextBox(font, fontSize, 0, 0, "", Color.BLACK, null, HAlign.CENTER);
 
         firstPart2.addElement( new EmployeeInfoPayslipBox(concatContainersVertically(new ElementBox[]{
                 getEmployeeRegNumberBlock(),getEmployeeDateStartBlock(),getEmploiBlock(),getQualifBlock()})), false);
-
+        listOptClasses.add("RegNumber");
+        listOptClasses.add("DateStart");
+        listOptClasses.add("Emploi");
+        listOptClasses.add("Qualif");
         firstPart2.addElement( new EmployeeInfoPayslipBox(concatContainersVertically(new ElementBox[]{
                 getEmployeeSucurityNumberBlock() ,emptyBox,getDateSeniorityBlock(),getClassificationBlock()})), false);
-
+        listOptClasses.add("ESSN");
+        listOptClasses.add("DateSeniority");
+        listOptClasses.add("Classification");
         firstPart2.addElement( new EmployeeInfoPayslipBox(concatContainersVertically(new ElementBox[]{
                 emptyBox ,emptyBox,getCoeffBlock()})), false);
-
+        listOptClasses.add("Coeff");
         return firstPart2;
     }
 
     public TableRowBox getEmployeeInformationTable6() throws  Exception
     {
         float[] configRow = {150f, 150f,150f};
+        listOptClasses = new ArrayList<String>();
         TableRowBox firstPart2 = new TableRowBox(configRow, 0, 0);
         SimpleTextBox emptyBox= new SimpleTextBox(font, fontSize, 0, 0, "", Color.BLACK, null, HAlign.CENTER);
 
         firstPart2.addElement( new EmployeeInfoPayslipBox(concatContainersVertically(new ElementBox[]{
                 getAssignementBlock(),getEmploiBlock(),getCoeffBlock(),getClassificationBlock()})), false);
-
+        listOptClasses.add("Assignement");
+        listOptClasses.add("Emploi");
+        listOptClasses.add("Coeff");
+        listOptClasses.add("Classification");
         firstPart2.addElement( new EmployeeInfoPayslipBox(concatContainersVertically(new ElementBox[]{
                 getCoefMinBlock() ,getMonthlyPayBlock(),emptyBox,emptyBox})), false);
-
+        listOptClasses.add("CoeffMin");
+        listOptClasses.add("MonthlyPay");
         firstPart2.addElement( new EmployeeInfoPayslipBox(concatContainersVertically(new ElementBox[]{
                 getTimeTableBlock() ,getHourlyRateBlock(),getMonthlyPayRefBlock()})), false);
-
+        listOptClasses.add("TimeTable");
+        listOptClasses.add("HourlyRate");
+        listOptClasses.add("MonthlyPayRef");
         return firstPart2;
     }
 
     public TableRowBox getEmployeeInformationTable7() throws  Exception
     {
         float[] configRow = {200f, 200f,200f};
+        listOptClasses = new ArrayList<String>();
         TableRowBox firstPart2 = new TableRowBox(configRow, 0, 0);
         SimpleTextBox emptyBox= new SimpleTextBox(font, fontSize, 0, 0, "", Color.BLACK, null, HAlign.CENTER);
 
         firstPart2.addElement( new EmployeeInfoPayslipBox(concatContainersVertically(new ElementBox[]{new HorizontalLineBoxV2(0,0, 550f, 0),
                 getAssignementBlock(),getEmploiBlock(),getCoeffBlock(),getClassificationBlock(),new HorizontalLineBoxV2(0,0, 550f, 0),})), false);
-
+        listOptClasses.add("Assignement");
+        listOptClasses.add("Emploi");
+        listOptClasses.add("Classification");
+        listOptClasses.add("Assignement");
         firstPart2.addElement( new EmployeeInfoPayslipBox(concatContainersVertically(new ElementBox[]{
                 getCoefMinBlock() ,getMonthlyPayBlock(),emptyBox,emptyBox})), false);
-
+        listOptClasses.add("CoeffMin");
+        listOptClasses.add("MonthlyPay");
         firstPart2.addElement( new EmployeeInfoPayslipBox(concatContainersVertically(new ElementBox[]{
                 getTimeTableBlock() ,getHourlyRateBlock(),getMonthlyPayRefBlock()})), false);
-
+        listOptClasses.add("TimeTable");
+        listOptClasses.add("Hourlyrate");
+        listOptClasses.add("MonthlyPayRef");
         return firstPart2;
     }
 
     public TableRowBox getEmployeeInformationTable8() throws  Exception
     {
         float[] configRowT = {510f};
+        listOptClasses = new ArrayList<String>();
         TableRowBox firstPart2 = new TableRowBox(configRowT, 0, 0);
 
         float[] configRow = {50f,90f,90f,70f, 90f, 70f, 70f};
@@ -759,42 +815,49 @@ public class EmployeeInfoPayslipBox extends ElementBox {
         Label4.setPadding(0, 0, 2, 0);
         Label4.setWidth(configRow[0]);
         ligne1.addElement(Label4);
+        listOptClasses.add("MinCoeff");
 
         SimpleTextBox Value = new SimpleTextBox(font, fontSize, 0, 0,  model.getEmployeeInformation().getSecurityNumberLabel());
         Value.setPadding(0, 0, 3, 0);
         //Value.setEntityName("SSNH");
         Value.setWidth(configRow[1]);
         ligne1.addElement(Value);
+        listOptClasses.add("ESSN");
 
         SimpleTextBox Value1 = new SimpleTextBox(font, fontSize, 0, 0,  model.getEmployeeInformation().getCategoryLabel());
         //Value1.setEntityName("EEMH");
         Value1.setPadding(0, 0, 3, 0);
         Value1.setWidth(configRow[2]);
         ligne1.addElement(Value1);
+        listOptClasses.add("Category");
 
         SimpleTextBox Value2 = new SimpleTextBox(font, fontSize, 0, 0,  model.getEmployeeInformation().getEchelonLabel());
         // Value.setEntityName("S" + idName.toUpperCase());
         Value2.setPadding(0, 0, 3, 0);
         Value2.setWidth(configRow[3]);
         ligne1.addElement(Value2);
+        listOptClasses.add("Echelon");
 
         SimpleTextBox Value3 = new SimpleTextBox(font, fontSize, 0, 0,  model.getEmployeeInformation().getTimeTableLabel());
         // Value.setEntityName("S" + idName.toUpperCase());
         Value3.setPadding(0, 0, 3, 0);
         Value3.setWidth(configRow[4]);
         ligne1.addElement(Value3);
+        listOptClasses.add("TimeTable");
 
         SimpleTextBox Value4 = new SimpleTextBox(font, fontSize, 0, 0,  model.getEmployeeInformation().getHourlyRateLabel());
         // Value.setEntityName("S" + idName.toUpperCase());
         Value4.setPadding(0, 0, 3, 0);
         Value4.setWidth(configRow[5]);
         ligne1.addElement(Value4);
+        listOptClasses.add("HourlyRate");
 
         SimpleTextBox Value5 = new SimpleTextBox(font, fontSize, 0, 0,  "temps partiel");
         // Value.setEntityName("S" + idName.toUpperCase());
         Value5.setPadding(0, 0, 3, 0);
         Value4.setWidth(configRow[6]);
         ligne1.addElement(Value5);
+        listOptClasses.add("HalfTime");
 
         idContainer.addElement(ligne1);
         idContainer.addElement(new HorizontalLineBoxV2(0,0, (configRow[0]+configRow[1]+configRow[2]+configRow[3]+configRow[4]+configRow[5]+configRow[6]), 0));

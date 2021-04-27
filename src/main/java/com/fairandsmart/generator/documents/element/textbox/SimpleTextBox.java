@@ -115,6 +115,7 @@ public class SimpleTextBox extends ElementBox {
         this.entityName = entityName;
     }
 
+
     @Override
     public BoundingBox getBoundingBox() {
         return box;

@@ -15,7 +15,7 @@ package com.fairandsmart.generator.documents.layout;
  * Aurore Hubert <aurore.hubert@fairandsmart.com> / FairAndSmart
  * Kevin Meszczynski <kevin.meszczynski@fairandsmart.com> / FairAndSmart
  * %%
- * Copyright (C) 2019 - 2020 Fair And Smart
+ * Copyright (C) 2019 Fair And Smart
  * %%
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as
@@ -33,14 +33,15 @@ package com.fairandsmart.generator.documents.layout;
  * #L%
  */
 
-import com.fairandsmart.generator.documents.data.model.PayslipModel;
+import com.fairandsmart.generator.documents.data.model.InvoiceModel;
 import org.apache.pdfbox.pdmodel.PDDocument;
 
 import javax.xml.stream.XMLStreamWriter;
 
-public interface PayslipLayout {
+public interface SSDLayout {
+
     String name();
 
-    void builtPayslip(PayslipModel model, PDDocument document, XMLStreamWriter writer,XMLStreamWriter writerEval) throws Exception;
+    void builtSSD(InvoiceModel model, PDDocument document, XMLStreamWriter writer,XMLStreamWriter writerEval) throws Exception;
 
 }

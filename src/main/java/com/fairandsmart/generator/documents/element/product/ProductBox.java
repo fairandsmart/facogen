@@ -63,6 +63,7 @@ public class ProductBox extends ElementBox {
     private Color bodyBackgroundColor;
     private VerticalContainer container;
     private ProductContainer productContainer;
+    private String [] chosenFormatForEval;
     private static Random rnd = new Random();
 
     private static final List<String[]> tableFormat = new ArrayList<>();
@@ -131,6 +132,7 @@ public class ProductBox extends ElementBox {
         int chosenFormatIndex = getRandom().nextInt(tableFormat.size());
         float[] configRow = tableConfig.get(chosenFormatIndex);
         String [] chosenFormat = tableFormat.get(chosenFormatIndex);
+        chosenFormatForEval = chosenFormat;
         TableRowBox head = new TableRowBox(configRow, 0, 0, VAlign.BOTTOM);
         head.setBackgroundColor(Color.BLACK);
 
@@ -217,4 +219,7 @@ public class ProductBox extends ElementBox {
         this.container.build(stream, writer);
     }
 
+    public String[] getChosenFormatForEval() {
+        return chosenFormatForEval;
+    }
 }

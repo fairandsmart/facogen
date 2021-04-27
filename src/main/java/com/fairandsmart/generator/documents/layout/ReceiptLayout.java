@@ -41,6 +41,6 @@ import javax.xml.stream.XMLStreamWriter;
 public interface ReceiptLayout {
     String name();
 
-    void builtReceipt(ReceiptModel model, PDDocument document, XMLStreamWriter writer) throws Exception;
+    void builtReceipt(ReceiptModel model, PDDocument document, XMLStreamWriter writer,XMLStreamWriter writerEval) throws Exception;
 
 }

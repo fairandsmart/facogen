@@ -50,7 +50,6 @@ public class TestReceipts {
             Files.createDirectory(paslip);
         }
 
-
         Path directoryPdf = Paths.get("target/receipts/pdf");
         if ( !Files.exists(directoryPdf) ) {
             Files.createDirectory(directoryPdf);
@@ -61,6 +60,11 @@ public class TestReceipts {
             Files.createDirectory(directoryXml);
         }
 
+        Path directoryXmlForEval = Paths.get("target/receipts/xmlEval");
+        if ( !Files.exists(directoryXmlForEval) ) {
+            Files.createDirectory(directoryXmlForEval);
+        }
+
         Path directoryTiff = Paths.get("target/receipts/tiff");
         if ( !Files.exists(directoryTiff) ) {
             Files.createDirectory(directoryTiff);
@@ -69,13 +73,14 @@ public class TestReceipts {
         for(int i=1; i<=nb; i++){
             Path pdf = Paths.get("target/receipts/pdf/receipt-"+ i + ".pdf");
             Path xml = Paths.get("target/receipts/xml/receipt-"+ i + ".xml");
+            Path xmlForEval = Paths.get("target/receipts/xmlEval/receipt-"+ i + ".xml");
             Path img = Paths.get("target/receipts/tiff/receipt-"+ i + ".tiff");
 
             GenerationContext ctx = GenerationContext.generate();
             ReceiptModel model = new ReceiptModel.Generator().generate(ctx);
             System.out.println(model);
             GenericReceiptLayout layout = new GenericReceiptLayout();
-            ReceiptGenerator.getInstance().generateReceipt(layout, model, pdf, xml, img);
+            ReceiptGenerator.getInstance().generateReceipt(layout, model, pdf, xml, img,xmlForEval);
         }
     }
 }

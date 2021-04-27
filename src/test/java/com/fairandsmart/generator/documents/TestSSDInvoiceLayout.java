@@ -15,7 +15,7 @@ package com.fairandsmart.generator.documents;
  * Aurore Hubert <aurore.hubert@fairandsmart.com> / FairAndSmart
  * Kevin Meszczynski <kevin.meszczynski@fairandsmart.com> / FairAndSmart
  * %%
- * Copyright (C) 2019 - 2020 Fair And Smart
+ * Copyright (C) 2019 Fair And Smart
  * %%
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as
@@ -34,51 +34,60 @@ package com.fairandsmart.generator.documents;
  */
 
 import com.fairandsmart.generator.documents.data.generator.GenerationContext;
-import com.fairandsmart.generator.documents.data.model.PayslipModel;
-import com.fairandsmart.generator.documents.layout.payslip.GenericPayslipLayout;
+import com.fairandsmart.generator.documents.data.model.InvoiceModel;
+import com.fairandsmart.generator.documents.layout.InvoiceLayout;
+import com.fairandsmart.generator.documents.layout.InvoiceSSDGenerator;
+import com.fairandsmart.generator.documents.layout.invoiceSSD.InvoiceSSDLayout;
+import com.fairandsmart.generator.documents.layout.ngeneric.NGenericLayout;
 import org.junit.Test;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class TestGenericPayslipLayout {
+public class TestSSDInvoiceLayout {
+
     @Test
     public static void test(int nb) throws Exception {
-        Path paslip = Paths.get("target/payslip");
-        if ( !Files.exists(paslip) ) {
-            Files.createDirectory(paslip);
+
+        Path newDirectory = Paths.get("target/SSDInvoice");
+        if ( !Files.exists(newDirectory) ) {
+            Files.createDirectory(newDirectory);
         }
-        Path directoryTiff = Paths.get("target/payslip/tiff");
-        if ( !Files.exists(directoryTiff) ) {
-            Files.createDirectory(directoryTiff);
-        }
-        Path directoryPdf = Paths.get("target/payslip/pdf");
+
+        Path directoryPdf = Paths.get("target/SSDInvoice/pdf");
         if ( !Files.exists(directoryPdf) ) {
             Files.createDirectory(directoryPdf);
         }
 
-        Path directoryXml = Paths.get("target/payslip/xml");
+        Path directoryXml = Paths.get("target/SSDInvoice/xml");
         if ( !Files.exists(directoryXml) ) {
             Files.createDirectory(directoryXml);
         }
 
-        Path directoryXmlForEval = Paths.get("target/payslip/xmlEval");
-        if ( !Files.exists(directoryXmlForEval) ) {
-            Files.createDirectory(directoryXmlForEval);
+        Path directoryTiff = Paths.get("target/SSDInvoice/tiff");
+        if ( !Files.exists(directoryTiff) ) {
+            Files.createDirectory(directoryTiff);
         }
 
-        for(int i=1; i<=nb; i++){
-            Path pdf = Paths.get("target/payslip/pdf/payslip-"+ i + ".pdf");
-            Path xml = Paths.get("target/payslip/xml/payslip-"+ i + ".xml");
-            Path img = Paths.get("target/payslip/tiff/payslip-"+ i + ".tiff");
-            Path xmlForEval = Paths.get("target/payslip/xmlEval/payslip-"+ i + ".xml");
-
+        Path directoryXmlEval = Paths.get("target/SSDInvoice/xmlEval");
+        if ( !Files.exists(directoryXmlEval) ) {
+            Files.createDirectory(directoryXmlEval);
+        }
+        for ( int i=1; i<=nb; i++) {
+        Path pdf = Paths.get("target/SSDInvoice/pdf/gen-"+ i + ".pdf");
+        Path xml = Paths.get("target/SSDInvoice/xml/gen-"+ i + ".xml");
+        Path img = Paths.get("target/SSDInvoice/tiff/gen-"+ i + ".tiff");
+        Path xmlEval = Paths.get("target/SSDInvoice/xmlEval/gen-"+ i + ".xml");
+        try {
             GenerationContext ctx = GenerationContext.generate();
-            PayslipModel model = new PayslipModel.Generator().generate(ctx);
-            System.out.println(model);
-            GenericPayslipLayout layout = new GenericPayslipLayout();
-            PayslipGenerator.getInstance().generatePayslip(layout, model, pdf, xml, img, xmlForEval);
+            InvoiceModel model = new InvoiceModel.Generator().generate(ctx);
+            InvoiceSSDLayout layout = new InvoiceSSDLayout();
+            InvoiceSSDGenerator.getInstance().generateInvoice(layout, model, pdf, xml, img,xmlEval);
+        }catch (Exception e){
+            System.out.println("exception occured" + e);
         }
+     }
     }
+
 }

@@ -69,6 +69,7 @@ public class ReceiptProductBox extends ElementBox {
     private boolean headersAvailable;
     private boolean itemsTotalAvailable;
     private boolean QtyBefItems;
+    private String[] chosenFormatHeaders;
 
     private static final List<String[]> tableFormat = new ArrayList<>();
     {
@@ -131,6 +132,7 @@ public class ReceiptProductBox extends ElementBox {
         int chosenFormatIndex = getRandom().nextInt(tableFormat.size());
         float[] configRow = tableConfig.get(chosenFormatIndex);
         String [] chosenFormat = tableFormat.get(chosenFormatIndex);
+        this.chosenFormatHeaders =chosenFormat;
         TableRowBox head = new TableRowBox(configRow, 0, 0, VAlign.BOTTOM);
         head.setBackgroundColor(Color.WHITE);
 
@@ -247,4 +249,7 @@ public class ReceiptProductBox extends ElementBox {
         this.container.build(stream, writer);
     }
 
+    public String[] getChosenFormatHeaders() {
+        return chosenFormatHeaders;
+    }
 }

@@ -95,6 +95,8 @@ public class InvoiceGenerator {
         xmlout.writeAttribute("NrOfPages", "1");
         xmlout.writeAttribute("docTag", "xml");
 
+
+
         PDDocument document = new PDDocument();
         layout.builtInvoice(model, document, xmlout);
         document.save(pdf.toFile());
@@ -110,6 +112,7 @@ public class InvoiceGenerator {
         xmlout.writeEndElement();
         xmlout.writeEndDocument();
         xmlout.close();
+
     }
 
     public static void main(String args[]) throws Exception {
@@ -136,6 +139,7 @@ public class InvoiceGenerator {
             Path pdf = Paths.get("target/generated/" + args[0] + "/basic-"+ i + ".pdf");
             Path xml = Paths.get("target/generated/" + args[0] + "/basic-"+ i + ".xml");
             Path img = Paths.get("target/generated/" + args[0] + "/basic-"+ i + ".tiff");
+            Path xmlEval = Paths.get("target/generated/" + args[0] + "/basicEval-"+ i + ".tiff");
             GenerationContext ctx = GenerationContext.generate();
             InvoiceModel model = new InvoiceModel.Generator().generate(ctx);
             InvoiceGenerator.getInstance().generateInvoice(availablesLayout.get(i % availablesLayout.size()), model, pdf, xml, img);
