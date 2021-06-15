@@ -21,7 +21,7 @@
         <quarkus.platform.version>1.6.1.Final</quarkus.platform.version>
 
         <version.junit>4.12</version.junit>
-        <version.pdfbox>2.0.9</version.pdfbox>
+        <version.pdfbox>2.0.24</version.pdfbox>
         <version.jempbox>1.8.13</version.jempbox>
         <version.boxable>1.4</version.boxable>
         <version.log4j>1.2.17</version.log4j>
