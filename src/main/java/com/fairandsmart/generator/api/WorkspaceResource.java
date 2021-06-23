@@ -149,4 +149,15 @@ public class WorkspaceResource {
         URI created = uriInfo.getBaseUriBuilder().path(WorkspaceResource.class).path(wsid.toString()).build();
         return Response.seeOther(created).build();
     }
+
+    @POST
+    @Path("/{wsid}/receipt/jobs")
+    @RolesAllowed({"silver","gold","platinum"})
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    public Response submitJobR(@Context UriInfo uriInfo, @PathParam("wsid") Long wsid, @FormParam("qty") String qty) throws UnsupportedJobException, WorkspaceNotFoundException, WorkspaceManagerException, AccessDeniedException, AlreadyActiveJobException {
+        Workspace ws = workspaceManager.load(wsid);
+        jobManager.submit(ws, "receipt.generate", Collections.singletonMap("qty", qty));
+        URI created = uriInfo.getBaseUriBuilder().path(WorkspaceResource.class).path(wsid.toString()).build();
+        return Response.seeOther(created).build();
+    }
 }
