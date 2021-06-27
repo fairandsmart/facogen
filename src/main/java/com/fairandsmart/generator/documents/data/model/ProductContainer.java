@@ -65,8 +65,9 @@ public class ProductContainer {
     private String snHead;
     private String discountHead;
     private Boolean discountAvailable;
-    private String totalDiscount;
-
+    private Boolean taxRateAvailable;
+    private float totalDiscount;
+    private String totalDiscountFomated;
     //Added
     private float totalEcoParticipation;
     //private float totalDiscount;
@@ -78,7 +79,7 @@ public class ProductContainer {
         this.descHead = descHead;
         this.qtyHead = qtyHead;
         this.unitPriceHead = unitPriceHead;
-        this. taxRateHead = taxRateHead;
+        this.taxRateHead = taxRateHead;
         this.taxHead = taxHead;
         this.lineTotalHead = lineTotalHead;
         this.withoutTaxTotalHead = withoutTaxTotalHead;
@@ -190,16 +191,36 @@ public class ProductContainer {
         return discountAvailable;
     }
 
-    public String getTotalDiscount() {
+    public float getTotalDiscount() {
         return totalDiscount;
     }
 
-    public void setTotalDiscount(String totalDiscount) {
+    public void setTotalDiscount(float totalDiscount) {
         this.totalDiscount = totalDiscount;
+    }
+
+    public String getTotalDiscountFomated() {
+        return String.format("%.2f", this.getTotalDiscount()) + " " + currency;
+    }
+
+    public void setTotalDiscountFomated(String totalDiscountFomated) {
+        this.totalDiscountFomated = totalDiscountFomated;
     }
 
     public String getDiscountHead() {
         return discountHead;
+    }
+
+    public String getTaxTotalHead() {
+        return taxTotalHead;
+    }
+
+    public Boolean getTaxRateAvailable() {
+        return taxRateAvailable;
+    }
+
+    public void setTaxRateAvailable(Boolean taxRateAvailable) {
+        this.taxRateAvailable = taxRateAvailable;
     }
 
     @Override
@@ -357,14 +378,17 @@ public class ProductContainer {
             if(discountAvailable){
                 /// discount
                 Float discout =0.0f;
-                if(ctx.getRandom().nextBoolean()){
+                /*if(ctx.getRandom().nextBoolean()){
                     discout = ctx.getRandom().nextFloat()*0.4f*total;
-                }
+                }*/
                 String discountS = String.format("%.2f", discout);
-                productContainer.setTotalDiscount(discountS);
+                productContainer.setTotalDiscount(discout);
                 total = total - discout;
                 productContainer.setTotalWithTax(total);
             }
+            Boolean taxRateAvailable = ctx.getRandom().nextBoolean();
+            productContainer.setTaxRateAvailable(taxRateAvailable);
+
             return productContainer;
         }
 
