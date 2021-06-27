@@ -45,6 +45,7 @@ import com.fairandsmart.generator.documents.element.head.CompanyInfoBox;
 import com.fairandsmart.generator.documents.element.image.ImageBox;
 import com.fairandsmart.generator.documents.element.line.HorizontalLineBox;
 import com.fairandsmart.generator.documents.element.product.ProductBox;
+import com.fairandsmart.generator.documents.element.product.ProductBoxSSD;
 import com.fairandsmart.generator.documents.element.table.TableRowBox;
 import com.fairandsmart.generator.documents.element.textbox.SimpleTextBox;
 import com.fairandsmart.generator.documents.element.textbox.SimpleTextBoxForEvaluation;
@@ -67,6 +68,7 @@ import java.util.Map;
 public class InvoiceSSDLayout implements SSDLayout {
     private float fontSize = 10;
     private PDFont[] fonts;
+    private PDFont font;
     InvoiceModel model;
     // 1 available, 0 not available, -1 used
     private int invoiceNumAvailable;
@@ -107,9 +109,11 @@ public class InvoiceSSDLayout implements SSDLayout {
         this.leftInfoClasses = new ArrayList<String>();
         float[] configRow2 = {255f, 255f};
         float[] configRow2v1 = {150f, 360f};
+        float[] configRow1v1 = {500f};//500f};
         float[] configRow2v2 = {360f, 150f};
         float[] configRow3 = {170f, 170f, 170f};
         this.fonts = FONTS.get(model.getRandom().nextInt(FONTS.size()));
+        this.font = fonts[0];
         PDPage page = new PDPage(PDRectangle.A4);
         document.addPage(page);
         writer.writeStartElement("DL_PAGE");
@@ -395,7 +399,7 @@ public class InvoiceSSDLayout implements SSDLayout {
         }
 
 
-        ProductBox productTable = new ProductBox(0, 0, model.getProductContainer(),fonts[2], fonts[1], fontSize);
+        ProductBoxSSD productTable = new ProductBoxSSD(0, 0, model.getProductContainer(),fonts[2], fonts[1], fontSize);
         invoicePage.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 0, 130));
         invoicePage.addElement(productTable);
 
@@ -403,7 +407,52 @@ public class InvoiceSSDLayout implements SSDLayout {
             pos_element++;
             new SimpleTextBoxForEvaluation(productTable.getChosenFormatForEval()[i], pos_element).build(writerEval);
         }
+        ////
+        //// Products totals
+        ////
+        //// Begin totals part
+        TableRowBox sumup = new TableRowBox(configRow1v1, 0, 0);
+        VerticalContainer totalsContainer = new VerticalContainer(0,0,500f);
 
+        if(model.getRandom().nextBoolean()) font = fonts[1];
+
+        //totalsContainer.addElement(new HorizontalLineBox(0,0, configRow1v1[0]+30, 0));
+        //totalsContainer.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 0, 15));
+
+        HorizontalContainer totalHT = new HorizontalContainer(0,0);
+        totalHT.addElement(new SimpleTextBox(font, fontSize+1, 0, 0, model.getProductContainer().getTotalWithoutTaxHead(), Color.BLACK, null, HAlign.LEFT));
+        totalHT.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 10, 0));
+        totalHT.addElement(new SimpleTextBox(font, fontSize, 0, 0, model.getProductContainer().getFormatedTotalWithoutTax(), Color.BLACK, null, HAlign.CENTER , "TWTX"));
+
+        totalsContainer.addElement(totalHT);
+        pos_element++;
+        new SimpleTextBoxForEvaluation("TWTX",pos_element).build(writerEval);
+
+        HorizontalContainer totalTax = new HorizontalContainer(0,0);
+        totalTax.addElement(new SimpleTextBox(font, fontSize+1, 0, 0, model.getProductContainer().getTotalTaxHead(), Color.BLACK, null, HAlign.LEFT));
+        totalTax.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 10, 0));
+        totalTax.addElement(new SimpleTextBox(font, fontSize, 0, 0, model.getProductContainer().getFormatedTotalTax(), Color.BLACK, null, HAlign.CENTER , "TTX"));
+
+        totalsContainer.addElement(totalTax);
+        pos_element++;
+        new SimpleTextBoxForEvaluation("TTX",pos_element).build(writerEval);
+
+        HorizontalContainer totalTTC = new HorizontalContainer(0,0);
+        totalTTC.addElement(new SimpleTextBox(font, fontSize+1, 0, 0, model.getProductContainer().getTotalAmountHead(), Color.BLACK, null, HAlign.LEFT));
+        totalTTC.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 10, 0));
+        totalTTC.addElement(new SimpleTextBox(font, fontSize, 0, 0, model.getProductContainer().getFormatedTotalWithTax(), Color.BLACK, null, HAlign.CENTER,"TA" ));
+
+        totalsContainer.addElement(totalTTC);
+        pos_element++;
+        new SimpleTextBoxForEvaluation("TA",pos_element).build(writerEval);
+
+        HorizontalContainer hElmt = new HorizontalContainer(0,0);
+        totalsContainer.alignElements("RIGHT",500f);
+        hElmt.addElement(totalsContainer);
+        hElmt.setHeight(hElmt.getBoundingBox().getHeight()+30);
+        sumup.addElement(hElmt,true);
+        invoicePage.addElement(sumup);
+        //// End totals part
         ClientInfoBox randomClientInfo = new ClientInfoBox(getLeftInfo(false, false, false, false, true));
         if(randomClientInfo.getBoundingBox().getWidth()!=0.0){
             fourthPart = new TableRowBox(configRow2, 0, 0, VAlign.CENTER);

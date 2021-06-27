@@ -232,7 +232,7 @@ public class IDNumbers {
             String cwdPath = new File("").getAbsolutePath();       // current working directory
             try
             {
-                cwdPath = cwdPath.substring(0,cwdPath.lastIndexOf('/'));
+                //cwdPath = cwdPath.substring(0,cwdPath.lastIndexOf('/'));
                 System.out.println("PATHH "+cwdPath+ "/src/main/resources/common/apecodes.txt");
                 fileReader = new FileReader(cwdPath+ "/src/main/resources/common/apecodes.txt" );
                 reader = new BufferedReader(fileReader);
