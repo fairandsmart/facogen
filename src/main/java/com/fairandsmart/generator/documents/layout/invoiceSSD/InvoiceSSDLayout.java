@@ -419,6 +419,18 @@ public class InvoiceSSDLayout implements SSDLayout {
         //totalsContainer.addElement(new HorizontalLineBox(0,0, configRow1v1[0]+30, 0));
         //totalsContainer.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 0, 15));
 
+        if(model.getProductContainer().getDiscountAvailable()) {
+            HorizontalContainer totalDiscount = new HorizontalContainer(0, 0);
+            totalDiscount.addElement(new SimpleTextBox(fonts[0], fontSize + 1, 0, 0, model.getProductContainer().getDiscountHead(), Color.BLACK, null, HAlign.LEFT));
+            totalDiscount.addElement(new BorderBox(Color.WHITE, Color.WHITE, 0, 0, 0, 5, 0));
+            totalDiscount.addElement(new SimpleTextBox(fonts[0], fontSize, 0, 0, model.getProductContainer().getTotalDiscount(), Color.BLACK, null, HAlign.CENTER));
+            //totalDiscount.setHeight(5);
+            totalsContainer.addElement(totalDiscount);
+            pos_element++;
+            new SimpleTextBoxForEvaluation("discount",pos_element).build(writerEval);
+        }
+
+
         HorizontalContainer totalHT = new HorizontalContainer(0,0);
         totalHT.addElement(new SimpleTextBox(font, fontSize+1, 0, 0, model.getProductContainer().getTotalWithoutTaxHead(), Color.BLACK, null, HAlign.LEFT));
         totalHT.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 10, 0));
