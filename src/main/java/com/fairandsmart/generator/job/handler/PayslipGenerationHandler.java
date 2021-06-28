@@ -133,10 +133,12 @@ public class PayslipGenerationHandler implements JobHandler {
                     return;
                 }
                 LOGGER.log(Level.INFO, "After generating layout");
-                for ( int i=start; i<stop; i++) {
+                for ( int i=start; i<stop; i++) {                    //TODO configure context according to config
+
                     Path pdf = Paths.get(root, params.getOrDefault(PARAM_OUTPUT, "payslip") + "-" + i + ".pdf");
                     Path xml = Paths.get(root, params.getOrDefault(PARAM_OUTPUT, "payslip") + "-" + i + ".xml");
-                    Path xmlEval = Paths.get(root, params.getOrDefault(PARAM_OUTPUT, "payslipEval") + "-" + i + ".xml");
+                    Path xmlEval = null;
+                    //Path xmlEval = Paths.get(root, params.getOrDefault(PARAM_OUTPUT, "payslipEval") + "-" + i + ".xml");
                     Path img = Paths.get(root, params.getOrDefault(PARAM_OUTPUT, "payslip") + "-" + i + ".tiff");
                     //TODO configure context according to config
                     GenerationContext ctx = GenerationContext.generate();

@@ -71,6 +71,8 @@ public class ReceiptGenerator {
 
     public void generateReceipt(com.fairandsmart.generator.documents.layout.receipt.GenericReceiptLayout layout, ReceiptModel model, Path pdf, Path xml, Path img, Path xmlForEvaluation) throws Exception {
 
+        Boolean modeEval= true;
+        if (xmlForEvaluation == null) modeEval = false;
         OutputStream xmlos = Files.newOutputStream(xml);
         XMLStreamWriter xmlout = XMLOutputFactory.newInstance().createXMLStreamWriter(new OutputStreamWriter(xmlos, "utf-8"));
         xmlout.writeStartDocument();
@@ -88,21 +90,25 @@ public class ReceiptGenerator {
         xmlout.writeAttribute("docTag", "xml");
 
         ///
-        OutputStream xmlosEval = Files.newOutputStream(xmlForEvaluation);
-        XMLStreamWriter xmloutEval = XMLOutputFactory.newInstance().createXMLStreamWriter(new OutputStreamWriter(xmlosEval, "utf-8"));
-        xmloutEval.writeStartDocument();
-        xmloutEval.writeStartElement("", "GEDI", "http://lamp.cfar.umd.edu/media/projects/GEDI/");
-        xmloutEval.writeAttribute("GEDI_version", "2.4");
-        xmloutEval.writeAttribute("GEDI_date", "07/29/2013");
-        xmloutEval.writeStartElement("USER");
-        xmloutEval.writeAttribute("name", "FairAndSmartGenerator");
-        xmloutEval.writeAttribute("date", new SimpleDateFormat(DATE_FORMAT).format(new Date()));
-        xmloutEval.writeAttribute("dateFormat", DATE_FORMAT);
-        xmloutEval.writeEndElement();
-        xmloutEval.writeStartElement("DL_DOCUMENT");
-        xmloutEval.writeAttribute("src", img.getFileName().toString());
-        xmloutEval.writeAttribute("NrOfPages", "1");
-        xmloutEval.writeAttribute("docTag", "xml");
+        OutputStream xmlosEval ;
+        XMLStreamWriter xmloutEval = null;
+        if (modeEval) {
+            xmlosEval = Files.newOutputStream(xmlForEvaluation);
+            xmloutEval = XMLOutputFactory.newInstance().createXMLStreamWriter(new OutputStreamWriter(xmlosEval, "utf-8"));
+            xmloutEval.writeStartDocument();
+            xmloutEval.writeStartElement("", "GEDI", "http://lamp.cfar.umd.edu/media/projects/GEDI/");
+            xmloutEval.writeAttribute("GEDI_version", "2.4");
+            xmloutEval.writeAttribute("GEDI_date", "07/29/2013");
+            xmloutEval.writeStartElement("USER");
+            xmloutEval.writeAttribute("name", "FairAndSmartGenerator");
+            xmloutEval.writeAttribute("date", new SimpleDateFormat(DATE_FORMAT).format(new Date()));
+            xmloutEval.writeAttribute("dateFormat", DATE_FORMAT);
+            xmloutEval.writeEndElement();
+            xmloutEval.writeStartElement("DL_DOCUMENT");
+            xmloutEval.writeAttribute("src", img.getFileName().toString());
+            xmloutEval.writeAttribute("NrOfPages", "1");
+            xmloutEval.writeAttribute("docTag", "xml");
+        }
 
         PDDocument document = new PDDocument();
         layout.builtReceipt(model, document, xmlout,xmloutEval);
@@ -130,10 +136,12 @@ public class ReceiptGenerator {
         xmlout.close();
 
         //////
-        xmloutEval.writeEndElement();
-        xmloutEval.writeEndElement();
-        xmloutEval.writeEndDocument();
-        xmloutEval.close();
+        if (modeEval) {
+            xmloutEval.writeEndElement();
+            xmloutEval.writeEndElement();
+            xmloutEval.writeEndDocument();
+            xmloutEval.close();
+        }
     }
 
     public static void main(String args[]) throws Exception {
