@@ -115,6 +115,9 @@ public class InvoiceSSDLayout implements SSDLayout {
         float[] configRow3 = {170f, 170f, 170f};
         this.fonts = FONTS.get(model.getRandom().nextInt(FONTS.size()));
         this.font = fonts[0];
+        Boolean logoIndependent = model.getRandom().nextBoolean();
+        Boolean headElementsInBlock = model.getRandom().nextBoolean();
+
         PDPage page = new PDPage(PDRectangle.A4);
         document.addPage(page);
         writer.writeStartElement("DL_PAGE");
@@ -123,22 +126,16 @@ public class InvoiceSSDLayout implements SSDLayout {
         writer.writeAttribute("width", "2480");
         writer.writeAttribute("height", "3508");
         writer.writeCharacters(System.getProperty("line.separator"));
-
         writerEval.writeStartElement("DL_PAGE");
         writerEval.writeAttribute("gedi_type", "DL_PAGE");
         writerEval.writeAttribute("pageID", "1");
         writerEval.writeCharacters(System.getProperty("line.separator"));
 
         PDPageContentStream contentStream = new PDPageContentStream(document, page);
-        // TODO : Add alignment of blocks like address,etc.
-
         VerticalContainer invoicePage = new VerticalContainer(0,0,0);
         CompanyInfoBox companyInfoBox = new CompanyInfoBox(fonts[2], fonts[1], fontSize, model, document);
         ImageBox companyLogo =  companyInfoBox.getLogoBox(42, Color.WHITE);
         TableRowBox firstPart = null, secondPart = null, thirdPart=null, fourthPart= null, fifthPart= null;
-
-        Boolean logoIndependent = model.getRandom().nextBoolean();
-        Boolean headElementsInBlock = model.getRandom().nextBoolean();
 
         if(logoIndependent)
         {
@@ -199,14 +196,11 @@ public class InvoiceSSDLayout implements SSDLayout {
                 this.compContactAvailable = -1;
                 this.ciDAvailable = -1;
             }
-
         }
         else
         {
             if(headElementsInBlock) {
-
                 firstPart = new TableRowBox(configRow2, 0, 0);
-
                 VerticalContainer iInfo= new VerticalContainer(0,0,0);
                 if(invoiceNumAvailable==1)
                 {
@@ -216,7 +210,6 @@ public class InvoiceSSDLayout implements SSDLayout {
                     this.invoiceNumAvailable = -1;
                     pos_element++;
                     new SimpleTextBoxForEvaluation("InvoiceNum", pos_element).build(writerEval);
-
                 }
                 if(iDateAvailable==1)
                 {
@@ -226,7 +219,6 @@ public class InvoiceSSDLayout implements SSDLayout {
                     this.iDateAvailable = -1;
                     pos_element++;
                     new SimpleTextBoxForEvaluation("IDate", pos_element).build(writerEval);
-
                 }
                 CompanyInfoBox companyLogoAddCont = new CompanyInfoBox(companyInfoBox.concatContainersVertically
                         (new ElementBox[]{companyLogo, companyInfoBox.getCompanyAddressBlock(), companyInfoBox.getCompanyContactBlock()}));
@@ -238,7 +230,6 @@ public class InvoiceSSDLayout implements SSDLayout {
                     pos_element++;
                     new SimpleTextBoxForEvaluation(companyInfoBox.getContactOptClasses().get(i), pos_element).build(writerEval);
                 }
-
                 CompanyInfoBox iInfor = new CompanyInfoBox(iInfo);
                 Map<Integer, ElementBox> compElements = new HashMap<>();
                 {
@@ -250,10 +241,8 @@ public class InvoiceSSDLayout implements SSDLayout {
                     firstPart.addElement(compElements.get(list[i]), true);
                 this.compContactAvailable = -1;
             }
-
             else{
                     firstPart = new TableRowBox(configRow2, 0, 0);
-
                     VerticalContainer iInfo= new VerticalContainer(0,0,0);
                     if(invoiceNumAvailable==1)
                     {
@@ -263,7 +252,6 @@ public class InvoiceSSDLayout implements SSDLayout {
                         this.invoiceNumAvailable = -1;
                         pos_element++;
                         new SimpleTextBoxForEvaluation("InvoiceNum", pos_element).build(writerEval);
-
                     }
                     if(iDateAvailable==1)
                     {
@@ -273,7 +261,6 @@ public class InvoiceSSDLayout implements SSDLayout {
                         this.iDateAvailable = -1;
                         pos_element++;
                         new SimpleTextBoxForEvaluation("IDate", pos_element).build(writerEval);
-
                     }
                     CompanyInfoBox companyLogoAddCont = new CompanyInfoBox(companyInfoBox.concatContainersVertically
                             (new ElementBox[]{companyLogo, companyInfoBox.getCompanyAddressLine(), companyInfoBox.getCompanyContactLine()}));
@@ -302,11 +289,9 @@ public class InvoiceSSDLayout implements SSDLayout {
                     }
                 this.compContactAvailable = -1;
             }
-
         }
         invoicePage.addElement(firstPart);
         secondPart = new TableRowBox(configRow2, 0, 0, VAlign.CENTER);
-       // thirdPart = new TableRowBox(configRow2, 0, 0, VAlign.CENTER);
         ClientInfoBox billingInfoBox = new ClientInfoBox(fonts[2], fonts[1], fontSize, this.model, document, "Billing");
         VerticalContainer clientAddress = new VerticalContainer(0,0,0);
         clientAddress.addElement(billingInfoBox);
@@ -315,20 +300,16 @@ public class InvoiceSSDLayout implements SSDLayout {
         if ( shipAddressAvail > 42 ) {
             shipAddAvailable = false;
         }
-
         ClientInfoBox clientInfo = new ClientInfoBox(getLeftInfo(true, true, true, true,true));
         Boolean shipBillhoriz = model.getRandom().nextBoolean();
         List<String> clientInfosOptCl = new ArrayList<String>();
         for(int i=0;i<leftInfoClasses.size();i++) {
             clientInfosOptCl.add(leftInfoClasses.get(i));
         }
-
         if(shipAddAvailable && shipBillhoriz ){
-
             ClientInfoBox shippingInfoBox = new ClientInfoBox(fonts[2], fonts[1], fontSize, this.model, document, "Shipping");
             ClientInfoBox clientOtherInfo = new ClientInfoBox(getLeftInfo(false, false, true, true,true));
             shipAddAvailable = false;
-
             Map<Integer, ElementBox> clientElements = new HashMap<>();
             {
                 clientElements.put(1, billingInfoBox);
@@ -341,8 +322,6 @@ public class InvoiceSSDLayout implements SSDLayout {
             new SimpleTextBoxForEvaluation("billingInfo", pos_element).build(writerEval);
             pos_element++;
             new SimpleTextBoxForEvaluation("shippingInfo", pos_element).build(writerEval);
-
-
             thirdPart = new TableRowBox(configRow2, 0, 0, VAlign.CENTER);
             Map<Integer, ElementBox> clientInfos = new HashMap<>();
             {
@@ -359,16 +338,13 @@ public class InvoiceSSDLayout implements SSDLayout {
             int list2[] = getRandomList(clientInfos.size());
             for (int i = 0; i < list2.length; i++)
                 thirdPart.addElement(clientInfos.get(list2[i]), true);
-
             }
         else{
-
             if(shipAddAvailable && !shipBillhoriz) {
                 ClientInfoBox shippingInfoBox = new ClientInfoBox(fonts[2], fonts[1], fontSize, this.model, document, "Shipping");
                 clientAddress.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 0, 10));
                 clientAddress.addElement(shippingInfoBox);
             }
-
             ClientInfoBox clientFullAddress = new ClientInfoBox(clientAddress);
             Map<Integer, ElementBox> clientElements = new HashMap<>();
             {
@@ -379,7 +355,6 @@ public class InvoiceSSDLayout implements SSDLayout {
             int list[] = getRandomList(clientElements.size());
             for (int i = 0; i < list.length; i++)
                 secondPart.addElement(clientElements.get(list[i]), true);
-
             }
             new SimpleTextBoxForEvaluation("shippingAddress", pos_element).build(writerEval);
             for(int i=0;i<leftInfoClasses.size();i++){
@@ -389,8 +364,6 @@ public class InvoiceSSDLayout implements SSDLayout {
                 pos_element++;
                 new SimpleTextBoxForEvaluation(clientInfosOptCl.get(i), pos_element).build(writerEval);
             }
-
-
         invoicePage.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 0, 15));
         invoicePage.addElement(secondPart);
         if(thirdPart!=null)
@@ -398,12 +371,9 @@ public class InvoiceSSDLayout implements SSDLayout {
             invoicePage.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 0, 50));
             invoicePage.addElement(thirdPart);
         }
-
-
         ProductBoxSSD productTable = new ProductBoxSSD(0, 0, model.getProductContainer(),fonts[2], fonts[1], fontSize);
         invoicePage.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 0, 130));
         invoicePage.addElement(productTable);
-
         for(int i=0;i<productTable.getChosenFormatForEval().length;i++){
             pos_element++;
             new SimpleTextBoxForEvaluation(productTable.getChosenFormatForEval()[i], pos_element).build(writerEval);
@@ -414,12 +384,7 @@ public class InvoiceSSDLayout implements SSDLayout {
         //// Begin totals part
         TableRowBox sumup = new TableRowBox(configRow1v1, 0, 0);
         VerticalContainer totalsContainer = new VerticalContainer(0,0,500f);
-
         if(model.getRandom().nextBoolean()) font = fonts[1];
-
-        //totalsContainer.addElement(new HorizontalLineBox(0,0, configRow1v1[0]+30, 0));
-        //totalsContainer.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 0, 15));
-
         if(model.getProductContainer().getDiscountAvailable()) {
             HorizontalContainer totalDiscount = new HorizontalContainer(0, 0);
             totalDiscount.addElement(new SimpleTextBox(font, fontSize + 1, 0, 0, model.getProductContainer().getDiscountHead(), Color.BLACK, null, HAlign.LEFT));
@@ -429,7 +394,6 @@ public class InvoiceSSDLayout implements SSDLayout {
             pos_element++;
             new SimpleTextBoxForEvaluation("discount",pos_element).build(writerEval);
         }
-
         HorizontalContainer totalHT = new HorizontalContainer(0,0);
         totalHT.addElement(new SimpleTextBox(font, fontSize+1, 0, 0, model.getProductContainer().getTotalWithoutTaxHead(), Color.BLACK, null, HAlign.LEFT));
         totalHT.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 10, 0));
@@ -437,7 +401,6 @@ public class InvoiceSSDLayout implements SSDLayout {
         totalsContainer.addElement(totalHT);
         pos_element++;
         new SimpleTextBoxForEvaluation("TWTX",pos_element).build(writerEval);
-
         if(model.getProductContainer().getTaxRateAvailable()) {
             HorizontalContainer totalTaxRate = new HorizontalContainer(0, 0);
             totalTaxRate.addElement(new SimpleTextBox(font, fontSize + 1, 0, 0, model.getProductContainer().getTaxRateHead(), Color.BLACK, null, HAlign.LEFT));
@@ -447,7 +410,6 @@ public class InvoiceSSDLayout implements SSDLayout {
             pos_element++;
             new SimpleTextBoxForEvaluation("TXR",pos_element).build(writerEval);
         }
-
         HorizontalContainer totalTax = new HorizontalContainer(0,0);
         totalTax.addElement(new SimpleTextBox(font, fontSize+1, 0, 0, model.getProductContainer().getTotalTaxHead(), Color.BLACK, null, HAlign.LEFT));
         totalTax.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 10, 0));
@@ -455,16 +417,13 @@ public class InvoiceSSDLayout implements SSDLayout {
         totalsContainer.addElement(totalTax);
         pos_element++;
         new SimpleTextBoxForEvaluation("TTX",pos_element).build(writerEval);
-
         HorizontalContainer totalTTC = new HorizontalContainer(0,0);
         totalTTC.addElement(new SimpleTextBox(font, fontSize+1, 0, 0, model.getProductContainer().getTotalAmountHead(), Color.BLACK, null, HAlign.LEFT));
         totalTTC.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 10, 0));
         totalTTC.addElement(new SimpleTextBox(font, fontSize, 0, 0, model.getProductContainer().getFormatedTotalWithTax(), Color.BLACK, null, HAlign.CENTER,"TA" ));
-
         totalsContainer.addElement(totalTTC);
         pos_element++;
         new SimpleTextBoxForEvaluation("TA",pos_element).build(writerEval);
-
         HorizontalContainer hElmt = new HorizontalContainer(0,0);
         totalsContainer.alignElements("RIGHT",500f);
         hElmt.addElement(totalsContainer);
@@ -491,27 +450,21 @@ public class InvoiceSSDLayout implements SSDLayout {
                 pos_element++;
                 new SimpleTextBoxForEvaluation(leftInfoClasses.get(i), pos_element).build(writerEval);
             }
-
         }
-
         invoicePage.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 0, 700-invoicePage.getBoundingBox().getHeight()));
         boolean footerLine = model.getRandom().nextBoolean();
         boolean footerInLineForm = model.getRandom().nextBoolean();
-//        footerLine=true;
-//        footerInLineForm=false;
         if(footerLine)
         {
             invoicePage.addElement(new HorizontalLineBox(0,0, 30+invoicePage.getBoundingBox().getWidth(), 0));
             invoicePage.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 0, 5));
         }
-
         if(footerInLineForm) {
             String[] alignmentOptions = {"LEFT", "CENTER", "RIGHT"};
             List<ElementBox> compInfo = new ArrayList<ElementBox>();
             compInfo.add(companyInfoBox.getCompanyNameLine());
             compInfo.add(companyInfoBox.getCompanyAddLine());
             compInfo.add(companyInfoBox.getCompanyIdLine(0));
-
             pos_element++;
             new SimpleTextBoxForEvaluation("SN", pos_element).build(writerEval);
             pos_element++;
@@ -532,7 +485,6 @@ public class InvoiceSSDLayout implements SSDLayout {
             companyFoot.alignElements(alignmentOptions[model.getRandom().nextInt(alignmentOptions.length)], invoicePage.getBoundingBox().getWidth());
             CompanyInfoBox companyAddIDCont = new CompanyInfoBox(companyFoot);
             invoicePage.addElement(companyAddIDCont);
-
         }
         else{
             fifthPart = new TableRowBox(configRow2, 0, 0);
@@ -560,35 +512,27 @@ public class InvoiceSSDLayout implements SSDLayout {
                 compElements.put(1, companyAddress);
                 compElements.put(2, companyIDs);
             }
-
             int list[] = getRandomList(compElements.size());
             for(int i =0; i < list.length; i++)
                 fifthPart.addElement(compElements.get(list[i]), false);
             invoicePage.addElement(fifthPart);
         }
-
-
         invoicePage.translate(30,785);
         invoicePage.build(contentStream, writer);
         contentStream.close();
         writer.writeEndElement();
-
     }
-
     private int[] getRandomList(int n){
-
         List<Integer> list = new ArrayList<Integer>();
         for (int i= 1; i<= n; i++)
         {
             list.add(i);
         }
-
         java.util.Collections.shuffle(list);
         return list.stream().mapToInt(i->i).toArray();
     }
 
     private HorizontalContainer getInvoiceNum() throws Exception{
-
         HorizontalContainer iNumContainer = new HorizontalContainer(0, 0);
         SimpleTextBox iNumLabel = new SimpleTextBox(fonts[1], fontSize+2, 0, 0, model.getReference().getLabel());
         iNumLabel.setPadding(0,0,5,0);
@@ -600,7 +544,6 @@ public class InvoiceSSDLayout implements SSDLayout {
     }
 
     private HorizontalContainer getIDate() throws Exception{
-
         HorizontalContainer iDateContainer = new HorizontalContainer(0, 0);
         SimpleTextBox dateLabel = new SimpleTextBox(fonts[1], fontSize+2, 0, 0, model.getDate().getLabel());
         dateLabel.setPadding(0,0,5,0);
@@ -612,9 +555,7 @@ public class InvoiceSSDLayout implements SSDLayout {
     }
 
     private VerticalContainer getLeftInfo(Boolean iNumNeeded, Boolean iDateNeeded, Boolean clNumDesired, Boolean oNumDesired, Boolean pInfoDesired) throws Exception{
-
         VerticalContainer invoiceInfo = new VerticalContainer(0, 0, 0);
-
         leftInfoClasses = new ArrayList<String>();
         if(iNumNeeded && this.invoiceNumAvailable!=-1)
         {
@@ -623,7 +564,6 @@ public class InvoiceSSDLayout implements SSDLayout {
             this.invoiceNumAvailable = -1;
             leftInfoClasses.add("InvoiceNum");
         }
-
         if(iDateNeeded && this.iDateAvailable!=-1)
         {
             invoiceInfo.addElement(getInfoAsLabelValue(model.getDate().getLabel(), model.getDate().getValue(), "IDATE"));
@@ -631,7 +571,6 @@ public class InvoiceSSDLayout implements SSDLayout {
             this.iDateAvailable= -1;
             leftInfoClasses.add("IDate");
         }
-
         if(clNumDesired && this.clNumAvailable==1)
         {
             invoiceInfo.addElement(getInfoAsLabelValue(model.getReference().getLabelClient(), model.getReference().getValueClient(), "CNUM"));
@@ -639,7 +578,6 @@ public class InvoiceSSDLayout implements SSDLayout {
             this.clNumAvailable = -1;
             leftInfoClasses.add("ClNum");
         }
-
         if(oNumDesired && this.oNumAvailable==1)
         {
             invoiceInfo.addElement(getInfoAsLabelValue(model.getReference().getLabelCommand(), model.getReference().getValueCommand(), "ONUM"));
@@ -647,7 +585,6 @@ public class InvoiceSSDLayout implements SSDLayout {
             this.oNumAvailable = -1;
             leftInfoClasses.add("Onum");
         }
-
         if(pInfoDesired && this.pInfoAvailable==1)
         {
             invoiceInfo.addElement(getInfoAsLabelValue(model.getPaymentInfo().getLabelType(), model.getPaymentInfo().getValueType(), "PMODE"));
@@ -655,13 +592,11 @@ public class InvoiceSSDLayout implements SSDLayout {
             this.pInfoAvailable = -1;
             leftInfoClasses.add("pInfo");
         }
-
         if(this.clNumAvailable!=-1){ this.clNumAvailable = model.getRandom().nextInt(2);}
         if(this.oNumAvailable!=-1){ this.oNumAvailable = model.getRandom().nextInt(2);}
         if(this.pInfoAvailable!=-1){ this.pInfoAvailable = model.getRandom().nextInt(2);}
         return invoiceInfo;
     }
-
     private TableRowBox getInfoAsLabelValue(String label, String value, String entityClass) throws  Exception{
         float[] configRow = {150f, 200f};
         TableRowBox elementInfoContainer = new TableRowBox(configRow, 0, 0);
@@ -671,6 +606,4 @@ public class InvoiceSSDLayout implements SSDLayout {
         elementInfoContainer.addElement(Value, false);
         return  elementInfoContainer;
     }
-
-
 }

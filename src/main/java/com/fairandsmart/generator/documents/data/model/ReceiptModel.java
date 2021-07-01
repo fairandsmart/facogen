@@ -43,7 +43,6 @@ import java.util.stream.Collectors;
 
 public class ReceiptModel extends Model {
     private ReceiptDate date;
-    private String applicableLaw;
     private ProductReceiptContainer productReceiptContainer;
     private String headTitle;
     private InvoiceNumber reference;
@@ -61,24 +60,6 @@ public class ReceiptModel extends Model {
     public void setHeadTitle(String headTitle) {
         this.headTitle = headTitle;
     }
-
-    /**public PayElements getPayElements() {
-        return payElements;
-    }
-
-    public void setPayElements(PayElements payElements) {
-        this.payElements = payElements;
-    }**/
-
-
-    public String getApplicableLaw() {
-        return applicableLaw;
-    }
-
-    public void setApplicableLaw(String applicableLaw) {
-        this.applicableLaw = applicableLaw;
-    }
-
 
     public ReceiptDate getDate() {
         return date;
@@ -137,7 +118,6 @@ public class ReceiptModel extends Model {
                 "date=" + getDate() +
                 "reference"+getReference()+
                 ", company=" + getCompany() +
-                ", applicableLaw='" + getApplicableLaw() + '\'' +
                 ", headTitle='" + headTitle + '\'' +
                 '}';
     }
@@ -185,18 +165,14 @@ public class ReceiptModel extends Model {
             model.setProductReceiptContainer(new ProductReceiptContainer.Generator().generate(ctx));
             model.setReference(new InvoiceNumber.Generator().generate(ctx));
             model.setClient(new Client.Generator().generate(ctx));
-
             List<String> localizedHeaderLabel = headerLabels.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguage())).map(Map.Entry::getKey).collect(Collectors.toList());
             int idxvL = new Random().nextInt(localizedHeaderLabel.size());
             Generex generex = new Generex(localizedHeaderLabel.get(idxvL));
             model.setHeadTitle(generex.random());
-
             List<String> localizedCashierLabels = cashierLabels.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguage())).map(Map.Entry::getKey).collect(Collectors.toList());
             int idxCL = new Random().nextInt(localizedCashierLabels.size());
-
             Generex generex1 = new Generex(localizedCashierLabels.get(idxCL));
             model.setCashierLabel(generex1.random());
-
             List<List<String>> localizedFootNotes = footnotesLabels.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguage())).map(Map.Entry::getKey).collect(Collectors.toList());
             int idxFL = new Random().nextInt(localizedFootNotes.size());
             model.setFootnotes(localizedFootNotes.get(idxFL));

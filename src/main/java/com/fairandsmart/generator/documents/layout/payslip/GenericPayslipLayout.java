@@ -37,16 +37,10 @@ import com.fairandsmart.generator.documents.data.model.Model;
 import com.fairandsmart.generator.documents.data.model.PayslipModel;
 import com.fairandsmart.generator.documents.element.ElementBox;
 import com.fairandsmart.generator.documents.element.HAlign;
-import com.fairandsmart.generator.documents.element.border.BorderBox;
-import com.fairandsmart.generator.documents.element.container.HorizontalContainer;
 import com.fairandsmart.generator.documents.element.container.VerticalContainer;
 import com.fairandsmart.generator.documents.element.footer.SumUpSalaryPayslipBox;
 import com.fairandsmart.generator.documents.element.head.*;
 import com.fairandsmart.generator.documents.element.image.ImageBox;
-import com.fairandsmart.generator.documents.element.line.HorizontalLineBox;
-import com.fairandsmart.generator.documents.element.line.HorizontalLineBoxV2;
-import com.fairandsmart.generator.documents.element.line.VerticalLineBox;
-import com.fairandsmart.generator.documents.element.product.ProductBox;
 import com.fairandsmart.generator.documents.element.salary.SalaryBox;
 import com.fairandsmart.generator.documents.element.table.TableRowBox;
 import com.fairandsmart.generator.documents.element.textbox.SimpleTextBox;
@@ -59,8 +53,6 @@ import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.common.PDRectangle;
 import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
-import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
-
 import javax.enterprise.context.ApplicationScoped;
 import javax.xml.stream.XMLStreamWriter;
 import java.awt.*;
@@ -76,15 +68,9 @@ public class GenericPayslipLayout implements SSDLayout {
 
     // 1 available, 0 not available, -1 used
     private int LeaveInfosAvailable;
-    // TODO
     private int employeeInfoAvailable;
     private int ciDAvailable;
     private int compContactAvailable;
-    private int shipAddAvailable;
-    private int clNumAvailable;
-    private int oNumAvailable;
-    private int pInfoAvailable;
-    private TableRowBox firstPart;
     private int pos_element;
 
     @Override
@@ -102,9 +88,7 @@ public class GenericPayslipLayout implements SSDLayout {
     public void builtSSD(Model model, PDDocument document, XMLStreamWriter writer, XMLStreamWriter writerEval) throws Exception {
         this.model = (PayslipModel)model;
         this.LeaveInfosAvailable = model.getRandom().nextInt(2);
-
         // sets of table row possible sizes
-        float[] configRow2 = {255f, 255f};
         float[] configRow2v1 = {360f, 160f};
         float[] configRow2v2 = {360f, 150f};
         float[] configRow1v1 = {500f};
@@ -114,7 +98,6 @@ public class GenericPayslipLayout implements SSDLayout {
         if(writerEval== null) {
             modeEval = false;
         }
-
         PDPage page = new PDPage(PDRectangle.A4);
         document.addPage(page);
         writer.writeStartElement("DL_PAGE");
@@ -130,55 +113,32 @@ public class GenericPayslipLayout implements SSDLayout {
             writerEval.writeAttribute("pageID", "1");
             writerEval.writeCharacters(System.getProperty("line.separator"));
         }
-
         PDPageContentStream contentStream = new PDPageContentStream(document, page);
-
-
-
-        float ratioPage = page.getMediaBox().getWidth()/2480;
-
-        PDFont font = PDType1Font.HELVETICA_BOLD;
         this.fonts = FONTS.get(model.getRandom().nextInt(FONTS.size()));
-
         VerticalContainer payslipPage = new VerticalContainer(0,0,0);
         //payslip parts
-        TableRowBox firstPart = null,firstPart2 = null, secondPart = null, thirdPart = null, fourthPart= null, fifthPart= null, sixthPart= null;
-
-        //generation des booleens de placement
+        TableRowBox firstPart = null, secondPart = null, thirdPart = null, fourthPart= null, fifthPart= null;
         boolean logo = model.getRandom().nextBoolean();
         boolean titleSeparate = model.getRandom().nextBoolean();
         boolean conventionWithComp = model.getRandom().nextBoolean();
         boolean employeUnderCmp = model.getRandom().nextBoolean();
-
         //companyInfo
         CompanyInfoBoxPayslip companyInfoBox = new CompanyInfoBoxPayslip(fonts[2], fonts[1], fontSize, model, document);
-
-
         EmployeeInfoBox employeeInfoBox = new EmployeeInfoBox(fonts[2], fonts[1], fontSize, this.model , document);
         EmployeeInfoBox employeeAddress = new EmployeeInfoBox(employeeInfoBox.getEmployeeAddressBlock());
         ImageBox companyLogo =  companyInfoBox.getLogoBox(12, Color.WHITE); // 42
-
         // Employee Information Payslip
         EmployeeInfoPayslipBox employeeInfoPayslipBox = new EmployeeInfoPayslipBox(fonts[2],fonts[1], fontSize, this.model , document);
-
         // Leave Information
         LeaveInfoPayslipBox leaveInfoPayslipBox = new LeaveInfoPayslipBox(fonts[2],fonts[1], fontSize, this.model , document);
-        LeaveInfoPayslipBox leaveDatePayslipBox = new LeaveInfoPayslipBox(leaveInfoPayslipBox.getLeaveDateBlock());
-        LeaveInfoPayslipBox leaveAmountPayslipBox = new LeaveInfoPayslipBox(leaveInfoPayslipBox.getAMountLeaveBlock());
-
         // SumUp Information
         SumUpSalaryPayslipBox sumUpSalaryPayslipBox = new SumUpSalaryPayslipBox(fonts[2],fonts[1], fontSize, this.model , document);
-
         Boolean leaveInformationInTop = model.getRandom().nextBoolean();
-
         // Title and date
         SimpleTextBox title = new SimpleTextBox(fonts[1], fontSize, 0, 0, this.model .getHeadTitle());
         SimpleTextBox emptyBox= new SimpleTextBox(fonts[0], fontSize, 0, 0, "", Color.BLACK, null, HAlign.CENTER);
-       // VerticalContainer period = new VerticalContainer(0, 0,170);
         SimpleTextBox period = new SimpleTextBox(fonts[0], fontSize, 0, 0, this.model .getDate().getLabel() + ": " + this.model .getDate().getValue());
         VerticalContainer title_period = new VerticalContainer(0,0,0);
-
-
         Map<Integer, ElementBox> titleElements = new HashMap<>();
         {
             titleElements.put(1, title);
@@ -198,10 +158,7 @@ public class GenericPayslipLayout implements SSDLayout {
         }else {
             title_period.addElement(title);
         }
-
-
         CompanyInfoBoxPayslip companyAddIDCont;
-
         if(logo){
             companyAddIDCont = new CompanyInfoBoxPayslip(companyInfoBox.concatContainersVertically
                     (new ElementBox[]{companyLogo, companyInfoBox.getCompanyAddressBlock(), companyInfoBox.getCompanyIdBlock() }));
@@ -227,9 +184,7 @@ public class GenericPayslipLayout implements SSDLayout {
                 }
             }
         }
-
         CompanyInfoBoxPayslip companyInfoFinal;
-
         if(conventionWithComp){
             companyInfoFinal = new CompanyInfoBoxPayslip(companyInfoBox.concatContainersVertically
                     (new ElementBox[]{companyAddIDCont, employeeInfoPayslipBox.getConvCollectBlock() }));//emptyBox
@@ -242,7 +197,6 @@ public class GenericPayslipLayout implements SSDLayout {
                     (new ElementBox[]{companyAddIDCont }));//emptyBox
 
         }
-
         CompanyInfoBoxPayslip companyInfoEmplFinal;
         if(employeUnderCmp){
             EmployeeInfoPayslipBox employeeInfo;
@@ -303,13 +257,10 @@ public class GenericPayslipLayout implements SSDLayout {
             new SimpleTextBoxForEvaluation("EmpAddress", pos_element).build(writerEval);
         }
         title_period.addElement(emptyBox);
-
         if (leaveInformationInTop) {
             int rand= model.getRandom().nextInt(2);
             switch (rand){
                 case 0:
-                    /*title_period.addElement(leaveDatePayslipBox);
-                    title_period.addElement(leaveAmountPayslipBox);*/
                     title_period.addElement(new LeaveInfoPayslipBox (leaveInfoPayslipBox.getLeaveInformationTable2()));
                     if(modeEval) {
                         pos_element++;
@@ -326,21 +277,17 @@ public class GenericPayslipLayout implements SSDLayout {
             }
             LeaveInfosAvailable = -1;
         }
-
         CompanyInfoBoxPayslip iInfor = new CompanyInfoBoxPayslip(title_period);
-
         Map<Integer, ElementBox> compElements = new HashMap<>();
         {
             compElements.put(1, companyInfoEmplFinal); //companyAddIDCont);
             compElements.put(2, iInfor); // title
         }
         int list[] = getRandomList(compElements.size());
-
         secondPart = new TableRowBox(configRow2v2, 0, 0);
         for(int i =0; i < compElements.size(); i++)
             secondPart.addElement(compElements.get(i+1), false);
         payslipPage.addElement(secondPart);
-
         if (employeeInfoAvailable==2){
             int ran2= model.getRandom().nextInt(6);
             switch (ran2){
@@ -370,14 +317,11 @@ public class GenericPayslipLayout implements SSDLayout {
                 }
             }
         }
-
         this.compContactAvailable = -1;
         this.ciDAvailable = -1;
-
         // table Third part
         thirdPart =  new TableRowBox(configRow1v1,0,0);
         SalaryBox salaryTable = new SalaryBox(0, 0, this.model .getSalaryTable(),fonts[2], fonts[1], fontSize);
-
         CompanyInfoBoxPayslip employeeInfotry = new CompanyInfoBoxPayslip(companyInfoBox.concatContainersVertically
                 (new ElementBox[]{emptyBox, emptyBox, salaryTable }));
 
@@ -389,8 +333,6 @@ public class GenericPayslipLayout implements SSDLayout {
                 new SimpleTextBoxForEvaluation(salaryTable.getChosenFormatForEval()[i], pos_element).build(writerEval);
             }
         }
-
-
         if (LeaveInfosAvailable != -1){
         fourthPart =  new TableRowBox(configRow2v1,0,0);
             Map<Integer, ElementBox> sumUpElements = new HashMap<>();
@@ -467,12 +409,9 @@ public class GenericPayslipLayout implements SSDLayout {
         if(modeEval) {
             writerEval.writeEndElement();
         }
-
     }
-
     private String getHeaderLabel(String lang){
         Map<String, String> headerLabels = new HashMap<>();
-
         {
             headerLabels.put("Payslip", "en");
             headerLabels.put("Bulletin de paie", "fr");
@@ -483,42 +422,16 @@ public class GenericPayslipLayout implements SSDLayout {
         int idxvL = new Random().nextInt(localizedHeaderLabel.size());
         Generex generex2 = new Generex(localizedHeaderLabel.get(idxvL));
         String label = generex2.random();
-
         return label;
     }
 
-
-
     private int[] getRandomList(int n){
-
         List<Integer> list = new ArrayList<Integer>();
         for (int i= 1; i<= n; i++)
         {
             list.add(i);
         }
-
         java.util.Collections.shuffle(list);
         return list.stream().mapToInt(i->i).toArray();
     }
-    private HorizontalContainer getIDate() throws Exception{
-
-        HorizontalContainer iDateContainer = new HorizontalContainer(0, 0);
-        SimpleTextBox dateLabel = new SimpleTextBox(fonts[1], fontSize+2, 0, 0, model.getDate().getLabel());
-        dateLabel.setPadding(0,0,5,0);
-        iDateContainer.addElement(dateLabel);
-        SimpleTextBox dateValue = new SimpleTextBox(fonts[2], fontSize+1, 0, 0, model.getDate().getValue(), "IDATE");
-        dateValue.setPadding(5,0,0,0);
-        iDateContainer.addElement(dateValue);
-        return  iDateContainer;
-    }
-
-    private HorizontalContainer getPTitle() throws Exception{
-
-        HorizontalContainer iDateContainer = new HorizontalContainer(0, 0);
-        SimpleTextBox dateLabel = new SimpleTextBox(fonts[1], fontSize+2, 0, 0, model.getHeadTitle());
-        dateLabel.setPadding(0,0,5,0);
-        iDateContainer.addElement(dateLabel);
-
-        return  iDateContainer;
-    }
-}
+ }

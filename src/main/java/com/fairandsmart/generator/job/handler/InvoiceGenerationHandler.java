@@ -34,8 +34,10 @@ package com.fairandsmart.generator.job.handler;
  */
 
 import com.fairandsmart.generator.documents.InvoiceGenerator;
+import com.fairandsmart.generator.documents.PayslipGenerator;
 import com.fairandsmart.generator.documents.data.generator.GenerationContext;
 import com.fairandsmart.generator.documents.data.model.InvoiceModel;
+import com.fairandsmart.generator.documents.data.model.PayslipModel;
 import com.fairandsmart.generator.documents.layout.InvoiceLayout;
 import com.fairandsmart.generator.job.JobManager;
 import com.fairandsmart.generator.job.JobNotFoundException;

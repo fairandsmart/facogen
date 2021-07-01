@@ -43,13 +43,11 @@ import java.util.stream.Collectors;
 public class PayslipModel extends Model {
     private PayslipDate date;
     private Company employer;
-    private String applicableLaw;
     private Employee employee;
     private SalaryCotisationTable salaryTable;
     private EmployeeInformation employeeInformation;
     private LeaveInformation leaveInformation;
     private SumUpSalary sumUpSalary;
-
     private String headTitle;
 
 
@@ -63,14 +61,6 @@ public class PayslipModel extends Model {
         this.headTitle = headTitle;
     }
 
-    /**public PayElements getPayElements() {
-        return payElements;
-    }
-
-    public void setPayElements(PayElements payElements) {
-        this.payElements = payElements;
-    }**/
-
     public Employee getEmployee() {
         return employee;
     }
@@ -78,15 +68,6 @@ public class PayslipModel extends Model {
     public void setEmployee(Employee employee) {
         this.employee = employee;
     }
-
-    public String getApplicableLaw() {
-        return applicableLaw;
-    }
-
-    public void setApplicableLaw(String applicableLaw) {
-        this.applicableLaw = applicableLaw;
-    }
-
 
     public PayslipDate getDate() {
         return date;
@@ -141,7 +122,6 @@ public class PayslipModel extends Model {
         return "PayslipModel{" +
                 "date=" + getDate() +
                 ", employer=" + getEmployer() +
-                ", applicableLaw='" + getApplicableLaw() + '\'' +
                 ", employee=" + getEmployee() +
                 ", salaryTable=" + getSalaryTable() +
                 ", employeeInformation=" + getEmployeeInformation() +
@@ -173,7 +153,6 @@ public class PayslipModel extends Model {
             model.setSalaryTable(new SalaryCotisationTable.Generator().generate(ctx,model.getEmployeeInformation().getMonthlyPay()));
             model.setLeaveInformation(new LeaveInformation.Generator().generate(ctx));
             model.setSumUpSalary(new SumUpSalary.Generator().generate(ctx));
-
             List<String> localizedHeaderLabel = headerLabels.entrySet().stream().filter(entry -> entry.getValue().equals(ctx.getLanguagePayslip())).map(Map.Entry::getKey).collect(Collectors.toList());
             int idxvL = new Random().nextInt(localizedHeaderLabel.size());
             Generex generex = new Generex(localizedHeaderLabel.get(idxvL));
