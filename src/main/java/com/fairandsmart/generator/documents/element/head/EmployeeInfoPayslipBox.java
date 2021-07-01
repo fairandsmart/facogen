@@ -801,7 +801,7 @@ public class EmployeeInfoPayslipBox extends ElementBox {
         listOptClasses = new ArrayList<String>();
         TableRowBox firstPart2 = new TableRowBox(configRowT, 0, 0);
 
-        float[] configRow = {50f,90f,90f,70f, 90f, 70f, 70f};
+        float[] configRow = {50f,90f,90f,70f, 60f, 80f, 80f};
 
         VerticalContainer idContainer = new VerticalContainer(0,0,0);
         HorizontalContainer ligne2 = new HorizontalContainer(0, 0);

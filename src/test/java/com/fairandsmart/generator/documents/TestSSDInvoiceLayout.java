@@ -75,10 +75,10 @@ public class TestSSDInvoiceLayout {
             Files.createDirectory(directoryXmlEval);
         }
         for ( int i=1; i<=nb; i++) {
-        Path pdf = Paths.get("target/SSDInvoice/pdf/gen-"+ i + ".pdf");
-        Path xml = Paths.get("target/SSDInvoice/xml/gen-"+ i + ".xml");
-        Path img = Paths.get("target/SSDInvoice/tiff/gen-"+ i + ".tiff");
-        Path xmlEval = Paths.get("target/SSDInvoice/xmlEval/gen-"+ i + ".xml");
+        Path pdf = Paths.get("target/SSDInvoice/pdf/invoice-"+ i + ".pdf");
+        Path xml = Paths.get("target/SSDInvoice/xml/invoice-"+ i + ".xml");
+        Path img = Paths.get("target/SSDInvoice/tiff/invoice-"+ i + ".tiff");
+        Path xmlEval = Paths.get("target/SSDInvoice/xmlEval/invoice-"+ i + ".xml");
         try {
             GenerationContext ctx = GenerationContext.generate();
             InvoiceModel model = new InvoiceModel.Generator().generate(ctx);

@@ -375,10 +375,10 @@ public class GenericPayslipLayout implements PayslipLayout {
 
         // table Third part
         thirdPart =  new TableRowBox(configRow1v1,0,0);
-        SalaryBox salaryTable = new SalaryBox(0, 0, model.getSalaryTable(),fonts[2], fonts[1], fontSize);
+        SalaryBox salaryTable = new SalaryBox(0, 0, model.getSalaryTable(),fonts[2], fonts[1], fontSize-1);
 
         CompanyInfoBoxPayslip employeeInfotry = new CompanyInfoBoxPayslip(companyInfoBox.concatContainersVertically
-                (new ElementBox[]{emptyBox, emptyBox, salaryTable }));
+                (new ElementBox[]{salaryTable })); //emptyBox,
 
         thirdPart.addElement(employeeInfotry,false);
         payslipPage.addElement(thirdPart);
@@ -452,7 +452,7 @@ public class GenericPayslipLayout implements PayslipLayout {
         if(!conventionWithComp){
             fifthPart =  new TableRowBox(configRow1v1,0,0);
             fifthPart.addElement(new EmployeeInfoPayslipBox(employeeInfoPayslipBox.concatContainersVertically
-                    (new ElementBox[]{emptyBox,employeeInfoPayslipBox.getConvCollectBlock()})),false);
+                    (new ElementBox[]{employeeInfoPayslipBox.getConvCollectBlock()})),false); // emptyBox,
             payslipPage.addElement(fifthPart);
             if(modeEval) {
                 pos_element++;

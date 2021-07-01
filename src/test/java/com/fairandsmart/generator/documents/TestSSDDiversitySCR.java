@@ -58,7 +58,7 @@ import java.io.InputStreamReader;
 import java.util.*;
 
 
-public class TestDiversitySCR {
+public class TestSSDDiversitySCR {
 
     public static double SCR_ratio_layouts(String path1){
         String dirPath = path1;// "target/receipt_sroie/xml/";//new/xml/";//"target/payslip/xml"; //target/new/xml

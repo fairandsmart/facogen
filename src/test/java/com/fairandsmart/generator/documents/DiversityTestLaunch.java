@@ -34,8 +34,6 @@ package com.fairandsmart.generator.documents;
  */
 
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -52,10 +50,10 @@ public class DiversityTestLaunch {
                 path= "target/SSDInvoice/";
                 break;
             case 2:
-                path = "target/payslip/";
+                path = "target/SSDPayslip/";
                 break;
             case 3:
-                path = "target/receipts/";
+                path = "target/SSDReceipt/";
                 break;
             default:
                 System.out.println("Invalid path");
@@ -72,7 +70,7 @@ public class DiversityTestLaunch {
                 break;
             case 4:
                 path=path+"xmlEval/";
-                result= "SCR score is :"+TestDiversitySCR.test(path);
+                result= "SCR score is :"+ TestSSDDiversitySCR.test(path);
                 break;
             default:
                 System.out.println("Invalid test");

@@ -193,7 +193,7 @@ public class SalaryBox extends ElementBox {
         }
 
         container.addElement(new HorizontalLineBox(0,0, head.getBoundingBox().getWidth()+30, 0));
-        container.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 0, 15));
+        container.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 0, 5));
 
     }
 

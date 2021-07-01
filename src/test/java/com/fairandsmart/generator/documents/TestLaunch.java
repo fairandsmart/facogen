@@ -80,10 +80,10 @@ public class TestLaunch {
                 TestgenericLayout.test(number);
                 break;
             case 12:
-                TestGenericPayslipLayout.test(number);
+                TestSSDPayslipLayout.test(number);
                 break;
             case 13:
-                TestReceipts.test(number);
+                TestSSDReceiptLayout.test(number);
                 break;
             case 14:
                 TestSSDInvoiceLayout.test(number);

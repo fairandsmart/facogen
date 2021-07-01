@@ -55,6 +55,9 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 
 
@@ -210,6 +213,10 @@ public class TestSSDDiversitySELF_BLEU {
 
     @Test
     public static Double test(String path) throws Exception {
+        Path path2 = Paths.get(path+"/xml2/");
+        if ( !Files.exists(path2) ) {
+            Files.createDirectory(path2);
+        }
         prepare_classes_content_layout(path+"xml/",path+"/xml2/");
         return score_Self_Bleu_from_xml(path+"/xml2/");
     }
