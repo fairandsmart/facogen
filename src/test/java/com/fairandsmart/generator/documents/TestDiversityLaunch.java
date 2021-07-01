@@ -38,7 +38,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class DiversityTestLaunch {
+public class TestDiversityLaunch {
     static int docType;
     static int testDiversity;
     static String path;
@@ -86,7 +86,7 @@ public class DiversityTestLaunch {
         //decoration du champ
         saisie1.setPreferredSize(new Dimension(800,30));
         //texte explicatif
-        JLabel texte1 = new JLabel("Choose the document type ",JLabel.CENTER);
+        JLabel texte1 = new JLabel("Choose the document type  ",JLabel.CENTER);
         texte1.setFont(new Font("Helvetica",Font.PLAIN,15));
         saisie1.add(texte1);
 
@@ -110,7 +110,7 @@ public class DiversityTestLaunch {
         //decoration du champ
         saisie1.setPreferredSize(new Dimension(500,30));
         //texte explicatif
-        JLabel texte2 = new JLabel("Choose the diversity test",JLabel.CENTER);
+        JLabel texte2 = new JLabel("Choose the diversity test  ",JLabel.CENTER);
         texte2.setFont(new Font("Helvetica",Font.PLAIN,15));
         saisie2.add(texte2);
 

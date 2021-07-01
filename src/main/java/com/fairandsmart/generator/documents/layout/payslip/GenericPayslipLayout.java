@@ -33,6 +33,7 @@ package com.fairandsmart.generator.documents.layout.payslip;
  * #L%
  */
 
+import com.fairandsmart.generator.documents.data.model.Model;
 import com.fairandsmart.generator.documents.data.model.PayslipModel;
 import com.fairandsmart.generator.documents.element.ElementBox;
 import com.fairandsmart.generator.documents.element.HAlign;
@@ -50,7 +51,7 @@ import com.fairandsmart.generator.documents.element.salary.SalaryBox;
 import com.fairandsmart.generator.documents.element.table.TableRowBox;
 import com.fairandsmart.generator.documents.element.textbox.SimpleTextBox;
 import com.fairandsmart.generator.documents.element.textbox.SimpleTextBoxForEvaluation;
-import com.fairandsmart.generator.documents.layout.PayslipLayout;
+import com.fairandsmart.generator.documents.layout.SSDLayout;
 import com.mifmif.common.regex.Generex;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
@@ -68,7 +69,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @ApplicationScoped
-public class GenericPayslipLayout implements PayslipLayout {
+public class GenericPayslipLayout implements SSDLayout {
     private float fontSize = 9.5f;
     private PDFont[] fonts;
     PayslipModel model;
@@ -98,8 +99,8 @@ public class GenericPayslipLayout implements PayslipLayout {
     }
 
     @Override
-    public void builtPayslip(PayslipModel model, PDDocument document, XMLStreamWriter writer,XMLStreamWriter writerEval) throws Exception {
-        this.model = model;
+    public void builtSSD(Model model, PDDocument document, XMLStreamWriter writer, XMLStreamWriter writerEval) throws Exception {
+        this.model = (PayslipModel)model;
         this.LeaveInfosAvailable = model.getRandom().nextInt(2);
 
         // sets of table row possible sizes
@@ -153,28 +154,28 @@ public class GenericPayslipLayout implements PayslipLayout {
         CompanyInfoBoxPayslip companyInfoBox = new CompanyInfoBoxPayslip(fonts[2], fonts[1], fontSize, model, document);
 
 
-        EmployeeInfoBox employeeInfoBox = new EmployeeInfoBox(fonts[2], fonts[1], fontSize, model, document);
+        EmployeeInfoBox employeeInfoBox = new EmployeeInfoBox(fonts[2], fonts[1], fontSize, this.model , document);
         EmployeeInfoBox employeeAddress = new EmployeeInfoBox(employeeInfoBox.getEmployeeAddressBlock());
         ImageBox companyLogo =  companyInfoBox.getLogoBox(12, Color.WHITE); // 42
 
         // Employee Information Payslip
-        EmployeeInfoPayslipBox employeeInfoPayslipBox = new EmployeeInfoPayslipBox(fonts[2],fonts[1], fontSize, model, document);
+        EmployeeInfoPayslipBox employeeInfoPayslipBox = new EmployeeInfoPayslipBox(fonts[2],fonts[1], fontSize, this.model , document);
 
         // Leave Information
-        LeaveInfoPayslipBox leaveInfoPayslipBox = new LeaveInfoPayslipBox(fonts[2],fonts[1], fontSize, model, document);
+        LeaveInfoPayslipBox leaveInfoPayslipBox = new LeaveInfoPayslipBox(fonts[2],fonts[1], fontSize, this.model , document);
         LeaveInfoPayslipBox leaveDatePayslipBox = new LeaveInfoPayslipBox(leaveInfoPayslipBox.getLeaveDateBlock());
         LeaveInfoPayslipBox leaveAmountPayslipBox = new LeaveInfoPayslipBox(leaveInfoPayslipBox.getAMountLeaveBlock());
 
         // SumUp Information
-        SumUpSalaryPayslipBox sumUpSalaryPayslipBox = new SumUpSalaryPayslipBox(fonts[2],fonts[1], fontSize, model, document);
+        SumUpSalaryPayslipBox sumUpSalaryPayslipBox = new SumUpSalaryPayslipBox(fonts[2],fonts[1], fontSize, this.model , document);
 
         Boolean leaveInformationInTop = model.getRandom().nextBoolean();
 
         // Title and date
-        SimpleTextBox title = new SimpleTextBox(fonts[1], fontSize, 0, 0, model.getHeadTitle());
+        SimpleTextBox title = new SimpleTextBox(fonts[1], fontSize, 0, 0, this.model .getHeadTitle());
         SimpleTextBox emptyBox= new SimpleTextBox(fonts[0], fontSize, 0, 0, "", Color.BLACK, null, HAlign.CENTER);
        // VerticalContainer period = new VerticalContainer(0, 0,170);
-        SimpleTextBox period = new SimpleTextBox(fonts[0], fontSize, 0, 0, model.getDate().getLabel() + ": " + model.getDate().getValue());
+        SimpleTextBox period = new SimpleTextBox(fonts[0], fontSize, 0, 0, this.model .getDate().getLabel() + ": " + this.model .getDate().getValue());
         VerticalContainer title_period = new VerticalContainer(0,0,0);
 
 
@@ -375,10 +376,10 @@ public class GenericPayslipLayout implements PayslipLayout {
 
         // table Third part
         thirdPart =  new TableRowBox(configRow1v1,0,0);
-        SalaryBox salaryTable = new SalaryBox(0, 0, model.getSalaryTable(),fonts[2], fonts[1], fontSize-1);
+        SalaryBox salaryTable = new SalaryBox(0, 0, this.model .getSalaryTable(),fonts[2], fonts[1], fontSize);
 
         CompanyInfoBoxPayslip employeeInfotry = new CompanyInfoBoxPayslip(companyInfoBox.concatContainersVertically
-                (new ElementBox[]{salaryTable })); //emptyBox,
+                (new ElementBox[]{emptyBox, emptyBox, salaryTable }));
 
         thirdPart.addElement(employeeInfotry,false);
         payslipPage.addElement(thirdPart);
@@ -452,7 +453,7 @@ public class GenericPayslipLayout implements PayslipLayout {
         if(!conventionWithComp){
             fifthPart =  new TableRowBox(configRow1v1,0,0);
             fifthPart.addElement(new EmployeeInfoPayslipBox(employeeInfoPayslipBox.concatContainersVertically
-                    (new ElementBox[]{employeeInfoPayslipBox.getConvCollectBlock()})),false); // emptyBox,
+                    (new ElementBox[]{emptyBox,employeeInfoPayslipBox.getConvCollectBlock()})),false);
             payslipPage.addElement(fifthPart);
             if(modeEval) {
                 pos_element++;

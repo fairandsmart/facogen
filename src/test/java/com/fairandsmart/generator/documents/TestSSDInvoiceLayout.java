@@ -35,10 +35,8 @@ package com.fairandsmart.generator.documents;
 
 import com.fairandsmart.generator.documents.data.generator.GenerationContext;
 import com.fairandsmart.generator.documents.data.model.InvoiceModel;
-import com.fairandsmart.generator.documents.layout.InvoiceLayout;
 import com.fairandsmart.generator.documents.layout.InvoiceSSDGenerator;
 import com.fairandsmart.generator.documents.layout.invoiceSSD.InvoiceSSDLayout;
-import com.fairandsmart.generator.documents.layout.ngeneric.NGenericLayout;
 import org.junit.Test;
 
 import java.nio.file.Files;

@@ -34,40 +34,29 @@ package com.fairandsmart.generator.documents;
  */
 
 import com.fairandsmart.generator.evaluation.CompleteInformation;
-import com.fairandsmart.generator.evaluation.ElementaryInfo;
-import com.fairandsmart.generator.evaluation.InfoMap;
 import org.junit.Test;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
-
 import javax.xml.XMLConstants;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.*;
 
 
 public class TestSSDDiversitySCR {
 
     public static double SCR_ratio_layouts(String path1){
-        String dirPath = path1;// "target/receipt_sroie/xml/";//new/xml/";//"target/payslip/xml"; //target/new/xml
+        String dirPath = path1;
         File fileName = new File(dirPath);
         File[] fileList = fileName.listFiles();
         ArrayList<Map<Integer, String>> listSSdComponent = new ArrayList<>();
         for (File file: fileList) {
-            int xmin=0,xmax=0,ymin=0,ymax=0;
-            //System.out.println(file);
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             try {
                 dbf.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
@@ -78,10 +67,7 @@ public class TestSSDDiversitySCR {
                 System.out.println("------");
                 NodeList list = doc.getElementsByTagName("DL_PAGE");
                 Node node_DL_PAGE = list.item(0);
-
-                ////
                 Hashtable<String, CompleteInformation> information = new Hashtable<String, CompleteInformation>();
-
                 Map<Integer, String> SSDComponents = new HashMap<>();
                 if (node_DL_PAGE.getNodeType() == Node.ELEMENT_NODE) {
                     Element eElement = (Element) node_DL_PAGE;
@@ -102,18 +88,13 @@ public class TestSSDDiversitySCR {
                 e.printStackTrace();
             }
         }
-        System.out.println("listSSdComponent.size()= "+listSSdComponent.size());
-        System.out.println("fileList.length = "+fileList.length);
-
         double SCR = Double.valueOf(listSSdComponent.size())/ Double.valueOf(fileList.length);
-        System.out.println("SCR == "+SCR);
         return SCR;
     }
 
     @Test
     public static Double test(String path) throws Exception {
         Double SCR_score = SCR_ratio_layouts(path);
-        System.out.println("SCR score is "+ SCR_score);
         return SCR_score ;
     }
 }

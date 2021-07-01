@@ -107,7 +107,7 @@ public class PayslipGenerator {
         }
 
         PDDocument document = new PDDocument();
-        layout.builtPayslip(model, document, xmlout,xmloutEval);
+        layout.builtSSD(model, document, xmlout,xmloutEval);
         document.save(pdf.toFile());
 
         //Export as TIFF

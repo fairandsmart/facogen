@@ -64,14 +64,12 @@ import java.util.*;
 public class TestSSDDiversitySELF_BLEU {
 
      public static void prepare_classes_content_layout(String path1, String path2){
-         String dirPath = path1;// "target/receipt_sroie/xml/";//new/xml/";//"target/payslip/xml"; //target/new/xml
-         String dirPath2 = path2;//"target/receipt_sroie/xml2/";//"target/payslip/xml2/";
+         String dirPath = path1;
+         String dirPath2 = path2;
          File fileName = new File(dirPath);
          File[] fileList = fileName.listFiles();
-
          for (File file: fileList) {
              int xmin=0,xmax=0,ymin=0,ymax=0;
-             //System.out.println(file);
              DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
              try {
                  dbf.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
@@ -82,10 +80,7 @@ public class TestSSDDiversitySELF_BLEU {
                  System.out.println("------");
                  NodeList list = doc.getElementsByTagName("DL_PAGE");
                  Node node_DL_PAGE = list.item(0);
-
-                 ////
                  Hashtable<String, CompleteInformation> information = new Hashtable<String, CompleteInformation>();
-
                  if (node_DL_PAGE.getNodeType() == Node.ELEMENT_NODE) {
                      Element eElement = (Element) node_DL_PAGE;
                      NodeList liste = eElement.getElementsByTagName("DL_ZONE");
@@ -97,12 +92,10 @@ public class TestSSDDiversitySELF_BLEU {
                              int y1 = Integer.parseInt(eElement1.getAttribute("row"));
                              int x2 = x1 + Integer.parseInt(eElement1.getAttribute("width"));
                              int y2 = y1 + Integer.parseInt(eElement1.getAttribute("height"));
-
                              if(xmin == 0 || xmin > x1) xmin =x1;
                              if(xmax == 0 || xmax < x2) xmax =x2;
                              if(ymin == 0 || ymin > y1) ymin =y1;
                              if(ymax == 0 || ymax < y2) ymax =y2;
-
                              if (!eElement1.getAttribute("correctclass").equals("undefined")) {
                                  ElementaryInfo elInf = new ElementaryInfo(x1, y1, eElement1.getAttribute("contents"));
                                  CompleteInformation info = information.get(eElement1.getAttribute("correctclass"));
@@ -125,23 +118,18 @@ public class TestSSDDiversitySELF_BLEU {
                  JAXBContext jaxbContext = JAXBContext.newInstance(InfoMap.class);
                  Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
                  jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-                 //jaxbMarshaller.marshal(infoMap, System.out);
                  jaxbMarshaller.marshal(infoMap, new File(dirPath2+file.getName()));
-
              } catch (ParserConfigurationException | SAXException | IOException | JAXBException e) {
                  e.printStackTrace();
              }
          }
-
      }
 
      public static Double score_Self_Bleu_from_xml (String path2)throws JAXBException{
          String dirPath2 = path2;
          File fileName2 = new File(dirPath2);
          File[] fileList2 = fileName2.listFiles();
-
          List<Double> scoresBLEU = new ArrayList<Double>();
-
          for (File file: fileList2) {
              JAXBContext jaxbContext = JAXBContext.newInstance(InfoMap.class);
              Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
@@ -149,10 +137,8 @@ public class TestSSDDiversitySELF_BLEU {
              for(String infId : infMap.getInformationMap().keySet())
              {
                  String className =infMap.getInformationMap().get(infId).getClassName();
-                 CompleteInformation info = infMap.getInformationMap().get(infId);
                  ArrayList<String> contents = new ArrayList<String>();
                  contents.add(infMap.getInformationMap().get(infId).getContents());
-                 ////
                  for (File file2: fileList2) {
                      InfoMap infMap2 = (InfoMap) jaxbUnmarshaller.unmarshal(file2);
                      for (String infId2 : infMap2.getInformationMap().keySet()) {
@@ -162,8 +148,6 @@ public class TestSSDDiversitySELF_BLEU {
                          }
                      }
                  }
-                 ////
-                 System.out.println("contents size "+contents.size());
                  try {
                      String s = null;
                      String[] cmd = new String[contents.size()+2];
@@ -172,28 +156,20 @@ public class TestSSDDiversitySELF_BLEU {
                      for (int i=0;i<contents.size();i++){
                          cmd[i+2]=contents.get(i);
                      }
-                     //Runtime.getRuntime().exec(cmd);
                      Thread.sleep(0);
-                     //Process p0 = Runtime.getRuntime().exec("conda activate bleu");
                      Process p = Runtime.getRuntime().exec(cmd);
-
                      BufferedReader stdInput = new BufferedReader(new
                              InputStreamReader(p.getInputStream()));
-
                      BufferedReader stdError = new BufferedReader(new
                              InputStreamReader(p.getErrorStream()));
-
-                     // read the output from the command
+                     // The output from the command
                      System.out.println("Here is the standard output of the command:\n");
                      while ((s = stdInput.readLine()) != null) {
                          System.out.println(s);
                          Double d=Double.parseDouble(s);
-                         scoresBLEU.add(d);//d);
-                         //System.out.println("Floot "+f);
+                         scoresBLEU.add(d);
                      }
-
-                     // read any errors from the attempted command
-                     System.out.println("Here is the standard error of the command (if any):\n");
+                     System.out.println("There is the standard error of the command :\n");
                      while ((s = stdError.readLine()) != null) {
                          System.out.println(s);
                      }
@@ -201,7 +177,6 @@ public class TestSSDDiversitySELF_BLEU {
                  catch (IOException | InterruptedException e) {
                      System.out.println("exception happened - here's what I know: ");
                      e.printStackTrace();
-                     //System.exit(-1);
                  }
              }
          }

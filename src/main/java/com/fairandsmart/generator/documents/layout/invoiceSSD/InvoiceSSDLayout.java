@@ -34,6 +34,7 @@ package com.fairandsmart.generator.documents.layout.invoiceSSD;
  */
 
 import com.fairandsmart.generator.documents.data.model.InvoiceModel;
+import com.fairandsmart.generator.documents.data.model.Model;
 import com.fairandsmart.generator.documents.element.ElementBox;
 import com.fairandsmart.generator.documents.element.HAlign;
 import com.fairandsmart.generator.documents.element.VAlign;
@@ -95,9 +96,9 @@ public class InvoiceSSDLayout implements SSDLayout {
     }
 
     @Override
-    public void builtSSD(InvoiceModel model, PDDocument document, XMLStreamWriter writer,XMLStreamWriter writerEval) throws Exception {
+    public void builtSSD(Model model, PDDocument document, XMLStreamWriter writer, XMLStreamWriter writerEval) throws Exception {
 
-        this.model = model;
+        this.model = (InvoiceModel)model;
         this.invoiceNumAvailable = model.getRandom().nextInt(2);
         this.iDateAvailable = model.getRandom().nextInt(2);
         this.ciDAvailable = model.getRandom().nextInt(2);
@@ -306,7 +307,7 @@ public class InvoiceSSDLayout implements SSDLayout {
         invoicePage.addElement(firstPart);
         secondPart = new TableRowBox(configRow2, 0, 0, VAlign.CENTER);
        // thirdPart = new TableRowBox(configRow2, 0, 0, VAlign.CENTER);
-        ClientInfoBox billingInfoBox = new ClientInfoBox(fonts[2], fonts[1], fontSize, model, document, "Billing");
+        ClientInfoBox billingInfoBox = new ClientInfoBox(fonts[2], fonts[1], fontSize, this.model, document, "Billing");
         VerticalContainer clientAddress = new VerticalContainer(0,0,0);
         clientAddress.addElement(billingInfoBox);
         Boolean shipAddAvailable = true;
@@ -324,7 +325,7 @@ public class InvoiceSSDLayout implements SSDLayout {
 
         if(shipAddAvailable && shipBillhoriz ){
 
-            ClientInfoBox shippingInfoBox = new ClientInfoBox(fonts[2], fonts[1], fontSize, model, document, "Shipping");
+            ClientInfoBox shippingInfoBox = new ClientInfoBox(fonts[2], fonts[1], fontSize, this.model, document, "Shipping");
             ClientInfoBox clientOtherInfo = new ClientInfoBox(getLeftInfo(false, false, true, true,true));
             shipAddAvailable = false;
 
@@ -363,7 +364,7 @@ public class InvoiceSSDLayout implements SSDLayout {
         else{
 
             if(shipAddAvailable && !shipBillhoriz) {
-                ClientInfoBox shippingInfoBox = new ClientInfoBox(fonts[2], fonts[1], fontSize, model, document, "Shipping");
+                ClientInfoBox shippingInfoBox = new ClientInfoBox(fonts[2], fonts[1], fontSize, this.model, document, "Shipping");
                 clientAddress.addElement(new BorderBox(Color.WHITE,Color.WHITE, 0,0, 0, 0, 10));
                 clientAddress.addElement(shippingInfoBox);
             }

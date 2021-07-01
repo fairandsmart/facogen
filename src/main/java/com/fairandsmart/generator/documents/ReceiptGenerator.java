@@ -111,7 +111,7 @@ public class ReceiptGenerator {
         }
 
         PDDocument document = new PDDocument();
-        layout.builtReceipt(model, document, xmlout,xmloutEval);
+        layout.builtSSD(model, document, xmlout,xmloutEval);
         document.save(pdf.toFile());
 
         //Export as TIFF

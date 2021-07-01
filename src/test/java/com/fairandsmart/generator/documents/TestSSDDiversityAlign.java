@@ -42,7 +42,6 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
-
 import javax.xml.XMLConstants;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -51,10 +50,8 @@ import javax.xml.bind.Unmarshaller;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -63,10 +60,10 @@ import java.util.*;
 
 public class TestSSDDiversityAlign {
     public static Double Dmh(int x1, int y1, int x2, int y2, int width, int height){
-        Double x1_norm = Double.valueOf(x1);///Double.valueOf(width);
-        Double x2_norm = Double.valueOf(x2);///Double.valueOf(width);
-        Double y1_norm = Double.valueOf(y1);///Double.valueOf(height);//3508;
-        Double y2_norm = Double.valueOf(y2);///Double.valueOf(height);
+        Double x1_norm = Double.valueOf(x1);
+        Double x2_norm = Double.valueOf(x2);
+        Double y1_norm = Double.valueOf(y1);
+        Double y2_norm = Double.valueOf(y2);
         return ((Math.abs(x2_norm-x1_norm)+(Math.abs(y2_norm-y1_norm)))
                 /(Double.valueOf(width)+Double.valueOf(height)));
     }
@@ -74,16 +71,13 @@ public class TestSSDDiversityAlign {
         return ((Dmh(b1.getP1x(),b1.getP1y(),b2.getP1x(),b2.getP1y(),width,height)+
                 Dmh(b1.getP2x(),b1.getP2y(),b2.getP2x(),b2.getP2y(),width,height))/2);
     }
-
-     public static void prepare_classes_content_layout(String path1, String path2){
-         String dirPath = path1;// "target/receipt_sroie/xml/";//new/xml/";//"target/payslip/xml"; //target/new/xml
-         String dirPath2 = path2;//"target/receipt_sroie/xml2/";//"target/payslip/xml2/";
+    public static void prepare_classes_content_layout(String path1, String path2){
+         String dirPath = path1;
+         String dirPath2 = path2;
          File fileName = new File(dirPath);
          File[] fileList = fileName.listFiles();
-
          for (File file: fileList) {
              int xmin=0,xmax=0,ymin=0,ymax=0;
-             //System.out.println(file);
              DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
              try {
                  dbf.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
@@ -94,10 +88,7 @@ public class TestSSDDiversityAlign {
                  System.out.println("------");
                  NodeList list = doc.getElementsByTagName("DL_PAGE");
                  Node node_DL_PAGE = list.item(0);
-
-                 ////
                  Hashtable<String, CompleteInformation> information = new Hashtable<String, CompleteInformation>();
-
                  if (node_DL_PAGE.getNodeType() == Node.ELEMENT_NODE) {
                      Element eElement = (Element) node_DL_PAGE;
                      NodeList liste = eElement.getElementsByTagName("DL_ZONE");
@@ -109,7 +100,6 @@ public class TestSSDDiversityAlign {
                              int y1 = Integer.parseInt(eElement1.getAttribute("row"));
                              int x2 = x1 + Integer.parseInt(eElement1.getAttribute("width"));
                              int y2 = y1 + Integer.parseInt(eElement1.getAttribute("height"));
-
                              if(xmin == 0 || xmin > x1) xmin =x1;
                              if(xmax == 0 || xmax < x2) xmax =x2;
                              if(ymin == 0 || ymin > y1) ymin =y1;
@@ -137,9 +127,7 @@ public class TestSSDDiversityAlign {
                  JAXBContext jaxbContext = JAXBContext.newInstance(InfoMap.class);
                  Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
                  jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-                 //jaxbMarshaller.marshal(infoMap, System.out);
                  jaxbMarshaller.marshal(infoMap, new File(dirPath2+file.getName()));
-
              } catch (ParserConfigurationException | SAXException | IOException | JAXBException e) {
                  e.printStackTrace();
              }
@@ -151,7 +139,6 @@ public class TestSSDDiversityAlign {
          String dirPath2 = path2;
          File fileName2 = new File(dirPath2);
          File[] fileList2 = fileName2.listFiles();
-
          List<Double> scores = new ArrayList<Double>();
 
          for (File file: fileList2) {
@@ -166,7 +153,6 @@ public class TestSSDDiversityAlign {
                  CompleteInformation info = infMap.getInformationMap().get(infId);
                  ArrayList<String> contents = new ArrayList<String>();
                  contents.add(infMap.getInformationMap().get(infId).getContents());
-                 ////
                  for (File file2: fileList2) {
                      InfoMap infMap2 = (InfoMap) jaxbUnmarshaller.unmarshal(file2);
                      for (String infId2 : infMap2.getInformationMap().keySet()) {
@@ -180,7 +166,6 @@ public class TestSSDDiversityAlign {
 
              }
          }
-         System.out.println("size = " + scores.size());
          DoubleSummaryStatistics averageScores = scores.stream()
                  .mapToDouble((a) -> a)
                  .summaryStatistics();

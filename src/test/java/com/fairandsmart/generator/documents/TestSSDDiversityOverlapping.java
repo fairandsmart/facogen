@@ -51,10 +51,8 @@ import javax.xml.bind.Unmarshaller;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -84,7 +82,6 @@ public class TestSSDDiversityOverlapping {
 
          for (File file: fileList) {
              int xmin=0,xmax=0,ymin=0,ymax=0;
-             //System.out.println(file);
              DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
              try {
                  dbf.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
@@ -95,10 +92,7 @@ public class TestSSDDiversityOverlapping {
                  System.out.println("------");
                  NodeList list = doc.getElementsByTagName("DL_PAGE");
                  Node node_DL_PAGE = list.item(0);
-
-                 ////
                  Hashtable<String, CompleteInformation> information = new Hashtable<String, CompleteInformation>();
-
                  if (node_DL_PAGE.getNodeType() == Node.ELEMENT_NODE) {
                      Element eElement = (Element) node_DL_PAGE;
                      NodeList liste = eElement.getElementsByTagName("DL_ZONE");
@@ -110,12 +104,10 @@ public class TestSSDDiversityOverlapping {
                              int y1 = Integer.parseInt(eElement1.getAttribute("row"));
                              int x2 = x1 + Integer.parseInt(eElement1.getAttribute("width"));
                              int y2 = y1 + Integer.parseInt(eElement1.getAttribute("height"));
-
                              if(xmin == 0 || xmin > x1) xmin =x1;
                              if(xmax == 0 || xmax < x2) xmax =x2;
                              if(ymin == 0 || ymin > y1) ymin =y1;
                              if(ymax == 0 || ymax < y2) ymax =y2;
-
                              if (!eElement1.getAttribute("correctclass").equals("undefined")) {
                                  ElementaryInfo elInf = new ElementaryInfo(x1, y1, eElement1.getAttribute("contents"));
                                  CompleteInformation info = information.get(eElement1.getAttribute("correctclass"));
@@ -138,23 +130,18 @@ public class TestSSDDiversityOverlapping {
                  JAXBContext jaxbContext = JAXBContext.newInstance(InfoMap.class);
                  Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
                  jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-                 //jaxbMarshaller.marshal(infoMap, System.out);
                  jaxbMarshaller.marshal(infoMap, new File(dirPath2+file.getName()));
 
              } catch (ParserConfigurationException | SAXException | IOException | JAXBException e) {
                  e.printStackTrace();
              }
          }
-
      }
-
      public static Double score_Over_from_xml (String path2)throws JAXBException{
          String dirPath2 = path2;
          File fileName2 = new File(dirPath2);
          File[] fileList2 = fileName2.listFiles();
-
          List<Double> scoresOver = new ArrayList<Double>();
-
          for (File file: fileList2) {
              JAXBContext jaxbContext = JAXBContext.newInstance(InfoMap.class);
              Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
@@ -165,7 +152,6 @@ public class TestSSDDiversityOverlapping {
                  CompleteInformation info = infMap.getInformationMap().get(infId);
                  ArrayList<String> contents = new ArrayList<String>();
                  contents.add(infMap.getInformationMap().get(infId).getContents());
-                 ////
                  for (File file2: fileList2) {
                      InfoMap infMap2 = (InfoMap) jaxbUnmarshaller.unmarshal(file2);
                      for (String infId2 : infMap2.getInformationMap().keySet()) {
