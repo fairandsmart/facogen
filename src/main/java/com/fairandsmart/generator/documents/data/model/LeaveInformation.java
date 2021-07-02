@@ -14,6 +14,7 @@ package com.fairandsmart.generator.documents.data.model;
  * Jérôme Blanchard <jerome.blanchard@fairandsmart.com> / FairAndSmart
  * Aurore Hubert <aurore.hubert@fairandsmart.com> / FairAndSmart
  * Kevin Meszczynski <kevin.meszczynski@fairandsmart.com> / FairAndSmart
+ * Djedjiga Belhadj <djedjiga.belhadj@gmail.com> / Loria
  * %%
  * Copyright (C) 2019 - 2020 Fair And Smart
  * %%
