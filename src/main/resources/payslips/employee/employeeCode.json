@@ -1,0 +1,953 @@
+[
+  {"code_categorie":"1",
+    "categorie":"Agriculteurs"
+  ,
+    "list_emploi":
+    [{"code":"10",
+      "libelle":"Agriculteur "}
+    ,{"code":"100x"
+    ,"libelle":"Agriculteur et éleveur "}
+    ]},
+  {"code_categorie":"2",
+    "categorie":"Artisans, commerçant et chef d'entreprises"
+  ,
+    "list_emploi":
+    [{"code":"21"
+    ,"libelle":"Artisan "}
+    ,{"code":"210x"
+    ,"libelle":"Artisan salarié "}
+    ,{"code":"22"
+    ,"libelle":"Commerçant et assimilé "}
+    ,{"code":"220x"
+    ,"libelle":"Commerçant et assimilés"}
+    ,{"code":"23"
+    ,"libelle":"Chef d'entreprise "}
+    ,{"code":"233a",
+      "libelle":"Chef d'entreprise du bâtiment et de travaux publics"}
+    ,{"code":"233b",
+      "libelle":"Chef d'entreprise de l'industrie ou de transports"}
+    ,{"code":"233c",
+      "libelle":"Chef d'entreprise commerciale"}
+    ,{"code":"233d",
+      "libelle":"Chef d'entreprise de services"}
+    ]},
+
+  {"code_categorie":"3",
+    "categorie":"Cadre et profession intellectuelle supérieures"
+  ,
+    "list_emploi":
+    [
+      {"code":"31",
+        "libelle":"Profession libérale"}
+    ,{"code":"311c",
+      "libelle":"Chirurgien dentistes"}
+    ,{"code":"311d",
+      "libelle":"Psychologues"}
+    ,{"code":"311d",
+      "libelle":"psychanalystes"}
+    ,{"code":"311d",
+      "libelle":"psychothérapeute "}
+    ,{"code":"311e",
+      "libelle":"Vétérinaires"}
+    ,{"code":"312a",
+      "libelle":"Avocats"}
+    ,{"code":"331a",
+      "libelle":"Personnel de direction de la fonction publique"}
+    ,{"code":"33"
+    ,"libelle":"Cadre de la fonction publique"}
+    ,{"code":"332a",
+      "libelle":"Ingénieur de l'Etat "}
+    ,{"code":"332b",
+      "libelle":"Ingénieur de collectivité locale et d'hôpitaux"}
+    ,{"code":"333a",
+      "libelle":"Magistrat"}
+    ,{"code":"333b",
+      "libelle":"Inspecteur catégorie A des Impôts"}
+    ,{"code":"333b",
+      "libelle":"Inspecteur catégorie A du Trésor"}
+    ,{"code":"333b",
+      "libelle":"Inspecteur catégorie A de Douanes"}
+    ,{"code":"333c",
+      "libelle":"Cadre de la Poste"}
+    ,{"code":"333d",
+      "libelle":"Cadre administratif "}
+    ,{"code":"333e",
+      "libelle":"Personnel administratif de catégorie A de l'Etat "}
+    ,{"code":"333f",
+      "libelle":"Personnel administratif de catégorie A "}
+    ,{"code":"334a",
+      "libelle":"Officier d'armée "}
+    ,{"code":"334a",
+      "libelle":"Officier de la Gendarmerie "}
+   ,{"code":"34"
+    ,"libelle":"Professeur"}
+    ,{"code":"341a",
+      "libelle":"Professeur agrégé et certifié de l'enseignement secondaire"}
+    ,{"code":"341b",
+      "libelle":"Chef d'établissement de l'enseignement secondaire "}
+    ,{"code":"341b",
+      "libelle":"inspecteur"}
+    ,{"code":"342b",
+      "libelle":"Professeur et maître de conférences"}
+    ,{"code":"342c",
+      "libelle":"Professeur agrégé et certifié "}
+    ,{"code":"342d",
+      "libelle":"Enseignant temporaire "}
+    ,{"code":"342f",
+      "libelle":"Directeur et chargé de recherche "}
+    ,{"code":"342g",
+      "libelle":"Ingénieur d'étude et de recherche"}
+    ,{"code":"342h",
+      "libelle":"Allocataire de la recherche publique"}
+    ,{"code":"343a",
+      "libelle":"Psychologue spécialiste "}
+    ,{"code":"344a",
+      "libelle":"Médecin hospitalier sans activité libérale"}
+    ,{"code":"344b",
+      "libelle":"Médecin salarié non hospitalier"}
+    ,{"code":"344c",
+      "libelle":"Interne en médecine"}
+    ,{"code":"344c",
+      "libelle":"Interne en pharmacie"}
+    ,{"code":"344d",
+      "libelle":"Pharmacien salarié"}
+   ,{"code":"351a",
+      "libelle":"Bibliothécaires"}
+    ,{"code":"351a",
+      "libelle":"Archivistes"}
+    ,{"code":"351a",
+      "libelle":"Conservateur "}
+
+    ,{"code":"352a",
+      "libelle":"Journaliste"}
+    ,{"code":"352a",
+      "libelle":"Rédacteur en chef"}
+    ,{"code":"352b",
+      "libelle":"Auteur littéraire"}
+    ,{"code":"352b",
+      "libelle":"Scénariste"}
+    ,{"code":"352b",
+      "libelle":"Dialoguiste"}
+    ,{"code":"353a",
+      "libelle":"Directeur de journal"}
+    ,{"code":"353a",
+      "libelle":"Administrateur de presse"}
+    ,{"code":"353a",
+      "libelle":"Directeur d'édition "}
+
+    ,{"code":"353b",
+      "libelle":"Responsable de production de l'audiovisuel"}
+    ,{"code":"353c",
+      "libelle":"Cadre artistique de la réalisation de l'audiovisuel"}
+    ,{"code":"354a",
+      "libelle":"Artiste plasticien"}
+    ,{"code":"354b",
+      "libelle":"Artiste de la musique et du chant"}
+    ,{"code":"354c",
+      "libelle":"Artiste dramatiques"}
+    ,{"code":"354e",
+      "libelle":"Artiste de la danse"}
+    ,{"code":"354f",
+      "libelle":"Artiste du cirque et de spectacle divers"}
+    ,{"code":"354g",
+      "libelle":"Professeur d'art "}
+    ,{"code":"37"
+    ,"libelle":"Cadre administratif et commercial"}
+    ,{"code":"371a",
+      "libelle":"Cadre d'état-major administratif"}
+    ,{"code":"371a",
+      "libelle":"Cadre d'état-major financier"}
+    ,{"code":"371a",
+      "libelle":"Cadre d'état-major commercial"}
+
+    ,{"code":"372a",
+      "libelle":"Cadre chargé d'études économiques"}
+    ,{"code":"372a",
+      "libelle":"Cadre chargé d'études financières"}
+    ,{"code":"372a",
+      "libelle":"Cadre chargé d'études commerciales"}
+    ,{"code":"372b",
+      "libelle":"Cadre du contrôle des services administratifs et financiers"}
+    ,{"code":"372c",
+      "libelle":"Cadre spécialiste de ressource humaine et du recrutement"}
+    ,{"code":"372d",
+      "libelle":"Cadre spécialiste de la formation"}
+    ,{"code":"372e",
+      "libelle":"Juriste"}
+    ,{"code":"372f",
+      "libelle":"Cadre de la documentation, de l'archivage "}
+    ,{"code":"373a",
+      "libelle":"Cadre de service financier "}
+    ,{"code":"373a",
+      "libelle":"Cadre comptable "}
+    ,{"code":"373b",
+      "libelle":"Cadre de service administratif"}
+    ,{"code":"373c",
+      "libelle":"Cadre de service financier"}
+    ,{"code":"373d",
+      "libelle":"Cadre de service administratif "}
+    ,{"code":"374a",
+      "libelle":"Cadre de l'exploitation "}
+    ,{"code":"374b",
+      "libelle":"Chef de produits"}
+    ,{"code":"374c",
+      "libelle":"Cadre commercial "}
+    ,{"code":"374d",
+      "libelle":"Cadre commercial "}
+    ,{"code":"375a",
+      "libelle":"Cadre de la publicité"}
+    ,{"code":"375b",
+      "libelle":"Cadre de relation publique et de la communication"}
+    ,{"code":"376a",
+      "libelle":"Cadre de marchés financiers"}
+    ,{"code":"376b",
+      "libelle":"Cadre des opérations bancaires"}
+    ,{"code":"376c",
+      "libelle":"Cadre commercial de la banque"}
+    ,{"code":"376d",
+      "libelle":"Responsable de l'exploitation bancaire"}
+    ,{"code":"376e",
+      "libelle":"Cadre de service technique des assurances"}
+    ,{"code":"376f",
+      "libelle":"Cadre de service technique "}
+    ,{"code":"376g",
+      "libelle":"Cadre de l'immobilier"}
+    ,{"code":"377a",
+      "libelle":"Cadre de l'hôtellerie et de la restauration"}
+    ,{"code":"38"
+    ,"libelle":"Ingénieur et cadre technique d'entreprises"}
+    ,{"code":"380a",
+      "libelle":"Directeur technique de grande entreprises"}
+    ,{"code":"381b",
+      "libelle":"Ingénieur et cadre d'étude et développement "}
+    ,{"code":"381c",
+      "libelle":"Ingénieur et cadre de production et d'exploitation "}
+    ,{"code":"382a",
+      "libelle":"Ingénieur et cadre d'étude du bâtiment et des travaux publics"}
+    ,{"code":"382b",
+      "libelle":"Architecte salarié"}
+    ,{"code":"382c",
+      "libelle":"Ingénieur de travaux du bâtiment et de travaux publics"}
+    ,{"code":"382c",
+      "libelle":"Cadre de chantier et conducteur de travaux du bâtiment "}
+
+    ,{"code":"382d",
+      "libelle":"Ingénieur et cadre technico-commerciaux en travaux publics"}
+    ,{"code":"383a",
+      "libelle":"Ingénieur recherche et développement en électricité"}
+    ,{"code":"383a",
+      "libelle":"Ingénieur recherche et développement en électronique"}
+    ,{"code":"383b",
+      "libelle":"Ingénieur de fabrication en matériel électrique"}
+    ,{"code":"383b",
+      "libelle":"Ingénieur de fabrication en matériel électronique"}
+    ,{"code":"383c",
+      "libelle":"Ingénieur technico-commerciaux en matériel électrique "}
+    ,{"code":"383c",
+      "libelle":"Ingénieur technico-commerciaux en matériel électronique professionnel"}
+    ,{"code":"384a",
+      "libelle":"Ingénieur recherche et développement en mécanique et travail des métaux"}
+    ,{"code":"384b",
+      "libelle":"Ingénieur de fabrication en mécanique et travail des métaux"}
+    ,{"code":"384c",
+      "libelle":"Ingénieur en matériel mécanique professionnel"}
+    ,{"code":"385a",
+      "libelle":"Ingénieur recherche et développement de industrie de transformation"}
+    ,{"code":"385b",
+      "libelle":"Ingénieur de fabrication des industries de transformation "}
+    ,{"code":"385c",
+      "libelle":"Ingénieur et cadre technico-commercial des industries de transformation"}
+    ,{"code":"386b",
+      "libelle":"Ingénieur et cadre d'étude, recherche et développement de la distribution d'énergie"}
+    ,{"code":"386c",
+      "libelle":"Ingénieur et cadre d'étude, recherche et développement de autre industrie"}
+    ,{"code":"386d",
+      "libelle":"Ingénieur et cadre de la production et de la distribution d'énergie"}
+    ,{"code":"386e",
+      "libelle":"Ingénieur et cadre de fabrication "}
+    ,{"code":"387a",
+      "libelle":"Ingénieur et cadre des achats et approvisionnements industriels"}
+    ,{"code":"387b",
+      "libelle":"Ingénieur et cadre de la logistique "}
+    ,{"code":"387c",
+      "libelle":"Ingénieur et cadre de méthode de production"}
+    ,{"code":"387d",
+      "libelle":"Ingénieur et cadre du contrôle-qualité"}
+    ,{"code":"387e",
+      "libelle":"Ingénieur et cadre de la maintenance"}
+    ,{"code":"387f",
+      "libelle":"Ingénieur et cadre technique de l'environnement"}
+    ,{"code":"388a",
+      "libelle":"Ingénieur et cadre d'étude, recherche et développement en informatique"}
+    ,{"code":"388b",
+      "libelle":"Ingénieur et cadre d'administration en informatique"}
+    ,{"code":"388c",
+      "libelle":"Chef de projet informatiques"}
+    ,{"code":"388d",
+      "libelle":"Ingénieur et cadre technico-commercial en informatique"}
+    ,{"code":"388d",
+      "libelle":"Ingénieur et cadre technico-commercial en télécommunication"}
+    ,{"code":"388e",
+      "libelle":"Ingénieur et cadre spécialiste des télécommunications"}
+    ,{"code":"389a",
+      "libelle":"Ingénieur et cadre technique de l'exploitation des transports"}
+    ,{"code":"389b",
+      "libelle":"Officier et cadre navigant technique et commercial"}
+    ,{"code":"389c",
+      "libelle":"Officier et cadre navigant technique de la marine marchande"}
+    ]},
+  {"code_categorie":"4",
+    "categorie":"Profession intermédiaire"
+  ,
+    "list_emploi":
+    [
+    {"code":"421a",
+      "libelle":"Instituteur"}
+    ,{"code":"421b",
+      "libelle":"Professeur des écoles"}
+    ,{"code":"422a",
+      "libelle":"Professeur d'enseignement général des collèges"}
+    ,{"code":"422b",
+      "libelle":"Professeur de lycée professionnel"}
+    ,{"code":"422c",
+      "libelle":"Maître auxiliaire et professeur contractuel "}
+    ,{"code":"422d",
+      "libelle":"Conseiller principaux d'éducation"}
+    ,{"code":"422e",
+      "libelle":"Surveillant et aide-éducateur "}
+    ,{"code":"423a",
+      "libelle":"Moniteur d'école de conduite"}
+    ,{"code":"423b",
+      "libelle":"Formateur et animateur de formation continue"}
+    ,{"code":"424a",
+      "libelle":"Moniteur et éducateur sportif"}
+    ,{"code":"425a",
+      "libelle":"Cadre intermédiaire du patrimoine"}
+    ,{"code":"43"
+    ,"libelle":"Profession intermédiaire de la santé et du travail social"}
+    ,{"code":"431a",
+      "libelle":"Cadre infirmier "}
+    ,{"code":"431b",
+      "libelle":"Infirmier psychiatrique"}
+    ,{"code":"431c",
+      "libelle":"Puéricultrice"}
+    ,{"code":"431d",
+      "libelle":"Infirmier spécialisé "}
+    ,{"code":"431e",
+      "libelle":"Sage-femme salariée"}
+    ,{"code":"431f",
+      "libelle":"Infirmier en soin généraux"}
+    ,{"code":"432b",
+      "libelle":"Rééducateurs"}
+     ,{"code":"433a",
+      "libelle":"Technicien médical"}
+    ,{"code":"433b",
+      "libelle":"Opticien lunetier et audioprothésiste"}
+    ,{"code":"433c",
+      "libelle":"Spécialiste de l'appareillage médical "}
+    ,{"code":"433d",
+      "libelle":"Préparateur en pharmacie"}
+    ,{"code":"434a",
+      "libelle":"Cadre de l'intervention socio-éducative"}
+    ,{"code":"434b",
+      "libelle":"Assistant de service social"}
+    ,{"code":"434c",
+      "libelle":"Conseiller en économie sociale familiale"}
+    ,{"code":"434d",
+      "libelle":"Educateur spécialisés"}
+    ,{"code":"434e",
+      "libelle":"Moniteur éducateurs"}
+    ,{"code":"434f",
+      "libelle":"Educateur technique spécialisés, moniteur d'atelier"}
+    ,{"code":"434g",
+      "libelle":"Educateur de jeune enfants"}
+    ,{"code":"435a",
+      "libelle":"Directeur de centre socioculturel et de loisirs"}
+    ,{"code":"435b",
+      "libelle":"Animateur socioculturel et de loisirs"}
+    ,{"code":"441a",
+      "libelle":"Clergé séculier"}
+    ,{"code":"441b",
+      "libelle":"Clergé régulier"}
+   ,{"code":"451a",
+      "libelle":"Profession intermédiaire de la Poste"}
+    ,{"code":"451b",
+      "libelle":"Profession intermédiaire administrative"}
+    ,{"code":"451c",
+      "libelle":"Contrôleur des Impôts"}
+    ,{"code":"451d",
+      "libelle":"Ingénieur du contrôle de la navigation aérienne"}
+    ,{"code":"451e",
+      "libelle":"Personnel administratif de catégorie B de l'Etat"}
+    ,{"code":"451g",
+      "libelle":"Profession intermédiaire administrative de collectivités locales"}
+    ,{"code":"451h",
+      "libelle":"Profession intermédiaire administrative de hôpitaux"}
+    ,{"code":"461b",
+      "libelle":"Secrétaire de direction, assistant de direction"}
+    ,{"code":"461c",
+      "libelle":"Secrétaire de niveau supérieur "}
+    ,{"code":"461d",
+      "libelle":"Maîtrise et technicien de service financier "}
+    ,{"code":"461e",
+      "libelle":"Maîtrise et technicien administratif de service juridique "}
+    ,{"code":"461f",
+      "libelle":"Maîtrise et technicien administratif "}
+    ,{"code":"462a",
+      "libelle":"Chef de petite surface de vente"}
+    ,{"code":"462b",
+      "libelle":"Maîtrise de l'exploitation de magasin de vente"}
+   ,{"code":"462d",
+      "libelle":"Animateur commerciaal de magasin de vente"}
+    ,{"code":"462e",
+      "libelle":"Profession intermédiaire commerciale "}
+    ,{"code":"463a",
+      "libelle":"Technicien commercial et technico-commercial"}
+    ,{"code":"463a",
+      "libelle":"Représentant en informatique"}
+    ,{"code":"463b",
+      "libelle":"Technicien commercial"}
+    ,{"code":"463b",
+      "libelle":"Technico-commercial, représentant en bien d'équipement"}
+    ,{"code":"464a",
+      "libelle":"Assistant de la publicité, de relations publiques"}
+    ,{"code":"464b",
+      "libelle":"Interprète, traducteur"}
+    ,{"code":"465a",
+      "libelle":"Concepteur et assistant technique des arts graphiques"}
+    ,{"code":"465b",
+      "libelle":"Assistant technique de la réalisation des spectacles audiovisuels"}
+    ,{"code":"465c",
+      "libelle":"Photographe"}
+    ,{"code":"466a",
+      "libelle":"Responsable commercial et administratif de transport de voyageur"}
+    ,{"code":"466b",
+      "libelle":"Responsable commercial et administratif de transport de marchandise"}
+    ,{"code":"466c",
+      "libelle":"Responsable d'exploitation de transport de voyageur et de marchandise "}
+    ,{"code":"467a",
+      "libelle":"Chargé de clientèle bancaire"}
+    ,{"code":"467b",
+      "libelle":"Technicien des opérations bancaires"}
+    ,{"code":"467c",
+      "libelle":"Profession intermédiaire technique et commerciale des assurances"}
+    ,{"code":"467d",
+      "libelle":"Profession intermédiaire technique des organismes de sécurité sociale"}
+    ,{"code":"468a",
+      "libelle":"Maîtrise de restauration "}
+    ,{"code":"468b",
+      "libelle":"Maîtrise de l'hébergement"}
+    ,{"code":"47"
+    ,"libelle":"Technicien "}
+    ,{"code":"471a",
+      "libelle":"Technicien d'étude et de conseil"}
+    ,{"code":"471b",
+      "libelle":"Technicien d'exploitation et de contrôle de la production"}
+    ,{"code":"472a",
+      "libelle":"Dessinateur en bâtiment, travaux publics"}
+    ,{"code":"472b",
+      "libelle":"Géomètre, topographe"}
+    ,{"code":"472c",
+      "libelle":"Métreur et technicien diver du bâtiment et des travaux publics"}
+    ,{"code":"472d",
+      "libelle":"Technicien de travaux public de l'Etat et des collectivités locales"}
+    ,{"code":"473a",
+      "libelle":"Dessinateur en électricité, électromécanique et électronique"}
+    ,{"code":"473b",
+      "libelle":"Technicien de recherche-développement et de méthode de fabrication "}
+    ,{"code":"473c",
+      "libelle":"Technicien de fabrication et de contrôle-qualité"}
+    ,{"code":"474a",
+      "libelle":"Dessinateur en construction mécanique et travail de métaux"}
+    ,{"code":"474b",
+      "libelle":"Technicien de recherche-développement et de méthode de fabrication "}
+    ,{"code":"474c",
+      "libelle":"Technicien de fabrication et de contrôle-qualité "}
+    ,{"code":"475a",
+      "libelle":"Technicien de recherche-développement et de méthode de production"}
+    ,{"code":"475b",
+      "libelle":"Technicien de production et de contrôle-qualité "}
+    ,{"code":"476a",
+      "libelle":"Assistant technique de l'imprimerie et de l'édition"}
+    ,{"code":"476a",
+      "libelle":"Technicien de l'imprimerie et de l'édition"}
+    ,{"code":"476b",
+      "libelle":"Technicien de l'industrie de matériaux souples, de l'ameublement et du bois"}
+    ,{"code":"477a",
+      "libelle":"Technicien de la logistique, du planning et de l'ordonnancement"}
+    ,{"code":"477b",
+      "libelle":"Technicien d'installation et de maintenance de équipement industriel "}
+    ,{"code":"477c",
+      "libelle":"Technicien d'installation et de maintenance de équipement non industriel "}
+    ,{"code":"477d",
+      "libelle":"Technicien de l'environnement et du traitement des pollutions"}
+    ,{"code":"478a",
+      "libelle":"Technicien d'étude et de développement en informatique"}
+    ,{"code":"478b",
+      "libelle":"Technicien de production, d'exploitation en informatique"}
+    ,{"code":"478c",
+      "libelle":"Technicien d'installation"}
+    ,{"code":"478c",
+      "libelle":"Technicien support en informatique"}
+    ,{"code":"478d",
+      "libelle":"Technicien de télécommunication et de l'informatique des réseaux"}
+    ,{"code":"479a",
+      "libelle":"Technicien de laboratoire de recherche publique "}
+    ,{"code":"479b",
+      "libelle":"Expert salarié de niveau technicien"}
+    ,{"code":"480a",
+      "libelle":"Contremaître et agent d'encadrement "}
+    ,{"code":"480b",
+      "libelle":"Maître d'équipage de la marine marchande et de la pêche"}
+    ,{"code":"481a",
+      "libelle":"Conducteur de travaux (non cadres)"}
+    ,{"code":"481b",
+      "libelle":"Chef de chantier (non cadres)"}
+    ,{"code":"482a",
+      "libelle":"Agent de maîtrise en fabrication de matériel "}
+    ,{"code":"483a",
+      "libelle":"Agent de maîtrise en construction mécanique"}
+    ,{"code":"484a",
+      "libelle":"Agent de maîtrise en fabrication "}
+    ,{"code":"484b",
+      "libelle":"Agent de maîtrise en fabrication "}
+    ,{"code":"485a",
+      "libelle":"Agent de maîtrise et technicien en production et distribution d'énergie"}
+    ,{"code":"485b",
+      "libelle":"Agent de maîtrise en fabrication "}
+    ,{"code":"486b",
+      "libelle":"Agent de maîtrise en maintenance, installation en électricité et électronique"}
+    ,{"code":"486c",
+      "libelle":"Agent de maîtrise en maintenance, installation en électromécanique"}
+    ,{"code":"486d",
+      "libelle":"Agent de maîtrise en maintenance, installation en mécanique"}
+    ,{"code":"486e",
+      "libelle":"Agent de maîtrise en entretien général, installation, travaux neuf "}
+    ,{"code":"487a",
+      "libelle":"Responsable d'entrepôt, de magasinage"}
+    ,{"code":"487b",
+      "libelle":"Responsable du tri, de l'emballage et de l'expédition "}
+    ,{"code":"488a",
+      "libelle":"Maîtrise de restauration  "}
+    ,{"code":"488b",
+      "libelle":"Maîtrise de restauration "}
+    ]},
+  {"code_categorie":"5",
+    "categorie":"Employés"
+  ,
+    "list_emploi":
+    [
+    {"code":"522a",
+      "libelle":"Agent de constatation ou de recouvrement des Impôts"}
+    ,{"code":"523a",
+      "libelle":"Adjoint administratif de la fonction publique "}
+    ,{"code":"523b",
+      "libelle":"Adjoint administratif de l'Etat et assimilé "}
+    ,{"code":"523c",
+      "libelle":"Adjoint administratif des collectivités locales"}
+    ,{"code":"523d",
+      "libelle":"Adjoint administratif des hôpitaux publics"}
+    ,{"code":"524a",
+      "libelle":"Agent administratif de la fonction publique"}
+    ,{"code":"524b",
+      "libelle":"Agent administratif de l'Etat et assimilé "}
+    ,{"code":"524c",
+      "libelle":"Agent administratif de collectivités locales"}
+    ,{"code":"524d",
+      "libelle":"Agent administratif des hôpitaux publics"}
+    ,{"code":"525a",
+      "libelle":"Agent de service des établissements primaires"}
+    ,{"code":"525b",
+      "libelle":"Agent de service "}
+    ,{"code":"525c",
+      "libelle":"Agent de service de la fonction publique"}
+    ,{"code":"525d",
+      "libelle":"Agent des services hospitaliers"}
+    ,{"code":"526a",
+      "libelle":"Aides-soignant"}
+    ,{"code":"526b",
+      "libelle":"Assistant dentaire"}
+    ,{"code":"526b",
+      "libelle":"Assistant médical"}
+    ,{"code":"526b",
+      "libelle":"Aide de techniciens médicaux"}
+    ,{"code":"526c",
+      "libelle":"Auxiliaire de puériculture"}
+    ,{"code":"526d",
+      "libelle":"Aide médico-psychologiques"}
+    ,{"code":"526e",
+      "libelle":"Ambulancier "}
+    ,{"code":"531c",
+      "libelle":"Surveillant de l'administration pénitentiaire"}
+    ,{"code":"533a",
+      "libelle":"Pompier "}
+    ,{"code":"533b",
+      "libelle":"Agent technique garde des espaces naturels"}
+    ,{"code":"533c",
+      "libelle":"Agent de surveillance du patrimoine et des administrations"}
+    ,{"code":"534a",
+      "libelle":"Agent civil de sécurité et de surveillance"}
+    ,{"code":"534b",
+      "libelle":"Convoyeur des fonds"}
+    ,{"code":"54",
+      "libelle":"Employé administratif d'entreprise"}
+    ,{"code":"541b",
+      "libelle":"Agent d'accueil qualifié"}
+    ,{"code":"541b",
+      "libelle":"Hôtesse d'accueil et d'information"}
+    ,{"code":"541c",
+      "libelle":"Agent d'accueil non qualifiés"}
+    ,{"code":"541d",
+      "libelle":"Standardistes, téléphoniste"}
+    ,{"code":"542a",
+      "libelle":"Secrétaire"}
+    ,{"code":"542b",
+      "libelle":"Opérateur de traitement de texte"}
+    ,{"code":"543b",
+      "libelle":"Employé qualifié des services comptables"}
+    ,{"code":"543c",
+      "libelle":"Employé non qualifié des services financiers"}
+    ,{"code":"543e",
+      "libelle":"Employé qualifié du service juridique"}
+    ,{"code":"543f",
+      "libelle":"Employé qualifié de service commercial "}
+    ,{"code":"543g",
+      "libelle":"Employé administratif qualifié"}
+    ,{"code":"543h",
+      "libelle":"Employé administratif non qualifié"}
+    ,{"code":"544a",
+      "libelle":"Employé et opérateur d'exploitation en informatique"}
+    ,{"code":"545a",
+      "libelle":"Employé administratif des services techniques de la banque"}
+    ,{"code":"545b",
+      "libelle":"Employé des services commerciaux de la banque"}
+    ,{"code":"545c",
+      "libelle":"Employé de services techniques des assurances"}
+    ,{"code":"545d",
+      "libelle":"Employé de service technique "}
+    ,{"code":"546a",
+      "libelle":"Contrôleur de transport "}
+    ,{"code":"546b",
+      "libelle":"Agent de service commercial "}
+    ,{"code":"546c",
+      "libelle":"Employé administratif d'exploitation de transport des marchandises"}
+    ,{"code":"546e",
+      "libelle":"Aagent et hôtesse d'accompagnement"}
+    ,{"code":"55",
+      "libelle":"Employé de commerce"}
+    ,{"code":"551a",
+      "libelle":"Employé de libre service du commerce "}
+    ,{"code":"552a",
+      "libelle":"Caissier de magasin"}
+    ,{"code":"553b",
+      "libelle":"Vendeur polyvalent"}
+    ,{"code":"553c",
+      "libelle":" Vendeur non spécialisé"}
+    ,{"code":"554a",
+      "libelle":"Vendeur en alimentation"}
+    ,{"code":"554b",
+      "libelle":"Vendeur en ameublement"}
+    ,{"code":"554d",
+      "libelle":"Vendeur du commerce des fleurs"}
+    ,{"code":"554e",
+      "libelle":"Vendeur en habillement et article de sport"}
+    ,{"code":"554f",
+      "libelle":"Vendeur en produit de beauté et optique"}
+    ,{"code":"554g",
+      "libelle":"Vendeur de bien culturel "}
+    ,{"code":"554j",
+      "libelle":"Pompiste et gérant de station-service "}
+    ,{"code":"555a",
+      "libelle":"Vendeur par correspondance, télévendeur"}
+    ,{"code":"56",
+      "libelle":"Personnel de service direct aux particuliers"}
+    ,{"code":"556a",
+      "libelle":"Vendeur en gro de bien d'équipement"}
+    ,{"code":"561b",
+      "libelle":"Commi de restaurant"}
+    ,{"code":"561c",
+      "libelle":"commi de restaurant non qualifié"}
+    ,{"code":"561d",
+      "libelle":"Aide de cuisine"}
+    ,{"code":"561d",
+      "libelle":"Employé polyvalent de la restauration"}
+    ,{"code":"561e",
+      "libelle":"Employé de l'hôtellerie : réception et hall"}
+    ,{"code":"561f",
+      "libelle":"Employé d'étage et employé polyvalent de l'hôtellerie"}
+    ,{"code":"562a",
+      "libelle":"Esthéticien"}
+    ,{"code":"562b",
+      "libelle":"Coiffeur "}
+    ,{"code":"563a",
+      "libelle":"Assistante maternelle"}
+    ,{"code":"563b",
+      "libelle":"Aide à domicile"}
+    ,{"code":"563c",
+      "libelle":"Personnel de ménage"}
+    ,{"code":"564a",
+      "libelle":"Gardien d'immeubles"}
+    ,{"code":"564b",
+      "libelle":"Employé des services divers"}
+    ]},
+  {"code_categorie":"6",
+    "categorie":"Ouvriers"
+  ,
+    "list_emploi":
+    [
+      {"code":"621a",
+      "libelle":"Chef d'équipe du gros oeuvre et de travaux publics"}
+    ,{"code":"621b",
+      "libelle":"Ouvrier qualifié du travail du béton"}
+    ,{"code":"621c",
+      "libelle":"Conducteur qualifié d'engin de chantier "}
+    ,{"code":"621d",
+      "libelle":"Ouvrier de travaux public en installation électrique et de télécommunications"}
+    ,{"code":"621e",
+      "libelle":"Ouvrier qualifié de travaux publics"}
+    ,{"code":"621f",
+      "libelle":"Ouvrier qualifié de travaux public "}
+    ,{"code":"621g",
+      "libelle":"Mineur de fond qualifié "}
+    ,{"code":"622a",
+      "libelle":"Opérateur qualifié sur machine automatique en production "}
+    ,{"code":"622c",
+      "libelle":"Monteur câbleur qualifié en électricité"}
+    ,{"code":"622d",
+      "libelle":"Câbleur qualifié en électronique"}
+    ,{"code":"622e",
+      "libelle":"Autre monteur câbleur en électronique"}
+    ,{"code":"622f",
+      "libelle":"Bobinier qualifié"}
+    ,{"code":"622g",
+      "libelle":"Plateformiste, contrôleur qualifié de matériel électrique ou électronique"}
+    ,{"code":"623a",
+      "libelle":"Chaudronnier-tôlier industriel"}
+    ,{"code":"623a",
+       "libelle":"Opérateur qualifié du travail en forge"}
+    ,{"code":"623a",
+      "libelle":"Conducteur qualifié d'équipement "}
+    ,{"code":"623b",
+      "libelle":"Tuyauteur industriel qualifié"}
+    ,{"code":"623d",
+      "libelle":"Opérateur qualifié sur machine de soudage"}
+    ,{"code":"623e",
+      "libelle":"Soudeur manuel"}
+    ,{"code":"623f",
+      "libelle":"Opérateur qualifié d'usinage de métaux "}
+    ,{"code":"623g",
+      "libelle":"Opérateur qualifié d'usinage des métaux "}
+    ,{"code":"624b",
+      "libelle":"Monteur qualifié d'ensemble mécanique"}
+    ,{"code":"624c",
+      "libelle":"Monteur qualifié d'ensemble mécanique "}
+    ,{"code":"624d",
+      "libelle":"Monteur qualifié en structures métalliques"}
+    ,{"code":"624e",
+      "libelle":"Ouvrier qualifié de contrôle et d'essai en mécanique"}
+    ,{"code":"624f",
+      "libelle":"Ouvrier qualifié de traitement thermique et de surface sur métaux"}
+    ,{"code":"624g",
+      "libelle":"Mécanicien qualifié "}
+    ,{"code":"625a",
+      "libelle":"Pilote d'installation lourde des industries de transformation "}
+    ,{"code":"625b",
+      "libelle":"Ouvrier qualifié de laboratoire "}
+    ,{"code":"625c",
+      "libelle":"Opérateur qualifié de la chimie et de la plasturgie"}
+    ,{"code":"625d",
+      "libelle":"Opérateur de la transformation des viandes"}
+    ,{"code":"625f",
+      "libelle":"Opérateur travaillant sur installation et machine "}
+    ,{"code":"625g",
+      "libelle":"Ouvrier de production qualifié"}
+    ,{"code":"625h",
+      "libelle":"Ouvrier qualifié "}
+    ,{"code":"626a",
+      "libelle":"Pilote d'installation lourde des industries de transformation "}
+    ,{"code":"626b",
+      "libelle":"Opérateur et ouvrier qualifié "}
+    ,{"code":"626c",
+      "libelle":"Opérateur et ouvrier qualifié de industrie lourde "}
+    ,{"code":"627a",
+      "libelle":"Opérateur qualifié du textile et de la mégisserie"}
+    ,{"code":"627b",
+      "libelle":"Ouvrier qualifié de la coupe de vêtement et de l'habillement"}
+    ,{"code":"627c",
+      "libelle":"Ouvrier qualifié du travail industriel du cuir"}
+    ,{"code":"627d",
+      "libelle":"Ouvrier qualifié de la menuiserie industrielle et de l'ameublement"}
+    ,{"code":"627e",
+      "libelle":"Ouvrier de la photogravure et de laboratoire photographique "}
+    ,{"code":"627f",
+      "libelle":"Ouvrier de la composition et de l'impression"}
+    ,{"code":"627f",
+      "libelle":"Ouvrier qualifié de la brochure"}
+    ,{"code":"628a",
+      "libelle":"Mécanicien qualifié de maintenance et entretien des équipements industriels"}
+    ,{"code":"628b",
+      "libelle":"Electricien qualifié d'entretien"}
+    ,{"code":"628c",
+      "libelle":"Régleur qualifié d'équipement de fabrication"}
+    ,{"code":"628d",
+      "libelle":"Régleur qualifié d'équipement de fabrication "}
+    ,{"code":"628e",
+      "libelle":"Ouvrier qualifié de l'assainissement"}
+    ,{"code":"628f",
+      "libelle":"Agent qualifié de laboratoire "}
+    ,{"code":"628g",
+      "libelle":"Ouvrier qualifié de type industriel"}
+    ,{"code":"63",
+      "libelle":"Ouvrier qualifié de type artisanal"}
+    ,{"code":"631a",
+      "libelle":"Jardinier"}
+    ,{"code":"632a",
+      "libelle":"Maçon qualifié"}
+    ,{"code":"632c",
+      "libelle":"Charpentier en boi qualifié"}
+    ,{"code":"632d",
+      "libelle":"Menuisier qualifié du bâtiment"}
+    ,{"code":"632e",
+      "libelle":"Couvreur qualifié"}
+    ,{"code":"632f",
+      "libelle":"Plombier et chauffagiste qualifié"}
+    ,{"code":"632g",
+      "libelle":"Peintre et ouvrier qualifié de pose de revêtement sur supports verticaux"}
+    ,{"code":"632h",
+      "libelle":"Ouvrier qualifié de pose de revêtement souple sur support horizontaux"}
+    ,{"code":"632j",
+      "libelle":"Monteur qualifié en isolation"}
+    ,{"code":"632k",
+      "libelle":"Ouvrier qualifié d'entretien général de bâtiments"}
+    ,{"code":"633a",
+      "libelle":"Electricien qualifié de type artisanal)"}
+    ,{"code":"633b",
+      "libelle":"Dépanneur qualifié en radiotélévision"}
+    ,{"code":"633c",
+      "libelle":"Electriciens, électronicien qualifié en maintenance "}
+    ,{"code":"633d",
+      "libelle":"Electriciens, électronicien qualifié en maintenance"}
+    ,{"code":"634a",
+      "libelle":"Carrossier d'automobile qualifié"}
+    ,{"code":"634b",
+      "libelle":"Métalliers, serrurier qualifié"}
+    ,{"code":"634c",
+      "libelle":"Mécanicien qualifié en maintenance, entretien, réparation : automobile"}
+    ,{"code":"634d",
+      "libelle":"Mécanicien qualifié de maintenance, entretien : équipement non industriels"}
+   ,{"code":"636c",
+      "libelle":"Boulanger, pâtissier "}
+    ,{"code":"636d",
+      "libelle":"Cuisinier et commi de cuisine"}
+    ,{"code":"637a",
+      "libelle":"Ouvrier qualifié du travail du verre "}
+    ,{"code":"637b",
+      "libelle":"Ouvrier d'art"}
+    ,{"code":"637c",
+      "libelle":"Ouvrier et technicien des spectacles vivants et audiovisuels"}
+    ,{"code":"637d",
+      "libelle":"Ouvrier qualifié de type artisanal"}
+    ,{"code":"641a",
+      "libelle":"Conducteur routier et grand routier"}
+    ,{"code":"641b",
+      "libelle":"Conducteur de véhicule routier de transport en commun"}
+    ,{"code":"642a",
+      "libelle":"Conducteur de taxi"}
+    ,{"code":"642b",
+      "libelle":"Conducteur de voiture particulière"}
+    ,{"code":"643a",
+      "libelle":"Conducteur livreur, coursier"}
+    ,{"code":"644a",
+      "libelle":"Conducteur de véhicule de ramassage des ordures ménagères"}
+    ,{"code":"65",
+      "libelle":"Ouvrier qualifié du magasinage et du transport"}
+    ,{"code":"651a",
+      "libelle":"Conducteur d'engin lourd de levage"}
+    ,{"code":"651b",
+      "libelle":"Conducteur d'engin lourd de manoeuvre"}
+    ,{"code":"652a",
+      "libelle":"Ouvrier qualifié de la manutention"}
+    ,{"code":"652b",
+      "libelle":"Docker"}
+    ,{"code":"653a",
+      "libelle":"Magasinier qualifié"}
+    ,{"code":"654b",
+      "libelle":"Conducteur qualifié d'engin de transport guidé"}
+    ,{"code":"654c",
+      "libelle":"Conducteur qualifié des systèmes de remontées mécaniques"}
+    ,{"code":"655a",
+      "libelle":"Agent qualifié de service d'exploitation des transports"}
+    ,{"code":"656b",
+      "libelle":"Matelot de la marine marchande"}
+    ,{"code":"67",
+      "libelle":"Ouvrier non qualifié de type industriel"}
+    ,{"code":"671a",
+      "libelle":"Ouvrier non qualifié de travaux public "}
+    ,{"code":"671c",
+      "libelle":"Ouvrier non qualifié de travaux public et du travail du béton"}
+    ,{"code":"671d",
+      "libelle":"Oouvrier non qualifié de l'extraction"}
+    ,{"code":"672a",
+      "libelle":"Ouvrier non qualifié de l'électricité et de l'électronique"}
+    ,{"code":"673a",
+      "libelle":"Ouvrier de production non qualifié "}
+    ,{"code":"673b",
+      "libelle":"Ouvrier de production non qualifié "}
+    ,{"code":"673c",
+      "libelle":"Ouvrier non qualifié de montage, contrôle en mécanique"}
+    ,{"code":"674a",
+      "libelle":"Ouvrier de production non qualifié"}
+    ,{"code":"674c",
+      "libelle":"Autre ouvrier de production non qualifié "}
+    ,{"code":"674d",
+      "libelle":"Ouvrier de production non qualifié "}
+    ,{"code":"674e",
+      "libelle":"Ouvrier de production non qualifié"}
+    ,{"code":"675a",
+      "libelle":"Ouvrier de production non qualifié du textile et de la confection"}
+    ,{"code":"675b",
+      "libelle":"Ouvrier de production non qualifié du travail du boi et de l'ameublement"}
+    ,{"code":"675c",
+      "libelle":"Ouvrier de production non qualifié de l'imprimerie"}
+    ,{"code":"676a",
+      "libelle":"Manutentionnaire non qualifiés"}
+    ,{"code":"676b",
+      "libelle":"Déménageur non qualifié"}
+    ,{"code":"676c",
+      "libelle":"Ouvrier du tri, de l'emballage non qualifié"}
+    ,{"code":"676d",
+      "libelle":"Agent non qualifié de service d'exploitation des transports"}
+    ,{"code":"676e",
+      "libelle":"Ouvrier non qualifié de type industriel"}
+    ,{"code":"68",
+      "libelle":"Ouvrier non qualifié de type artisanal"}
+    ,{"code":"681a",
+      "libelle":"Ouvrier non qualifié du gro oeuvre du bâtiment"}
+    ,{"code":"681b",
+      "libelle":"Ouvrier non qualifié du second oeuvre du bâtiment"}
+    ,{"code":"682a",
+      "libelle":"Réparateur en mécanique non qualifié"}
+    ,{"code":"683a",
+      "libelle":"Apprenti boulanger"}
+    ,{"code":"684a",
+      "libelle":"Nettoyeur"}
+    ,{"code":"684b",
+      "libelle":"Ouvrier non qualifié de l'assainissement et du traitement des déchets"}
+    ,{"code":"685a",
+      "libelle":"Ouvrier non qualifié de type artisanal"}
+    ,{"code":"69",
+      "libelle":"Ouvrier agricole "}
+    ,{"code":"691a",
+      "libelle":"Conducteur d'engin agricole "}
+    ,{"code":"691b",
+      "libelle":"Ouvrier de l'élevage"}
+    ,{"code":"691c",
+      "libelle":"Ouvrier du maraîchage ou de l'horticulture"}
+    ,{"code":"691e",
+      "libelle":"Ouvrier agricole "}
+    ,{"code":"691f",
+      "libelle":"Ouvrier de l'exploitation forestière "}
+    ,{"code":"692a",
+      "libelle":"Marins-pêcheur et ouvrier de l'aquaculture"}
+    ]}
+]

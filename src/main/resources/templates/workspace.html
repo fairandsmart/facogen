@@ -34,7 +34,8 @@
                     <a class="nav-link dropdown-toggle" href="#" id="navbarGenerate" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Generate Content</a>
                     <div class="dropdown-menu" aria-labelledby="navbarGenerate">
                         <a class="dropdown-item" type="button" data-toggle="modal" data-target="#generateInvoiceModal">Invoices</a>
-                        <a class="dropdown-item" type="button" data-toggle="modal" data-target="#generatePayslipModal">Payslip</a>
+                        <a class="dropdown-item" type="button" data-toggle="modal" data-target="#generatePayslipModal">Payslips</a>
+                        <a class="dropdown-item" type="button" data-toggle="modal" data-target="#generateReceiptModal">Receipts</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -92,6 +93,64 @@
                 </tbody>
             </table>
         </div>
+    </div>
+</div>
+<div id="generateReceiptModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <form method="post" action="/api/ws/{workspace.id}/receipt/jobs">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Submit Generation Job</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="jobType">Job Type</label>
+                        <input type="text" class="form-control" id="jobTypeR" value="receipt.generate" readonly/>
+                    </div>
+                    <div class="form-group">
+                        <label for="numberOfSamples">Number of samples to generate</label>
+                        <input type="text" class="form-control" id="numberOfSamplesR" name="qty"/>
+                        <small id="numberOfSamplesHelpR" class="form-text text-muted">According to your account you may be limited by workspace size.</small>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary" id="uploadR">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div id="generatePayslipModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <form method="post" action="/api/ws/{workspace.id}/payslip/jobs">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Submit Generation Job</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="jobType">Job Type</label>
+                        <input type="text" class="form-control" id="jobTypeP" value="payslip.generate" readonly/>
+                    </div>
+                    <div class="form-group">
+                        <label for="numberOfSamples">Number of samples to generate</label>
+                        <input type="text" class="form-control" id="numberOfSamplesP" name="qty"/>
+                        <small id="numberOfSamplesHelpP" class="form-text text-muted">According to your account you may be limited by workspace size.</small>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary" id="uploadP">Submit</button>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
 <div id="generateInvoiceModal" class="modal fade" role="dialog">

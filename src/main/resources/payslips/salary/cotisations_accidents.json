@@ -1,0 +1,22 @@
+[
+  [
+    {
+      "codeElement": 132,
+      "heading": "Assurances accidents de travail - maladies professionnelles ",
+      "base": 1,
+      "salaryRate": 0,
+      "employeeContributions": 0,
+      "employerRate": 1,
+      "employerContributions": 1
+    }],
+  [
+    {
+      "codeElement": 12,
+      "heading": "Accidents de travail - maladies professionnelles",
+      "base": 1,
+      "salaryRate": 0,
+      "employeeContributions": 0,
+      "employerRate": 1,
+      "employerContributions": 1
+    }]
+]

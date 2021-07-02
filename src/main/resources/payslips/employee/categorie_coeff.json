@@ -1,0 +1,25 @@
+[{ "categorie":"ouvrier",
+  "coeffMin": 130,
+  "coeffMax":200
+},
+  { "categorie":"technicien",
+    "coeffMin": 130,
+    "coeffMax": 200
+  },
+  { "categorie":"employé",
+    "coeffMin": 130,
+    "coeffMax": 200
+  },
+  { "categorie":"intermidiaire",
+    "coeffMin": 215,
+    "coeffMax": 340
+  },
+  { "categorie":"agents de maîtrise",
+    "coeffMin": 215,
+    "coeffMax": 340
+  },
+  { "categorie":"cadre",
+    "coeffMin": 290,
+    "coeffMax": 880
+  }]
+

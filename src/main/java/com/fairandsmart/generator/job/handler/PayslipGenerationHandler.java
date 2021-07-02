@@ -14,6 +14,7 @@ package com.fairandsmart.generator.job.handler;
  * Jérôme Blanchard <jerome.blanchard@fairandsmart.com> / FairAndSmart
  * Aurore Hubert <aurore.hubert@fairandsmart.com> / FairAndSmart
  * Kevin Meszczynski <kevin.meszczynski@fairandsmart.com> / FairAndSmart
+ * Djedjiga Belhadj <djedjiga.belhadj@gmail.com> / Loria
  * %%
  * Copyright (C) 2019 - 2020 Fair And Smart
  * %%
@@ -33,27 +34,46 @@ package com.fairandsmart.generator.job.handler;
  * #L%
  */
 
+import com.fairandsmart.generator.documents.PayslipGenerator;
+import com.fairandsmart.generator.documents.data.generator.GenerationContext;
+import com.fairandsmart.generator.documents.data.model.PayslipModel;
+
+import com.fairandsmart.generator.documents.layout.PayslipLayout;
+import com.fairandsmart.generator.documents.layout.payslip.GenericPayslipLayout;
 import com.fairandsmart.generator.job.JobManager;
 import com.fairandsmart.generator.job.JobNotFoundException;
 import com.fairandsmart.generator.job.entity.Job;
 
 import javax.enterprise.context.Dependent;
+import javax.enterprise.inject.Any;
+import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 @Dependent
 public class PayslipGenerationHandler implements JobHandler {
 
     private static final Logger LOGGER = Logger.getLogger(PayslipGenerationHandler.class.getName());
     public static final String[] SUPPORTED_TYPES = {"payslip.generate"};
-    public static final String PARAM_QUANTITY = "qty";
+    public static final String PARAM_QTY = "qty";
+    public static final String PARAM_START_IDX = "start-idx";
+    public static final String PARAM_OUTPUT = "output";
 
     private String root;
     private Long jobId;
     private Map<String, String> params;
+
+    @Inject
+    @Any
+    Instance<PayslipLayout> layouts;
+
 
     @Inject
     JobManager manager;
@@ -84,22 +104,62 @@ public class PayslipGenerationHandler implements JobHandler {
 
     @Override
     public void run() {
+        LOGGER.log(Level.INFO, "Starting Generation Handler thread");
         StringBuffer report = new StringBuffer();
+
         try {
             try {
                 LOGGER.log(Level.INFO, "PayslipGeneration started");
+                if ( !params.containsKey(PARAM_QTY) ) {
+                    report.append("Missing parameters: " + PARAM_QTY);
+                    manager.fail(jobId, report.toString());
+                    return;
+                }
                 manager.start(jobId);
-                report.append("Starting generation of payslip \r\n");
-                Thread.sleep(300000);
+                LOGGER.log(Level.INFO, "Starting generation of payslips");
+                report.append("Starting generation of payslips \r\n");
+                int qty = Integer.parseInt(params.get(PARAM_QTY));
+                int start = Integer.parseInt(params.getOrDefault(PARAM_START_IDX, "1"));
+                int stop = start + qty;
+                //TODO Filter layouts according to param
+                LOGGER.log(Level.INFO, "layouts");
+                List<PayslipLayout> availableLayouts = layouts.stream().collect(Collectors.toList());
+
+                LOGGER.log(Level.INFO, "availableLayouts.size() = "+availableLayouts.size());
+
+                if ( availableLayouts.size() == 0 ) {
+                    report.append("Unable to find available layouts for this job.");
+                    LOGGER.log(Level.INFO, "Unable to find available layouts for this job");
+                    manager.fail(jobId, report.toString());
+                    return;
+                }
+                LOGGER.log(Level.INFO, "After generating layout");
+                for ( int i=start; i<stop; i++) {                    //TODO configure context according to config
+
+                    Path pdf = Paths.get(root, params.getOrDefault(PARAM_OUTPUT, "payslip") + "-" + i + ".pdf");
+                    Path xml = Paths.get(root, params.getOrDefault(PARAM_OUTPUT, "payslip") + "-" + i + ".xml");
+                    Path xmlEval = null;
+                    //Path xmlEval = Paths.get(root, params.getOrDefault(PARAM_OUTPUT, "payslipEval") + "-" + i + ".xml");
+                    Path img = Paths.get(root, params.getOrDefault(PARAM_OUTPUT, "payslip") + "-" + i + ".tiff");
+                    //TODO configure context according to config
+                    GenerationContext ctx = GenerationContext.generate();
+                    PayslipModel model = new PayslipModel.Generator().generate(ctx);
+                    PayslipGenerator.getInstance().generatePayslip(new com.fairandsmart.generator.documents.layout.payslip.GenericPayslipLayout(), model, pdf, xml, img,xmlEval);
+                    manager.progress(jobId, (long)((i-start)*100)/qty);
+                }
                 report.append("All payslips generated");
+                LOGGER.log(Level.INFO, "All payslips generated");
                 manager.complete(jobId, report.toString());
-            } catch (InterruptedException e) {
-                report.append("Job has been interrupted: " + e.getMessage());
+            } catch (Exception e) {
+                LOGGER.log(Level.SEVERE, "Error while executing job",  e);
+                report.append("Error occurred during job: " + e.getMessage());
                 manager.fail(jobId, report.toString());
             }
         } catch (JobNotFoundException e) {
             LOGGER.log(Level.SEVERE, "Unable to find a job for id: " + jobId, e);
         }
+        LOGGER.log(Level.INFO, "Generation Handler thread finished");
+
     }
 
 }

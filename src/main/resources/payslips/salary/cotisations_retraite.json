@@ -1,0 +1,94 @@
+[
+  [{
+    "codeElement": null,
+    "heading": "RETRAITE",
+    "base": null,
+    "salaryRate": null,
+    "employeeContributions": null,
+    "employerRate": null,
+    "employerContributions": null
+  },
+    {
+      "codeElement": null,
+      "heading": "Sécu. Social Plafonée",
+      "base": 1,
+      "salaryRate": 6.9,
+      "employeeContributions": 1,
+      "employerRate": 8.29,
+      "employerContributions": 1
+    },
+    {
+      "codeElement": null,
+      "heading": "Sécu. Social Déplafonée",
+      "base": 1,
+      "salaryRate": 0.4,
+      "employeeContributions": 1,
+      "employerRate": 1.8,
+      "employerContributions": 0
+    },
+    {
+      "codeElement": null,
+      "heading": "Complémentaire Tranche 1",
+      "base": 1,
+      "salaryRate": 4.01,
+      "employeeContributions": 1,
+      "employerRate": 6.01,
+      "employerContributions": 1
+    }],
+
+  [{
+    "codeElement": null,
+    "heading": "RETRAITE",
+    "base": null,
+    "salaryRate": null,
+    "employeeContributions": null,
+    "employerRate": null,
+    "employerContributions": null
+  },
+    {
+      "codeElement": null,
+      "heading": "Sécu. Soc Plafonée",
+      "base": 1,
+      "salaryRate": 4.83,
+      "employeeContributions": 1,
+      "employerRate": 5.99,
+      "employerContributions": 1
+    },
+    {
+      "codeElement": null,
+      "heading": "Sécu. Soc Plafonnéee",
+      "base": 1,
+      "salaryRate": 0.28,
+      "employeeContributions": 1,
+      "employerRate": 1.33,
+      "employerContributions": 1
+    },
+    {
+      "codeElement": null,
+      "heading": "Complémentaire Tranche 1",
+      "base": 1,
+      "salaryRate": 4.675,
+      "employeeContributions": 1,
+      "employerRate": 5.075,
+      "employerContributions": 1
+    },
+    {
+      "codeElement": null,
+      "heading": "Complémentaire Tranche B",
+      "base": 1,
+      "salaryRate": 8.7,
+      "employeeContributions": 1,
+      "employerRate": 14.05,
+      "employerContributions": 1
+    },
+    {
+      "codeElement": null,
+      "heading": "CET",
+      "base": 1,
+      "salaryRate": 0.13,
+      "employeeContributions": 1,
+      "employerRate": 0.22,
+      "employerContributions": 1
+    }
+  ]
+]

@@ -33,9 +33,9 @@ package com.fairandsmart.generator.invoices.layout.loria;
  * #L%
  */
 
-import com.fairandsmart.generator.invoices.data.model.InvoiceModel;
-import com.fairandsmart.generator.invoices.element.textbox.SimpleTextBox;
-import com.fairandsmart.generator.invoices.layout.InvoiceLayout;
+import com.fairandsmart.generator.documents.data.model.InvoiceModel;
+import com.fairandsmart.generator.documents.element.textbox.SimpleTextBox;
+import com.fairandsmart.generator.documents.layout.InvoiceLayout;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;

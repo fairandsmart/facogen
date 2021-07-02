@@ -1,0 +1,38 @@
+[
+  [{
+    "codeElement": null,
+    "heading": "FAMILIALE-SECURITE SOCIALE ",
+    "base": null,
+    "salaryRate": null,
+    "employeeContributions": null,
+    "employerRate": null,
+    "employerContributions": null
+  },
+    {
+      "codeElement": null,
+      "heading": "AF ",
+      "base": 1,
+      "salaryRate": 0,
+      "employeeContributions": 0,
+      "employerRate": 0.52,
+      "employerContributions": 1
+    }],
+  [{
+    "codeElement": null,
+    "heading": "FAMILLE",
+    "base": null,
+    "salaryRate": null,
+    "employeeContributions": null,
+    "employerRate": null,
+    "employerContributions": null
+  },
+    {
+      "codeElement": null,
+      "heading": "Famille",
+      "base": 1,
+      "salaryRate": 0,
+      "employeeContributions": 0,
+      "employerRate": 3.45,
+      "employerContributions": 1
+    }]
+]

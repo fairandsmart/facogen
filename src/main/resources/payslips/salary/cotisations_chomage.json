@@ -1,0 +1,57 @@
+[
+  [{
+    "codeElement": null,
+    "heading": "ASSURANCE CHOMAGE",
+    "base": null,
+    "salaryRate": null,
+    "employeeContributions": null,
+    "employerRate": null,
+    "employerContributions": null
+  },
+    {
+      "codeElement": null,
+      "heading": "Chômage",
+      "base": 1,
+      "salaryRate": 0,
+      "employeeContributions": 0,
+      "employerRate": 4.04,
+      "employerContributions": 1
+    },
+    {
+      "codeElement": null,
+      "heading": "AGS",
+      "base": 1,
+      "salaryRate": 0,
+      "employeeContributions": 0,
+      "employerRate": 0.14,
+      "employerContributions": 1
+    },
+    {
+      "codeElement": null,
+      "heading": "APEC",
+      "base": 1,
+      "salaryRate": 0.024,
+      "employeeContributions": 1,
+      "employerRate": 0.035,
+      "employerContributions": 1
+    }],
+  [
+    {
+      "codeElement": null,
+      "heading": "ASSURANCE CHOMAGE",
+      "base": null,
+      "salaryRate": null,
+      "employeeContributions": null,
+      "employerRate": null,
+      "employerContributions": null
+    },
+    {
+    "codeElement": null,
+    "heading": "Chômage",
+    "base": 1,
+    "salaryRate": 0,
+    "employeeContributions": 0,
+    "employerRate": 0.42,
+    "employerContributions": 0
+  }]
+]

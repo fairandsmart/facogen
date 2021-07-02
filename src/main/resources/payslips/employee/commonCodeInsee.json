@@ -1,0 +1,2263 @@
+[
+  {
+    "code_comm": "276",
+    "nom_dept": "NORD",
+    "code_dept": "59",
+    "nom_comm": "GUESNAIN" },
+  {
+    "code_comm": "128",
+    "nom_dept": "VOSGES",
+    "code_dept": "88",
+    "nom_comm": "DENIPAIRE"
+  },
+  {
+    "code_comm": "128",
+    "nom_dept": "VOSGES",
+    "code_dept": "88",
+    "nom_comm": "DENIPAIRE"
+  },
+  {
+    "code_comm": "538",
+    "nom_dept": "MOSELLE",
+    "code_dept": "57",
+    "nom_comm": "PETTONCOURT"
+  },
+  {
+    "code_comm": "459",
+    "nom_dept": "MEURTHE-ET-MOSELLE",
+    "code_dept": "54",
+    "nom_comm": "RICHARDMENIL"},
+  {
+    "code_comm": "022",
+    "nom_dept": "ILLE-ET-VILAINE",
+    "code_dept": "35",
+    "nom_comm": "BECHEREL"
+  },
+  {
+    "code_comm": "459",
+    "nom_dept": "COTE-D'OR",
+    "code_dept": "21",
+    "nom_comm": "NOIRON-SUR-BEZE"
+  },
+  {
+    "code_comm": "108",
+    "nom_dept": "GIRONDE",
+    "code_dept": "33",
+    "nom_comm": "CASTILLON-LA-BATAILLE"
+  },
+  {
+    "code_comm": "088",
+    "nom_dept": "DOUBS",
+    "code_dept": "25",
+    "nom_comm": "BRECONCHAUX"
+  },
+  {"code_comm": "120",
+    "nom_dept": "LOT-ET-GARONNE",
+    "code_dept": "47",
+    "nom_comm": "JUSIX"
+  },
+  {
+    "code_comm": "056",
+    "nom_dept": "JURA",
+    "code_dept": "39",
+    "nom_comm": "BLETTERANS"
+  },
+  {
+    "code_comm": "604",
+    "nom_dept": "MARNE",
+    "code_dept": "51",
+    "nom_comm": "VENTELAY"
+  },
+  {
+    "code_comm": "046",
+    "nom_dept": "DOUBS",
+    "code_dept": "25",
+    "nom_comm": "BATTENANS-VARIN"
+  },
+  {
+    "code_comm": "674",
+    "nom_dept": "CALVADOS",
+    "code_dept": "14",
+    "nom_comm": "SOIGNOLLES"
+  },
+  {
+    "code_comm": "401",
+    "nom_dept": "COTE-D'OR",
+    "code_dept": "21",
+    "nom_comm": "MELOISEY"
+  },
+  {
+    "code_comm": "485",
+    "nom_dept": "ORNE",
+    "code_dept": "61",
+    "nom_comm": "TICHEVILLE"
+  },
+  {
+    "code_comm": "153",
+    "nom_dept": "HAUTE-GARONNE",
+    "code_dept": "31",
+    "nom_comm": "COULADERE"
+  },
+  {
+    "code_comm": "567",
+    "nom_dept": "EURE",
+    "code_dept": "27",
+    "nom_comm": "SAINTE-MARIE-DE-VATIMESNIL"
+  },
+  {
+    "code_comm": "057",
+    "nom_dept": "SAVOIE",
+    "code_dept": "73",
+    "nom_comm": "BRIDES-LES-BAINS"
+  },
+
+  {
+    "code_comm": "037",
+    "nom_dept": "LOT",
+    "code_dept": "46",
+    "nom_comm": "BOUZIES"
+  },
+  {
+    "code_comm": "357",
+    "nom_dept": "CORSE-DU-SUD",
+    "code_dept": "2A",
+    "nom_comm": "ZERUBIA"
+  },
+  {
+    "code_comm": "017",
+    "nom_dept": "LOIRE",
+    "code_dept": "42",
+    "nom_comm": "LE BESSAT"
+  },
+  {
+    "code_comm": "075",
+    "nom_dept": "HAUTE-SAVOIE",
+    "code_dept": "74",
+    "nom_comm": "CHILLY"
+  },
+  {
+    "code_comm": "506",
+    "nom_dept": "SEINE-MARITIME",
+    "code_dept": "76",
+    "nom_comm": "POMMEREVAL"
+  },
+
+  {
+    "code_comm": "404",
+    "nom_dept": "SAONE-ET-LOIRE",
+    "code_dept": "71",
+    "nom_comm": "SAINT-DESERT"
+  },
+  {
+    "code_comm": "266",
+    "nom_dept": "AUBE",
+    "code_dept": "10",
+    "nom_comm": "NOGENT-EN-OTHE"
+  },
+  {
+    "code_comm": "193",
+    "nom_dept": "HAUTE-GARONNE",
+    "code_dept": "31",
+    "nom_comm": "LE FOUSSERET"
+  },
+
+  {
+    "code_comm": "693",
+    "nom_dept": "MOSELLE",
+    "code_dept": "57",
+    "nom_comm": "VANTOUX"
+  },
+  {
+    "code_comm": "201",
+    "nom_dept": "CHER",
+    "code_dept": "18",
+    "nom_comm": "SAINT-CAPRAIS"
+  },
+  {
+    "code_comm": "755",
+    "nom_dept": "CALVADOS",
+    "code_dept": "14",
+    "nom_comm": "VILLERVILLE"
+  },
+  {
+    "code_comm": "157",
+    "nom_dept": "LOIR-ET-CHER",
+    "code_dept": "41",
+    "nom_comm": "MUR-DE-SOLOGNE"
+  },
+
+  {
+    "code_comm": "589",
+    "nom_dept": "SEINE-MARITIME",
+    "code_dept": "76",
+    "nom_comm": "SAINT-HONORE"
+  },
+  {
+    "code_comm": "198",
+    "nom_dept": "CALVADOS",
+    "code_dept": "14",
+    "nom_comm": "CRESSEVEUILLE"
+  },
+  {
+    "code_comm": "275",
+    "nom_dept": "PAS-DE-CALAIS",
+    "code_dept": "62",
+    "nom_comm": "DOURIEZ"
+  },
+  {
+    "code_comm": "238",
+    "nom_dept": "SAVOIE",
+    "code_dept": "73",
+    "nom_comm": "SAINT-GERMAIN-LA-CHAMBOTTE"
+  },
+  {
+    "code_comm": "058",
+    "nom_dept": "DOUBS",
+    "code_dept": "25",
+    "nom_comm": "BEURE"
+  },
+  {
+    "code_comm": "191",
+    "nom_dept": "HAUTES-PYRENEES",
+    "code_dept": "65",
+    "nom_comm": "GAZOST"
+  },
+  {
+    "code_comm": "177",
+    "nom_dept": "HAUTES-ALPES",
+    "code_dept": "05",
+    "nom_comm": "VARS"
+  },
+  {
+    "code_comm": "074",
+    "nom_dept": "LOIRE",
+    "code_dept": "42",
+    "nom_comm": "COUTOUVRE"
+  },
+  {
+    "code_comm": "397",
+    "nom_dept": "JURA",
+    "code_dept": "39",
+    "nom_comm": "ORGELET"
+  },
+  {
+    "code_comm": "400",
+    "nom_dept": "AIN",
+    "code_dept": "01",
+    "nom_comm": "SEILLONNAZ"
+  },
+  {
+    "code_comm": "125",
+    "nom_dept": "ALPES-MARITIMES",
+    "code_dept": "06",
+    "nom_comm": "SAINT-MARTIN-D'ENTRAUNES"
+  },
+  {
+    "code_comm": "473",
+    "nom_dept": "BAS-RHIN",
+    "code_dept": "67",
+    "nom_comm": "SOULTZ-LES-BAINS"
+  },
+  {
+    "code_comm": "505",
+    "nom_dept": "SEINE-MARITIME",
+    "code_dept": "76",
+    "nom_comm": "POMMEREUX"
+  },
+  {
+    "code_comm": "474",
+    "nom_dept": "GIRONDE",
+    "code_dept": "33",
+    "nom_comm": "SAINT-SELVE"
+  },
+  {
+    "code_comm": "765",
+    "nom_dept": "PAS-DE-CALAIS",
+    "code_dept": "62",
+    "nom_comm": "SAINT-OMER"
+  },
+  {
+    "code_comm": "616",
+    "nom_dept": "COTE-D'OR",
+    "code_dept": "21",
+    "nom_comm": "TAILLY"
+  },
+  {
+    "code_comm": "207",
+    "nom_dept": "PAS-DE-CALAIS",
+    "code_dept": "62",
+    "nom_comm": "CAMPIGNEULLES-LES-PETITES"
+  },
+  {
+    "code_comm": "419",
+    "nom_dept": "CHARENTE",
+    "code_dept": "16",
+    "nom_comm": "VOUHARTE"
+  },
+  {
+    "code_comm": "494",
+    "nom_dept": "VOSGES",
+    "code_dept": "88",
+    "nom_comm": "VAUBEXY"
+  },
+  {
+    "code_comm": "166",
+    "nom_dept": "LOT",
+    "code_dept": "46",
+    "nom_comm": "LEBREIL"
+  },
+  {
+    "code_comm": "135",
+    "nom_dept": "NIEVRE",
+    "code_dept": "58",
+    "nom_comm": "ISENAY"
+  },
+  {
+    "code_comm": "290",
+    "nom_dept": "LOT",
+    "code_dept": "46",
+    "nom_comm": "SAINT-PROJET"
+  },
+  {
+    "code_comm": "126",
+    "nom_dept": "DORDOGNE",
+    "code_dept": "24",
+    "nom_comm": "COLOMBIER"
+  },
+  {
+    "code_comm": "014",
+    "nom_dept": "VIENNE",
+    "code_dept": "86",
+    "nom_comm": "AVAILLES-EN-CHATELLERAULT"
+  },
+  {
+    "code_comm": "167",
+    "nom_dept": "HAUTE-MARNE",
+    "code_dept": "52",
+    "nom_comm": "DARMANNES"
+  },
+  {
+    "code_comm": "305",
+    "nom_dept": "CHARENTE-MARITIME",
+    "code_dept": "17",
+    "nom_comm": "ROUFFIGNAC"
+  },
+  {
+    "code_comm": "601",
+    "nom_dept": "OISE",
+    "code_dept": "60",
+    "nom_comm": "SAINT-VAAST-LES-MELLO"
+  },
+  {
+    "code_comm": "347",
+    "nom_dept": "AUDE",
+    "code_dept": "11",
+    "nom_comm": "SAINT-JULIA-DE-BEC"
+  },
+  {
+    "code_comm": "300",
+    "nom_dept": "TARN",
+    "code_dept": "81",
+    "nom_comm": "TONNAC"
+  },
+  {
+    "code_comm": "534",
+    "nom_dept": "MEUSE",
+    "code_dept": "55",
+    "nom_comm": "VAUDEVILLE-LE-HAUT"
+  },
+  {
+    "code_comm": "149",
+    "nom_dept": "AUDE",
+    "code_dept": "11",
+    "nom_comm": "FONTERS-DU-RAZES"
+  },
+  {
+    "code_comm": "056",
+    "nom_dept": "PUY-DE-DOME",
+    "code_dept": "63",
+    "nom_comm": "BROUSSE"
+  },
+  {
+    "code_comm": "582",
+    "nom_dept": "OISE",
+    "code_dept": "60",
+    "nom_comm": "SAINT-LEGER-AUX-BOIS"
+  },
+  {
+    "code_comm": "197",
+    "nom_dept": "LOT-ET-GARONNE",
+    "code_dept": "47",
+    "nom_comm": "NOMDIEU"
+  },
+  {
+    "code_comm": "333",
+    "nom_dept": "DROME",
+    "code_dept": "26",
+    "nom_comm": "SAINT-VALLIER"
+  },
+  {
+    "code_comm": "032",
+    "nom_dept": "HAUTES-ALPES",
+    "code_dept": "05",
+    "nom_comm": "CHAMPOLEON"
+  },
+  {
+    "code_comm": "187",
+    "nom_dept": "ALLIER",
+    "code_dept": "03",
+    "nom_comm": "MONTOLDRE"
+  },
+  {
+    "code_comm": "478",
+    "nom_dept": "SAONE-ET-LOIRE",
+    "code_dept": "71",
+    "nom_comm": "SAINT-ROMAIN-SOUS-VERSIGNY"
+  },
+  {
+    "code_comm": "367",
+    "nom_dept": "MEURTHE-ET-MOSELLE",
+    "code_dept": "54",
+    "nom_comm": "MEXY"
+  },
+  {
+    "code_comm": "295",
+    "nom_dept": "RHONE",
+    "code_dept": "69",
+    "nom_comm": "SIMANDRES"
+  },
+  {
+    "code_comm": "129",
+    "nom_dept": "SAVOIE",
+    "code_dept": "73",
+    "nom_comm": "GRESY-SUR-ISERE"
+  },
+  {
+    "code_comm": "160",
+    "nom_dept": "ILLE-ET-VILAINE",
+    "code_dept": "35",
+    "nom_comm": "LOUTEHEL"
+  },
+  {
+    "code_comm": "150",
+    "nom_dept": "LOIRE",
+    "code_dept": "42",
+    "nom_comm": "MONTVERDUN"
+  },
+  {
+    "code_comm": "191",
+    "nom_dept": "GARD",
+    "code_dept": "30",
+    "nom_comm": "ORSAN"
+  },
+  {
+    "code_comm": "070",
+    "nom_dept": "DROME",
+    "code_dept": "26",
+    "nom_comm": "CHAMARET"
+  },
+  {
+    "code_comm": "194",
+    "nom_dept": "ARIEGE",
+    "code_dept": "09",
+    "nom_comm": "MIREPOIX"
+  },
+  {
+    "code_comm": "379",
+    "nom_dept": "MEUSE",
+    "code_dept": "55",
+    "nom_comm": "LE NEUFOUR"
+  },
+  {
+    "code_comm": "018",
+    "nom_dept": "SEINE-MARITIME",
+    "code_dept": "76",
+    "nom_comm": "VAL-DE-SAANE"
+  },
+  {
+    "code_comm": "053",
+    "nom_dept": "HAUTE-LOIRE",
+    "code_dept": "43",
+    "nom_comm": "CHAMPCLAUSE"
+  },
+  {
+    "code_comm": "201",
+    "nom_dept": "CHARENTE",
+    "code_dept": "16",
+    "nom_comm": "MAINFONDS"
+  },
+  {
+    "code_comm": "463",
+    "nom_dept": "HAUTE-SAONE",
+    "code_dept": "70",
+    "nom_comm": "SAINT-GAND"
+  },
+  {
+    "code_comm": "166",
+    "nom_dept": "CHARENTE",
+    "code_dept": "16",
+    "nom_comm": "L'ISLE-D'ESPAGNAC"
+  },
+  {
+    "code_comm": "338",
+    "nom_dept": "HAUTES-PYRENEES",
+    "code_dept": "65",
+    "nom_comm": "ORIGNAC"
+  },
+  {
+    "code_comm": "267",
+    "nom_dept": "HAUTE-MARNE",
+    "code_dept": "52",
+    "nom_comm": "LANEUVILLE-AU-PONT"
+  },
+  {
+    "code_comm": "017",
+    "nom_dept": "LOIR-ET-CHER",
+    "code_dept": "41",
+    "nom_comm": "BINAS"
+  },
+  {
+    "code_comm": "144",
+    "nom_dept": "EURE-ET-LOIR",
+    "code_dept": "28",
+    "nom_comm": "LES ETILLEUX"
+  },
+  {
+    "code_comm": "014",
+    "nom_dept": "PYRENEES-ATLANTIQUES",
+    "code_dept": "64",
+    "nom_comm": "AINHOA"
+  },
+  {
+    "code_comm": "203",
+    "nom_dept": "ARIEGE",
+    "code_dept": "09",
+    "nom_comm": "MONTELS"
+  },
+  {
+    "code_comm": "009",
+    "nom_dept": "MORBIHAN",
+    "code_dept": "56",
+    "nom_comm": "BANGOR"
+  },
+  {
+    "code_comm": "373",
+    "nom_dept": "HAUTE-GARONNE",
+    "code_dept": "31",
+    "nom_comm": "MONTESQUIEU-GUITTAUT"
+  },
+  {
+    "code_comm": "086",
+    "nom_dept": "HAUTES-ALPES",
+    "code_dept": "05",
+    "nom_comm": "MONTJAY"
+  },
+  {
+    "code_comm": "003",
+    "nom_dept": "VAL-DE-MARNE",
+    "code_dept": "94",
+    "nom_comm": "ARCUEIL"
+  },
+  {
+    "code_comm": "274",
+    "nom_dept": "CHARENTE-MARITIME",
+    "code_dept": "17",
+    "nom_comm": "PERIGNY"
+  },
+  {
+    "code_comm": "525",
+    "nom_dept": "COTE-D'OR",
+    "code_dept": "21",
+    "nom_comm": "LA ROCHE-EN-BRENIL"
+  },
+  {
+    "code_comm": "448",
+    "nom_dept": "CALVADOS",
+    "code_dept": "14",
+    "nom_comm": "MONTREUIL-EN-AUGE"
+  },
+  {
+    "code_comm": "018",
+    "nom_dept": "HAUTES-PYRENEES",
+    "code_dept": "65",
+    "nom_comm": "ARBEOST"
+  },
+  {
+    "code_comm": "139",
+    "nom_dept": "MOSELLE",
+    "code_dept": "57",
+    "nom_comm": "CHERISEY"
+  },
+  {
+    "code_comm": "338",
+    "nom_dept": "ISERE",
+    "code_dept": "38",
+    "nom_comm": "LA RIVIERE"
+  },
+  {
+    "code_comm": "142",
+    "nom_dept": "MARNE",
+    "code_dept": "51",
+    "nom_comm": "CHAVOT-COURCOURT"
+  },
+  {
+    "code_comm": "202",
+    "nom_dept": "VENDEE",
+    "code_dept": "85",
+    "nom_comm": "SAINTE-CECILE"
+  },
+  {
+    "code_comm": "081",
+    "nom_dept": "INDRE",
+    "code_dept": "36",
+    "nom_comm": "GARGILESSE-DAMPIERRE"
+  },
+  {
+    "code_comm": "135",
+    "nom_dept": "GERS",
+    "code_dept": "32",
+    "nom_comm": "FUSTEROUAU"
+  },
+  {
+    "code_comm": "030",
+    "nom_dept": "MEUSE",
+    "code_dept": "55",
+    "nom_comm": "BAUDIGNECOURT"
+  },
+  {
+    "code_comm": "063",
+    "nom_dept": "HAUTE-SAVOIE",
+    "code_dept": "74",
+    "nom_comm": "CHATEL"
+  },
+  {
+    "code_comm": "311",
+    "nom_dept": "VOSGES",
+    "code_dept": "88",
+    "nom_comm": "MONTMOTIER"
+  },
+  {
+    "code_comm": "152",
+    "nom_dept": "CHARENTE",
+    "code_dept": "16",
+    "nom_comm": "GIMEUX"
+  },
+  {
+    "code_comm": "279",
+    "nom_dept": "COTE-D'OR",
+    "code_dept": "21",
+    "nom_comm": "FONTAINES-LES-SECHES"
+  },
+  {
+    "code_comm": "168",
+    "nom_dept": "MORBIHAN",
+    "code_dept": "56",
+    "nom_comm": "PLOUHARNEL"
+  },
+  {
+    "code_comm": "237",
+    "nom_dept": "LOIRE",
+    "code_dept": "42",
+    "nom_comm": "SAINT-JEAN-BONNEFONDS"
+  },
+  {
+    "code_comm": "430",
+    "nom_dept": "SEINE-ET-MARNE",
+    "code_dept": "77",
+    "nom_comm": "SAINT-PATHUS"
+  },
+  {
+    "code_comm": "229",
+    "nom_dept": "MEURTHE-ET-MOSELLE",
+    "code_dept": "54",
+    "nom_comm": "GLONVILLE"
+  },
+  {
+    "code_comm": "328",
+    "nom_dept": "DORDOGNE",
+    "code_dept": "24",
+    "nom_comm": "PIEGUT-PLUVIERS"
+  },
+  {
+    "code_comm": "355",
+    "nom_dept": "ORNE",
+    "code_dept": "61",
+    "nom_comm": "ROUELLE"
+  },
+  {
+    "code_comm": "046",
+    "nom_dept": "HAUTES-ALPES",
+    "code_dept": "05",
+    "nom_comm": "EMBRUN"
+  },
+  {
+    "code_comm": "041",
+    "nom_dept": "TERRITOIRE DE BELFORT",
+    "code_dept": "90",
+    "nom_comm": "ETUEFFONT"
+  },
+  {
+    "code_comm": "092",
+    "nom_dept": "ARIEGE",
+    "code_dept": "09",
+    "nom_comm": "CAZENAVE-SERRES-ET-ALLENS"
+  },
+  {
+    "code_comm": "310",
+    "nom_dept": "ORNE",
+    "code_dept": "61",
+    "nom_comm": "NONANT-LE-PIN"
+  },
+  {
+    "code_comm": "455",
+    "nom_dept": "EURE",
+    "code_dept": "27",
+    "nom_comm": "PIENCOURT"
+  },
+  {
+    "code_comm": "285",
+    "nom_dept": "VENDEE",
+    "code_dept": "85",
+    "nom_comm": "LE TABLIER"
+  },
+  {
+    "code_comm": "118",
+    "nom_dept": "CHARENTE",
+    "code_dept": "16",
+    "nom_comm": "DEVIAT"
+  },
+  {
+    "code_comm": "044",
+    "nom_dept": "CHARENTE-MARITIME",
+    "code_dept": "17",
+    "nom_comm": "BERNEUIL"
+  },
+  {
+    "code_comm": "049",
+    "nom_dept": "ALPES-MARITIMES",
+    "code_dept": "06",
+    "nom_comm": "COURMES"
+  },
+  {
+    "code_comm": "425",
+    "nom_dept": "DORDOGNE",
+    "code_dept": "24",
+    "nom_comm": "SAINT-JEAN-DE-COLE"
+  },
+  {
+    "code_comm": "478",
+    "nom_dept": "ORNE",
+    "code_dept": "61",
+    "nom_comm": "TAILLEBOIS"
+  },
+  {
+    "code_comm": "318",
+    "nom_dept": "YONNE",
+    "code_dept": "89",
+    "nom_comm": "QUARRE-LES-TOMBES"
+  },
+  {
+    "code_comm": "051",
+    "nom_dept": "ARIEGE",
+    "code_dept": "09",
+    "nom_comm": "BENAIX"
+  },
+  {
+    "code_comm": "581",
+    "nom_dept": "NORD",
+    "code_dept": "59",
+    "nom_comm": "STEENWERCK"
+  },
+  {
+    "code_comm": "004",
+    "nom_dept": "HAUTE-SAVOIE",
+    "code_dept": "74",
+    "nom_comm": "ALLEVES"
+  },
+  {
+    "code_comm": "175",
+    "nom_dept": "MORBIHAN",
+    "code_dept": "56",
+    "nom_comm": "PLUMERGAT"
+  },
+  {
+    "code_comm": "476",
+    "nom_dept": "PAS-DE-CALAIS",
+    "code_dept": "62",
+    "nom_comm": "IZEL-LES-EQUERCHIN"
+  },
+  {
+    "code_comm": "010",
+    "nom_dept": "PAS-DE-CALAIS",
+    "code_dept": "62",
+    "nom_comm": "AFFRINGUES"
+  },
+  {
+    "code_comm": "273",
+    "nom_dept": "HAUTE-SAVOIE",
+    "code_dept": "74",
+    "nom_comm": "SIXT-FER-A-CHEVAL"
+  },
+  {
+    "code_comm": "066",
+    "nom_dept": "LOT-ET-GARONNE",
+    "code_dept": "47",
+    "nom_comm": "CLERMONT-DESSOUS"
+  },
+  {
+    "code_comm": "462",
+    "nom_dept": "MOSELLE",
+    "code_dept": "57",
+    "nom_comm": "METTING"
+  },
+  {
+    "code_comm": "314",
+    "nom_dept": "SOMME",
+    "code_dept": "80",
+    "nom_comm": "FLERS"
+  },
+  {
+    "code_comm": "237",
+    "nom_dept": "HAUTE-MARNE",
+    "code_dept": "52",
+    "nom_comm": "HARREVILLE-LES-CHANTEURS"
+  },
+  {
+    "code_comm": "149",
+    "nom_dept": "MEUSE",
+    "code_dept": "55",
+    "nom_comm": "DELUT"
+  },
+  {
+    "code_comm": "077",
+    "nom_dept": "HAUTE-VIENNE",
+    "code_dept": "87",
+    "nom_comm": "JANAILHAC"},
+  {
+    "code_comm": "760",
+    "nom_dept": "CALVADOS",
+    "code_dept": "14",
+    "nom_comm": "VILLY-BOCAGE"
+  },
+  {
+    "code_comm": "341",
+    "nom_dept": "OISE",
+    "code_dept": "60",
+    "nom_comm": "LAGNY-LE-SEC"
+  },
+  {
+    "code_comm": "058",
+    "nom_dept": "DEUX-SEVRES",
+    "code_dept": "79",
+    "nom_comm": "BRULAIN"
+  },
+  {
+    "code_comm": "153",
+    "nom_dept": "GERS",
+    "code_dept": "32",
+    "nom_comm": "HAULIES"
+  },
+  {
+    "code_comm": "280",
+    "nom_dept": "EURE",
+    "code_dept": "27",
+    "nom_comm": "GAUCIEL"
+  },
+  {
+    "code_comm": "237",
+    "nom_dept": "INDRE-ET-LOIRE",
+    "code_dept": "37",
+    "nom_comm": "SAINT-ROCH"
+  },
+  {
+    "code_comm": "113",
+    "nom_dept": "EURE-ET-LOIR",
+    "code_dept": "28",
+    "nom_comm": "COULOMBS"
+  },
+  {
+    "code_comm": "262",
+    "nom_dept": "ORNE",
+    "code_dept": "61",
+    "nom_comm": "LE MENIL-CIBOULT"
+  },
+  {
+    "code_comm": "079",
+    "nom_dept": "TARN-ET-GARONNE",
+    "code_dept": "82",
+    "nom_comm": "LABASTIDE-SAINT-PIERRE"
+  },
+  {
+    "code_comm": "086",
+    "nom_dept": "AUBE",
+    "code_dept": "10",
+    "nom_comm": "CHARNY-LE-BACHOT"
+  },
+  {
+    "code_comm": "412",
+    "nom_dept": "SEINE-ET-MARNE",
+    "code_dept": "77",
+    "nom_comm": "SAINT-GERMAIN-SUR-ECOLE"
+  },
+  {
+    "code_comm": "098",
+    "nom_dept": "ISERE",
+    "code_dept": "38",
+    "nom_comm": "CHELIEU"
+  },
+  {
+    "code_comm": "249",
+    "nom_dept": "LOIRE",
+    "code_dept": "42",
+    "nom_comm": "SAINT-JUST-LA-PENDUE"
+  },
+  {
+    "code_comm": "296",
+    "nom_dept": "RHONE",
+    "code_dept": "69",
+    "nom_comm": "SOLAIZE"
+  },
+  {
+    "code_comm": "209",
+    "nom_dept": "CHER",
+    "code_dept": "18",
+    "nom_comm": "SAINT-GEORGES-DE-POISIEUX"
+  },
+  {
+    "code_comm": "518",
+    "nom_dept": "EURE",
+    "code_dept": "27",
+    "nom_comm": "SAINT-AUBIN-SUR-QUILLEBEUF"
+  },
+  {
+    "code_comm": "664",
+    "nom_dept": "COTE-D'OR",
+    "code_dept": "21",
+    "nom_comm": "VERDONNET"
+  },
+  {
+    "code_comm": "128",
+    "nom_dept": "AUBE",
+    "code_dept": "10",
+    "nom_comm": "DONNEMENT"
+  },
+  {
+    "code_comm": "238",
+    "nom_dept": "DEUX-SEVRES",
+    "code_dept": "79",
+    "nom_comm": "SAINT-AUBIN-DU-PLAIN"
+  },
+
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "ACORES, MADERE",
+    "code_comm": "319"
+
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "AFGHANISTAN",
+    "code_comm": "212"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "AFRIQUE DU SUD",
+    "code_comm": "303"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "ALASKA",
+    "code_comm": "404"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "ALBANIE",
+    "code_comm": "125"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "ALGERIE",
+    "code_comm": "352"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "ALLEMAGNE",
+    "code_comm": "109"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "ANDORRE",
+    "code_comm": "130"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "ANGOLA",
+    "code_comm": "395"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "ANGUILLA",
+    "code_comm": "425"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "ANTIGUA-ET-BARBUDA",
+    "code_comm": "441"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "ANTILLES NEERLANDAISES",
+    "code_comm": "431"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "ARABIE SAOUDITE",
+    "code_comm": "201"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "ARGENTINE",
+    "code_comm": "415"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "ARMENIE",
+    "code_comm": "252"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "ARUBA",
+    "code_comm": "431"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "AUSTRALIE",
+    "code_comm": "501"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "AUTRICHE",
+    "code_comm": "110"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "AZERBAIDJAN",
+    "code_comm": "253"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "BAHAMAS",
+    "code_comm": "436"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "BAHREIN",
+    "code_comm": "249"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "BANGLADESH",
+    "code_comm": "246"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "BARBADE",
+    "code_comm": "434"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "BELGIQUE",
+    "code_comm": "131"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "BELIZE",
+    "code_comm": "429"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "BENIN",
+    "code_comm": "327"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "BERMUDES",
+    "code_comm": "425"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "BHOUTAN",
+    "code_comm": "214"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "BIELORUSSIE",
+    "code_comm": "148"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "BIRMANIE",
+    "code_comm": "224"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "BOLIVIE",
+    "code_comm": "418"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "BOSNIE-HERZEGOVINE",
+    "code_comm": "118"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "BOTSWANA",
+    "code_comm": "347"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "BOUVET (ILE)",
+    "code_comm": "103"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "BRESIL",
+    "code_comm": "416"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "BRUNEI",
+    "code_comm": "225"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "BULGARIE",
+    "code_comm": "111"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "BURKINA",
+    "code_comm": "331"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "BURUNDI",
+    "code_comm": "321"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "CAIMANES (ILES)",
+    "code_comm": "425"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "CAMBODGE",
+    "code_comm": "234"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "CAMEROUN",
+    "code_comm": "322"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "CAMEROUN ET TOGO",
+    "code_comm": "305"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "CANADA",
+    "code_comm": "401"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "CANARIES (ILES)",
+    "code_comm": "313"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "CAP-VERT",
+    "code_comm": "396"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "CENTRAFRICAINE (REPUBLIQUE)",
+    "code_comm": "323"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "CHILI",
+    "code_comm": "417"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "CHINE",
+    "code_comm": "216"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "CHRISTMAS (ILE)",
+    "code_comm": "501"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "CHYPRE",
+    "code_comm": "254"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "COCOS ou KEELING (ILES)",
+    "code_comm": "501"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "COLOMBIE",
+    "code_comm": "419"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "COMORES",
+    "code_comm": "397"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "CONGO",
+    "code_comm": "324"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "CONGO (REPUBLIQUE DEMOCRATIQUE)",
+    "code_comm": "312"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "COOK (ILES)",
+    "code_comm": "502"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "COREE",
+    "code_comm": "237"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "COREE (REPUBLIQUE DE)",
+    "code_comm": "239"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "COREE (REPUBLIQUE POPULAIRE DEMOCRATIQUE DE)",
+    "code_comm": "238"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "COSTA RICA",
+    "code_comm": "406"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "COTE D'IVOIRE",
+    "code_comm": "326"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "CROATIE",
+    "code_comm": "119"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "CUBA",
+    "code_comm": "407"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "DANEMARK",
+    "code_comm": "101"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "DJIBOUTI",
+    "code_comm": "399"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "DOMINICAINE (REPUBLIQUE)",
+    "code_comm": "408"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "DOMINIQUE",
+    "code_comm": "438"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "EGYPTE",
+    "code_comm": "301"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "EL SALVADOR",
+    "code_comm": "414"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "EMIRATS ARABES UNIS",
+    "code_comm": "247"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "EQUATEUR",
+    "code_comm": "420"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "ERYTHREE",
+    "code_comm": "317"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "ESPAGNE",
+    "code_comm": "134"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "ESTONIE",
+    "code_comm": "106"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "ETATS MALAIS NON FEDERES",
+    "code_comm": "228"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "ETATS-UNIS",
+    "code_comm": "404"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "ETHIOPIE",
+    "code_comm": "315"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "EX-REPUBLIQUE YOUGOSLAVE DE MACEDOINE",
+    "code_comm": "156"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "FEROE (ILES)",
+    "code_comm": "101"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "FIDJI",
+    "code_comm": "508"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "FINLANDE",
+    "code_comm": "105"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "GABON",
+    "code_comm": "328"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "GAMBIE",
+    "code_comm": "304"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "GEORGIE",
+    "code_comm": "255"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "GEORGIE DU SUD ET LES ILES SANDWICH DU SUD",
+    "code_comm": "427"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "GHANA",
+    "code_comm": "329"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "GIBRALTAR",
+    "code_comm": "133"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "GOA",
+    "code_comm": "223"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "GRECE",
+    "code_comm": "126"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "GRENADE",
+    "code_comm": "435"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "GROENLAND",
+    "code_comm": "430"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "GUAM",
+    "code_comm": "505"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "GUATEMALA",
+    "code_comm": "409"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "GUINEE",
+    "code_comm": "330"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "GUINEE EQUATORIALE",
+    "code_comm": "314"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "GUINEE-BISSAU",
+    "code_comm": "392"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "GUYANA",
+    "code_comm": "428"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "HAITI",
+    "code_comm": "410"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "HAWAII (ILES)",
+    "code_comm": "504"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "HEARD ET MACDONALD (ILES)",
+    "code_comm": "501"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "HONDURAS",
+    "code_comm": "411"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "HONG-KONG",
+    "code_comm": "230"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "HONGRIE",
+    "code_comm": "112"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "ILES PORTUGAISES DE L'OCEAN INDIEN",
+    "code_comm": "320"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "INDE",
+    "code_comm": "223"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "INDONESIE",
+    "code_comm": "231"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "IRAN",
+    "code_comm": "204"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "IRAQ",
+    "code_comm": "203"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "IRLANDE, ou EIRE",
+    "code_comm": "136"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "ISLANDE",
+    "code_comm": "102"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "ISRAEL",
+    "code_comm": "207"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "ITALIE",
+    "code_comm": "127"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "JAMAIQUE",
+    "code_comm": "426"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "JAPON",
+    "code_comm": "217"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "JORDANIE",
+    "code_comm": "222"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "KAMTCHATKA",
+    "code_comm": "211"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "KAZAKHSTAN",
+    "code_comm": "256"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "KENYA",
+    "code_comm": "332"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "KIRGHIZISTAN",
+    "code_comm": "257"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "KIRIBATI",
+    "code_comm": "513"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "KOWEIT",
+    "code_comm": "240"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "LABRADOR",
+    "code_comm": "403"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "LAOS",
+    "code_comm": "241"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "LESOTHO",
+    "code_comm": "348"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "LETTONIE",
+    "code_comm": "107"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "LIBAN",
+    "code_comm": "205"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "LIBERIA",
+    "code_comm": "302"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "LIBYE",
+    "code_comm": "316"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "LIECHTENSTEIN",
+    "code_comm": "113"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "LITUANIE",
+    "code_comm": "108"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "LUXEMBOURG",
+    "code_comm": "137"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "MACAO",
+    "code_comm": "232"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "MADAGASCAR",
+    "code_comm": "333"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "MALAISIE",
+    "code_comm": "227"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "MALAWI",
+    "code_comm": "334"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "MALDIVES",
+    "code_comm": "229"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "MALI",
+    "code_comm": "335"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "MALOUINES, OU FALKLAND (ILES)",
+    "code_comm": "427"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "MALTE",
+    "code_comm": "144"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "MANDCHOURIE",
+    "code_comm": "218"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "MARIANNES DU NORD (ILES)",
+    "code_comm": "505"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "MAROC",
+    "code_comm": "350"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "MARSHALL (ILES)",
+    "code_comm": "515"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "MAURICE",
+    "code_comm": "390"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "MAURITANIE",
+    "code_comm": "336"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "MEXIQUE",
+    "code_comm": "405"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "MICRONESIE (ETATS FEDERES DE)",
+    "code_comm": "516"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "MOLDAVIE",
+    "code_comm": "151"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "MONACO",
+    "code_comm": "138"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "MONGOLIE",
+    "code_comm": "242"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "MONTENEGRO",
+    "code_comm": "120"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "MONTSERRAT",
+    "code_comm": "425"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "MOZAMBIQUE",
+    "code_comm": "393"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "NAMIBIE",
+    "code_comm": "311"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "NAURU",
+    "code_comm": "507"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "NEPAL",
+    "code_comm": "215"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "NICARAGUA",
+    "code_comm": "412"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "NIGER",
+    "code_comm": "337"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "NIGERIA",
+    "code_comm": "338"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "NIUE",
+    "code_comm": "502"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "NORFOLK (ILE)",
+    "code_comm": "501"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "NORVEGE",
+    "code_comm": "103"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "NOUVELLE-ZELANDE",
+    "code_comm": "502"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "OCEAN INDIEN (TERRITOIRE BRITANNIQUE DE L')",
+    "code_comm": "308"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "OMAN",
+    "code_comm": "250"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "OUGANDA",
+    "code_comm": "339"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "OUZBEKISTAN",
+    "code_comm": "258"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "PAKISTAN",
+    "code_comm": "213"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "PALAOS (ILES)",
+    "code_comm": "517"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "PALESTINE",
+    "code_comm": "261"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "PANAMA",
+    "code_comm": "413"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "PAPOUASIE-NOUVELLE-GUINEE",
+    "code_comm": "510"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "PARAGUAY",
+    "code_comm": "421"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "nom_comm-BAS",
+    "code_comm": "135"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "PEROU",
+    "code_comm": "422"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "PHILIPPINES",
+    "code_comm": "220"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "PITCAIRN (ILE)",
+    "code_comm": "503"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "POLOGNE",
+    "code_comm": "122"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "PORTO RICO",
+    "code_comm": "432"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "PORTUGAL",
+    "code_comm": "139"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "POSSESSIONS BRITANNIQUES AU PROCHE-ORIENT",
+    "code_comm": "221"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "PRESIDES",
+    "code_comm": "313"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "PROVINCES ESPAGNOLES D'AFRIQUE",
+    "code_comm": "313"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "QATAR",
+    "code_comm": "248"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "REPUBLIQUE DEMOCRATIQUE ALLEMANDE",
+    "code_comm": "141"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "REPUBLIQUE FEDERALE D'ALLEMAGNE",
+    "code_comm": "142"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "ROUMANIE",
+    "code_comm": "114"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "ROYAUME-UNI",
+    "code_comm": "132"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "RUSSIE",
+    "code_comm": "123"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "RWANDA",
+    "code_comm": "340"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "SAHARA OCCIDENTAL",
+    "code_comm": "389"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "SAINT-CHRISTOPHE-ET-NIEVES",
+    "code_comm": "442"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "SAINT-MARIN",
+    "code_comm": "128"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "SAINT-VINCENT-ET-LES GRENADINES",
+    "code_comm": "440"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "SAINTE-HELENE",
+    "code_comm": "306"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "SAINTE-LUCIE",
+    "code_comm": "439"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "SALOMON (ILES)",
+    "code_comm": "512"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "SAMOA AMERICAINES",
+    "code_comm": "505"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "SAMOA OCCIDENTALES",
+    "code_comm": "506"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "SAO TOME-ET-PRINCIPE",
+    "code_comm": "394"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "SENEGAL",
+    "code_comm": "341"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "SERBIE-ET-MONTÉNÉGRO",
+    "code_comm": "121"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "SEYCHELLES",
+    "code_comm": "398"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "SIBERIE",
+    "code_comm": "209"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "SIERRA LEONE",
+    "code_comm": "342"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "SINGAPOUR",
+    "code_comm": "226"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "SLOVAQUIE",
+    "code_comm": "117"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "SLOVENIE",
+    "code_comm": "145"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "SOMALIE",
+    "code_comm": "318"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "SOUDAN",
+    "code_comm": "343"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "SOUDAN ANGLO-EGYPTIEN, KENYA, OUGANDA",
+    "code_comm": "307"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "SRI LANKA",
+    "code_comm": "235"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "SUEDE",
+    "code_comm": "104"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "SUISSE",
+    "code_comm": "140"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "SURINAME",
+    "code_comm": "437"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "SVALBARD et ILE JAN MAYEN",
+    "code_comm": "103"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "SWAZILAND",
+    "code_comm": "391"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "SYRIE",
+    "code_comm": "206"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "TADJIKISTAN",
+    "code_comm": "259"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "TAIWAN",
+    "code_comm": "236"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "TANGER",
+    "code_comm": "325"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "TANZANIE",
+    "code_comm": "309"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "TCHAD",
+    "code_comm": "344"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "TCHECOSLOVAQUIE",
+    "code_comm": "115"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "TCHEQUE (REPUBLIQUE)",
+    "code_comm": "116"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "TERR. DES ETATS-UNIS D'AMERIQUE EN AMERIQUE",
+    "code_comm": "432"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "TERR. DES ETATS-UNIS D'AMERIQUE EN OCEANIE",
+    "code_comm": "505"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "TERR. DU ROYAUME-UNI DANS L'ATLANTIQUE SUD",
+    "code_comm": "427"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "TERRE-NEUVE",
+    "code_comm": "402"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "TERRITOIRE DES nom_comm-BAS",
+    "code_comm": "431"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "TERRITOIRES DU ROYAUME-UNI AUX ANTILLES",
+    "code_comm": "425"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "THAILANDE",
+    "code_comm": "219"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "TIMOR ORIENTAL",
+    "code_comm": "262"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "TOGO",
+    "code_comm": "345"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "TOKELAU",
+    "code_comm": "502"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "TONGA",
+    "code_comm": "509"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "TRINITE-ET-TOBAGO",
+    "code_comm": "433"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "TUNISIE",
+    "code_comm": "351"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "TURKESTAN RUSSE",
+    "code_comm": "210"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "TURKMENISTAN",
+    "code_comm": "260"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "TURKS ET CAIQUES (ILES)",
+    "code_comm": "425"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "TURQUIE",
+    "code_comm": "208"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "TURQUIE D'EUROPE",
+    "code_comm": "124"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "TUVALU",
+    "code_comm": "511"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "UKRAINE",
+    "code_comm": "155"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "URUGUAY",
+    "code_comm": "423"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "VANUATU",
+    "code_comm": "514"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "VATICAN, ou SAINT-SIEGE",
+    "code_comm": "129"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "VENEZUELA",
+    "code_comm": "424"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "VIERGES BRITANNIQUES (ILES)",
+    "code_comm": "425"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "VIERGES DES ETATS-UNIS (ILES)",
+    "code_comm": "432"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "VIET NAM",
+    "code_comm": "243"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "VIET NAM DU NORD",
+    "code_comm": "244"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "VIET NAM DU SUD",
+    "code_comm": "245"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "YEMEN",
+    "code_comm": "251"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "YEMEN (REPUBLIQUE ARABE DU)",
+    "code_comm": "202"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "YEMEN DEMOCRATIQUE",
+    "code_comm": "233"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "ZAMBIE",
+    "code_comm": "346"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "ZANZIBAR",
+    "code_comm": "308"
+  },
+  {"nom_dept": "ETRANGER",
+    "code_dept":"99",
+    "nom_comm": "ZIMBABWE",
+    "code_comm": "310"
+  }
+    ]
+
+
+
+
+
+

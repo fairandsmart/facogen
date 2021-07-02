@@ -1,0 +1,58 @@
+[
+  [
+  {
+    "codeElement": null,
+    "heading": "Autres contibutions dues par l'employeur",
+    "base": 0,
+    "salaryRate": 0,
+    "employeeContributions": 0,
+    "employerRate": 0,
+    "employerContributions": 2
+  },
+    {
+      "codeElement": null,
+      "heading": "CSG deductible à l'IR",
+      "base": null,
+      "salaryRate": null,
+      "employeeContributions": null,
+      "employerRate": null,
+      "employerContributions": null
+    },
+    {
+      "codeElement": null,
+      "heading": "CSG deductible à l'IR",
+      "base": 1,
+      "salaryRate": 6.9,
+      "employeeContributions": 1,
+      "employerRate": 0,
+      "employerContributions": 0
+    }
+  ],
+  [{
+    "codeElement": null,
+    "heading": "CSG deductible",
+    "base": 1,
+    "salaryRate": 6.7,
+    "employeeContributions": 1,
+    "employerRate": 0,
+    "employerContributions": 0
+  },
+  {
+    "codeElement": null,
+    "heading": "AUTRES CONTRIBUTIONS DUES PAR L'EMPLOYEUR",
+    "base": 1,
+    "salaryRate": 0,
+    "employeeContributions": 0,
+    "employerRate": 8.6,
+    "employerContributions": 1
+  },
+    {
+      "codeElement": null,
+      "heading": "ALLEGEMENT DE COTISATIONS",
+      "base": 1,
+      "salaryRate": 0,
+      "employeeContributions": 0,
+      "employerRate": 0,
+      "employerContributions": 0
+    }]
+]

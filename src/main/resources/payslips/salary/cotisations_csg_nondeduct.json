@@ -1,0 +1,30 @@
+[
+  [
+  {
+    "codeElement": 132,
+    "heading": "CSG /CRDS non déductible à l'IR",
+    "base": 0,
+    "salaryRate": 5.1,
+    "employeeContributions": 1,
+    "employerRate": 0,
+    "employerContributions": 0
+  }],
+  [{
+    "codeElement": null,
+    "heading": "URSSAF USG NON DEDUCTIBLE",
+    "base": 1,
+    "salaryRate": 5.1,
+    "employeeContributions": 1,
+    "employerRate": 0,
+    "employerContributions": 1
+  },
+  {
+    "codeElement": null,
+    "heading": "URSSAF CRDS",
+    "base": 1,
+    "salaryRate": 2.9,
+    "employeeContributions": 1,
+    "employerRate": 0,
+    "employerContributions": 0
+  }]
+]

@@ -1,0 +1,94 @@
+[
+  [{
+    "codeElement": 21,
+    "heading": "SALAIRE BRUT",
+    "base": 0,
+    "salaryRate": 0,
+    "employeeContributions": 1,
+    "employerRate": 0,
+    "employerContributions": 0
+  }],
+  [{
+    "codeElement": 454,
+    "heading": "SALAIRE DE BASE",
+    "base": 151.67,
+    "salaryRate": 2,
+    "employeeContributions": 0,
+    "employerRate": 0,
+    "employerContributions": 0
+  },
+  {
+    "codeElement": 12,
+    "heading": "H. supp majorées à 25%",
+    "base": 17.33,
+    "salaryRate": 2,
+    "employeeContributions": 1,
+    "employerRate": 0,
+    "employerContributions": 0
+  },
+    {
+      "codeElement": 12,
+      "heading": "SOUS TOTAL SALAIRE DE BASE",
+      "base": 196,
+      "salaryRate": 0,
+      "employeeContributions": 1,
+      "employerRate": 0,
+      "employerContributions": 0
+    },
+    {
+      "codeElement": 12,
+      "heading": "PRIME ANCIENNETÉ / SAL BASE",
+      "base": 1,
+      "salaryRate": 2,
+      "employeeContributions": 1,
+      "employerRate": 0,
+      "employerContributions": 0
+    },
+    {
+      "codeElement": 12,
+      "heading": "SALAIRE BRUT",
+      "base": 0,
+      "salaryRate": 0,
+      "employeeContributions": 1,
+      "employerRate": 0,
+      "employerContributions": 0
+    }],
+  [
+    {
+      "codeElement": 12,
+      "heading": "SALAIRE DE BASE",
+      "base": 151.67,
+      "salaryRate": 2,
+      "employeeContributions": 0,
+      "employerRate": 0,
+      "employerContributions": 0
+    },
+    {
+      "codeElement": 12,
+      "heading": "H. Supp majorées à 25 %",
+      "base": 8.77,
+      "salaryRate": 19.229,
+      "employeeContributions": 1,
+      "employerRate": 0,
+      "employerContributions": 0
+    },
+    {
+      "codeElement": 12,
+      "heading": "BPAC AVANTAGE EN NATURE VEHICULE",
+      "base": 161.82,
+      "salaryRate": 0,
+      "employeeContributions": 0,
+      "employerRate": 0,
+      "employerContributions": 0
+    },
+    {
+      "codeElement": 12,
+      "heading": "SALAIRE BRUT",
+      "base": 0,
+      "salaryRate": 0,
+      "employeeContributions": 1,
+      "employerRate": 0,
+      "employerContributions": 0
+    }
+  ]
+]

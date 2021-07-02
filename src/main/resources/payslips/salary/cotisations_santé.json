@@ -1,0 +1,102 @@
+[
+  [{
+    "codeElement": null,
+    "heading": "SANTE",
+    "base": null,
+    "salaryRate": null,
+    "employeeContributions": null,
+    "employerRate": null,
+    "employerContributions": null
+  },
+  {
+    "codeElement": null,
+    "heading": "Sécu. Soc.Mat.Mater.Inval.Déc",
+    "base": 1,
+    "salaryRate": 0,
+    "employeeContributions": 0,
+    "employerRate": 7.0,
+    "employerContributions": 1
+  },
+    {
+      "codeElement": null,
+      "heading": "Complémentaire Incap.Inval.Déc",
+      "base": 1,
+      "salaryRate": 1.052,
+      "employeeContributions": 1,
+      "employerRate": 1.577,
+      "employerContributions": 1
+    },
+    {
+      "codeElement": null,
+      "heading": "Complémentaire Santé ",
+      "base": 1,
+      "salaryRate": 3.03,
+      "employeeContributions": 1,
+      "employerRate": 3.03,
+      "employerContributions": 1
+    }],
+  [{
+    "codeElement": null,
+    "heading": "SANTE",
+    "base": null,
+    "salaryRate": null,
+    "employeeContributions": null,
+    "employerRate": null,
+    "employerContributions": null
+  },
+  {
+    "codeElement": null,
+    "heading": "Sécu.Soc-Mat .Mater.Inval .Déc",
+    "base": 1,
+    "salaryRate": 0,
+    "employeeContributions": 0,
+    "employerRate": 7.00,
+    "employerContributions": 1
+  },
+    {
+      "codeElement": null,
+      "heading": "Complémentaire Incap.Inval .Déc",
+      "base": 1,
+      "salaryRate": 0,
+      "employeeContributions": 0,
+      "employerRate": 1.5,
+      "employerContributions": 1
+    },
+    {
+      "codeElement": null,
+      "heading": "Mutuelle",
+      "base": 1,
+      "salaryRate": 1.5,
+      "employeeContributions": 1,
+      "employerRate": 1.5,
+      "employerContributions": 1
+    }
+  ],
+  [{
+    "codeElement": null,
+    "heading": "SANTE",
+    "base": null,
+    "salaryRate": null,
+    "employeeContributions": null,
+    "employerRate": null,
+    "employerContributions": null
+  },
+    {
+      "codeElement": null,
+      "heading": "Sécu.Soc-Mat .Mater.Inval .Déc",
+      "base": 1,
+      "salaryRate": 0,
+      "employeeContributions": 0,
+      "employerRate": 1.3,
+      "employerContributions": 1
+    },
+    {
+      "codeElement": null,
+      "heading": "Complémentaire Incap.Inval .Déc",
+      "base": 1,
+      "salaryRate": 0,
+      "employeeContributions": 0,
+      "employerRate": 0.412,
+      "employerContributions": 1
+    }]
+  ]

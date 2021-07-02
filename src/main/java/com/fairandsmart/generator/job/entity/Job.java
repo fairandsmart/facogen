@@ -93,6 +93,10 @@ public class Job extends PanacheEntity implements Delayed {
         return find("owner", owner).list();
     }
 
+    /*
+    public static long countActiveForOwner(String owner) {
+        return find("owner = ?1 and ( status = ?2)", owner,  Status.RUNNING).count(); // status = ?2 or Status.PENDING,
+    */
     public static List<Job> findActiveForOwner(String owner) {
         return find("owner = ?1 and (status = ?2 or status = ?3)", owner, Status.PENDING, Status.RUNNING).list();
     }
