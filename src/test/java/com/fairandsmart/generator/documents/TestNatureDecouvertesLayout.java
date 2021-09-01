@@ -50,10 +50,26 @@ public class TestNatureDecouvertesLayout {
         Path natureDecouvertes = Paths.get("target/natureDecouvertes");
         if ( !Files.exists(natureDecouvertes)) {
             Files.createDirectory(natureDecouvertes);}
+
+        Path directoryPdf = Paths.get("target/natureDecouvertes/pdf");
+        if ( !Files.exists(directoryPdf) ) {
+            Files.createDirectory(directoryPdf);
+        }
+
+        Path directoryXml = Paths.get("target/natureDecouvertes/xml");
+        if ( !Files.exists(directoryXml) ) {
+            Files.createDirectory(directoryXml);
+        }
+
+        Path directoryTiff = Paths.get("target/natureDecouvertes/tiff");
+        if ( !Files.exists(directoryTiff) ) {
+            Files.createDirectory(directoryTiff);
+        }
+
         for(int i=1; i<=nb; i++){
-            Path pdf = Paths.get("target/natureDecouvertes/natureDecouvertes-"+ i + ".pdf");
-            Path xml = Paths.get("target/natureDecouvertes/natureDecouvertes-"+ i + ".xml");
-            Path img = Paths.get("target/natureDecouvertes/natureDecouvertes-"+ i + ".tiff");
+            Path pdf = Paths.get("target/natureDecouvertes/pdf/natureDecouvertes-"+ i + ".pdf");
+            Path xml = Paths.get("target/natureDecouvertes/xml/natureDecouvertes-"+ i + ".xml");
+            Path img = Paths.get("target/natureDecouvertes/tiff/natureDecouvertes-"+ i + ".tiff");
 
             GenerationContext ctx = GenerationContext.generate();
             InvoiceModel model = new InvoiceModel.Generator().generate(ctx);

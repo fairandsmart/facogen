@@ -63,8 +63,8 @@ public class TestLoriaLayout {
             ctx.setCountry("FR");
             ctx.setLanguage("fr");
             InvoiceModel model = new InvoiceModel.Generator().generate(ctx);
-            InvoiceLayout layout = new LoriaLayout();
-            InvoiceGenerator.getInstance().generateInvoice(layout, model, pdf, xml, img);
+            //InvoiceLayout layout = new LoriaLayout();
+            //InvoiceGenerator.getInstance().generateInvoice(layout, model, pdf, xml, img);
         }
     }
 }

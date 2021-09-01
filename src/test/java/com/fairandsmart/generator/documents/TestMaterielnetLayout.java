@@ -53,6 +53,21 @@ public class TestMaterielnetLayout {
             Files.createDirectory(materielnet);
         }
 
+        Path directoryPdf = Paths.get("target/materielnet/pdf");
+        if ( !Files.exists(directoryPdf) ) {
+            Files.createDirectory(directoryPdf);
+        }
+
+        Path directoryXml = Paths.get("target/materielnet/xml");
+        if ( !Files.exists(directoryXml) ) {
+            Files.createDirectory(directoryXml);
+        }
+
+        Path directoryTiff = Paths.get("target/materielnet/tiff");
+        if ( !Files.exists(directoryTiff) ) {
+            Files.createDirectory(directoryTiff);
+        }
+
         for ( int i=1; i<=nb; i++) {
             Path pdf = Paths.get("target/materielnet/pdf/materielnet-" + i + ".pdf");
             Path xml = Paths.get("target/materielnet/xml/materielnet" + i + ".xml");

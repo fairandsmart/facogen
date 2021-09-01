@@ -97,7 +97,7 @@ public class TestLaunch {
 
     public static void main(String args[]){
 
-        JFrame frame = new JFrame("Invoice génération");
+        JFrame frame = new JFrame("SSD generation");
 
         JPanel saisie1 = new JPanel(new GridBagLayout());
         //decoration du champ
@@ -137,7 +137,7 @@ public class TestLaunch {
         //decoration du champ
         saisie1.setPreferredSize(new Dimension(500,30));
         //texte explicatif
-        JLabel texte2 = new JLabel("How many invoices do you want ? ",JLabel.CENTER);
+        JLabel texte2 = new JLabel("How many documents do you want ? ",JLabel.CENTER);
         texte2.setFont(new java.awt.Font("Helvetica",Font.PLAIN,15));
         saisie2.add(texte2);
         JSpinner spinner = new JSpinner();

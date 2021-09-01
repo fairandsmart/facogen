@@ -61,8 +61,8 @@ public class TestFairandsmartLayout {
 
             GenerationContext ctx = GenerationContext.generate();
             InvoiceModel model = new InvoiceModel.Generator().generate(ctx);
-            InvoiceLayout layout = new FairAndSmartLayout();
-            InvoiceGenerator.getInstance().generateInvoice(layout, model, pdf, xml, img);
+            //InvoiceLayout layout = new FairAndSmartLayout();
+            //InvoiceGenerator.getInstance().generateInvoice(layout, model, pdf, xml, img);
         }
     }
 }
