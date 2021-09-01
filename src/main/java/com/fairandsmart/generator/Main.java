@@ -51,6 +51,6 @@ public class Main {
 
         GenerationContext ctx = GenerationContext.generate();
         InvoiceModel model = new InvoiceModel.Generator().generate(ctx);
-        InvoiceGenerator.getInstance().generateInvoice(new LoriaLayout(), model, pdf, xml, img);
+        //InvoiceGenerator.getInstance().generateInvoice(new LoriaLayout(), model, pdf, xml, img);
     }
 }

@@ -83,7 +83,7 @@ public class NatureDecouvertesLayout implements InvoiceLayout {
         PDFont fontItalic = PDType1Font.HELVETICA_OBLIQUE;
         PDPageContentStream contentStream = new PDPageContentStream(document, page);
 
-        String logo = this.getClass().getClassLoader().getResource("common/logo/naturedecouverte.png").getFile();
+        String logo = this.getClass().getClassLoader().getResource("invoices/parts/amazon/barcode1.jpg").getFile();
         PDImageXObject logoHeader = PDImageXObject.createFromFile(logo, document);
         float ratioPage = page.getMediaBox().getWidth()/2480;
         float ratioLogo = (float)logoHeader.getWidth() / (float)logoHeader.getHeight();
@@ -218,7 +218,7 @@ public class NatureDecouvertesLayout implements InvoiceLayout {
         VerticalContainer backContainer = new VerticalContainer(343*ratioPage, page.getMediaBox().getHeight()-2840*ratioPage, 636*ratioPage);
         backContainer.addElement(new SimpleTextBox(font,10,0,0,"Etiquette à coller sur votre colis en cas de retour. "));
         backContainer.build(contentStream,writer);
-        String barcode = this.getClass().getClassLoader().getResource("invoices/parts/nature/barcode.png").getFile();
+        String barcode = this.getClass().getClassLoader().getResource("invoices/parts/amazon/barcode1.jpg").getFile();
         PDImageXObject pdBarcode = PDImageXObject.createFromFile(barcode, document);
         new ImageBox(pdBarcode, 343*ratioPage,page.getMediaBox().getHeight()-2940*ratioPage , pdBarcode.getWidth()*ratioPage, pdBarcode.getHeight()*ratioPage, model.getReference().getValueCommand()).build(contentStream,writer);
         backContainer = new VerticalContainer(370*ratioPage, page.getMediaBox().getHeight()-3050*ratioPage, 636*ratioPage);

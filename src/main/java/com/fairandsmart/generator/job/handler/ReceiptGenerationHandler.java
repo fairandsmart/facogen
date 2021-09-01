@@ -38,6 +38,7 @@ import com.fairandsmart.generator.documents.ReceiptGenerator;
 import com.fairandsmart.generator.documents.data.generator.GenerationContext;
 import com.fairandsmart.generator.documents.data.model.ReceiptModel;
 import com.fairandsmart.generator.documents.layout.ReceiptLayout;
+import com.fairandsmart.generator.documents.layout.payslip.GenericPayslipLayout;
 import com.fairandsmart.generator.documents.layout.receipt.GenericReceiptLayout;
 import com.fairandsmart.generator.job.JobManager;
 import com.fairandsmart.generator.job.JobNotFoundException;
@@ -71,7 +72,7 @@ public class ReceiptGenerationHandler implements JobHandler {
 
     @Inject
     @Any
-    Instance<ReceiptLayout> layouts;
+    Instance<GenericReceiptLayout> layouts;
 
 
     @Inject
@@ -122,7 +123,7 @@ public class ReceiptGenerationHandler implements JobHandler {
                 int stop = start + qty;
                 //TODO Filter layouts according to param
                 LOGGER.log(Level.INFO, "layouts");
-                List<ReceiptLayout> availableLayouts = layouts.stream().collect(Collectors.toList());
+                List<GenericReceiptLayout> availableLayouts = layouts.stream().collect(Collectors.toList());
 
                 LOGGER.log(Level.INFO, "availableLayouts.size() = "+availableLayouts.size());
 

@@ -51,14 +51,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class FairAndSmartLayout implements InvoiceLayout {
+public class FairAndSmartLayout {//implements InvoiceLayout {
 
-    @Override
+    //@Override
     public String name() {
         return "FairAndSmart";
     }
 
-    @Override
+    //@Override
     public void builtInvoice(InvoiceModel model, PDDocument document, XMLStreamWriter writer) throws IOException {
         PDPage page = new PDPage(PDRectangle.A4);
         document.addPage(page);

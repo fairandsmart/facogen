@@ -55,6 +55,7 @@ import org.apache.pdfbox.pdmodel.common.PDRectangle;
 import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.xml.stream.XMLStreamWriter;
 import java.awt.*;
 import java.util.ArrayList;
@@ -62,6 +63,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
+@ApplicationScoped
 public class NGenericLayout implements InvoiceLayout {
     private float fontSize = 10;
     private PDFont[] fonts;

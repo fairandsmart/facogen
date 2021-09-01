@@ -51,9 +51,12 @@ import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.xml.stream.XMLStreamWriter;
 import java.awt.*;
 
+
+@ApplicationScoped
 public class MaterielnetLayout implements InvoiceLayout {
 
     @Override

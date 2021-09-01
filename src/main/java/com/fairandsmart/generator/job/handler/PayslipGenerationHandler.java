@@ -72,7 +72,7 @@ public class PayslipGenerationHandler implements JobHandler {
 
     @Inject
     @Any
-    Instance<PayslipLayout> layouts;
+    Instance<GenericPayslipLayout> layouts;
 
 
     @Inject
@@ -123,7 +123,7 @@ public class PayslipGenerationHandler implements JobHandler {
                 int stop = start + qty;
                 //TODO Filter layouts according to param
                 LOGGER.log(Level.INFO, "layouts");
-                List<PayslipLayout> availableLayouts = layouts.stream().collect(Collectors.toList());
+                List<GenericPayslipLayout> availableLayouts = layouts.stream().collect(Collectors.toList());
 
                 LOGGER.log(Level.INFO, "availableLayouts.size() = "+availableLayouts.size());
 

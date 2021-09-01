@@ -46,15 +46,15 @@ import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import javax.enterprise.context.ApplicationScoped;
 import javax.xml.stream.XMLStreamWriter;
 
-@ApplicationScoped
-public class LoriaLayout  implements InvoiceLayout {
+//@ApplicationScoped
+public class LoriaLayout {// implements InvoiceLayout {
 
-    @Override
+    //@Override
     public String name() {
         return "LORIA";
     }
 
-    @Override
+    //@Override
     public void builtInvoice(InvoiceModel model, PDDocument document, XMLStreamWriter writer) throws Exception {
 
         PDPage page = new PDPage(PDRectangle.A4);
