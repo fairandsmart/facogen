@@ -1,6 +1,31 @@
-## Named entities
+## Automatic generator of semi-structured documents (SSDs)
+This project generates semi-structured documents ( invoices, payslips, and receipts). 
 
-#### Annotations in GEDI File : 
+This is the Java implementation of our two papers :
+
+Blanchard, J., Belaïd, Y., & Belaïd, A. (2019, September). Automatic generation of a custom corpora for invoice analysis and recognition. In 2019 International Conference on Document Analysis and Recognition Workshops (ICDARW). IEEE.
+
+and
+ 
+Belhadj, D., Belaïd, Y., & Belaïd, A. (2021, September). Automatic generation of semi-structured documents. In 2021 International Conference on Document Analysis and Recognition Workshops (ICDAR-OST21). IEEE.
+
+### SSDs generation  : 
+- We can generate locally the three SSDs as well as the cloned invoices separately by launching :
+ 
+  Testlanuch
+ 
+- We can choose to generate these documents via the API web interface by launching :
+mvn quarkus:dev 
+and then by accessing :
+http://localhost:9080/api/ws/ 
+
+### Diversity evaluation :
+- We can evaluate the diversity of the local generated SSD datasets using 4 metrics :
+Alignement, overlapping, SCR_score, and SELF-BLEU :
+    TestDiversityLaunch
+
+
+#### Annotations in Invoices GEDI File : 
 
    * Invoice Number - IN
    * Seller(Company) name - SN
