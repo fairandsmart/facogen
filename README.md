@@ -7,7 +7,7 @@ Blanchard, J., Belaïd, Y., & Belaïd, A. (2019, September). Automatic generatio
 
 and
  
-Belhadj, D., Belaïd, Y., & Belaïd, A. (2021, September). Automatic generation of semi-structured documents. In 2021 International Conference on Document Analysis and Recognition Workshops (ICDAR-OST21). IEEE.
+Belhadj, D., Belaïd, Y., & Belaïd, A. (2021, September). Automatic Generation of Semi-structured Documents. In International Conference on Document Analysis and Recognition (pp. 191-205). Springer, Cham.
 
 ### SSDs generation  : 
 - We can generate locally the three SSDs as well as the cloned invoices separately by launching :
