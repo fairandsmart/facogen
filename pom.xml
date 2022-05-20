@@ -27,7 +27,7 @@
         <version.log4j>2.17.1</version.log4j>
         <version.jai>1.3.0</version.jai>
         <version.generex>1.0.2</version.generex>
-        <version.gson>2.8.2</version.gson>
+        <version.gson>2.8.9</version.gson>
         <version.commons-csv>1.5</version.commons-csv>
         <version.javafaker>0.14</version.javafaker>
     </properties>
