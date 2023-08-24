@@ -229,12 +229,9 @@ public class IDNumbers {
             String lineIn = null;
             Random random = new Random();
             int random_line = random.nextInt(1267 - 1 + 1) + 1;     // 1267 lines in file, each containg an ape code
-            String cwdPath = new File("").getAbsolutePath();       // current working directory
             try
             {
-                cwdPath = cwdPath.substring(0,cwdPath.lastIndexOf('/'));
-                System.out.println("PATHH "+cwdPath+ "/src/main/resources/common/apecodes.txt");
-                fileReader = new FileReader(cwdPath+ "/src/main/resources/common/apecodes.txt" );
+                fileReader = new FileReader("./src/main/resources/common/apecodes.txt" );
                 reader = new BufferedReader(fileReader);
                 int i = 1;
                 while (((lineIn = reader.readLine()) !=null) && i!=random_line) {
